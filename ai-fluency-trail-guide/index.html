@@ -1,0 +1,2666 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Public blog articles from the Chunky Dragon board-game project.">
+      
+      
+      
+        <link rel="canonical" href="https://blog.chunkydragon.com/ai-fluency-trail-guide/">
+      
+      
+        <link rel="prev" href="..">
+      
+      
+        <link rel="next" href="../device-profiles-not-accounts/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
+    
+    
+      
+        <title>The AI fluency trail guide - Chunky Dragon Blog</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.484c7ddc.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="amber">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#the-ai-fluency-trail-guide" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="Chunky Dragon Blog" class="md-header__button md-logo" aria-label="Chunky Dragon Blog" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Chunky Dragon Blog
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              The AI fluency trail guide
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="amber"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="amber"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+          <a href="javascript:void(0)" class="md-search__icon md-icon" title="Share" aria-label="Share" data-clipboard data-clipboard-text="" data-md-component="search-share" tabindex="-1">
+            
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.15c-.05.21-.08.43-.08.66 0 1.61 1.31 2.91 2.92 2.91s2.92-1.3 2.92-2.91A2.92 2.92 0 0 0 18 16.08"/></svg>
+          </a>
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+  
+
+<nav class="md-nav md-nav--primary md-nav--integrated" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="Chunky Dragon Blog" class="md-nav__button md-logo" aria-label="Chunky Dragon Blog" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    Chunky Dragon Blog
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Blog drafts
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    The AI fluency trail guide
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    The AI fluency trail guide
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#stage-1-the-oracle" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Stage 1 -- The Oracle
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#stage-2-the-prompter" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Stage 2 -- The Prompter
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#stage-3-the-customizer" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Stage 3 -- The Customizer
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#stage-4-the-agent-wrangler" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Stage 4 -- The Agent Wrangler
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#stage-5-the-pipeline-engineer" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Stage 5 -- The Pipeline Engineer
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#stage-6-the-system-builder" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Stage 6 -- The System Builder
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#stage-7-the-bottleneck-and-the-flip" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Stage 7 -- The Bottleneck, and the Flip
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#stage-8-the-ai-native-architect-closing-the-loop" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Stage 8 -- The AI-Native Architect (closing the loop)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#above-the-treeline-the-breadcrumbs-left-for-me" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Above the treeline: the breadcrumbs left for me
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#how-to-read-the-map" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        How to read the map
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Track A -- The mindset
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Track A -- The mindset
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../device-profiles-not-accounts/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Device profiles, not user accounts
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../why-build-it-this-way/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Why build it this way: the marginal cost of a game
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ai-personalities-not-optimizers/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    AI personalities, not optimizers
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../python-dev-learning-react/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Shipping a React client I have not read
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../read-before-you-write/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Read before you write
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../dont-fold-it-in/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Don't fold it in: file the second problem
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../first-runnable-line/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Your first runnable line
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Track B -- Designing the product
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Track B -- Designing the product
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../four-role-websocket-protocol/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Four-role WebSocket protocol
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../design-for-the-flakiest-client/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Design for the flakiest client in the room
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../one-engine-two-information-modes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    One engine, two information modes
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../memory-match-for-pre-readers/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Memory Match for a 5-year-old who can't read yet
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../bluff-without-chat/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    A game built on lying, with no chat panel
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../werewolf-server-as-moderator/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Werewolf without a moderator (and without a chat panel)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../a-fair-die-is-a-product-decision/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    A fair die is a product decision
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../the-equity-panel-is-the-ai/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    The equity panel is the AI
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../byok-advisor-framework/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Bring your own key
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../when-the-algorithm-depends-on-the-game/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    When the algorithm depends on the game
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Track C -- AI-first engineering
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Track C -- AI-first engineering
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ai-first-code-annotations/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Code comments written for the robot, not the human
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ai-first-testing-and-logging/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    The test that knows what it is
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../when-layout-taste-becomes-a-test/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    When layout taste becomes a test
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../annotations-vs-the-literature/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    What the literature got to first (and the parts we made mandatory)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../let-the-library-carry-the-proof/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Let the library carry the proof
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../the-refactor-the-annotations-made-safe/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    The refactor the annotations made safe
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../derive-dont-stamp/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Derive It, Don't Stamp It
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../trimming-the-duplication-an-ai-cannot-see/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Trimming the duplication an AI cannot see
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../log-interplay-and-swimlanes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    The logs already knew the order
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../store-the-moves-not-the-board/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Store the moves, not the board
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../code-risk-trends-over-time/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Watching code risk trend over time, with no metrics datastore
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Track D -- Building with AI
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Track D -- Building with AI
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../from-idea-to-buildable-repo/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    From an idea in a chat window to a repo the robot can build
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ui-specs-without-design-tools/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Describe the screen, don't draw it (the UI-spec prompt playbook)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../throwaway-html-mockups/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Make it real before you build it (throwaway HTML mockups)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../orchestrated-build-loop/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Tickets in, a game I can play out (the orchestrated build-and-feedback loop)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../the-orchestrator-that-drafts-its-own-backlog/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    The orchestrator that drafts its own backlog
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../from-surprise-to-rule-to-skill/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    From surprise to rule to skill
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7" >
+        
+          
+          <label class="md-nav__link" for="__nav_7" id="__nav_7_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Track E -- The orchestrator evolves
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Track E -- The orchestrator evolves
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../orchestration-lifecycle/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    The orchestration lifecycle: from phase to ticket to retro
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../orchestration-review-guardrails/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Review surfaces and the AI-first guardrails
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../risk-routed-review/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Risk-routed review: spending human attention where it earns its keep
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../spiral-detection-watchdog/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Spiral-detection watchdog
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../mechanical-vs-llm-failure-recovery/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    When a stage fails: what is mechanical and what is the LLM?
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../risk-routed-merge-resolution/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Risk-routed merge resolution: let git handle the boring conflicts
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../how-a-ticket-picks-its-brain/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    How a ticket picks its brain
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../anatomy-of-a-ticket/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Anatomy of a ticket: one contract, one run record, every field
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../meet-tempo/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Meet Tempo: when the orchestrator becomes a Go binary
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../two-rewrites-one-strategy/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Two rewrites, one strategy
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../parity-first/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Parity-first: replacing the system that builds your software
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../orchestrator-as-installable-product/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    The orchestrator leaves home: from welded-in workflow to installable binary
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8" >
+        
+          
+          <label class="md-nav__link" for="__nav_8" id="__nav_8_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Track F -- Forward-looking
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_8_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_8">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Track F -- Forward-looking
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../cfr-for-6max-holdem/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    CFR for 6-max Hold'em: the poker AI this catalog hasn't built yet
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../rulebook-pdf-to-gameengine/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    How cheap can a new game get? The rulebook-PDF-to-engine experiment
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../numeric-risk-dashboards/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    What a numeric risk dashboard would have to be
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../action-log-analytics-and-fairness/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    The action log is an analytics engine waiting to happen
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../testing-an-orchestrator-with-fakes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    How do you test an orchestrator whose job is to call an LLM?
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../sharing-tempo-upstream/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Sharing the orchestrator upstream: template vs. the project that grew it
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../cross-game-compounding-flywheel/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    The cross-game compounding flywheel
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+  <nav class="md-tags" >
+    
+      
+      
+      
+      
+        <span class="md-tag">capability:docs</span>
+      
+    
+      
+      
+      
+      
+        <span class="md-tag">doc-kind:blog</span>
+      
+    
+  </nav>
+
+
+
+<h1 id="the-ai-fluency-trail-guide">The AI fluency trail guide<a class="headerlink" href="#the-ai-fluency-trail-guide" title="Permanent link">&para;</a></h1>
+<p>Two and a half months. That is the gap between the first commit in this project -- a board-game app scaffold -- and the day I wrote this. In that window, working solo with no prior web-UI experience, I merged roughly <strong>1,300 pull requests</strong> to <code>main</code> (the latest is #1340). Each one was authored, checked against a wall of automated gates in a separate context, and reviewed before it merged -- by a pipeline of AI agents I built as I went.</p>
+<p>I want to be honest about that number, because a raw count is easy to inflate. The repo has around 2,900 commits, but roughly 870 of them are pure ticket bookkeeping -- creating, editing, and archiving the markdown files the system runs on. That is paperwork, not work, and I am not counting it. The real throughput is the reviewed PRs.</p>
+<p>And the PRs tell a story a single total hides. Here is the merge rate, week by week:</p>
+<table>
+<thead>
+<tr>
+<th>Week of</th>
+<th>Merged PRs</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Apr 20</td>
+<td>42</td>
+</tr>
+<tr>
+<td>Apr 27</td>
+<td>69</td>
+</tr>
+<tr>
+<td>May 4</td>
+<td>67</td>
+</tr>
+<tr>
+<td>May 11</td>
+<td>36</td>
+</tr>
+<tr>
+<td>May 18</td>
+<td>31</td>
+</tr>
+<tr>
+<td>May 25</td>
+<td>54</td>
+</tr>
+<tr>
+<td>Jun 1</td>
+<td>68</td>
+</tr>
+<tr>
+<td>Jun 8</td>
+<td>74</td>
+</tr>
+<tr>
+<td><strong>Jun 15</strong></td>
+<td><strong>231</strong></td>
+</tr>
+<tr>
+<td><strong>Jun 22</strong></td>
+<td><strong>506</strong></td>
+</tr>
+<tr>
+<td>Jun 29 (partial, 3 days)</td>
+<td>121</td>
+</tr>
+</tbody>
+</table>
+<p>For the first eight weeks the rate sits between 30 and 75 PRs a week -- the pace of a human in every loop, reading every change. Then, in mid-June, it jumps almost 8x and peaks above 500 in a single week. Nothing about me got 8x faster in mid-June. What changed is <em>where I was standing in the loop</em>. That inflection is the whole story of this post, and it happens at a specific, nameable stage.</p>
+<p>The climb from "better Google" to "a machine that builds machines" is not a leap. It is a trail, walked one surprised discovery at a time, in an order that turns out to be nearly universal -- I keep meeting other builders stuck at the exact camps I got stuck at. So this is a trail guide: eight stages, each folding in a cluster of "aha" moments, each grounded in a real artifact from this project, and each ending with the question that gets you unstuck when you have been camped too long.</p>
+<p>One caveat: the early stages predate the project's artifacts, so I illustrate those from the journey itself. By Stage 5 the project stops being an example and becomes the exhibit.</p>
+<h2 id="stage-1-the-oracle">Stage 1 -- The Oracle<a class="headerlink" href="#stage-1-the-oracle" title="Permanent link">&para;</a></h2>
+<p><strong>AI as a better Google.</strong></p>
+<p>You stop typing keywords into a search box and start asking a model in full sentences. Then one day you stop <em>asking</em> and start <em>instructing</em> -- you tell it what you want, with context and a goal, and it does the thing. That is your first real prompt, and it changes the relationship: the model is no longer a reference book, it is a worker.</p>
+<p><strong>The plateau:</strong> you treat it as a lookup box, one shot at a time, and you get quietly burned by a confidently wrong answer, so you trust it less instead of asking it better.</p>
+<p><strong>Your next breadcrumb:</strong> <em>What if I told it what I want, not just what I am searching for?</em></p>
+<h2 id="stage-2-the-prompter">Stage 2 -- The Prompter<a class="headerlink" href="#stage-2-the-prompter" title="Permanent link">&para;</a></h2>
+<p><strong>You produce real work, and learn the hard lesson about context.</strong></p>
+<p>You vibe something into existence -- a script, a page, a whole small project -- faster than you could have written it, even if it is messy and hard to reuse. Then you hit the wall every beginner hits: hallucinations. And you find the counterintuitive fix. The problem was not the model's intelligence; it was that you were talking to it in one endless thread, like a coworker with memory, until the context rotted. The fix is <em>many small, fresh chats</em> -- one clean context per task, thrown away when done.</p>
+<p>This is the single most important lesson on the entire trail: <strong>context is a resource you spend, not a history you accumulate.</strong></p>
+<p><strong>In the project:</strong> this beginner habit grew up into architecture. The whole orchestrator is built to hand each AI agent a small, purpose-built context and nothing else -- tickets are deliberately sized to fit one context window, and a wide job that would blow past that budget is split into a batch. If you want the same honesty boundary told from the keyboard rather than the architecture, <a href="../python-dev-learning-react/">Shipping a React client I have not read</a> is the account of driving an AI-built frontend through tickets, gates, and review without pretending to have learned the code.</p>
+<p><strong>The plateau:</strong> you hand-craft every prompt from scratch, every time.</p>
+<p><strong>Your next breadcrumb:</strong> <em>Why am I still typing these by hand -- can the AI write the next prompt?</em></p>
+<h2 id="stage-3-the-customizer">Stage 3 -- The Customizer<a class="headerlink" href="#stage-3-the-customizer" title="Permanent link">&para;</a></h2>
+<p><strong>You stop hand-crafting and start building tools around the model.</strong></p>
+<p>Four discoveries arrive close together, and they are all the same move -- stop repeating yourself. You ask the AI to help write your next prompt. You save a good prompt as a <em>slash command</em> so you never rewrite it. You learn you can hand the tool a <em>memory file</em> -- a <code>CLAUDE.md</code> -- full of standing rules it reads on every task. And you start asking the AI to refactor not just your code, but your prompts and your rules.</p>
+<p>Underneath that habit is a discovery that reframes what the rulebook is <em>for.</em> You start writing rules to stop repeating yourself; you keep writing them because the model gets distracted. It does not hold a to-do list the way a person does. Raise three loose ends in one reply, watch someone pick up the first, and the other two are not deprioritized -- they are gone, because nothing was ever holding them. Notice a second problem worth fixing while you are deep in the first, and by the next turn that noticing has evaporated too. The reflex is to tell it to remember harder, which never works: remembering is not something you can ask for, it is something you have to build. So you write the rule that makes remembering the machine's job instead of yours -- track every open thread and keep raising it until it is explicitly settled, write down every follow-up the moment you notice it instead of promising it for later, and when a whole class of these lapses shows up, kill the class with one rule instead of swatting each instance. The rulebook stops being a list of your preferences and becomes a set of guardrails bolted onto the model's own failure modes.</p>
+<p><strong>In the project:</strong> this stage is visible as raw scale. The repo has 32 slash commands and a memory file grown to 40 hard rules across ~1,600 lines -- with a <em>sibling</em> file, <code>AGENT_RULES_HISTORY.md</code> (another ~1,600 lines), that records the incident behind every single rule and why it exists.  That second file is the tell: someone who learned to refactor their <em>rules</em> like code, complete with a changelog of what each rule defends against. A whole cluster of those rules exists to fight the distraction directly: one demands you "author every ticket you identify in the same turn -- never suggest-and-defer," so a noticed follow-up becomes a file on disk instead of a promise, and another makes you "propose the class-level prevention, not just the instance fix," so you stop patching lapses one at a time. A third -- an open-threads follow-through rule that forces the agent to re-surface every parked question until it is explicitly resolved -- is drafted and waiting in the backlog, not yet merged.  <a href="../from-surprise-to-rule-to-skill/">From surprise to rule to skill</a> walks exactly this graduation -- a one-off surprise becoming a durable rule and then a reusable skill -- and <a href="../dont-fold-it-in/">Don't fold it in</a> is that same instinct distilled to a single habit: defer the second problem into its own ticket instead of smuggling it into this one.</p>
+<p><strong>The plateau:</strong> you have a drawer full of commands and a growing rulebook, but every task is still you, one prompt at a time, holding the steps together by hand.</p>
+<p><strong>Your next breadcrumb:</strong> <em>Which sequence of prompts do I always run in the same order -- that sequence wants to be one thing.</em></p>
+<h2 id="stage-4-the-agent-wrangler">Stage 4 -- The Agent Wrangler<a class="headerlink" href="#stage-4-the-agent-wrangler" title="Permanent link">&para;</a></h2>
+<p><strong>You stop running steps and start running agents.</strong></p>
+<p>You build something that takes several steps on its own. You learn the models come in <em>tiers</em> -- a big expensive one for hard reasoning, a small fast one for grunt work -- and you deploy them deliberately. And you learn to lift a prompt out of one chat and carry it to another as a portable spec, usually with a little front-matter header describing what it needs and produces.</p>
+<p><strong>In the project:</strong> tiering is now a field on every unit of work. Each ticket carries front-matter hints -- <code>agent_tier</code>, <code>agent_effort</code>, <code>agent_context</code>, even <code>agent_engine</code> -- that let the orchestrator route each job to the right-sized model. The portable-prompt-with-front-matter instinct became the ticket format itself.</p>
+<p><strong>The plateau, and it is the big one:</strong> your multi-step agent works, until it does not. When it fails, you have no idea why. It made a different choice than last time on the same input. You cannot reproduce it, you cannot debug it, and you have started re-running it and praying.</p>
+<p><strong>Your next breadcrumb:</strong> <em>Which of these steps actually needs judgment -- and which am I handing to the LLM only because it is there?</em></p>
+<h2 id="stage-5-the-pipeline-engineer">Stage 5 -- The Pipeline Engineer<a class="headerlink" href="#stage-5-the-pipeline-engineer" title="Permanent link">&para;</a></h2>
+<p><strong>You stop hoping and start engineering.</strong></p>
+<p>This is the longest, richest stage -- where using AI becomes engineering with AI. The core revelation: a reliable pipeline is mostly boring, deterministic glue, with the LLM reserved for the few genuinely soft decisions. Everything else follows from that:</p>
+<ul>
+<li><strong>A controlled vocabulary.</strong> Force the AI to pick from a closed list of allowed values and the whole chain gets dramatically more reliable. Free text is where pipelines rot.</li>
+<li><strong>Deterministic gates.</strong> Put mechanical checks between AI stages that reject anything off-spec, so a bad step cannot propagate.</li>
+<li><strong>Separated review.</strong> If the same context both writes the work and reviews it, the review is a rubber stamp -- so the reviewer gets a fresh, narrow context that never sees the author's rationalizations.</li>
+</ul>
+<p><strong>In the project</strong> this stage is not described, it is executed. The controlled vocabulary is a file: the controlled vocabulary pins a closed ~25-token list of capabilities plus fixed enums for risk, maturity, and failure modes, and a lint rejects any annotation that invents a token.  The gates are real: about two dozen named <code>lint-*</code> checks plus the test suite and a strict docs build must all pass before any AI-written change can merge.  And the separated review is architecture -- implementation runs in one throwaway clone, review runs as a distinct stage against surface-specific rule docs, so the honest critique happens in a context that did not write the code. <a href="../ai-first-testing-and-logging/">The test that knows what it is</a> is the vocabulary idea applied to tests; <a href="../orchestration-review-guardrails/">Review surfaces and the AI-first guardrails</a> is the separated-review stage in detail; and <a href="../mechanical-vs-llm-failure-recovery/">When a stage fails: what is mechanical and what is the LLM?</a> is the determinism-first split as a recovery loop.</p>
+<p><strong>The plateau:</strong> you have a beautiful, reliable pipeline -- and you are running it by hand on toy problems. It is a demo, not a system.</p>
+<p><strong>Your next breadcrumb:</strong> <em>What real, recurring stream of work could I point this at, end to end?</em></p>
+<h2 id="stage-6-the-system-builder">Stage 6 -- The System Builder<a class="headerlink" href="#stage-6-the-system-builder" title="Permanent link">&para;</a></h2>
+<p><strong>You stop running the pipeline and let the pipeline run the work.</strong></p>
+<p>You wrap the pipeline around real, recurring work. Here that became a ticket orchestrator: you write a markdown ticket describing what you want, and the machine picks it up, spins a clean clone, implements it, runs the gates, reviews it in a separate context, and ships the PR. Work that was a day is now a paragraph and a wait.</p>
+<p><strong>In the project:</strong> this is where the weekly curve at the top of this post <em>starts to climb</em>. The orchestrator has run more than 1,200 tickets to date; the acceleration is not a metaphor, it is a merge history you can scroll.  <a href="../orchestration-lifecycle/">The orchestration lifecycle</a> opens the box on phase-to-ticket-to-retro, and <a href="../orchestrated-build-loop/">Tickets in, a game I can play out</a> is what shipping through it feels like day to day.</p>
+<p><strong>The plateau:</strong> the system now produces faster than you can think. You are approving things you barely read, and the "done, awaiting your review" queue keeps growing. You feel busier than ever, and throughput has stopped climbing.</p>
+<p><strong>Your next breadcrumb -- the most important question on the trail:</strong> <em>When the system stalls, who is it always waiting on?</em> The answer is you.</p>
+<h2 id="stage-7-the-bottleneck-and-the-flip">Stage 7 -- The Bottleneck, and the Flip<a class="headerlink" href="#stage-7-the-bottleneck-and-the-flip" title="Permanent link">&para;</a></h2>
+<p><strong>You stop optimizing the machine and start optimizing the process -- for the machine.</strong></p>
+<p>Look back at the weekly table. The eight-week plateau at 30-75 PRs, then the jump past 500. That jump is this stage, and it has two parts.</p>
+<p>First, the realization: <strong>the human is the bottleneck.</strong> The AI is not the scarce resource anymore -- your attention is. So you instrument the system to find where work piles up and route it, spending your limited human judgment only where it changes the outcome.</p>
+<p>Then the heresy: you stop bolting AI onto a workflow <em>designed for humans</em> and start redesigning the workflow <em>for the machine.</em> Most people never ask this question. It is the difference between paving the cow path and drawing a new road, and it is exactly what un-plateaued the merge rate -- once a person no longer had to be present in every loop, the ceiling was the machine's, not mine.</p>
+<p><strong>In the project:</strong> the flip is everywhere once you look. A spiral watchdog watches every running agent for the signatures of a stuck loop and pings a human only when a run that is actually in trouble needs one. The time budgets that decide "is this run stuck?" are calibrated on <em>observed agent wall-clock, not human hours</em> -- a rule in the memory file literally warns that older human-anchored estimates were inflated ~10-20x. That correction <em>is</em> the flip: the process re-baselined around the machine's clock. <a href="../risk-routed-review/">Risk-routed review</a> is the "spend human attention where it earns its keep" idea in full, and <a href="../spiral-detection-watchdog/">Spiral-detection watchdog</a> is the watchdog itself.</p>
+<p><strong>The plateau:</strong> everything is instrumented, routed, machine-legible -- and it dawns on you that all this exhaust is the most valuable dataset you own.</p>
+<p><strong>Your next breadcrumb:</strong> <em>I have been instrumenting to observe the system -- what if I instrument to teach one?</em></p>
+<h2 id="stage-8-the-ai-native-architect-closing-the-loop">Stage 8 -- The AI-Native Architect (closing the loop)<a class="headerlink" href="#stage-8-the-ai-native-architect-closing-the-loop" title="Permanent link">&para;</a></h2>
+<p><strong>The machine starts building the machine.</strong></p>
+<p>You now design artifacts <em>for the AI first</em> -- structured so a machine can parse and find them, not just so a person can skim. You obsess over findability, because an agent that cannot locate the right context cannot do the job. Then the last turn: the structured record you built to <em>debug</em> the system is exactly the record you would use to <em>train</em> one, and the loop closes.</p>
+<p><strong>In the project:</strong> the findability layer is the codemap system -- code carries inline annotation blocks (capability, risk, maturity, reachability) so an agent can mechanically answer "what does this touch and what breaks if I change it" -- backed by a ~24 MB queryable index of every ticket, run record, and commit, so project history is a database query instead of an archaeology dig.  The ~1,300 run records are not development throughput; they are the <em>memory</em>: each is a structured, controlled-vocabulary account of how a job actually went -- what surprised the agent, what dead-ended, estimate versus actual -- which is exactly what you would train the next orchestrator on. The project that remembers itself covers the queryable memory; The run record that grades itself shows that corpus becoming predicted-vs-actual training feedback; and Why this project is a strong AI training substrate is the synthesis. The loop-closing move is already visible: a from-scratch Go re-implementation of the whole orchestrator, told in <a href="../two-rewrites-one-strategy/">Two rewrites, one strategy</a> and <a href="../orchestrator-as-installable-product/">The orchestrator leaves home</a>. The system is being rebuilt, with the system's help, into something faster and portable.</p>
+<p><strong>The honest bit:</strong> I will not pretend this stage is mastered. This is the frontier, standing at the edge looking up. Which is the right place for the <em>personal</em> half of this guide to end -- here is as far as I have climbed. But the map above this line is not entirely blank. Other climbers and the wider field have been up there, and they left blazes. So before the summary, let me do the thing this whole post has done for you, in reverse: leave the breadcrumbs for me.</p>
+<h2 id="above-the-treeline-the-breadcrumbs-left-for-me">Above the treeline: the breadcrumbs left for me<a class="headerlink" href="#above-the-treeline-the-breadcrumbs-left-for-me" title="Permanent link">&para;</a></h2>
+<p>There is a symmetry in how I gathered these. This whole post is breadcrumbs I left for people behind me on the trail. This section is the reverse -- breadcrumbs left for <em>me</em>, by the climbers ahead and by the wider field. Fittingly, I did not write it from memory: I asked an AI to scout the trail above my treeline and report back. An AI leaving a human breadcrumbs to climb by is, itself, the Stage 8 loop closing one more time.</p>
+<p>Each one keeps the shape of the others: the discovery, why it is probably your next step from where you are standing, and the smallest first action. Sources for the field claims are collected at the end of the section.</p>
+<p><strong>Measure quality, not just rule-breaks.</strong> Your two-dozen-odd gates answer "did this break a rule?" They do not answer "is this any good, and is the pipeline getting better or worse over time?" The field's name for the missing layer is eval-driven development: write the eval cases first (input, expected trajectory, success criteria), grade with an LLM-as-judge calibrated against your own past review decisions, and gate merges on the <em>score</em>, not just pass/fail. You already own the hardest ingredient -- a golden set drawn from real failures -- because you have thousands of run records. <em>First action:</em> turn twenty of your ugliest past failures into scored eval cases and run them on every prompt change.</p>
+<p><strong>Your gates are already a reward signal.</strong> You named "train models to do the process" as the summit and then treated it as far away. It is closer than you think, because you are sitting on the exact ingredients: your deterministic gates are <em>verifiable rewards</em>, and your run records are <em>trajectories</em>. The field calls training on this RLVR -- reinforcement learning with verifiable rewards -- and its current state of the art is a hybrid of rule-based checks for hard constraints and an LLM for soft ones, which is word-for-word your Stage 5 philosophy. <em>First action:</em> export your passing trajectories as fine-tuning data and pick one repetitive, well-gated stage -- ticket triage, say -- to distill into a small, fast, cheap model.</p>
+<p><strong>Standardize the seams you hand-built.</strong> Your findability layer -- the codemap and the queryable history index -- is bespoke. While you were building it, the field converged on a standard for exactly this job: the Model Context Protocol (MCP), a common way to expose tools and context to any model or agent. It went from nonexistent to ubiquitous in under two years and is now stewarded by the Linux Foundation. <em>First action:</em> wrap <code>history-query</code> and the codemap as MCP servers, so any agent -- not just yours, not just one vendor's -- can read your project's memory.</p>
+<p><strong>Use more of the orchestration shapes.</strong> Your pipeline is a chain plus a separated review. The published pattern catalog names three more you probably underuse: evaluator-optimizer (a generate -&gt; critique -&gt; revise loop inside a single stage), orchestrator-worker (a lead agent that decomposes a task whose sub-steps it cannot predict in advance), and parallelization / best-of-N (sample several attempts, judge them, keep the best). <em>First action:</em> add a best-of-N-with-a-judge step to your highest-value ticket type and measure whether three cheap attempts plus a judge beats one expensive attempt.</p>
+<p><strong>Enforce the vocabulary at the moment of generation.</strong> At Stage 5 you close your vocabulary with a lint that <em>rejects</em> off-list tokens after the model emits them. The stronger version stops the model from emitting them at all: constrained decoding and schema-enforced structured outputs make the closed vocabulary a property of generation, not a post-hoc check. <em>First action:</em> move one closed-vocabulary field from "the lint rejects it later" to "the decoder can only produce legal values."</p>
+<p><strong>Context engineering is a real discipline now -- and it has a warning for you.</strong> You discovered "context is spent, not accumulated" by instinct at Stage 2. The field turned it into a named practice -- context engineering -- with real tooling for compaction and sub-agent isolation, and a counterintuitive headline finding: past a point, <em>more</em> context makes agents <em>worse</em>. There is also a caution aimed straight at your ~1,600-line rulebook: research on "governance decay" shows that when a long context gets compacted, safety and governance rules are silently among the first things dropped. <em>First action:</em> measure which of your 40 rules actually survive into each agent's working context, and stop assuming a rule in the file is a rule in the room.</p>
+<p><strong>Harden the pipeline itself.</strong> Your single best instinct -- "the server is authoritative, clients are untrusted" -- is exactly the instinct this step needs, pointed at a new target: your own agents. Prompt injection is now widely treated as a structural, possibly unpatchable flaw, and your pipeline feeds agents untrusted input (rulebook PDFs, web pages, ticket text) while handing them real tools. The defense is the one you already believe in: least-privilege tool scoping, and treating every retrieved document and tool output as <em>data, never instructions</em>. <em>First action:</em> pick one autonomous path, threat-model it as if its input were hostile, and scope that path's tool permissions to the minimum it needs.</p>
+<p>None of these are summit flags. They are just the next blazes up the trail -- the ones I could not see from where I am standing, that other people already have.</p>
+<p><strong>Sources for this section</strong></p>
+<ul>
+<li>Orchestration patterns (evaluator-optimizer, orchestrator-worker, parallelization): <a href="https://www.anthropic.com/research/building-effective-agents">Anthropic, "Building Effective Agents"</a>.</li>
+<li>Context engineering: <a href="https://www.anthropic.com/engineering/effective-context-engineering-for-ai-agents">Anthropic, "Effective context engineering for AI agents"</a>. The governance-decay warning: <a href="https://arxiv.org/pdf/2606.22528">arXiv, "Governance Decay: How Context Compaction Silently Erases Safety Constraints in Long-Horizon LLM Agents"</a>.</li>
+<li>RLVR (reinforcement learning with verifiable rewards): <a href="https://www.emergentmind.com/topics/reinforcement-learning-with-verifiable-rewards-rlvr">EmergentMind, "Reinforcement Learning with Verifiable Rewards"</a>; <a href="https://www.promptfoo.dev/blog/rlvr-explained/">Promptfoo, "RLVR Explained"</a>.</li>
+<li>Eval-driven development and LLM-as-judge: <a href="https://deepeval.com/guides/guides-llm-as-a-judge">DeepEval, "LLM-as-a-Judge in 2026"</a>; <a href="https://www.digitalapplied.com/blog/ai-agent-evaluation-pipeline-2026-testing-methodology">Digital Applied, "Building an AI Agent Evaluation Pipeline: 2026 Methodology"</a>.</li>
+<li>Model Context Protocol (MCP): <a href="https://www.anthropic.com/news/model-context-protocol">Anthropic, "Introducing the Model Context Protocol"</a>; <a href="https://en.wikipedia.org/wiki/Model_Context_Protocol">Model Context Protocol on Wikipedia</a>.</li>
+<li>Agent security and prompt injection: <a href="https://workos.com/blog/prompt-injection-attacks">WorkOS, "Prompt injection attacks and how to defend against them"</a>; <a href="https://www.truefoundry.com/blog/claude-code-prompt-injection">TrueFoundry, "Prompt Injection and AI Agent Security Risks: A Claude Code Guide"</a>.</li>
+</ul>
+<h2 id="how-to-read-the-map">How to read the map<a class="headerlink" href="#how-to-read-the-map" title="Permanent link">&para;</a></h2>
+<ul>
+<li><strong>You are probably one stage lower than you think.</strong> Owning a stage's tools is not living in it. Having a <code>CLAUDE.md</code> does not make you a Customizer if it never changes how you work; building one agent does not make you a Pipeline Engineer if you cannot debug it.</li>
+<li><strong>The plateaus are the whole point.</strong> Nobody gets stuck because the next step is hard -- they get stuck because the current stage is comfortable and works, and nothing forces the move. Every breadcrumb above is the same shape: a question that makes the plateau visible, and the smallest action that ends it.</li>
+<li><strong>Two ideas do most of the work.</strong> <em>Context is spent, not accumulated</em> (Stage 2), and <em>make it deterministic wherever you can, reserve the model for the soft decisions</em> (Stage 5). Internalize those two and the rest is elaboration.</li>
+<li><strong>Climb for the problem, not the altitude.</strong> Every stage solves a specific pain. If you do not have the pain yet, you do not need the stage yet. This whole system exists because a board-game side project hit each wall in turn, not because a higher number is better.</li>
+</ul>
+<p>The receipts are real, and they are the weekly curve at the top: a merge rate that sat flat while a human was in every loop, then jumped almost 8x the week the human stepped out of it. All of it started with someone deciding to ask a chatbot a question instead of Google. Watch for the breadcrumbs.</p>
+
+
+
+
+
+
+
+  
+  
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+      <div class="md-progress" data-md-component="progress" role="progressbar"></div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": ["navigation.instant", "navigation.instant.prefetch", "navigation.instant.progress", "navigation.sections", "navigation.indexes", "navigation.prune", "navigation.tracking", "navigation.top", "toc.integrate", "search.suggest", "search.highlight", "search.share", "content.code.copy", "toc.follow"], "search": "../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+    
+  </body>
+</html>

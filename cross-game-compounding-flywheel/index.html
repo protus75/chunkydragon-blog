@@ -1,0 +1,2551 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Public blog articles from the Chunky Dragon board-game project.">
+      
+      
+      
+        <link rel="canonical" href="https://blog.chunkydragon.com/cross-game-compounding-flywheel/">
+      
+      
+        <link rel="prev" href="../sharing-tempo-upstream/">
+      
+      
+      
+        
+      
+      
+      <link rel="icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
+    
+    
+      
+        <title>The cross-game compounding flywheel - Chunky Dragon Blog</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.484c7ddc.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="amber">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#the-cross-game-compounding-flywheel-how-each-game-makes-the-next-one-cheaper-and-the-last-one-better" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="Chunky Dragon Blog" class="md-header__button md-logo" aria-label="Chunky Dragon Blog" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Chunky Dragon Blog
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              The cross-game compounding flywheel
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="amber"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="amber"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+          <a href="javascript:void(0)" class="md-search__icon md-icon" title="Share" aria-label="Share" data-clipboard data-clipboard-text="" data-md-component="search-share" tabindex="-1">
+            
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.15c-.05.21-.08.43-.08.66 0 1.61 1.31 2.91 2.92 2.91s2.92-1.3 2.92-2.91A2.92 2.92 0 0 0 18 16.08"/></svg>
+          </a>
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+  
+
+<nav class="md-nav md-nav--primary md-nav--integrated" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="Chunky Dragon Blog" class="md-nav__button md-logo" aria-label="Chunky Dragon Blog" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    Chunky Dragon Blog
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Blog drafts
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ai-fluency-trail-guide/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    The AI fluency trail guide
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Track A -- The mindset
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Track A -- The mindset
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../device-profiles-not-accounts/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Device profiles, not user accounts
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../why-build-it-this-way/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Why build it this way: the marginal cost of a game
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ai-personalities-not-optimizers/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    AI personalities, not optimizers
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../python-dev-learning-react/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Shipping a React client I have not read
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../read-before-you-write/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Read before you write
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../dont-fold-it-in/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Don't fold it in: file the second problem
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../first-runnable-line/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Your first runnable line
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Track B -- Designing the product
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Track B -- Designing the product
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../four-role-websocket-protocol/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Four-role WebSocket protocol
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../design-for-the-flakiest-client/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Design for the flakiest client in the room
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../one-engine-two-information-modes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    One engine, two information modes
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../memory-match-for-pre-readers/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Memory Match for a 5-year-old who can't read yet
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../bluff-without-chat/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    A game built on lying, with no chat panel
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../werewolf-server-as-moderator/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Werewolf without a moderator (and without a chat panel)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../a-fair-die-is-a-product-decision/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    A fair die is a product decision
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../the-equity-panel-is-the-ai/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    The equity panel is the AI
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../byok-advisor-framework/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Bring your own key
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../when-the-algorithm-depends-on-the-game/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    When the algorithm depends on the game
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Track C -- AI-first engineering
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Track C -- AI-first engineering
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ai-first-code-annotations/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Code comments written for the robot, not the human
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ai-first-testing-and-logging/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    The test that knows what it is
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../when-layout-taste-becomes-a-test/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    When layout taste becomes a test
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../annotations-vs-the-literature/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    What the literature got to first (and the parts we made mandatory)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../let-the-library-carry-the-proof/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Let the library carry the proof
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../the-refactor-the-annotations-made-safe/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    The refactor the annotations made safe
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../derive-dont-stamp/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Derive It, Don't Stamp It
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../trimming-the-duplication-an-ai-cannot-see/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Trimming the duplication an AI cannot see
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../log-interplay-and-swimlanes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    The logs already knew the order
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../store-the-moves-not-the-board/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Store the moves, not the board
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../code-risk-trends-over-time/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Watching code risk trend over time, with no metrics datastore
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Track D -- Building with AI
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Track D -- Building with AI
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../from-idea-to-buildable-repo/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    From an idea in a chat window to a repo the robot can build
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ui-specs-without-design-tools/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Describe the screen, don't draw it (the UI-spec prompt playbook)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../throwaway-html-mockups/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Make it real before you build it (throwaway HTML mockups)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../orchestrated-build-loop/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Tickets in, a game I can play out (the orchestrated build-and-feedback loop)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../the-orchestrator-that-drafts-its-own-backlog/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    The orchestrator that drafts its own backlog
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../from-surprise-to-rule-to-skill/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    From surprise to rule to skill
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7" >
+        
+          
+          <label class="md-nav__link" for="__nav_7" id="__nav_7_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Track E -- The orchestrator evolves
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Track E -- The orchestrator evolves
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../orchestration-lifecycle/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    The orchestration lifecycle: from phase to ticket to retro
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../orchestration-review-guardrails/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Review surfaces and the AI-first guardrails
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../risk-routed-review/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Risk-routed review: spending human attention where it earns its keep
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../spiral-detection-watchdog/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Spiral-detection watchdog
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../mechanical-vs-llm-failure-recovery/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    When a stage fails: what is mechanical and what is the LLM?
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../risk-routed-merge-resolution/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Risk-routed merge resolution: let git handle the boring conflicts
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../how-a-ticket-picks-its-brain/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    How a ticket picks its brain
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../anatomy-of-a-ticket/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Anatomy of a ticket: one contract, one run record, every field
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../meet-tempo/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Meet Tempo: when the orchestrator becomes a Go binary
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../two-rewrites-one-strategy/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Two rewrites, one strategy
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../parity-first/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Parity-first: replacing the system that builds your software
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../orchestrator-as-installable-product/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    The orchestrator leaves home: from welded-in workflow to installable binary
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    
+      
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_8" id="__nav_8_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Track F -- Forward-looking
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_8_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_8">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Track F -- Forward-looking
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../cfr-for-6max-holdem/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    CFR for 6-max Hold'em: the poker AI this catalog hasn't built yet
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../rulebook-pdf-to-gameengine/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    How cheap can a new game get? The rulebook-PDF-to-engine experiment
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../numeric-risk-dashboards/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    What a numeric risk dashboard would have to be
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../action-log-analytics-and-fairness/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    The action log is an analytics engine waiting to happen
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../testing-an-orchestrator-with-fakes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    How do you test an orchestrator whose job is to call an LLM?
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../sharing-tempo-upstream/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Sharing the orchestrator upstream: template vs. the project that grew it
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    The cross-game compounding flywheel
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    The cross-game compounding flywheel
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#the-forward-half-in-one-paragraph" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The forward half, in one paragraph
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#the-retro-is-the-pump" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The retro is the pump
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#the-backward-fold-is-a-real-mechanism-two-cases-from-this-repo" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The backward fold is a real mechanism -- two cases from this repo
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="The backward fold is a real mechanism -- two cases from this repo">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#case-1-a-vocabulary-decision-that-swept-every-game-at-once" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Case 1: a vocabulary decision that swept every game at once
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#case-2-one-games-bug-now-a-contract-every-game-inherits" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Case 2: one game's bug, now a contract every game inherits
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#why-this-matters-and-what-it-unlocks" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Why this matters, and what it unlocks
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#the-second-flywheel-game-authoring-trains-game-authoring" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The second flywheel: game authoring trains game authoring
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#the-honest-edges" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The honest edges
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+  <nav class="md-tags" >
+    
+      
+      
+      
+      
+        <span class="md-tag">capability:engine</span>
+      
+    
+      
+      
+      
+      
+        <span class="md-tag">doc-kind:blog</span>
+      
+    
+  </nav>
+
+
+
+<h1 id="the-cross-game-compounding-flywheel-how-each-game-makes-the-next-one-cheaper-and-the-last-one-better">The cross-game compounding flywheel: how each game makes the next one cheaper, and the last one better<a class="headerlink" href="#the-cross-game-compounding-flywheel-how-each-game-makes-the-next-one-cheaper-and-the-last-one-better" title="Permanent link">&para;</a></h1>
+<p>Everyone selling you on AI-assisted development tells you the same thing: reuse saves typing. You build one thing, you copy the pattern, the next thing is faster. It is true, it is boring, and it is not an argument for anything. Faster-to-type is a linear win you could get from a snippet library in 2005.</p>
+<p>This post is about the claim underneath that one, which is not boring, because it is about <em>quality</em> and not just speed, and because it runs in a direction most people never mention. The catalog this project is building -- a multi-device board game platform with several games on it -- gets better in two directions at once. <strong>Forward</strong>, every shipped game makes the next one cheaper to build. <strong>Backward</strong>, every lesson learned building a new game gets folded back into the games that already shipped, so the oldest game in the catalog quietly inherits the newest game's hard-won fix. The forward direction is the linear, obvious one. The backward direction is the interesting one, because it is what makes the argument about compounding <em>quality</em>, not compounding line count.</p>
+<p>That is the whole thesis, and it is the spine of everything below: <strong>one flywheel, two directions. Forward is cheaper and faster. Backward is better and more uniform.</strong> The rest of this post is evidence that the backward direction is a real, governed mechanism in this repo -- not a motivational metaphor -- and an honest accounting of where it costs you.</p>
+<p>This is the capstone of a cluster about building an app with AI. The other posts describe the machine; this one argues the case the machine is built to make. It leans on three of them and re-explains none: <a href="../ui-specs-without-design-tools/"><em>Describe the screen, don't draw it (the UI-spec prompt playbook)</em></a> for the forward half made concrete, <a href="../orchestration-lifecycle/"><em>The orchestration lifecycle: from phase to ticket to retro</em></a> for the retro machinery the backward fold rides on, and <a href="../orchestration-review-guardrails/"><em>Review surfaces and the AI-first guardrails</em></a> for the gates that govern any change to an already-shipped game. If you want the internals, those are the posts. This one is the argument.</p>
+<h2 id="the-forward-half-in-one-paragraph">The forward half, in one paragraph<a class="headerlink" href="#the-forward-half-in-one-paragraph" title="Permanent link">&para;</a></h2>
+<p>I am going to spend exactly one paragraph on the forward direction, because the UI-spec playbook post already spends a whole essay on it and I do not want to re-teach the machine here.</p>
+<p>The forward direction is the cheap-and-fast one: a shipped game leaves behind frozen UI specs under the game docs, an engine that conforms to the engine base contract contract, shared stage code under the private source tree, and a trail of merged tickets and run records. The next game does not start cold. It primes the AI with an existing spec and inherits its conventions for free; it subclasses the same engine ABC; it reuses the same primitives. Werewolf, the third game through this loop, made that inheritance visible in code: its ticket explicitly named the relevant engine module as the hidden-information engine to mirror, and the relevant engine module now implements the same <code>public_view</code>, <code>player_view</code>, and <code>full_view</code> split while keeping private resolution bookkeeping under the <code>SERVER_KEY</code> convention from the relevant engine module. The client inherited the same pattern in React: the private source tree owns local selection state and the WebSocket <code>ws_send</code> callback, while the private source tree is the props-only deterministic surface the tests can render directly. The playbook post's seventh prompt -- paste a shipped spec, say "do the same for my game" -- is the canonical worked example, and its closing line is the whole forward thesis: a good prompt plus an ever-growing library of worked examples makes each new screen faster to spec than the last. Game three is cheaper than game two, which was cheaper than game one. Read that post for the how. For this post, that is the entire forward half: <strong>assume it, and move to the part nobody talks about.</strong></p>
+<h2 id="the-retro-is-the-pump">The retro is the pump<a class="headerlink" href="#the-retro-is-the-pump" title="Permanent link">&para;</a></h2>
+<p>A flywheel needs something to turn it. In this project that something is the <strong>retrospective</strong>, and the reason it moves lessons in <em>both</em> directions is the part worth understanding.</p>
+<p>I will not re-explain the lifecycle -- the <a href="../orchestration-lifecycle/">lifecycle deep-dive</a> does that. The one fact this post needs is the shape of the loop: every ticket leaves a <code>*.run.md</code> run record sibling next to its ticket file, and that record captures what the code cannot -- the surprises, the dead ends, the judgment calls the agent had to make where the ticket was silent (the format is pinned in the run-record contract). Per-ticket, that is local memory. Then, after a phase or a feedback cluster finishes, a <strong>retro</strong> runs last (templates: the workflow docs and the workflow docs). Its job is not to write code. Its job is to read every sibling run record, find the cross-ticket patterns, and turn them into changes to the system itself.</p>
+<p>Here is the pivot that makes the retro a two-way pump rather than a one-way archive. A lesson surfaced building a <em>new</em> game has two possible destinations:</p>
+<ul>
+<li>It can become a <strong>global rule</strong> -- a new CLAUDE.md contract, a new lint, a template field -- which from that moment binds every game, including the ones that already shipped.</li>
+<li>It can become a <strong>cross-game refactor ticket</strong> that reaches back and retrofits the earlier games to match what the new game taught.</li>
+</ul>
+<p>Both destinations point <em>backward</em>. The forward direction happens passively -- the next game inherits the library just by existing. The backward direction has to be <em>pumped</em>: a lesson learned in game N does not retroactively improve game 1 unless something deliberately carries it there. The retro is that something. Without it, per-ticket lessons stay trapped in individual run records and silently drop between cycles, and the catalog stops being uniform -- game 1 keeps its old quirks forever while game 4 gets the good version. The pump is what keeps quality roughly monotonic across the library instead of stratified by build date.</p>
+<h2 id="the-backward-fold-is-a-real-mechanism-two-cases-from-this-repo">The backward fold is a real mechanism -- two cases from this repo<a class="headerlink" href="#the-backward-fold-is-a-real-mechanism-two-cases-from-this-repo" title="Permanent link">&para;</a></h2>
+<p>A thesis like this collapses the instant the examples turn out to be aspirational. So here are two concrete folds that actually happened in this repository's history, plus one smaller Werewolf-era pass that shows the same machinery still firing. They are deliberately different in mechanism: one is a vocabulary fold that swept the catalog in a single governed pass; one is a shared-contract fold where a lesson from one game now binds every game through the code they all inherit; and one is a dedup scan that reached across old and new games together.</p>
+<h3 id="case-1-a-vocabulary-decision-that-swept-every-game-at-once">Case 1: a vocabulary decision that swept every game at once<a class="headerlink" href="#case-1-a-vocabulary-decision-that-swept-every-game-at-once" title="Permanent link">&para;</a></h3>
+<p>The catalog used to call its no-auth, public-view-only role <code>SPECTATOR</code>. At some point that name lost to <code>OBSERVER</code>. In a hand-built codebase a rename like that is a multi-week, never-quite-finished chore -- you fix the obvious call sites and leave a long tail of stale references in docs and tickets that the next developer trips over for a year.</p>
+<p>Here it was a single governed cluster of tickets. The code rename went through one ticket (the ticket archive, merged as PR #346); the server-protocol and landing docs through another; the per-game docs and the blog through a third; the overview docs and the agent-rule files through a fourth. The fold was uniform on purpose: every game's the game docs spec, the shared engine and server code, and even the in-flight tickets that had not merged yet (there is a literal the ticket archive, PR #344, whose entire job was to fold the rename into work that was still in the pipeline so it would not land already-stale). One decision, the whole catalog moved to it at once, including the games that shipped long before the decision existed.</p>
+<p>And the fold did not just change a word -- it <em>birthed two standing rules</em> that now govern every future concept change. The incident left 160 stale <code>SPECTATOR</code> references scattered across the overview docs, the server docs, the client docs, the game docs, and the blog even after the first rename PR merged, and that mess is recorded in the overview docs as the origin story for the CLAUDE.md rule "Canonical doc edits propagate through every related doc in the same turn." A second rule -- "Wide-sweep doc tickets are BATCHES, not mega-tickets" -- was born from the same incident, after the first attempt to do the whole sweep as one ticket hit the org's token-rate cap and got terminated mid-run. So this case is a backward fold <em>and</em> a fold-mechanism that hardened into rules: the next catalog-wide rename will not leave a stale tail, because one game's rename taught the whole system how to sweep.</p>
+<h3 id="case-2-one-games-bug-now-a-contract-every-game-inherits">Case 2: one game's bug, now a contract every game inherits<a class="headerlink" href="#case-2-one-games-bug-now-a-contract-every-game-inherits" title="Permanent link">&para;</a></h3>
+<p>The second case lives in the code every engine is built on: the engine base contract, the <code>GameEngine</code> ABC. It declares three abstract view methods that <em>every</em> engine must implement -- <code>public_view</code>, <code>player_view</code>, and <code>full_view</code> -- even for a perfect-information game that seems not to need the split. <code>AGENT_RULES_HISTORY.md</code> records why the uniformity is mandatory rather than per-game convenience: "Bluff, Hearts, Hold'em, Werewolf, Battleland, and D&amp;D-style helpers all stress hidden information in different ways," and forcing the pattern onto every engine "prevents special cases where one game accidentally sends full state because it usually has no private data." A hidden-information lesson, generalized into a contract that the simplest game in the catalog is held to anyway.</p>
+<p>The sharper half of this case is a specific bug. The CLAUDE.md rule "State flows one direction" -- server computes, role-filtered view out, client renders, never a round-trip of client-computed state -- carries a single named worked example in its history: <em>the Memory Match quick-flip failure</em>. Memory Match was this project's proof-of-rebuild game, the first one through the rebuilt stack. Its bug was about presentation timing being allowed to decide whether a legal next move existed. The fix was not "patch Memory Match." It was hardened into a one-directional-flow rule that now binds the stage layer of <em>every</em> game -- so Bluff, built later, inherited the corrected boundary without ever hitting the bug that produced it. That is the backward fold in its purest form: the newest game stands on a fix the oldest game paid for, because the lesson was lifted out of the one game and into the contract they share.</p>
+<p>There is a smaller, concrete version of the same instinct in the client tree: the private source tree, where stage code that should not be re-implemented per game gets extracted so every game inherits one copy (today it holds <code>UnimplementedRefereeView.jsx</code>, the uniform "referee view not built yet" surface). The <code>_shared/</code> directory is the forward-and-backward seam made physical -- the place a pattern proven in one stage becomes the version every stage gets. It is early and thin right now, and I will be honest about that in the edges below, but it is the right shape: the catalog's shared surface is a real directory, not a wish.</p>
+<p>Werewolf also produced a smaller backward-fold beat without needing a new rule. The Phase 5 dedup pass (the ticket corpus) ran the whole-repo finder after Werewolf landed and found generated live-payload fixture clones spanning Werewolf, Bluff, and Memory Match. Nine of the top ten rows were already owned by existing remediation tickets, including <code>refactor-werewolf-live-payload-fixtures-by-role</code>; the one unowned Memory Match hidden-payload row became <code>dedup-memory-match-hidden-payload-fixtures</code>. That is the flywheel in miniature: a fresh game adds new surface area, the whole-repo pass sees the repeated shape across old and new games together, and the cleanup work folds back into the catalog instead of staying trapped in the game that exposed it.</p>
+<h2 id="why-this-matters-and-what-it-unlocks">Why this matters, and what it unlocks<a class="headerlink" href="#why-this-matters-and-what-it-unlocks" title="Permanent link">&para;</a></h2>
+<p>It is worth being explicit about what the backward fold <em>buys</em>, because it is a capability claim and not just a tidy property -- the whole point of paying the retro tax is the thing it unlocks.</p>
+<p>What it unlocks is a catalog whose quality is roughly <strong>monotonic across the library, decoupled from build date.</strong> In a normal codebase, quality is stratified by age: the first feature you shipped carries the mistakes you had not learned to avoid yet, the latest feature is the best you can currently do, and the gap between them only widens as you learn more. The backward fold inverts that. When a lesson learned on game four can be swept across all four games in one governed pass -- a rename, a hardened base contract, a new lint that every stage is now held to -- the oldest game's floor rises to meet the newest game's lessons. The marginal game gets cheaper to build (forward) <em>and</em> drags the rest of the catalog up with it (backward).</p>
+<p>The compounding is the payoff. Forward-only reuse is linear: N games cost less than N times one game, and that is the end of it. Add the backward fold and the returns stop being linear, because each new game does two things at once -- it costs less than the last, and it contributes a lesson that upgrades all the games before it. Quality stops being something you have to go back and manually re-do on old code and becomes something the catalog accrues. That is the actual argument for running development this way: not "the robot types faster," but "the library gets better as a whole every time any one part of it learns something." A snippet library cannot do that. A governed retro loop over a shared contract can.</p>
+<h2 id="the-second-flywheel-game-authoring-trains-game-authoring">The second flywheel: game authoring trains game authoring<a class="headerlink" href="#the-second-flywheel-game-authoring-trains-game-authoring" title="Permanent link">&para;</a></h2>
+<p>There is a second flywheel sitting next to the catalog-quality one, and it is worth naming separately: the <strong>game-authoring flywheel</strong>. Each verified game build emits training-shaped data -- tickets, run records, review corrections, lint-gate outcomes, preference pairs, reward signals, and eventually full game-run trajectories. That data can improve the next authoring attempt through retrieval, few-shot examples, and a private eval harness. Better authoring attempts lower the number of PRs per game, which ships more games, which emits more training-shaped data. That is a different loop from "lessons fold backward into old games." It is "the act of building games creates the corpus that teaches the next model how to build games here."</p>
+<p>The honest near-term version is not a bespoke fine-tuned model. It is RAG and few-shot prompting over the existing catalog, plus an eval harness that can grade a candidate game build against the historical human-approved result. The AI training substrate post explains why this repo's tickets, run receipts, codemap, lint vectors, and audit trail are already shaped like eval/training material; the <a href="../rulebook-pdf-to-gameengine/">rulebook-PDF-to-engine experiment</a> is the first narrow rung, asking whether a model can translate a specified rulebook and design doc into a <code>GameEngine</code> subclass safely enough to measure. A fine-tuned game-authoring model is the gated long-horizon rung after that, not a thing this project already has.</p>
+<p>Why it compounds is the same reason the first flywheel compounds: the output of one cycle becomes the input quality of the next. What it unlocks, if the measurements eventually justify it, is the platform's hardest economic target -- a designer hands over a rulebook or one-paragraph concept, and the system drafts the engine, AI hookup, rules/design docs, and client stage with a human reviewing for faithfulness instead of hand-building every layer from scratch.</p>
+<h2 id="the-honest-edges">The honest edges<a class="headerlink" href="#the-honest-edges" title="Permanent link">&para;</a></h2>
+<p>I would be selling you something if I stopped at "and the flywheel turns forever." It does not turn by itself, and it is not free. Here is where the thesis is load-bearing only if you keep paying for it.</p>
+<p><strong>Every backward fold is a change to already-shipped, working software.</strong> Retrofitting a lesson into game one is not a greenfield write; it is a ticket against code that currently works, which means review, regression risk, and the full weight of the guardrails the <a href="../orchestration-review-guardrails/">review-surfaces post</a> describes. A rename that touches every game can re-break a screen that had been fine for months. The fold is governed precisely <em>because</em> it is dangerous -- the same lint wall and bug-fix gates that make a normal change safe are what make a catalog-wide retrofit survivable -- but "governed" means "costs review cycles," not "free."</p>
+<p><strong>Not every lesson generalizes, and forcing the ones that do not is its own failure mode.</strong> A fix that is genuinely specific to one game's mechanics does not belong in the shared base contract, and hoisting it there to feel uniform makes every other game carry a quirk it never needed. The Memory Match flow fix generalized because hidden-information boundaries are universal; a Memory Match <em>card-matching</em> rule would not. Part of the retro's skill is telling those apart, and it gets it wrong sometimes. A backward fold of the wrong lesson is worse than no fold -- it spreads one game's accident across the catalog under the banner of consistency.</p>
+<p><strong>The ratchet stalls the instant the retro discipline lapses.</strong> The forward direction is passive -- the library compounds whether or not anyone is paying attention, because the next game inherits it just by existing. The backward direction is <em>entirely</em> dependent on someone running the retro, reading the run records, and choosing to spend tickets retrofitting old games. Skip the retro and the lessons stay trapped in individual <code>*.run.md</code> files; the catalog keeps growing but stops getting more uniform, and within a few cycles you are back to quality stratified by build date with the newest game carrying all the good fixes and the oldest carrying none. The flywheel is a practice, not a property. It only compounds for as long as you keep turning it.</p>
+<hr />
+<p>That is the case the whole cluster rests on. The <a href="../ui-specs-without-design-tools/">UI-spec playbook</a> shows the forward direction made concrete -- the example library that makes each new screen cheaper than the last. The <a href="../orchestration-lifecycle/">lifecycle deep-dive</a> shows the retro that pumps lessons both ways. The <a href="../orchestration-review-guardrails/">guardrails deep-dive</a> shows the gates that make a backward fold into a working game survivable. The AI training substrate post names the adjacent authoring-data loop. This post is the argument those pieces are evidence for: build a catalog through a governed AI loop and it does not just get <em>bigger</em> over time, it gets <em>better</em> -- the newest game makes the next one cheaper, the last one better, and the library compounds in quality as long as you keep the retro turning.</p>
+<p>That is the thing reuse-saves-typing never tells you, and it is the only reason any of this is worth doing.</p>
+<hr />
+
+
+
+
+
+
+
+  
+  
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+      <div class="md-progress" data-md-component="progress" role="progressbar"></div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": ["navigation.instant", "navigation.instant.prefetch", "navigation.instant.progress", "navigation.sections", "navigation.indexes", "navigation.prune", "navigation.tracking", "navigation.top", "toc.integrate", "search.suggest", "search.highlight", "search.share", "content.code.copy", "toc.follow"], "search": "../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+    
+  </body>
+</html>

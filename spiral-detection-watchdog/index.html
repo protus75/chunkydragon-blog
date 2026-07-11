@@ -1,0 +1,2762 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Public blog articles from the Chunky Dragon board-game project.">
+      
+      
+      
+        <link rel="canonical" href="https://blog.chunkydragon.com/spiral-detection-watchdog/">
+      
+      
+        <link rel="prev" href="../risk-routed-review/">
+      
+      
+        <link rel="next" href="../mechanical-vs-llm-failure-recovery/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
+    
+    
+      
+        <title>Spiral-detection watchdog - Chunky Dragon Blog</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.484c7ddc.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="amber">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#a-watchdog-that-catches-ai-agents-going-in-circles" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="Chunky Dragon Blog" class="md-header__button md-logo" aria-label="Chunky Dragon Blog" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Chunky Dragon Blog
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Spiral-detection watchdog
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="amber"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="amber"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+          <a href="javascript:void(0)" class="md-search__icon md-icon" title="Share" aria-label="Share" data-clipboard data-clipboard-text="" data-md-component="search-share" tabindex="-1">
+            
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.15c-.05.21-.08.43-.08.66 0 1.61 1.31 2.91 2.92 2.91s2.92-1.3 2.92-2.91A2.92 2.92 0 0 0 18 16.08"/></svg>
+          </a>
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+  
+
+<nav class="md-nav md-nav--primary md-nav--integrated" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="Chunky Dragon Blog" class="md-nav__button md-logo" aria-label="Chunky Dragon Blog" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    Chunky Dragon Blog
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Blog drafts
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ai-fluency-trail-guide/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    The AI fluency trail guide
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Track A -- The mindset
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Track A -- The mindset
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../device-profiles-not-accounts/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Device profiles, not user accounts
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../why-build-it-this-way/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Why build it this way: the marginal cost of a game
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ai-personalities-not-optimizers/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    AI personalities, not optimizers
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../python-dev-learning-react/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Shipping a React client I have not read
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../read-before-you-write/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Read before you write
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../dont-fold-it-in/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Don't fold it in: file the second problem
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../first-runnable-line/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Your first runnable line
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Track B -- Designing the product
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Track B -- Designing the product
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../four-role-websocket-protocol/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Four-role WebSocket protocol
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../design-for-the-flakiest-client/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Design for the flakiest client in the room
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../one-engine-two-information-modes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    One engine, two information modes
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../memory-match-for-pre-readers/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Memory Match for a 5-year-old who can't read yet
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../bluff-without-chat/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    A game built on lying, with no chat panel
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../werewolf-server-as-moderator/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Werewolf without a moderator (and without a chat panel)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../a-fair-die-is-a-product-decision/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    A fair die is a product decision
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../the-equity-panel-is-the-ai/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    The equity panel is the AI
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../byok-advisor-framework/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Bring your own key
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../when-the-algorithm-depends-on-the-game/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    When the algorithm depends on the game
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Track C -- AI-first engineering
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Track C -- AI-first engineering
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ai-first-code-annotations/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Code comments written for the robot, not the human
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ai-first-testing-and-logging/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    The test that knows what it is
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../when-layout-taste-becomes-a-test/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    When layout taste becomes a test
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../annotations-vs-the-literature/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    What the literature got to first (and the parts we made mandatory)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../let-the-library-carry-the-proof/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Let the library carry the proof
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../the-refactor-the-annotations-made-safe/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    The refactor the annotations made safe
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../derive-dont-stamp/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Derive It, Don't Stamp It
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../trimming-the-duplication-an-ai-cannot-see/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Trimming the duplication an AI cannot see
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../log-interplay-and-swimlanes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    The logs already knew the order
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../store-the-moves-not-the-board/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Store the moves, not the board
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../code-risk-trends-over-time/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Watching code risk trend over time, with no metrics datastore
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Track D -- Building with AI
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Track D -- Building with AI
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../from-idea-to-buildable-repo/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    From an idea in a chat window to a repo the robot can build
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ui-specs-without-design-tools/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Describe the screen, don't draw it (the UI-spec prompt playbook)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../throwaway-html-mockups/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Make it real before you build it (throwaway HTML mockups)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../orchestrated-build-loop/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Tickets in, a game I can play out (the orchestrated build-and-feedback loop)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../the-orchestrator-that-drafts-its-own-backlog/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    The orchestrator that drafts its own backlog
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../from-surprise-to-rule-to-skill/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    From surprise to rule to skill
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    
+      
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_7" id="__nav_7_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Track E -- The orchestrator evolves
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_7">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Track E -- The orchestrator evolves
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../orchestration-lifecycle/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    The orchestration lifecycle: from phase to ticket to retro
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../orchestration-review-guardrails/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Review surfaces and the AI-first guardrails
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../risk-routed-review/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Risk-routed review: spending human attention where it earns its keep
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Spiral-detection watchdog
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Spiral-detection watchdog
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#the-30-minute-spiral" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The 30-minute spiral
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#a-90-minute-test-loop" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        A 90-minute test loop
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#why-heartbeat-detection-misses-this" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Why heartbeat detection misses this
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#five-cheap-signals" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Five cheap signals
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Five cheap signals">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#signal-1-tmp-file-accumulation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Signal 1: tmp-file accumulation
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#signal-2-tool-call-repetition" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Signal 2: tool-call repetition
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#signal-3-file-mutation-entropy" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Signal 3: file-mutation entropy
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#signal-4-sustained-bash-repetition" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Signal 4: sustained-bash-repetition
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#signal-5-verify-polling-loop" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Signal 5: verify-polling-loop
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#the-soft-band-timing-model" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The soft-band timing model
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#no-auto-kill" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        No auto-kill
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#what-i-left-out-deliberately" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        What I left out (deliberately)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#the-layer-the-watchdog-catches-residual-cases-of" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The layer the watchdog catches residual cases of
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#what-this-means-if-youre-building-agent-infrastructure" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        What this means if you're building agent infrastructure
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../mechanical-vs-llm-failure-recovery/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    When a stage fails: what is mechanical and what is the LLM?
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../risk-routed-merge-resolution/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Risk-routed merge resolution: let git handle the boring conflicts
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../how-a-ticket-picks-its-brain/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    How a ticket picks its brain
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../anatomy-of-a-ticket/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Anatomy of a ticket: one contract, one run record, every field
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../meet-tempo/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Meet Tempo: when the orchestrator becomes a Go binary
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../two-rewrites-one-strategy/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Two rewrites, one strategy
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../parity-first/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Parity-first: replacing the system that builds your software
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../orchestrator-as-installable-product/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    The orchestrator leaves home: from welded-in workflow to installable binary
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8" >
+        
+          
+          <label class="md-nav__link" for="__nav_8" id="__nav_8_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Track F -- Forward-looking
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_8_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_8">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Track F -- Forward-looking
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../cfr-for-6max-holdem/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    CFR for 6-max Hold'em: the poker AI this catalog hasn't built yet
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../rulebook-pdf-to-gameengine/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    How cheap can a new game get? The rulebook-PDF-to-engine experiment
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../numeric-risk-dashboards/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    What a numeric risk dashboard would have to be
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../action-log-analytics-and-fairness/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    The action log is an analytics engine waiting to happen
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../testing-an-orchestrator-with-fakes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    How do you test an orchestrator whose job is to call an LLM?
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../sharing-tempo-upstream/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Sharing the orchestrator upstream: template vs. the project that grew it
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../cross-game-compounding-flywheel/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    The cross-game compounding flywheel
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+  <nav class="md-tags" >
+    
+      
+      
+      
+      
+        <span class="md-tag">doc-kind:blog</span>
+      
+    
+  </nav>
+
+
+
+<h1 id="a-watchdog-that-catches-ai-agents-going-in-circles">A watchdog that catches AI agents going in circles<a class="headerlink" href="#a-watchdog-that-catches-ai-agents-going-in-circles" title="Permanent link">&para;</a></h1>
+<p>Last week I watched my own coding agent burn 30 minutes debugging a problem it had created for itself. The heartbeat detector said the run was healthy. Tool calls landed in the log every 10-30 seconds. The agent was <em>busy</em>. It just wasn't <em>progressing</em>.</p>
+<p>This is how I learned that "is the agent still alive?" and "is the agent still making progress?" are two different questions, and that almost everyone I've talked to is only answering the first one.</p>
+<h2 id="the-30-minute-spiral">The 30-minute spiral<a class="headerlink" href="#the-30-minute-spiral" title="Permanent link">&para;</a></h2>
+<p>The setup: my orchestrator launches Claude in a fresh git clone with a ticket as input. The agent works for 10-90 minutes depending on ticket size, then opens a PR. A cheap heartbeat detector watches each run's log file: if no new output appears for 1800 seconds, kill the process and notify me.</p>
+<p>The ticket that day was a medium-sized refactor of a merge-conflict diagnostic library. Expected wall-clock: 30 minutes.</p>
+<p>What actually happened: the agent introduced a Windows <code>gh.cmd</code> shim as a test fixture, hit a <code>cmd.exe</code> argument-reparsing problem on <code>&gt;</code>/<code>&lt;</code>/comma-list args, and spent 30 minutes creating <code>tmp_debug_mc.py</code>, then <code>tmp_debug_mc2.py</code>, then re-invoking each one with slightly different arguments and adding more <code>print</code> statements. The actual library it was supposed to fix had been correct since minute 5. The spiral lived entirely in test-fixture land.</p>
+<p>The heartbeat detector saw a perfectly healthy run. Tool calls every 10 seconds. Log file growing. Process responsive.</p>
+<p>I caught it manually because I happened to ask "is that ticket doing anything?" If I'd been asleep it would have run another two hours before the stuck-threshold fired.</p>
+<h2 id="a-90-minute-test-loop">A 90-minute test loop<a class="headerlink" href="#a-90-minute-test-loop" title="Permanent link">&para;</a></h2>
+<p>About a week after the <code>gh.cmd</code> case, a second spiral landed on a different kind of ticket.</p>
+<p>The task: extend the orchestrator's batch-overlap check to count <code>terminal_state=stalled</code> runs as
+still-blocking -- so a queued ticket touching the same files as a stalled run would wait instead
+of launching. Medium bucket, expected 30 minutes.</p>
+<p>The agent got the orchestrator logic right in the first half of the run. Then it got stuck on one
+test: <code>test_batch_parallel.py::test_overlap_queuing_emits_queued_event</code>. For the last 30 minutes
+of the run (which reached 90 minutes total), the agent executed that test variant roughly 15 times
+in succession -- read the output, edit <code>orchestrator.sh</code>, run the test again, tail the log, edit
+again. Nine of the last 20 tool calls in the log hit <code>test.sh</code>. Signal 2 (tool-call repetition)
+was firing clearly.</p>
+<p>The agent also created <code>debug_overlap.sh</code>, <code>debug_out.txt</code>, and <code>debug_overlap_check.py</code> during
+those 30 minutes. Three files with <code>debug_</code> prefixes -- the exact pattern Signal 1 watches for.</p>
+<p>Both signals fired. The spiral warning was never pushed.</p>
+<p>The reason: the spiral detector runs when <code>dev.sh status</code> is called -- specifically inside the
+<code>status_active_runs</code> function in <code>lib-status.sh</code>. During the run's soft-band window (roughly
+45 to 90 minutes for a medium ticket), I was not actively polling status. The implement-stage
+watchdog hit its 5400-second hard cutoff before the detector got another chance to evaluate the
+log. The run is captured at
+the workflow test harness.</p>
+<p>The recalibration work that followed (the ticket archive)
+added a fourth signal: sustained-bash-repetition (&gt;=10 bash calls on the same target in the last
+30 events). Signal 4 covers a pure test-debug loop where the agent never writes a throwaway
+script -- it just reruns an existing test file. A no-tmp-file variant of this spiral would have
+tripped only Signal 2, leaving suspicion at 1 (below the 2-signal threshold). Signal 4 closes
+that gap by making strong bash repetition alone sufficient to push suspicion past the threshold
+alongside Signal 2.</p>
+<h2 id="why-heartbeat-detection-misses-this">Why heartbeat detection misses this<a class="headerlink" href="#why-heartbeat-detection-misses-this" title="Permanent link">&para;</a></h2>
+<p>Heartbeat is a liveness check. "The process exists, the log is being written, the OS thinks it's running." It catches three failure modes:</p>
+<ul>
+<li>The process actually crashed but the parent didn't notice (Windows <code>gh.cmd</code> PID lying about its child, MSYS2 fork weirdness).</li>
+<li>The agent is genuinely wedged on a syscall that never returns (rare but happens).</li>
+<li>The agent is waiting for input that will never come.</li>
+</ul>
+<p>It misses the failure mode that actually happens: the agent is <strong>busy but spinning</strong>. Reading the same file. Editing the same file. Running the same script with marginally different arguments. Producing log output that looks like progress but isn't.</p>
+<p>You cannot catch this with a liveness check. The process is alive. You have to look at <em>what kind of work it's doing</em> and ask "is this work plausibly leading toward the goal, or is it self-similar to the work the agent was doing 10 minutes ago?"</p>
+<h2 id="five-cheap-signals">Five cheap signals<a class="headerlink" href="#five-cheap-signals" title="Permanent link">&para;</a></h2>
+<p>I built a detector that combines cheap signals -- four to start, then a fifth once a real polling-spiral turned up that the first four missed. None of them require an LLM. None of them require parsing English. All of them run in milliseconds against a JSONL log file plus <code>git status --porcelain</code>.</p>
+<h3 id="signal-1-tmp-file-accumulation">Signal 1: tmp-file accumulation<a class="headerlink" href="#signal-1-tmp-file-accumulation" title="Permanent link">&para;</a></h3>
+<p>Every spiral I've seen starts with the agent creating a throwaway script. <code>tmp_debug.py</code>, <code>scratch_test.py</code>, <code>repro_v2.py</code>, <code>try_again_3.py</code>. The pattern is unmistakable in retrospect: the agent has decided that the way to understand a problem is to write a small program that exhibits it, run that program, and iterate.</p>
+<p>That's a perfectly fine instinct <em>as a human</em>. As an agent, it's a tarpit, because the agent has no automatic check that "this script is now answering the wrong question." So it writes <code>tmp_debug_v2.py</code>. Then <code>tmp_debug_v3.py</code>. Each iteration adds prints, tweaks args, and stays one cognitive step away from the actual fix.</p>
+<p>The detector watches the working directory for files matching <code>^(tmp_|debug_|scratch_)</code> or trailing <code>_v[0-9]+$</code> / <code>_test[0-9]+$</code>. If two or more such files exist <em>and</em> none of the ticket's declared output files have been modified in the last 10 minutes, that's signal 1.</p>
+<p>The "and" matters. If the agent created a tmp file but is <em>also</em> editing the real target, it's not spiraling -- it's doing legitimate exploratory work that happens to leave debris behind. The signal only fires when the debris exists <em>instead of</em> progress.</p>
+<h3 id="signal-2-tool-call-repetition">Signal 2: tool-call repetition<a class="headerlink" href="#signal-2-tool-call-repetition" title="Permanent link">&para;</a></h3>
+<p>The agent's log is JSONL, one tool call per line. Look at the last 20 entries. If 8 or more are <code>Bash</code> calls executing the same script (modulo arguments), or 6 or more are <code>Read</code>/<code>Edit</code>/<code>Bash</code> against the same file, that's signal 2.</p>
+<p>This catches the pattern of "run the script, see it fail, edit the script to add more prints, run it again." A legitimate build-watch loop wouldn't trip this signal because the script being run pre-exists in <code>git ls-files</code> -- the detector cross-checks against the repo's tracked files, so <code>pytest</code>, <code>npm test</code>, <code>cargo run</code>, etc. don't fire it. The signal only fires on scripts the agent itself created in this run.</p>
+<h3 id="signal-3-file-mutation-entropy">Signal 3: file-mutation entropy<a class="headerlink" href="#signal-3-file-mutation-entropy" title="Permanent link">&para;</a></h3>
+<p>Snapshot <code>git status --porcelain</code> every 30 seconds. Track the set of touched-but-not-tmp files over time. If that set has stopped growing <em>and</em> the elapsed time has crossed 1.5x the expected wall-clock, that's signal 3.</p>
+<p>This is the hardest one to tune because some real work consists of polishing one file (a README, a single function refactor). The signal works because it <em>only fires in the soft band</em> -- between expected and stuck thresholds -- when "I'm still polishing one file" is no longer a plausible explanation for the wall-clock.</p>
+<h3 id="signal-4-sustained-bash-repetition">Signal 4: sustained-bash-repetition<a class="headerlink" href="#signal-4-sustained-bash-repetition" title="Permanent link">&para;</a></h3>
+<p>Added after the 90-minute test loop above. Signals 1-3 require <em>either</em> throwaway-file debris (Signal 1) <em>or</em> file-mutation stall (Signal 3) to push suspicion past the 2-of-N threshold; on their own, tool-call repetition (Signal 2) only contributes one vote. The batch-parallel test loop was a pure rerun-the-same-test-file spiral with no throwaway script, so Signal 1 and Signal 3 both stayed quiet and Signal 2 sat alone below the threshold.</p>
+<p>Signal 4 closes the gap: if 10 or more of the last 30 events are <code>Bash</code> calls targeting the same script or test file, that's an independent vote on its own. The threshold is deliberately higher than Signal 2 (which fires at 8-of-20) -- Signal 4 is the "I am very sure this is a loop" backstop for cases where the agent never leaves debris behind. In the corpus, Signal 2 + Signal 4 together fire on the spiral-002 run and stay quiet on the matched healthy run.</p>
+<h3 id="signal-5-verify-polling-loop">Signal 5: verify-polling-loop<a class="headerlink" href="#signal-5-verify-polling-loop" title="Permanent link">&para;</a></h3>
+<p>Added after a third corpus case -- and the one that finally pushed the count past four. The <code>fix-tv-pair-qr-target-role-defaults-to-observer</code> run (2026-06-03, captured as the spiral-003 corpus case) launched a background test correctly, landed its code change in the first 30 events, and then spent 30+ minutes in a tight <code>cat</code>/<code>sleep</code> loop reading the Bash-tool task-output file under <code>/tmp/.../tasks/</code>. The edit was already done. The polling was pure wasted wall-clock.</p>
+<p>None of the first four signals caught it. There was no throwaway script, so Signal 1 stayed quiet. There was no file-mutation stall of the kind Signal 3 watches. And the command being repeated was a shell builtin (<code>sleep</code>) or a <code>cat</code> of a <code>/tmp/</code> path -- not a tracked script -- so the script-name counters in Signals 2 and 4 never locked onto a single target.</p>
+<p>Signal 5 matches on the <em>full command string</em> instead of an extracted script name. It looks at the last 20 <code>Bash</code> events and counts how many match a background-task polling pattern: <code>sleep N</code> for N up to 60, a <code>cat</code> or <code>tail</code> of a <code>/tmp/.../tasks/*.output</code> file, or an <code>until ... grep</code> / <code>until ... [ -s ... ]</code> wait loop. If 6 or more of those last 20 Bash calls match, that's signal 5. The 30-minute spiral above tripped it with six <code>sleep 5</code> calls and six <code>cat /tmp/.../tasks/</code> reads in its final window.</p>
+<p>Signal 5 is still a cheap, deterministic check -- a few regexes and a counter, no model call. It is <em>not</em> the LLM-as-judge idea from the next section; it just happens to be the fifth pattern.</p>
+<h2 id="the-soft-band-timing-model">The soft-band timing model<a class="headerlink" href="#the-soft-band-timing-model" title="Permanent link">&para;</a></h2>
+<p>I bucket every ticket into small / medium / big based on what the agent is being asked to do. Each bucket has an <code>expected</code> wall-clock and a <code>stuck</code> threshold:</p>
+<table>
+<thead>
+<tr>
+<th>Bucket</th>
+<th>Expected</th>
+<th>Soft-band start</th>
+<th>Stuck</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Small (cleanup, small UX, small retro)</td>
+<td>~20 min</td>
+<td>~30 min</td>
+<td>~35 min</td>
+</tr>
+<tr>
+<td>Medium (new infra, AI variant, protocol + one surface)</td>
+<td>~45 min</td>
+<td>~70 min</td>
+<td>~85 min</td>
+</tr>
+<tr>
+<td>Big (new engine, multi-surface subsystem)</td>
+<td>~90 min</td>
+<td>~135 min</td>
+<td>~2.5 hr</td>
+</tr>
+</tbody>
+</table>
+<p>These numbers aren't guesses anymore. They come out of a recalibration over 708 successful runs that re-anchored every budget from human-engineer hours -- where the first estimates lived, and where they ran 10-20x too high -- to observed agent wall-clock.</p>
+<p>Three regions:</p>
+<ul>
+<li><strong>Healthy</strong> (<code>elapsed &lt; expected x 1.5</code>): run the signals, log them to a debug stream, do nothing.</li>
+<li><strong>Soft band</strong> (<code>expected x 1.5 &lt;= elapsed &lt; stuck</code>): run the signals, and if two or more trip, push one notification to my phone -- <em>once per run</em>, not per check.</li>
+<li><strong>Stuck</strong> (<code>elapsed &gt;= stuck</code>): existing heartbeat-stale path takes over, and the spiral signals become hints in the kill record.</li>
+</ul>
+<p>The soft band is the new behavior. Before this, the orchestrator did literally nothing in this region. Under stuck-threshold, no signal. Over stuck-threshold, kill. The whole "the agent is busy but spinning" failure mode lived in the gap between those two policies.</p>
+<h2 id="no-auto-kill">No auto-kill<a class="headerlink" href="#no-auto-kill" title="Permanent link">&para;</a></h2>
+<p>This was the hardest design decision and I want to be explicit about why I rejected auto-kill.</p>
+<p>An agent confidently spiraling for 10 more minutes is <em>less dangerous</em> than the orchestrator confidently killing a run that was about to succeed in 5 more minutes. The asymmetry matters: a wasted 10 minutes is annoying, but a killed-just-before-success run forces a relaunch which costs the entire prior run's work plus another 10-60 minutes.</p>
+<p>So the watchdog is human-in-the-loop. It pushes one notification -- "run X may be spiraling: 12 of 20 tool calls hit <code>tmp_debug_mc.py</code>, 3 tmp files in the clone, 1.4x expected wall-clock" -- and I decide. Kill, inject guidance via ticket edit, or let it cook.</p>
+<p>The notification is idempotent per run. Once it fires, a <code>spiral_warning_sent=true</code> flag is written to the run's state file. Re-tripping the threshold doesn't re-page. If the agent recovers, great. If it doesn't, I already know.</p>
+<h2 id="what-i-left-out-deliberately">What I left out (deliberately)<a class="headerlink" href="#what-i-left-out-deliberately" title="Permanent link">&para;</a></h2>
+<p>The signal count grew from four to five, but the move people always ask about first -- spawning a smaller LLM (Haiku, GPT-4o-mini) to read the last 50 log entries and verdict them as "progressing" or "spiraling" -- I still haven't shipped. Signal 5 is not that. Adding Signal 5 cost a few regexes and a counter; it recognizes a polling loop without asking a model anything. The LLM-as-judge is a different, more expensive thing, and it remains deliberately unbuilt.</p>
+<p>Reasons:</p>
+<ol>
+<li>The cheap signals keep catching the cases I've actually seen. Each new spiral so far -- the test-rerun loop, then the polling loop -- turned out to be expressible as one more cheap pattern, not a case that needed a model to recognize. Adding LLM-as-judge before I've found a spiral the cheap signals genuinely cannot express is solving a hypothetical.</li>
+<li>LLM signals are non-deterministic, which means false positives become a budget question ("the watchdog cost me $0.03 to tell me my agent was fine") and a debugging nightmare ("why did the watchdog fire on this run and not that run?").</li>
+<li>The cheap signals are testable against a corpus of recorded runs. The corpus now has three spiraling runs (the <code>gh.cmd</code> case, the batch-parallel test loop, and the verify-polling loop above) and one healthy-run counter-case. The detector achieves correct verdicts on all of them. That's a regression suite. An LLM signal isn't.</li>
+</ol>
+<p>If a spiral shows up that no cheap pattern can express, that's when the LLM judge earns its keep. The last two times I thought I'd reached that point -- the test-rerun loop, then the polling loop -- a cheap new signal turned out to be enough. Until then, every tool I add to my agent infrastructure has to justify its existence.</p>
+<h2 id="the-layer-the-watchdog-catches-residual-cases-of">The layer the watchdog catches residual cases of<a class="headerlink" href="#the-layer-the-watchdog-catches-residual-cases-of" title="Permanent link">&para;</a></h2>
+<p>The signals and timing model are the detection layer. Before a spiral can be detected, it has to
+happen. A separate layer tries to prevent the most common spiral causes at the source.</p>
+<p><strong>Claude Code skills</strong> are behavioral constraints that load at agent startup. The ones in this
+project most relevant to spiral prevention:</p>
+<ul>
+<li><code>retro-seed-verification</code> -- requires agents to re-read current code before transcribing a
+  retrospective claim into a ticket. Without it, agents write tickets based on bugs that no longer
+  exist, then spiral trying to find and fix something that is not there.</li>
+<li><code>stay-in-current-repo</code> -- restricts file writes to the current working directory. Agents that
+  confuse sibling clones create inconsistent file states and spiral trying to reconcile them.</li>
+<li><code>no-jq</code> -- bans <code>jq</code> from shell scripts and forces Python or DuckDB for JSON parsing. Without
+  it, agents that hit a parsing problem tend to write <code>tmp_parse_check.sh</code> workarounds -- direct
+  Signal 1 material.</li>
+<li><code>tickle-vscode-scm</code> -- after any <code>git</code> operation, touch <code>.git/index</code> so the IDE updates.
+  Without it, agents run repeated <code>git status</code> / <code>git log</code> cycles trying to understand why the
+  SCM panel is not reflecting their changes -- the repetition pattern Signal 2 catches.</li>
+</ul>
+<p><strong>CLAUDE.md load-bearing rules</strong> address structural causes:</p>
+<ul>
+<li><code>CRITICAL: Never hunt the filesystem for executables</code> -- prevents probe scripts
+  (<code>tmp_check_python.py</code>, <code>debug_find_pytest.sh</code>) that pile up when a tool is not in the venv or
+  PATH. Those probe scripts are exactly what Signal 1 detects.</li>
+<li><code>CRITICAL: No /tmp/ writes from project scripts</code> -- forces temporary files into repo-local
+  scratch paths. A <code>/tmp/debug_overlap.sh</code> is invisible to Signal 1, which watches the clone
+  directory. This rule keeps temporary files where the detector can see them.</li>
+<li><code>CRITICAL: Minimum-diff UI bug fixes</code> -- prevents compound fixes that touch more files than the
+  reported bug requires. Extra file edits raise mutation entropy without matching commit progress --
+  the fingerprint Signal 3 looks for.</li>
+</ul>
+<p>The <strong>control-plane layer</strong> lives at the orchestration control plane. Prompts like <code>core.md</code> and
+<code>safety.md</code> establish precautionary baselines: verify before implementing, check whether the work
+is already done, read the ticket scope before writing code. An agent that verifies its premise
+before starting is far less likely to spend 30 minutes debugging a fixture that was wrong from
+minute 5.</p>
+<p>The watchdog's job is to catch whatever slips through all of this. In practice, most of the
+spirals in recent runs would have been blocked by one of the above constraints. The detector fires
+on the residual.</p>
+<h2 id="what-this-means-if-youre-building-agent-infrastructure">What this means if you're building agent infrastructure<a class="headerlink" href="#what-this-means-if-youre-building-agent-infrastructure" title="Permanent link">&para;</a></h2>
+<p>If you're running long-lived AI agents, you probably have heartbeat detection. You probably don't have spiral detection. The gap between them is where almost all of my agent's wasted time has lived.</p>
+<p>The detector is something like 200 lines of Python. Any team running agents in production can build the same thing in an afternoon. The hard part isn't the code -- it's noticing that "the agent is alive" isn't the same as "the agent is making progress" and deciding to instrument the difference.</p>
+<p>If you build this, push notifications instead of auto-killing. The asymmetry of failure modes makes human-in-the-loop the right default.</p>
+<div class="admonition note">
+<p class="admonition-title">In-repo only -- may not ship to public blog</p>
+<p><strong>Prior art (research after the fact).</strong> I built this watchdog and wrote the draft above before searching for prior art. Doing the web search afterward (May 2026), the underlying pattern turns out to be well-trodden -- the specific phrase "spiral detection" is rare and looks home-grown, but the failure mode and the cheap-signal approach are widely discussed. Captured here for in-repo reference; trim or drop in the public version.</p>
+<p>Closest technique matches:</p>
+<ul>
+<li>Fingerprint hashing of <code>(tool_name, result_preview)</code> per iteration, fire on 3 identical in a row -- <a href="https://www.pithycyborg.com/why-does-your-ai-agent-get-stuck-in-infinite-loops/">Pithy Cyborg: Why Does Your AI Agent Get Stuck in Infinite Loops?</a></li>
+<li>Sliding-window tool-call detector (same tool+args &gt;N times in last M calls; suggested N=10, M=20) -- <a href="https://dev.to/nebulagg/ai-agent-observability-the-4-pillars-that-keep-your-agents-from-burning-2000-at-3-am-24cn">DEV: AI Agent Observability -- The 4 Pillars</a></li>
+<li>Reasoning-depth tracking, &gt;8  reasoning spiral -- <a href="https://stevekinney.com/writing/agent-loops">Steve Kinney: The Anatomy of an Agent Loop</a></li>
+</ul>
+<p>Closest framing matches (diagnostic-not-killing posture, soft-band partitioning, cost-driven motivation):</p>
+<ul>
+<li><a href="https://medium.com/@Modexa/the-agent-loop-problem-when-smart-wont-stop-ccbf8489180f">Modexa: The Agent Loop Problem -- When "Smart" Won't Stop</a></li>
+<li><a href="https://medium.com/@barunsaha/what-happens-when-your-ai-agent-gets-stuck-building-reliable-agents-for-small-language-models-a5e7a32cd03d">Barun Saha: What Happens When Your AI Agent Gets Stuck (Mar 2026)</a></li>
+<li><a href="https://www.agentpatterns.tech/en/failures/infinite-loop">Agent Patterns: Infinite Agent Loop</a></li>
+<li><a href="https://markaicode.com/fix-ai-agent-looping-autonomous-coding/">Markaicode: Stop AI Agent Loops in Autonomous Coding Tasks</a></li>
+</ul>
+<p>Production bug reports of the same failure mode in real frameworks:</p>
+<ul>
+<li><a href="https://github.com/browser-use/browser-use/issues/191">browser-use #191 -- Endless loop detection to avoid high LLM usage costs</a></li>
+<li><a href="https://github.com/n8n-io/n8n/issues/13525">n8n #13525 -- AI Agent Stuck in Infinite Loop, Repeatedly Triggering Tools</a></li>
+<li><a href="https://github.com/bytedance/deer-flow/issues/1055">deer-flow #1055 -- Agent gets stuck in repetitive tool call loops until recursion limit</a></li>
+<li><a href="https://github.com/openclaw/openclaw/issues/16808">openclaw #16808 -- Stuck agent / polling loop detection watchdog</a></li>
+</ul>
+<p><strong>What looks distinctive in this writeup</strong> vs. the public material I found:</p>
+<ol>
+<li><strong>Three-region time model anchored on observed agent wall-clock x ticket-size buckets</strong> (small / medium / big with empirical thresholds from PRs #11-28) rather than iteration count or token budget. Most public articles use iteration count as the axis.</li>
+<li><strong>Multi-signal AND-gate</strong> (&gt;=2 of 3 cheap signals required before firing) rather than single-signal trip. Public writeups mostly trigger on one signal.</li>
+<li><strong>"Spiral" naming and the explicit no-auto-kill stance</strong> with idempotent-per-run notification. The asymmetry-of-failure-modes argument doesn't appear cleanly in the public material; most production frameworks ship with hard iteration caps that auto-terminate.</li>
+</ol>
+<p><strong>Editor decision pending:</strong> drop this section entirely for public publication, OR convert to a brief "prior art" footnote linking to the strongest 2-3 sources (likely Modexa + Barun Saha + Pithy Cyborg) so the post doesn't read as if I'm claiming the loop-detection problem is novel.</p>
+</div>
+<hr />
+<p><em>Or: subscribe to the newsletter for more posts on building this stuff.</em></p>
+
+
+
+
+
+
+
+  
+  
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+      <div class="md-progress" data-md-component="progress" role="progressbar"></div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": ["navigation.instant", "navigation.instant.prefetch", "navigation.instant.progress", "navigation.sections", "navigation.indexes", "navigation.prune", "navigation.tracking", "navigation.top", "toc.integrate", "search.suggest", "search.highlight", "search.share", "content.code.copy", "toc.follow"], "search": "../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+    
+  </body>
+</html>

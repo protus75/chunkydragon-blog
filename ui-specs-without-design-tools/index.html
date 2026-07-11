@@ -1,0 +1,2762 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Public blog articles from the Chunky Dragon board-game project.">
+      
+      
+      
+        <link rel="canonical" href="https://blog.chunkydragon.com/ui-specs-without-design-tools/">
+      
+      
+        <link rel="prev" href="../from-idea-to-buildable-repo/">
+      
+      
+        <link rel="next" href="../throwaway-html-mockups/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
+    
+    
+      
+        <title>Describe the screen, don't draw it (the UI-spec prompt playbook) - Chunky Dragon Blog</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.484c7ddc.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="amber">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#describe-the-screen-dont-draw-it-a-prompt-playbook-for-ui-specs-without-a-design-tool" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="Chunky Dragon Blog" class="md-header__button md-logo" aria-label="Chunky Dragon Blog" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Chunky Dragon Blog
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Describe the screen, don't draw it (the UI-spec prompt playbook)
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="amber"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="amber"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+          <a href="javascript:void(0)" class="md-search__icon md-icon" title="Share" aria-label="Share" data-clipboard data-clipboard-text="" data-md-component="search-share" tabindex="-1">
+            
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.15c-.05.21-.08.43-.08.66 0 1.61 1.31 2.91 2.92 2.91s2.92-1.3 2.92-2.91A2.92 2.92 0 0 0 18 16.08"/></svg>
+          </a>
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+  
+
+<nav class="md-nav md-nav--primary md-nav--integrated" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="Chunky Dragon Blog" class="md-nav__button md-logo" aria-label="Chunky Dragon Blog" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    Chunky Dragon Blog
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Blog drafts
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ai-fluency-trail-guide/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    The AI fluency trail guide
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Track A -- The mindset
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Track A -- The mindset
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../device-profiles-not-accounts/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Device profiles, not user accounts
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../why-build-it-this-way/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Why build it this way: the marginal cost of a game
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ai-personalities-not-optimizers/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    AI personalities, not optimizers
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../python-dev-learning-react/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Shipping a React client I have not read
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../read-before-you-write/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Read before you write
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../dont-fold-it-in/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Don't fold it in: file the second problem
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../first-runnable-line/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Your first runnable line
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Track B -- Designing the product
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Track B -- Designing the product
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../four-role-websocket-protocol/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Four-role WebSocket protocol
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../design-for-the-flakiest-client/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Design for the flakiest client in the room
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../one-engine-two-information-modes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    One engine, two information modes
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../memory-match-for-pre-readers/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Memory Match for a 5-year-old who can't read yet
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../bluff-without-chat/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    A game built on lying, with no chat panel
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../werewolf-server-as-moderator/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Werewolf without a moderator (and without a chat panel)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../a-fair-die-is-a-product-decision/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    A fair die is a product decision
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../the-equity-panel-is-the-ai/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    The equity panel is the AI
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../byok-advisor-framework/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Bring your own key
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../when-the-algorithm-depends-on-the-game/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    When the algorithm depends on the game
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Track C -- AI-first engineering
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Track C -- AI-first engineering
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ai-first-code-annotations/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Code comments written for the robot, not the human
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ai-first-testing-and-logging/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    The test that knows what it is
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../when-layout-taste-becomes-a-test/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    When layout taste becomes a test
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../annotations-vs-the-literature/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    What the literature got to first (and the parts we made mandatory)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../let-the-library-carry-the-proof/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Let the library carry the proof
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../the-refactor-the-annotations-made-safe/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    The refactor the annotations made safe
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../derive-dont-stamp/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Derive It, Don't Stamp It
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../trimming-the-duplication-an-ai-cannot-see/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Trimming the duplication an AI cannot see
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../log-interplay-and-swimlanes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    The logs already knew the order
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../store-the-moves-not-the-board/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Store the moves, not the board
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../code-risk-trends-over-time/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Watching code risk trend over time, with no metrics datastore
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    
+      
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Track D -- Building with AI
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Track D -- Building with AI
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../from-idea-to-buildable-repo/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    From an idea in a chat window to a repo the robot can build
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Describe the screen, don't draw it (the UI-spec prompt playbook)
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Describe the screen, don't draw it (the UI-spec prompt playbook)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#why-a-playbook-and-not-one-magic-prompt" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Why a playbook and not one magic prompt
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#prompt-1-inventory-the-screens-before-you-design-any-of-them" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Prompt 1: inventory the screens before you design any of them
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#prompt-2-specify-one-screen-at-a-time-including-what-must-not-appear" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Prompt 2: specify one screen at a time, including what must NOT appear
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#prompt-3-ascii-mockups-are-the-design-surface" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Prompt 3: ASCII mockups are the design surface
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#prompt-4-ask-for-variations-then-choose" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Prompt 4: ask for variations, then choose
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#prompt-5-freeze-the-spec-into-a-durable-doc" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Prompt 5: freeze the spec into a durable doc
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#prompt-6-cross-check-against-the-hard-rules" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Prompt 6: cross-check against the hard rules
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#prompt-7-prime-with-a-worked-example-this-is-the-flywheel" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Prompt 7: prime with a worked example -- this is the flywheel
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Prompt 7: prime with a worked example -- this is the flywheel">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#the-worked-example-priming-with-a-real-screen" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The worked example: priming with a real screen
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#the-compounding-example-library" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The compounding example library
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#the-honest-edges" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The honest edges
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../throwaway-html-mockups/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Make it real before you build it (throwaway HTML mockups)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../orchestrated-build-loop/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Tickets in, a game I can play out (the orchestrated build-and-feedback loop)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../the-orchestrator-that-drafts-its-own-backlog/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    The orchestrator that drafts its own backlog
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../from-surprise-to-rule-to-skill/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    From surprise to rule to skill
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7" >
+        
+          
+          <label class="md-nav__link" for="__nav_7" id="__nav_7_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Track E -- The orchestrator evolves
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Track E -- The orchestrator evolves
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../orchestration-lifecycle/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    The orchestration lifecycle: from phase to ticket to retro
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../orchestration-review-guardrails/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Review surfaces and the AI-first guardrails
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../risk-routed-review/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Risk-routed review: spending human attention where it earns its keep
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../spiral-detection-watchdog/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Spiral-detection watchdog
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../mechanical-vs-llm-failure-recovery/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    When a stage fails: what is mechanical and what is the LLM?
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../risk-routed-merge-resolution/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Risk-routed merge resolution: let git handle the boring conflicts
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../how-a-ticket-picks-its-brain/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    How a ticket picks its brain
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../anatomy-of-a-ticket/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Anatomy of a ticket: one contract, one run record, every field
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../meet-tempo/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Meet Tempo: when the orchestrator becomes a Go binary
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../two-rewrites-one-strategy/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Two rewrites, one strategy
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../parity-first/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Parity-first: replacing the system that builds your software
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../orchestrator-as-installable-product/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    The orchestrator leaves home: from welded-in workflow to installable binary
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8" >
+        
+          
+          <label class="md-nav__link" for="__nav_8" id="__nav_8_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Track F -- Forward-looking
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_8_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_8">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Track F -- Forward-looking
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../cfr-for-6max-holdem/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    CFR for 6-max Hold'em: the poker AI this catalog hasn't built yet
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../rulebook-pdf-to-gameengine/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    How cheap can a new game get? The rulebook-PDF-to-engine experiment
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../numeric-risk-dashboards/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    What a numeric risk dashboard would have to be
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../action-log-analytics-and-fairness/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    The action log is an analytics engine waiting to happen
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../testing-an-orchestrator-with-fakes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    How do you test an orchestrator whose job is to call an LLM?
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../sharing-tempo-upstream/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Sharing the orchestrator upstream: template vs. the project that grew it
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../cross-game-compounding-flywheel/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    The cross-game compounding flywheel
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+  <nav class="md-tags" >
+    
+      
+      
+      
+      
+        <span class="md-tag">capability:layout-stability</span>
+      
+    
+      
+      
+      
+      
+        <span class="md-tag">capability:render</span>
+      
+    
+      
+      
+      
+      
+        <span class="md-tag">doc-kind:blog</span>
+      
+    
+  </nav>
+
+
+
+<h1 id="describe-the-screen-dont-draw-it-a-prompt-playbook-for-ui-specs-without-a-design-tool">Describe the screen, don't draw it: a prompt playbook for UI specs without a design tool<a class="headerlink" href="#describe-the-screen-dont-draw-it-a-prompt-playbook-for-ui-specs-without-a-design-tool" title="Permanent link">&para;</a></h1>
+<p>I am a Python and C++ developer. I have built backend services, simulations, and command-line tools, and I have never opened Figma in my life. Yet this project -- a multi-device board game platform -- has a complete, detailed user-interface specification: a management-shell spec full of ASCII mockups, a per-screen breakdown for every screen, a state-by-state transition table, and a frozen layout doc for each game. None of it was drawn in a design tool. All of it was <em>talked into existence</em> with an AI, in words, and then frozen into files.</p>
+<p>This is the second post in a builder's-eye series about building an app with AI. The first, <a href="../from-idea-to-buildable-repo/"><em>From an idea in a chat window to a repo the robot can build</em></a>, is the on-ramp: how a vague idea becomes planning docs in a git repo with a workflow orchestrator wired up. The third, <a href="../orchestrated-build-loop/"><em>The orchestrated build-and-feedback loop</em></a>, covers what shipping through that orchestrator feels like once tickets are flowing. This middle post is the bridge between them: it is the part where a screen you can only describe in a sentence becomes a specification precise enough for the robot to build from.</p>
+<p>The load-bearing idea is one sentence: <strong>you do not need to draw a UI to specify one.</strong> You need to answer the right questions in the right order. And ASCII mockups -- the kind you make out of <code>+ - | =</code> characters -- are a fast, text-native design surface that both you and the AI can edit <em>in words</em>. "Move the join code to the top." "The timer is too prominent." That is the whole interaction. No pixels, no mouse, no learning a tool.</p>
+<p>What follows is the actual method, as a playbook of seven copy-paste prompts. Each one is a stage. You run them roughly in order, looping inside a stage until you are happy, then moving on. They are grounded in how this project's real specs were produced -- I will show you a real screen from the repo, primed into the AI as an example, and edited in plain language.</p>
+<h2 id="why-a-playbook-and-not-one-magic-prompt">Why a playbook and not one magic prompt<a class="headerlink" href="#why-a-playbook-and-not-one-magic-prompt" title="Permanent link">&para;</a></h2>
+<p>The single biggest mistake non-designers make with AI is asking for everything at once: "design me a settings screen." You get back a plausible-looking blob that is wrong in ways you cannot articulate, because you never decided what the screen was <em>for</em>. The fix is to decompose the act of specifying a UI into stages that each answer one question:</p>
+<ol>
+<li><strong>Inventory</strong> -- what are the screens at all?</li>
+<li><strong>Per-screen Q&amp;A</strong> -- what does this one screen do, in every state, and what must it <em>never</em> show?</li>
+<li><strong>ASCII mockup</strong> -- render it as text, then edit it in words.</li>
+<li><strong>Variations</strong> -- when you can't picture it, ask for choices and pick.</li>
+<li><strong>Freeze</strong> -- turn the agreed thing into a durable spec file.</li>
+<li><strong>Constraint cross-check</strong> -- audit it against the hard rules.</li>
+<li><strong>Example-priming</strong> -- seed the whole thing with a spec you already shipped, so the next screen inherits your conventions for free.</li>
+</ol>
+<p>Run them in that order the first time. After that you will skip around. Here is each one.</p>
+<h2 id="prompt-1-inventory-the-screens-before-you-design-any-of-them">Prompt 1: inventory the screens before you design any of them<a class="headerlink" href="#prompt-1-inventory-the-screens-before-you-design-any-of-them" title="Permanent link">&para;</a></h2>
+<p>Before you design a single screen you have to know how many there are. The trap is that "the same screen" often is not -- a TV showing the public game state and a player's phone showing their private hand are two different screens that happen to share a name. This project frames everything by <em>role</em> and <em>device</em> (TABLE on a TV, PLAYER on a phone, REFEREE on a tablet, OBSERVER anywhere, REVIEW post-game), and that framing falls straight out of the first prompt.</p>
+<p>This prompt makes the AI interview <em>you</em>. It refuses to draw anything yet.</p>
+<p>You are helping me specify the user interface for an app, and I am not a
+designer. Do not draw anything yet. First, interview me to build a screen
+inventory.</p>
+<p>Ask me questions one at a time until we have enumerated every distinct
+screen. For each screen, capture exactly three things:
+  1. WHO looks at it (which role / kind of user), and on WHAT device
+     (phone, tablet, TV, laptop).
+  2. The SINGLE most important thing that person does or learns there.
+  3. How they arrive at it and where they go next.</p>
+<p>Rules:
+- One screen is one (role, device, primary-purpose) combination. If two
+  roles look at "the same" screen but see different things or do different
+  things, those are TWO screens, not one.
+- Do not let me describe layout, colors, or components yet. If I start, stop
+  me and bring me back to who / device / purpose.
+- When you think the inventory is complete, play it back as a numbered table
+  with columns: Screen | Who | Device | Primary purpose | Arrives from |
+  Goes to. Then ask me what is missing before we continue.</p>
+<p>Start by asking me what the app is and who uses it.</p>
+<p>The output is a screen inventory table -- the same shape as the screen inventory that lives in this project's management-shell spec. You now have a map. Nothing is designed yet, and that is the point.</p>
+<h2 id="prompt-2-specify-one-screen-at-a-time-including-what-must-not-appear">Prompt 2: specify one screen at a time, including what must NOT appear<a class="headerlink" href="#prompt-2-specify-one-screen-at-a-time-including-what-must-not-appear" title="Permanent link">&para;</a></h2>
+<p>Now you take one row of that inventory and pin it down completely -- still in words, still no drawing. The most important part of this prompt is the last question, and it is the one every "design me a screen" prompt omits: <strong>what must this screen never show?</strong></p>
+<p>That question is where a project's real constraints live. On this platform it is where two hard rules surface. Hidden-information games mean a player's private data must never appear on another player's screen or on the public TV -- the server filters every broadcast by role. And the profile model is deliberately thin: a screen must never ask for an email, a password, a real name, or a photo of a person, because the platform does not have user accounts at all. You do not get those constraints by asking "what goes on this screen." You get them by asking "what must NOT."</p>
+<p>We are now specifying ONE screen from the inventory: <SCREEN NAME>.
+Still no drawing. Interview me until this screen is fully pinned down.</p>
+<p>Walk me through, one question at a time:
+  1. PRIMARY action: the one thing this screen exists to let the user do.
+  2. SECONDARY actions: everything else reachable from here, ranked.
+  3. STATES: describe what the screen shows in each of -- loading, empty
+     (no data yet), error, success / normal, and any in-progress state.
+  4. WHAT MUST NOT APPEAR HERE: list everything that is deliberately absent.
+     Push me hard on this. Ask specifically about: information this role is
+     not allowed to see; data that belongs to another user or another role;
+     controls that would let someone do something the rules forbid; and
+     anything we are choosing NOT to collect or NOT to show at all.</p>
+<p>Treat item 4 as load-bearing, not an afterthought. The things a screen must
+NOT show are as much a part of the spec as the things it must.</p>
+<p>When done, play the whole screen back as a structured spec:
+Primary action / Secondary actions / States (one line each) /
+Must-not-appear. Ask me to confirm before we move on.</p>
+<h2 id="prompt-3-ascii-mockups-are-the-design-surface">Prompt 3: ASCII mockups are the design surface<a class="headerlink" href="#prompt-3-ascii-mockups-are-the-design-surface" title="Permanent link">&para;</a></h2>
+<p>Here is the move that makes this whole method work without a design tool. You have the AI render the agreed spec as an <strong>ASCII mockup</strong> -- a sketch built from <code>+ - | =</code> characters -- and then you correct it in plain language. The mockup is text, so editing it is just talking. You never touch a canvas.</p>
+<p>Take the confirmed spec for <SCREEN NAME> and render it as an ASCII mockup.</p>
+<p>Constraints on the mockup:
+- Plain ASCII only. Use + - | = for borders and boxes. No box-drawing or
+  other non-ASCII characters.
+- It is a layout-and-content sketch, not a pixel design. Show WHERE things
+  sit and WHAT they say, not exact sizes, fonts, or colors.
+- Label regions in plain words (header, primary action, list, footer).
+- Show the NORMAL / success state first. Then show the empty state and the
+  error state as separate small mockups underneath.</p>
+<p>After you render it, stop and wait. I will correct it in plain language --
+for example "move the join code to the top", "the timer is too prominent",
+"the list should be above the buttons". Apply each edit and re-render the
+WHOLE mockup so I can see the result. We iterate in text until I say it is
+right.</p>
+<p>I will show this one in action with a real screen further down, because the before/after is the most convincing part of the whole post.</p>
+<h2 id="prompt-4-ask-for-variations-then-choose">Prompt 4: ask for variations, then choose<a class="headerlink" href="#prompt-4-ask-for-variations-then-choose" title="Permanent link">&para;</a></h2>
+<p>The hardest thing about not being a designer is that you cannot <em>picture</em> the options. You know "list of buttons" is not quite right but you cannot imagine the alternative. The fix is to make the AI imagine them for you. Ask for two or three labeled layout variants of the same spec, each with its trade-offs in prose, and pick. Choosing is far easier than conjuring.</p>
+<p>For <SCREEN NAME>, I cannot picture the options, so show me choices instead.</p>
+<p>Produce 2-3 DIFFERENT ASCII layout variants for the same confirmed spec.
+They must all satisfy the spec (same actions, same states, same
+must-not-appear list) -- only the arrangement differs.</p>
+<p>For each variant:
+- Give it a short label (for example "A: action-first", "B: status-first").
+- Render the ASCII mockup (same ASCII rules as before: + - | = borders).
+- Below it, write 2-3 sentences of trade-offs in plain prose: what this
+  layout is good at, what it costs, and who it suits (which device, which
+  role, novice vs. frequent user).</p>
+<p>Do not recommend one yet. Let me read all of them and pick. After I pick,
+ask me whether I want to graft any element from a variant I did not choose.</p>
+<h2 id="prompt-5-freeze-the-spec-into-a-durable-doc">Prompt 5: freeze the spec into a durable doc<a class="headerlink" href="#prompt-5-freeze-the-spec-into-a-durable-doc" title="Permanent link">&para;</a></h2>
+<p>Everything so far has happened in a chat, and -- per the first post in this series -- a chat is the worst possible home for a decision. The next AI session cannot read it. So the last creative stage converts the agreed mockups into a durable file shaped like this project's real per-game stage specs: each lives at the game docs, with numbered sections, an ASCII mockup per surface, a states list, and notes that record <em>why</em>. (Management-layer screens get a section in the shared management-shell spec instead.) This is the artifact a build ticket will later cite. It is the loop closing back to post A's rule: capture as docs, not memory.</p>
+<p>We have agreed the mockups and behavior for <SCREEN NAME> (and any sibling
+screens we specified). Freeze it into a durable specification document I can
+commit to the repo and hand to a build step later.</p>
+<p>Emit a single Markdown document with this shape:
+- A title and a one-paragraph scope note (what this doc covers, and what it
+  does NOT cover / what it inherits from elsewhere).
+- One numbered section per screen. Each section contains:
+    - The agreed ASCII mockup (normal state), in a fenced code block.
+    - A "States" list: loading / empty / error / success and what each shows.
+    - A "Notes" list: the decisions we made and WHY -- especially anything
+      non-obvious, and anything we deliberately left out.
+    - A "Must not appear" list carried straight from the per-screen spec.
+- A short "Open questions / deferred" section for anything we punted on.</p>
+<p>Write it so a future reader who was NOT in this conversation could build the
+screen from this document alone. Plain ASCII only, including the mockups.</p>
+<h2 id="prompt-6-cross-check-against-the-hard-rules">Prompt 6: cross-check against the hard rules<a class="headerlink" href="#prompt-6-cross-check-against-the-hard-rules" title="Permanent link">&para;</a></h2>
+<p>A frozen spec can still quietly violate a project rule -- a stray "email" field, a private value leaking onto a public screen, a panel that appears only when some counter crosses a threshold. So before the spec is done, audit it. This prompt encodes three of this project's real, enforced rules:</p>
+<ul>
+<li><strong>Identity is device-only.</strong> The allowed identity fields are screen name, two-letter initials, a preferred color, and a preset avatar -- and nothing else. No accounts, no chat, no demographic fields. (CLAUDE.md load-bearing rule 10, "Profiles are DEVICE-only. No personhood.")</li>
+<li><strong>Role-based view filtering runs on every broadcast.</strong> Private data for one role must never reach another role's screen; every hidden-information feature needs at least one thing the non-privileged role must not see. (CLAUDE.md rule 4.)</li>
+<li><strong>Layout is stable across game state.</strong> A region's position and presence depend only on role and device, never on an in-game event or a changing data value. (CLAUDE.md rule 13, "Game-board stage layouts are stable across game state.")</li>
+</ul>
+<p>Adapt the rule list to your own project; the <em>shape</em> of the audit is the reusable part.</p>
+<p>Audit the frozen spec for <SCREEN NAME(S)> against these hard project rules.
+For each rule, answer either "OK -- here is why" or "VIOLATION -- here is the
+exact line and the fix". Do not be polite; the point is to catch leaks.</p>
+<p>Rules:
+1. Identity is device-only. The only identity fields that may appear are
+   screen name, short initials, a preferred color, and a preset avatar.
+   FLAG any field that implies a person account: email, password, real name,
+   photo of a person, age, location, pronouns, friends, chat, or DMs.
+2. Each viewer sees only what their role is allowed to see. If a screen has
+   multiple roles, confirm that private data for one role cannot appear on
+   another role's version of the screen. For any hidden-information feature,
+   confirm there is at least one thing the non-privileged role must NOT see.
+3. Layout is stable. The position and presence of regions must depend only
+   on role and device, never on a changing data value or an in-app event
+   mid-session. FLAG any region that appears, disappears, or moves because of
+   an in-game event or a data value.</p>
+<p>Report as a table: Rule | Verdict | Evidence (quoted line) | Fix if needed.</p>
+<h2 id="prompt-7-prime-with-a-worked-example-this-is-the-flywheel">Prompt 7: prime with a worked example -- this is the flywheel<a class="headerlink" href="#prompt-7-prime-with-a-worked-example-this-is-the-flywheel" title="Permanent link">&para;</a></h2>
+<p>The first six prompts work from a blank slate. The seventh is the one that compounds. Once you have frozen <em>one</em> spec, you never start cold again: you paste an existing, shipped spec into the AI as a few-shot example and tell it to produce the next screen <em>in the same shape</em>. The new spec inherits the section layout, the ASCII conventions, the states-and-notes structure, and the privacy rules of the old one -- for free, without you re-explaining any of it.</p>
+<p>Here is a frozen UI spec from a screen we already shipped. Study its shape,
+conventions, and level of detail. Then we will specify a NEW screen the same
+way, inheriting these conventions instead of inventing new ones.</p>
+<p><PASTE the full contents of an existing spec here -- for example
+an existing gameplay UI spec. Include the section shape, the ASCII
+mockup style, the States and Notes lists, and the "what must not appear"
+rule.></p>
+<p>Confirm back to me, in a few bullets:
+- The section / heading shape this spec uses.
+- The ASCII conventions (which border characters, how regions are labelled).
+- How it records states, notes, and must-not-appear constraints.
+- The privacy / role / layout rules it appears to follow.</p>
+<p>Then say: "Ready. Tell me the new screen and we will produce the same shape."
+We then re-run the inventory, per-screen, mockup, and freeze prompts -- but
+every output must match the conventions of the example above, so the new
+spec joins the same library and reads like a sibling of it.</p>
+<h3 id="the-worked-example-priming-with-a-real-screen">The worked example: priming with a real screen<a class="headerlink" href="#the-worked-example-priming-with-a-real-screen" title="Permanent link">&para;</a></h3>
+<p>Here is the project's actual HOME / lobby screen, lifted (lightly trimmed) from the management-shell spec at the overview docs (Section 6.1). This is exactly what a frozen ASCII mockup looks like in the repo:</p>
+<p>+--------------------------------------------------+
+|  DXXX        [ Display ]            [Avatar]     |  &lt;- sticky top bar
++--------------------------------------------------+
+|  ADD                                             |
+|  [Device code]  [Player] [Observer] [Referee]    |
++--------------------------------------------------+
+|  THIS DEVICE                                     |
+|  (o) Player   ( ) Observer   ( ) Referee  [Leave]|
++--------------------------------------------------+
+|  GAME                                            |
+|  Game type   [Memory Match v]   (host-only edit) |
+|  Preset:  (o) Casual  ( ) Competitive  ( ) Tour. |
+|  Provider: [Claude][OpenAI][Ollama][Local]       |
+|  LLM key:  [........]   (claude/openai only)     |
+|  Model:    [Haiku 4.5            v]               |
+|  [ Start ]   &lt;- if Host or no lobby yet          |
++--------------------------------------------------+
+|  LOBBY                                           |
+|  Players:    [Alex *][Sam X]                     |
+|  Observers:  [Jordan X]                          |
+|  Referees:   [--]                                |
++--------------------------------------------------+
+|  SHARE                                           |
+|  Player    Observer    Referee                   |
+|  [QR ]     [QR ]       [QR ]    [Link] x 3       |
++--------------------------------------------------+</p>
+<p>When you paste a spec like this into Prompt 7, the AI absorbs the conventions without being told them: borders are <code>+ - |</code>, each section is an ALL-CAPS label, controls are <code>[bracketed]</code>, the active radio is <code>(o)</code>, annotations hang off <code>&lt;-</code> arrows. Ask it to spec a brand-new screen and it will hand you back something that looks like it belongs in the same file.</p>
+<p>And here is the plain-language editing loop (Prompt 3) on this exact screen. The real spec settled on the order above -- but suppose you were specifying it and wanted people to be able to join <em>before</em> they fiddle with game settings. You would just say:</p>
+<blockquote>
+<p>Move the SHARE section up to just under the top bar, so people can scan a QR and join before anyone touches the GAME settings.</p>
+</blockquote>
+<p>The AI re-renders the whole thing with SHARE relocated:</p>
+<p>+--------------------------------------------------+
+|  DXXX        [ Display ]            [Avatar]     |  &lt;- sticky top bar
++--------------------------------------------------+
+|  SHARE                                           |  &lt;- moved up
+|  Player    Observer    Referee                   |
+|  [QR ]     [QR ]       [QR ]    [Link] x 3       |
++--------------------------------------------------+
+|  ADD                                             |
+|  [Device code]  [Player] [Observer] [Referee]    |
++--------------------------------------------------+
+|  GAME                                            |
+|  Game type   [Memory Match v]   (host-only edit) |
+|  ... (unchanged)                                 |
++--------------------------------------------------+</p>
+<p>That is the entire interaction model. No tool, no canvas, no dragging. You said a sentence; the design changed. You can do this for an hour and converge on a layout you are happy with, and every step of it is plain text you could paste into a commit.</p>
+<h2 id="the-compounding-example-library">The compounding example library<a class="headerlink" href="#the-compounding-example-library" title="Permanent link">&para;</a></h2>
+<p>Here is the thesis the whole playbook is built around, and the reason the seventh prompt matters more than the other six: <strong>a good prompt plus an ever-growing set of worked examples makes each new screen faster to spec than the last.</strong> The prompt is a constant. The example library is what compounds.</p>
+<p>This project already runs on that flywheel. Every shipped game has a frozen UI spec under the game docs, with a companion the game docs that points at the rendered mockups. Memory Match and Bluff are the two current worked examples (their engines and stages live under the relevant engine module and the private source tree). When I specify the next game, I do not start from a blank prompt -- I prime the AI with the game docs and say "do the same for my game." The new game inherits Memory Match's section shape, its ASCII conventions, its states-and-notes rigor, and its privacy posture without my re-deriving any of it.</p>
+<p>And the loop closes: the spec-freeze step (Prompt 5) is what <em>feeds</em> the library. Each frozen spec becomes the next game's few-shot example. Game three is easier to spec than game two, which was easier than game one. That is not a nice-to-have side effect; it is the stated point of doing it this way, and it is why this post sits in the middle of a series whose capstone, <a href="../cross-game-compounding-flywheel/"><em>The cross-game compounding flywheel</em></a>, is entirely about that compounding.</p>
+<h2 id="the-honest-edges">The honest edges<a class="headerlink" href="#the-honest-edges" title="Permanent link">&para;</a></h2>
+<p>I would be selling you something if I stopped there, so here is what ASCII mockups genuinely cannot do.</p>
+<p><strong>They cannot express color.</strong> The HOME mockup above shows where the active-role ring goes, but "red for the defender, blue for the aggressor" is a note in prose beside the mockup, not something the <code>+ - |</code> characters can carry.</p>
+<p><strong>They cannot express motion.</strong> A card flip, a match pulse, a turn-passing animation -- all of that is timing and easing, and ASCII is a still frame. This project's specs describe motion in words and timing budgets, separately from the layout sketch.</p>
+<p><strong>They cannot express exact spacing or responsive reflow.</strong> ASCII gives you order and grouping -- this is above that, these three sit together -- but not pixel spacing, not breakpoints, not how the layout reflows from a 10-inch tablet down to a phone. The mockup is a layout-and-content contract, not a pixel spec, and you should say so out loud in the frozen doc so nobody mistakes it for one.</p>
+<p>There is one more honest edge that is specific to this project and worth naming, because the prompts can surface it but not fully capture it. This platform has a hard rule that a game board's layout stays <strong>stable across game state</strong> -- regions do not jump around as the game plays (CLAUDE.md rule 13). A single ASCII mockup is a snapshot; it cannot, by itself, prove the layout is stable across a state transition. The constraint cross-check prompt (Prompt 6) can <em>flag</em> a region whose presence depends on a data value, but verifying genuine stability is a job for the build and its tests, not for the sketch. The prompt names the rule; the pixels keep it.</p>
+<p>None of these are reasons to reach for a design tool. They are the edges of the medium. Inside those edges -- which is most of the work of specifying a UI -- describing the screen in words and ASCII is faster, more editable, and far more AI-legible than anything you would draw. You answer the right questions in the right order, you correct the sketch in plain language, you freeze it into a file, and you hand that file to the build loop.</p>
+<p>Which is exactly where the next post picks up: once the spec is frozen and committed, what does it feel like to watch the orchestrator turn it into shipped code? That is <a href="../orchestrated-build-loop/"><em>The orchestrated build-and-feedback loop</em></a>. If you have not yet seen how the planning docs and the repo get set up in the first place, start with <a href="../from-idea-to-buildable-repo/"><em>From an idea in a chat window to a repo the robot can build</em></a>. And if you are a backend developer eyeing all this with suspicion about whether you can even drive UI work you cannot write, the closest neighbor is <a href="../python-dev-learning-react/"><em>Shipping a React client I have not read</em></a> -- the honest boundary behind doing exactly that.</p>
+<p>You do not need to draw your UI. You need to describe it well, and let the example library do the rest.</p>
+<hr />
+
+
+
+
+
+
+
+  
+  
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+      <div class="md-progress" data-md-component="progress" role="progressbar"></div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": ["navigation.instant", "navigation.instant.prefetch", "navigation.instant.progress", "navigation.sections", "navigation.indexes", "navigation.prune", "navigation.tracking", "navigation.top", "toc.integrate", "search.suggest", "search.highlight", "search.share", "content.code.copy", "toc.follow"], "search": "../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+    
+  </body>
+</html>

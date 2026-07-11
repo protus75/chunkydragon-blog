@@ -1,0 +1,2660 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Public blog articles from the Chunky Dragon board-game project.">
+      
+      
+      
+        <link rel="canonical" href="https://blog.chunkydragon.com/orchestration-lifecycle/">
+      
+      
+        <link rel="prev" href="../from-surprise-to-rule-to-skill/">
+      
+      
+        <link rel="next" href="../orchestration-review-guardrails/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
+    
+    
+      
+        <title>The orchestration lifecycle: from phase to ticket to retro - Chunky Dragon Blog</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.484c7ddc.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="amber">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#the-orchestration-lifecycle-from-phase-to-ticket-to-retro" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="Chunky Dragon Blog" class="md-header__button md-logo" aria-label="Chunky Dragon Blog" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Chunky Dragon Blog
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              The orchestration lifecycle: from phase to ticket to retro
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="amber"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="amber"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+          <a href="javascript:void(0)" class="md-search__icon md-icon" title="Share" aria-label="Share" data-clipboard data-clipboard-text="" data-md-component="search-share" tabindex="-1">
+            
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.15c-.05.21-.08.43-.08.66 0 1.61 1.31 2.91 2.92 2.91s2.92-1.3 2.92-2.91A2.92 2.92 0 0 0 18 16.08"/></svg>
+          </a>
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+  
+
+<nav class="md-nav md-nav--primary md-nav--integrated" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="Chunky Dragon Blog" class="md-nav__button md-logo" aria-label="Chunky Dragon Blog" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    Chunky Dragon Blog
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Blog drafts
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ai-fluency-trail-guide/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    The AI fluency trail guide
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Track A -- The mindset
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Track A -- The mindset
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../device-profiles-not-accounts/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Device profiles, not user accounts
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../why-build-it-this-way/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Why build it this way: the marginal cost of a game
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ai-personalities-not-optimizers/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    AI personalities, not optimizers
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../python-dev-learning-react/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Shipping a React client I have not read
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../read-before-you-write/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Read before you write
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../dont-fold-it-in/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Don't fold it in: file the second problem
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../first-runnable-line/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Your first runnable line
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Track B -- Designing the product
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Track B -- Designing the product
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../four-role-websocket-protocol/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Four-role WebSocket protocol
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../design-for-the-flakiest-client/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Design for the flakiest client in the room
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../one-engine-two-information-modes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    One engine, two information modes
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../memory-match-for-pre-readers/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Memory Match for a 5-year-old who can't read yet
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../bluff-without-chat/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    A game built on lying, with no chat panel
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../werewolf-server-as-moderator/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Werewolf without a moderator (and without a chat panel)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../a-fair-die-is-a-product-decision/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    A fair die is a product decision
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../the-equity-panel-is-the-ai/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    The equity panel is the AI
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../byok-advisor-framework/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Bring your own key
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../when-the-algorithm-depends-on-the-game/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    When the algorithm depends on the game
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Track C -- AI-first engineering
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Track C -- AI-first engineering
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ai-first-code-annotations/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Code comments written for the robot, not the human
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ai-first-testing-and-logging/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    The test that knows what it is
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../when-layout-taste-becomes-a-test/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    When layout taste becomes a test
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../annotations-vs-the-literature/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    What the literature got to first (and the parts we made mandatory)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../let-the-library-carry-the-proof/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Let the library carry the proof
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../the-refactor-the-annotations-made-safe/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    The refactor the annotations made safe
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../derive-dont-stamp/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Derive It, Don't Stamp It
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../trimming-the-duplication-an-ai-cannot-see/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Trimming the duplication an AI cannot see
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../log-interplay-and-swimlanes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    The logs already knew the order
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../store-the-moves-not-the-board/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Store the moves, not the board
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../code-risk-trends-over-time/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Watching code risk trend over time, with no metrics datastore
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Track D -- Building with AI
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Track D -- Building with AI
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../from-idea-to-buildable-repo/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    From an idea in a chat window to a repo the robot can build
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ui-specs-without-design-tools/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Describe the screen, don't draw it (the UI-spec prompt playbook)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../throwaway-html-mockups/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Make it real before you build it (throwaway HTML mockups)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../orchestrated-build-loop/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Tickets in, a game I can play out (the orchestrated build-and-feedback loop)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../the-orchestrator-that-drafts-its-own-backlog/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    The orchestrator that drafts its own backlog
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../from-surprise-to-rule-to-skill/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    From surprise to rule to skill
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    
+      
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_7" id="__nav_7_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Track E -- The orchestrator evolves
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_7">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Track E -- The orchestrator evolves
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    The orchestration lifecycle: from phase to ticket to retro
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    The orchestration lifecycle: from phase to ticket to retro
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#a-phase-decomposes-into-tickets-and-the-decomposition-is-the-design-work" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        A phase decomposes into tickets, and the decomposition is the design work
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#the-dependency-graph-is-what-makes-parallel-ai-work-safe" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The dependency graph is what makes parallel AI work safe
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#one-ticket-runs-through-stages-not-a-single-shot" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        One ticket runs through stages, not a single shot
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#why-a-deterministic-script-not-one-big-llm-agent" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Why a deterministic script, not one big LLM agent
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Why a deterministic script, not one big LLM agent">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#reading-the-two-charts-the-legend" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Reading the two charts: the legend
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#chart-1-the-whole-flow-ticket-start-to-pr-merge" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Chart 1 -- the whole flow, ticket start to PR merge
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#chart-2-zoomed-in-on-the-stages-that-branch" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Chart 2 -- zoomed in on the stages that branch
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#run-records-are-the-memory" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Run records are the memory
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#the-retro-closes-the-loop" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The retro closes the loop
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#the-honest-edges" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The honest edges
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../orchestration-review-guardrails/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Review surfaces and the AI-first guardrails
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../risk-routed-review/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Risk-routed review: spending human attention where it earns its keep
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../spiral-detection-watchdog/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Spiral-detection watchdog
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../mechanical-vs-llm-failure-recovery/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    When a stage fails: what is mechanical and what is the LLM?
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../risk-routed-merge-resolution/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Risk-routed merge resolution: let git handle the boring conflicts
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../how-a-ticket-picks-its-brain/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    How a ticket picks its brain
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../anatomy-of-a-ticket/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Anatomy of a ticket: one contract, one run record, every field
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../meet-tempo/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Meet Tempo: when the orchestrator becomes a Go binary
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../two-rewrites-one-strategy/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Two rewrites, one strategy
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../parity-first/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Parity-first: replacing the system that builds your software
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../orchestrator-as-installable-product/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    The orchestrator leaves home: from welded-in workflow to installable binary
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8" >
+        
+          
+          <label class="md-nav__link" for="__nav_8" id="__nav_8_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Track F -- Forward-looking
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_8_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_8">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Track F -- Forward-looking
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../cfr-for-6max-holdem/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    CFR for 6-max Hold'em: the poker AI this catalog hasn't built yet
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../rulebook-pdf-to-gameengine/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    How cheap can a new game get? The rulebook-PDF-to-engine experiment
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../numeric-risk-dashboards/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    What a numeric risk dashboard would have to be
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../action-log-analytics-and-fairness/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    The action log is an analytics engine waiting to happen
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../testing-an-orchestrator-with-fakes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    How do you test an orchestrator whose job is to call an LLM?
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../sharing-tempo-upstream/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Sharing the orchestrator upstream: template vs. the project that grew it
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../cross-game-compounding-flywheel/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    The cross-game compounding flywheel
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+  <nav class="md-tags" >
+    
+      
+      
+      
+      
+        <span class="md-tag">doc-kind:blog</span>
+      
+    
+  </nav>
+
+
+
+<h1 id="the-orchestration-lifecycle-from-phase-to-ticket-to-retro">The orchestration lifecycle: from phase to ticket to retro<a class="headerlink" href="#the-orchestration-lifecycle-from-phase-to-ticket-to-retro" title="Permanent link">&para;</a></h1>
+<p>If you have read the builder's-eye post in this series -- <a href="../orchestrated-build-loop/"><em>Tickets in, a game I can play out</em></a> -- you have the user's view of my AI build loop: a feature becomes a ticket, the orchestrator hands back reviewed code, I run the real app and play it, and what I notice becomes the next ticket. That post deliberately stopped at the surface. It said "there are review gates" and "there are run records" and refused to open either box, because the whole point was that you do not need to open them to <em>use</em> the loop.</p>
+<p>This post opens one of the boxes. Not the review gates -- those have their own companion post, <a href="../orchestration-review-guardrails/"><em>Review surfaces and the AI-first guardrails</em></a>, and I am going to keep my hands off them here so the two posts read as a pair instead of two overlapping essays. This post is about the other box: the <strong>lifecycle</strong>. How a phase of work decomposes into tickets, how a dependency graph schedules those tickets so parallel agents do not corrupt each other's merges, how a single ticket runs through its stages, and how the whole thing closes the loop with a retrospective that feeds lessons back into the system.</p>
+<p>I want to be precise about the thesis up front, because it is easy to mistake this for a post about productivity. It is not. The lifecycle I am about to describe is <strong>governance</strong>, not autonomy. Every part of it exists to make an autonomous run <em>debuggable by a human after the fact</em>. That framing is the load-bearing idea, and it is worth holding onto as the pieces accumulate.</p>
+<h2 id="a-phase-decomposes-into-tickets-and-the-decomposition-is-the-design-work">A phase decomposes into tickets, and the decomposition is the design work<a class="headerlink" href="#a-phase-decomposes-into-tickets-and-the-decomposition-is-the-design-work" title="Permanent link">&para;</a></h2>
+<p>The unit of planning is a <strong>phase</strong> -- a chunk of the overview docs build plan, like "the shell slices" or "the Memory Match proof-of-rebuild." A phase is too big to hand to an agent. The first real act of engineering is cutting it into tickets.</p>
+<p>A ticket is not a prompt. This is the distinction the whole system is built on. A prompt is a wish typed into a chat box; a ticket is a <strong>contract</strong>. The template at the workflow docs enumerates what that contract carries, and every field earns its place by removing a specific failure mode:</p>
+<ul>
+<li><strong>A goal and a "why."</strong> Not so the agent has nice prose to read, but so it can make judgment calls when the spec turns out to be ambiguous mid-run -- which it always does.</li>
+<li><strong>Scope in and scope out.</strong> The single most important field for autonomous work, because scope creep is the number-one way an unsupervised agent goes wrong. "What this change must <em>not</em> touch" is as load-bearing as what it must.</li>
+<li><strong>A <code>## Touches</code> block</strong> -- machine-readable path prefixes the ticket is allowed to edit. This is not just documentation; the scheduler reads it (more on that in a moment).</li>
+<li><strong>Acceptance criteria</strong> an agent can literally tick through, concrete enough that both the agent and I can tell whether each one was met.</li>
+<li><strong>Verification commands</strong> -- the exact strings the agent runs to check its own work instead of asking me. As the authoring guide (the ticket-authoring contract) puts it: autonomy lives in this field.</li>
+<li><strong>A "definition of rejected"</strong> that tells the agent when to <em>stop</em> -- when to declare the premise wrong and bail, rather than churn for hours down a dead end.</li>
+</ul>
+<p>Writing this contract is the skilled part. The authoring guide spends most of its length on one question that has nothing to do with code: <em>is this one ticket or several?</em> Its rule is that independent pieces -- disjoint <code>## Touches</code>, no shared output -- get their own ticket each, because the moment one agent is editing backend logic and socket code and CSS in a single undifferentiated pass, it cross-wires them, and one bad piece sinks the whole PR even when the rest was correct. "Multi-system is a split signal, not a phasing signal" is the line I keep coming back to. The decomposition <em>is</em> the design.</p>
+<p>The agent never sees a phase. It sees one ticket, in a fresh context, with a bounded scope. That is the first governance move: the work is cut down to something a single context can hold and a single review can judge.</p>
+<h2 id="the-dependency-graph-is-what-makes-parallel-ai-work-safe">The dependency graph is what makes parallel AI work safe<a class="headerlink" href="#the-dependency-graph-is-what-makes-parallel-ai-work-safe" title="Permanent link">&para;</a></h2>
+<p>Once a phase is a set of tickets, the question becomes: which can run at the same time, and which must wait? Get this wrong and two agents edit overlapping files in parallel clones, both branches go green on their own, and the <em>second</em> merge silently corrupts the first one's work. There is no test that catches "these two correct changes are incompatible" -- by the time you find out, it is a merge already on the primary branch.</p>
+<p>Two fields encode the answer. <code>## Depends on</code> lists the concrete predecessor tickets whose merged output a ticket consumes -- a helper, a fixture format, a logging event, a schema, a doc contract. Only true foundations, the ones that can run against the primary branch with no sibling merged, are allowed to say <code>- none</code>. And <code>## Touches</code>, the path scope from above, feeds a planner that refuses to put two tickets with overlapping paths in the same parallel bucket.</p>
+<p>The crucial part is the project's stated stance when the answer is unclear. From the authoring guide, almost verbatim:</p>
+<blockquote>
+<p>When in doubt, serialize over parallelize. A needless dependency costs a little wall-clock; a missed collision corrupts a merge and routes to human triage with no retry. The asymmetry always favors serializing.</p>
+</blockquote>
+<p>That asymmetry is the single most important idea for anyone running more than one agent at once, so it is worth sitting with. The two failure modes are not symmetric in cost. If I serialize two tickets that could <em>actually</em> have run in parallel, I lose some minutes of wall-clock -- annoying, fully recoverable, invisible by tomorrow. If I parallelize two tickets that <em>actually</em> collide, I get a corrupted merge that no gate detects, that costs an entire run's work to unwind, and that I might not notice until three tickets later. One mistake is cheap and reversible; the other is expensive and silent. When the downside is that lopsided, "I think these probably don't collide" is not good enough. "Probably" is doubt, and doubt serializes.</p>
+<p>This is the same shape as the no-auto-kill decision in the <a href="../spiral-detection-watchdog/">spiral-detection post</a>: when two failure modes have wildly asymmetric costs, you design for the expensive one even though it makes the cheap case slower. Conservative serialization leaves parallelism on the table on purpose. It is a deliberate trade of throughput for safety, and it is the right trade precisely because the unsafe failure is the one you cannot cheaply recover from.</p>
+<h2 id="one-ticket-runs-through-stages-not-a-single-shot">One ticket runs through stages, not a single shot<a class="headerlink" href="#one-ticket-runs-through-stages-not-a-single-shot" title="Permanent link">&para;</a></h2>
+<p>A ticket does not get "executed" in one agent call. It moves through a small state machine of <strong>stages</strong>, and the boundaries between them are not bureaucratic -- each boundary is a fresh agent context with a single job, which is what keeps any one context from conflating jobs that should be kept apart.</p>
+<p>The lifecycle, documented in the workflow docs, runs roughly: AUTHORED (the ticket file exists on the primary branch, no run record yet) -&gt; RUNNING (a throwaway worker clone is spawned and an agent is implementing) -&gt; IMPLEMENTED (branch pushed, run record written, no PR) -&gt; REVIEWED -&gt; READY -&gt; PR OPEN -&gt; MERGED -&gt; RETIRED (clone gone, branch deleted, ticket file stays on the primary branch as the permanent record of what was asked).</p>
+<p>The dispatcher that drives these transitions is a single script, the orchestrator dispatcher, with one verb per stage -- <code>ticket</code>, <code>phase</code>, <code>review</code>, <code>ship</code>, <code>status</code>, and a handful of others. Each stage is its own executable (you can see them enumerated in the workflow docs): <code>implement</code> clones the project, runs the execution agent under a watchdog, captures the run record, and pushes the branch; <code>review</code> runs the preflight checks and the surface reviews (the box this post is <em>not</em> opening); <code>ship</code> opens the PR; <code>merge</code> acquires a cross-ticket mutex, waits for green CI, and squash-merges; <code>cleanup</code> deletes the worker clone.</p>
+<p>Two design choices in here are worth calling out because they are the governance, not just the plumbing.</p>
+<p>First, the work happens in a <strong>disposable clone</strong>, not a long-lived checkout. The clone is a throwaway workstation; GitHub is the single source of truth. The implementing agent is explicitly forbidden from <code>git pull</code>, <code>git rebase</code>, <code>git stash</code>, or touching remotes -- the clone is brand new and already current, so there is nothing to sync, and every one of those commands is a way to corrupt state instead. One branch, one ticket, one PR, then the clone is destroyed.</p>
+<p>Second, every stage writes its progress to a <code>.state/</code> run record that the orchestrator reads. The stage contract is that each stage advances the state <em>first</em>, does its work, then exits zero or non-zero -- so at any moment the orchestrator can answer "where is this run, and is it still alive?" from a file on disk. That is what lets a watchdog supervise a run it did not personally launch, and it is what the <a href="../spiral-detection-watchdog/">spiral detector</a> reads when it decides whether an agent is making progress or just spinning. The stages are small and the state is external on purpose: a long single-shot agent call is a black box, and a black box is not debuggable.</p>
+<h2 id="why-a-deterministic-script-not-one-big-llm-agent">Why a deterministic script, not one big LLM agent<a class="headerlink" href="#why-a-deterministic-script-not-one-big-llm-agent" title="Permanent link">&para;</a></h2>
+<p>The obvious-seeming alternative to all of this is a single capable LLM agent that you hand the phase to and let it spawn sub-agents -- one to implement, one to review, one to open the PR -- coordinating them itself. It is the shape most "autonomous developer" demos take, and it is the single most common question this architecture provokes: <em>why isn't the orchestrator just an agent?</em></p>
+<p>The answer is that the control spine is deliberately <strong>not</strong> an LLM. The <strong>dispatcher</strong> (the orchestrator dispatcher) and the <strong>stage scripts</strong> under the workflow scripts are plain, deterministic bash. They own everything that has to be exactly repeatable: the control flow between stages, the lifecycle state transitions, the disposable-clone lifecycle, the cross-ticket locks and the merge mutex, and the advance-state-first stage contract from the previous section. None of that is delegated to a model. A model is asked to do exactly four things, and nothing else.</p>
+<p><strong>LLM agents are invoked only at bounded points, each in a fresh single-job context.</strong> Reading straight down the "External commands" rows of the workflow docs, there are exactly four agent roles in the happy path:</p>
+<ul>
+<li>The <strong>implement</strong> stage runs the <em>execution-role</em> agent -- it writes the code. (Everything else in that stage -- clone, autofix, commit, push -- is bash.)</li>
+<li>The <strong>review</strong> stage runs the <em>review-role</em> agent (plus an optional lint-fix-loop agent) -- it applies fix-in-place and writes findings. The preflight lint/test wall around it is bash.</li>
+<li>The <strong>ship</strong> stage runs the <em>ship-role</em> agent -- it crafts the PR title and body from the run record. The <code>gh pr create</code> call itself is bash.</li>
+<li>The <strong>merge</strong> stage runs the <em>merge-readiness</em> agent -- it gates the merge by judging whether CI is actually green. Acquiring the mutex and the <code>gh pr merge --squash</code> are bash.</li>
+</ul>
+<p>That is the whole list. Stages that look like they "must" involve intelligence do not: <code>cleanup</code> is an <code>rm -rf</code> of the worker clone via <code>lib-cleanup.sh</code>, no agent; the stage-to-stage transitions are a bash loop, no agent; the dependency scheduling is a planner reading <code>## Touches</code> strings, no agent. An LLM is invited in for a bounded act of authorship, then the deterministic machinery takes the result and moves on.</p>
+<p>Why draw the line there instead of letting one agent run the show? Every reason is the same governance idea from the top of this post -- <em>make an autonomous run debuggable by a human after the fact</em> -- applied to control flow:</p>
+<ul>
+<li><strong>Determinism and auditability.</strong> A bash dispatcher does the same thing every time, and every transition it makes is a line in a script you can read. "Why did the run go from review to ship?" has a code answer, not a vibes answer. An agent orchestrating itself gives you a transcript, not a control-flow guarantee.</li>
+<li><strong>State lives on disk, so restart is idempotent and resumable.</strong> Because the spine advances a <code>.state/</code> record <em>before</em> doing the work, a run can be killed and resumed, and a watchdog can supervise a run <em>it did not launch</em> -- it just reads the file. An agent holding the orchestration state in its own context is a black box: kill it and the state dies with it.</li>
+<li><strong>A per-stage audit boundary.</strong> Each stage is a fresh context with one job, so a failure is localized to a stage and a run record, not smeared across one long opaque session. The boundary is where the audit trail attaches.</li>
+<li><strong>No recursive, opaque autonomy.</strong> "An agent that spawns agents" has no natural floor and no external place to stand and watch it. The cost asymmetry that governs the rest of this system -- a cheap recoverable mistake versus an expensive silent one -- argues for putting the irreversible decisions (what merges, what gets deleted, what runs next) in code you can read, and reserving the model for the reversible, reviewable act of writing a diff.</li>
+</ul>
+<p>The short version: the script is in charge precisely <em>because</em> it is dumb and legible, and the model is on a leash precisely <em>because</em> it is powerful and opaque. The orchestrator is not an agent; it is the harness an agent runs inside.</p>
+<h3 id="reading-the-two-charts-the-legend">Reading the two charts: the legend<a class="headerlink" href="#reading-the-two-charts-the-legend" title="Permanent link">&para;</a></h3>
+<p>The two flowcharts below use one consistent visual convention:</p>
+<ul>
+<li><strong>Plain rectangles are deterministic-script steps</strong> -- bash in the dispatcher or a stage script. No model is involved.</li>
+<li><strong>Stadium-shaped, dashed-outline nodes (the <code>agent</code> class) are LLM-agent steps</strong> -- the four bounded invocations named above.</li>
+</ul>
+<p>Every node is one or the other. If you want the one-glance takeaway from this whole post, it is the ratio of rectangles to stadiums in these charts.</p>
+<h3 id="chart-1-the-whole-flow-ticket-start-to-pr-merge">Chart 1 -- the whole flow, ticket start to PR merge<a class="headerlink" href="#chart-1-the-whole-flow-ticket-start-to-pr-merge" title="Permanent link">&para;</a></h3>
+<p>The happy path is the spine (top to bottom); the dotted edges are the load-bearing error cases. Stage names and lifecycle states are annotated on each node to match <code>STAGES.md</code> and <code>TICKET_LIFECYCLE.md</code>.</p>
+<p>```mermaid
+flowchart TD
+    A[draft stage: dispatcher authors ticket files<br/>state: AUTHORED] --&gt; B[implement stage: clone project + spawn under watchdog<br/>state: RUNNING]
+    B --&gt; AG1([implement agent: writes the code]):::agent
+    AG1 --&gt; C[implement stage: autofix + commit + push branch<br/>state: IMPLEMENTED]
+    C --&gt; D[review stage: run preflight lint/test]
+    D --&gt; AG2([review agent: fix-in-place + findings]):::agent
+    AG2 --&gt; E[review stage: commit findings<br/>state: REVIEWED]
+    E --&gt; F[followup: escalations cleared<br/>state: READY]
+    F --&gt; AG3([ship agent: crafts PR title/body]):::agent
+    AG3 --&gt; G[ship stage: gh pr create<br/>state: PR OPEN]
+    G --&gt; AG4([merge-readiness agent: judges CI green]):::agent
+    AG4 --&gt; H[merge stage: acquire mutex + gh pr merge --squash<br/>state: MERGED]
+    H --&gt; I[cleanup stage: rm -rf worker clone<br/>state: RETIRED]</p>
+<div class="language-text highlight"><pre><span></span><code>B -. implement agent timeout .-&gt; DIAG[diagnose stage]
+DIAG -. retry within cap .-&gt; B
+DIAG -. escalation .-&gt; HT[human triage]
+D -. review preflight failure .-&gt; NH[NEEDS-HUMAN]
+NH --&gt; HT
+H -. merge conflict / CI not green .-&gt; HT
+
+classDef agent fill:#ffffff,stroke:#333,stroke-width:2px,stroke-dasharray: 5 5;
+</code></pre></div>
+<p>Notice the shape of it: of the nodes on the spine, only four are stadiums. The agent writes, reviews, titles, and judges-CI; the script does everything between and around those four acts, including every transition and every irreversible operation.</p>
+<h3 id="chart-2-zoomed-in-on-the-stages-that-branch">Chart 2 -- zoomed in on the stages that branch<a class="headerlink" href="#chart-2-zoomed-in-on-the-stages-that-branch" title="Permanent link">&para;</a></h3>
+<p>Most stages are a straight line. Three have real decision logic worth opening up -- <code>implement</code>, <code>review</code>, and <code>merge</code> -- and the same legend applies: rectangles are bash, stadiums are agents.</p>
+<p>```mermaid
+flowchart TD
+    subgraph IMPLEMENT
+        I1[clone project + advance state] --&gt; I2([implement agent under watchdog]):::agent
+        I2 --&gt; I3{autofix format + lint --fix ok?}
+        I3 -- yes --&gt; I4[fold autofix into commit + push]
+        I3 -- no --&gt; I5[fail: implement-autofix-failed]
+    end
+    subgraph REVIEW
+        R1[run preflight: lint / test] --&gt; R2{preflight pass?}
+        R2 -- lint fails --&gt; R3[deterministic lint fix-loop]
+        R3 --&gt; R3b{pass after fix-loop?}
+        R3b -- no --&gt; R6[NEEDS-HUMAN]
+        R3b -- yes --&gt; R4
+        R2 -- pass --&gt; R4([review agent: per-surface rule packs]):::agent
+        R4 --&gt; R5{escalations open?}
+        R5 -- yes --&gt; R6
+        R5 -- no --&gt; R7[READY]
+    end
+    subgraph MERGE
+        M1[acquire cross-ticket merge mutex] --&gt; M2([merge-readiness agent: poll CI]):::agent
+        M2 --&gt; M3{CI green within cap?}
+        M3 -- yes --&gt; M4[gh pr merge --squash --delete-branch]
+        M3 -- no --&gt; M5[park PR --&gt; human triage]
+    end
+    I4 --&gt; R1
+    R7 --&gt; M1</p>
+<div class="language-text highlight"><pre><span></span><code>classDef agent fill:#ffffff,stroke:#333,stroke-width:2px,stroke-dasharray: 5 5;
+</code></pre></div>
+<p>The pattern repeats at every zoom level: the agent is a single node bracketed by deterministic gates. In <code>implement</code> the bash autofix decides whether the commit lands; in <code>review</code> the bash preflight and fix-loop decide whether the agent even runs, and a bash check of the escalation list decides READY versus NEEDS-HUMAN; in <code>merge</code> the bash mutex and the squash-merge bracket the one agent call that judges CI. The intelligence is bounded on both sides by code you can read.</p>
+<h2 id="run-records-are-the-memory">Run records are the memory<a class="headerlink" href="#run-records-are-the-memory" title="Permanent link">&para;</a></h2>
+<p>Every ticket emits a <code>*.run.md</code> sibling next to its ticket file -- the format is specified in the run-record contract -- and this is the part of the system I would least want to give up.</p>
+<p>The run record is where the agent writes down what the code itself cannot tell you: the <strong>surprises</strong> (spec gaps, rules that turned out ambiguous), the <strong>dead ends</strong> (what it tried first and why it failed -- a negative-result log), the <strong>judgment calls</strong> it had to make where the ticket was silent, the <strong>outcome</strong> (merged, escalated, completed-no-changes, abandoned -- a fixed vocabulary, not free text), and the <strong>wall-clock</strong> the run actually took.</p>
+<p>Three things make this more than a diary.</p>
+<p>It is <strong>co-located and greppable.</strong> The run record is a sibling of the ticket in the same directory, so "is this ticket shipped, and what happened when it ran?" is answerable by listing one folder, and a question like "what did past tickets that touched this module run into?" is a search across <code>*.run.md</code> files. (The co-location is also a dodge around a real constraint -- Claude Code hard-rails writes under the local agent configuration, so the run record lives next to the ticket instead of in some runs directory. A workaround that turned into a better design.)</p>
+<p>It is the <strong>per-ticket audit trail that makes an autonomous run debuggable.</strong> When I come back in six weeks and wonder why a thing was built the way it was, the answer is on disk in the dead-ends and judgment-calls sections, not in a chat window I closed. An autonomous system you cannot retrospect on is a system you cannot trust; the run record is what you retrospect on.</p>
+<p>And it is <strong>calibration data.</strong> The wall-clock estimates feed the time-budget buckets the orchestrator uses to decide when a run has gone from "healthy" to "soft band" to "stuck." The early tickets in this project carried time budgets anchored on <em>human engineer hours</em> and were 10-20x too high; the run records are what let us recalibrate those numbers to observed <em>agent</em> wall-clock. The memory does not just explain the past -- it tunes the supervision of the future.</p>
+<h2 id="the-retro-closes-the-loop">The retro closes the loop<a class="headerlink" href="#the-retro-closes-the-loop" title="Permanent link">&para;</a></h2>
+<p>Per-ticket run records are local memory. The <strong>retrospective</strong> is where local memory becomes a change to the system itself, at the phase or batch level.</p>
+<p>After all the tickets in a phase or a feedback cluster merge, a retro ticket runs last (its templates are the workflow docs and the workflow docs). Its job is not to write code. Its job is to read every sibling run record's lessons and review findings, read the merged PRs, and synthesize the cross-ticket patterns into process changes: an edit to a project agent rule, a new entry in the ticket template, a new review rule, a behavioral skill. As the phase-retro template puts it, the retro is "the one place where cross-ticket patterns become process changes." Without it, per-ticket lessons stay trapped in individual run records and quietly drop between cycles.</p>
+<p>The <a href="../spiral-detection-watchdog/">spiral-detection watchdog</a> is the cleanest example of this loop producing a durable guardrail. It exists because runs spiralled -- an agent burned thirty minutes debugging a fixture that had been correct since minute five -- and those spirals were visible in the run records and the recorded run corpus. The retro-shaped response was not "tell agents to try harder." It was a new mechanical signal added to the detector after a specific 90-minute test-loop spiral, plus a cluster of CLAUDE.md rules and skills aimed at the <em>causes</em> of spirals (ban the throwaway-script habit, keep temporary files where the detector can see them, stop agents hunting the filesystem for binaries). A failure mode observed in run records became a detector signal and a set of rules. That is the loop closing: phase -&gt; tickets -&gt; run records -&gt; retro -&gt; a changed system that the next phase's tickets run inside.</p>
+<h2 id="the-honest-edges">The honest edges<a class="headerlink" href="#the-honest-edges" title="Permanent link">&para;</a></h2>
+<p>I would be selling you something if I stopped at "and then the loop closes and everything compounds." Here is where the lifecycle costs you.</p>
+<p><strong>Ticket authoring is itself skilled work, and it does not disappear.</strong> The system moves the labor of <em>writing the code</em> off my plate, but it moves the labor of <em>writing the contract</em> onto it -- and writing a good ticket (the right split, an honest scope, a real definition of rejected, a correct dependency edge) is genuinely hard. A vague ticket produces a clean, gated, well-recorded implementation of the wrong thing. The orchestrator guarantees the code matches the ticket; it cannot guarantee the ticket matches reality. That judgment never leaves the human.</p>
+<p><strong>Conservative serialization leaves throughput on the table, on purpose.</strong> The "serialize when in doubt" rule is the right call given the cost asymmetry, but it means the system is, by design, slower than a perfectly-scheduled version of itself would be. Every dependency edge I add out of caution is wall-clock I am choosing to spend to avoid a corruption I cannot cheaply undo. That is a real cost; I am just convinced it is the cheaper one.</p>
+<p><strong>The whole thing still assumes a human in the loop.</strong> The watchdog does not auto-kill -- it pages me and I decide. Escalated tickets route to human triage, not to an automatic retry. The retro proposes process changes; a person still reviews them. This is the point I most want to land: what I have described is not a self-driving development system. It is an <em>instrumented</em> one. Every stage, every run record, every dependency edge exists so that when something goes wrong -- and it does -- a human can see exactly where, and why, and decide what to do. The lifecycle buys you coherence across many autonomous tickets. It buys that coherence with governance, and governance has a human at the end of it.</p>
+<hr />
+<p>That is the lifecycle: a phase cut into contract-shaped tickets, scheduled by a dependency graph that errs toward safety, each ticket run through small staged hops in a disposable clone, every run leaving a greppable memory behind, and a retro that turns those memories into changes to the system itself. If you came from the builder's-eye post, this is the machine under the loop you were driving. And if you want the other half of the machine -- the review preflight, the lint wall, and the AI-first guardrails that make agent output reviewable in the first place -- that is the companion deep-dive, <a href="../orchestration-review-guardrails/"><em>Review surfaces and the AI-first guardrails</em></a>, which opens the box this post left closed.</p>
+<hr />
+<p><em>Or: subscribe for the companion post on the review surfaces and AI-first guardrails.</em></p>
+
+
+
+
+
+
+
+  
+  
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+      <div class="md-progress" data-md-component="progress" role="progressbar"></div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": ["navigation.instant", "navigation.instant.prefetch", "navigation.instant.progress", "navigation.sections", "navigation.indexes", "navigation.prune", "navigation.tracking", "navigation.top", "toc.integrate", "search.suggest", "search.highlight", "search.share", "content.code.copy", "toc.follow"], "search": "../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+    
+  </body>
+</html>
