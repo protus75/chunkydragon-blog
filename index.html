@@ -76,7 +76,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#blog-drafts" class="md-skip">
+        <a href="#blog" class="md-skip">
           Skip to content
         </a>
       
@@ -112,7 +112,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Blog drafts
+              Blog
             
           </span>
         </div>
@@ -259,7 +259,7 @@
   <span class="md-ellipsis">
     
   
-    Blog drafts
+    Blog
   
 
     
@@ -277,7 +277,7 @@
   <span class="md-ellipsis">
     
   
-    Blog drafts
+    Blog
   
 
     
@@ -408,10 +408,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#conventions-for-drafts-in-this-folder" class="md-nav__link">
+  <a href="#conventions-for-posts-in-this-folder" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Conventions for drafts in this folder
+        Conventions for posts in this folder
       
     </span>
   </a>
@@ -2456,21 +2456,27 @@
 
 
 
-<h1 id="blog-drafts">Blog drafts<a class="headerlink" href="#blog-drafts" title="Permanent link">&para;</a></h1>
-<p>Working drafts for the <a href="https://chunkydragon.com">chunkydragon.com</a> blog. <strong>Nothing here is published.</strong> These live in the docs tree so they're versioned alongside the code they describe and easy to keep accurate as the project changes.</p>
+<h1 id="blog">Blog<a class="headerlink" href="#blog" title="Permanent link">&para;</a></h1>
+<p>The <a href="https://chunkydragon.com">Chunky Dragon</a> blog. The posts live in the docs tree so they're versioned alongside the code they describe and easy to keep accurate as the project changes.</p>
 <h2 id="status">Status<a class="headerlink" href="#status" title="Permanent link">&para;</a></h2>
-<p>All posts in this folder are <strong>drafts</strong>. The editorial workflow is:</p>
-<p>The live docs draft site is password-gated during this draft phase.</p>
-<ol>
-<li>Drafts authored here, in-repo, alongside the code/docs they reference.</li>
-<li>Editor (separate person) polishes voice, fact-checks, fills CTAs.</li>
-<li>Editor publishes to <a href="https://hashnode.com">Hashnode</a> backing <code>blog.chunkydragon.com</code> (see infrastructure ticket below).</li>
-<li>Editor cross-posts to <a href="https://dev.to">dev.to</a> with canonical URL pointing at <code>blog.chunkydragon.com</code>.</li>
-</ol>
-<p>Infrastructure setup (DNS, Hashnode publication, cross-post automation, RSS, newsletter) is tracked separately.</p>
+<p>This folder <strong>is</strong> the blog. It publishes live to
+<a href="https://blog.chunkydragon.com">blog.chunkydragon.com</a> on GitHub Pages, and the
+whole publish path is one command:</p>
+<div class="language-bash highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>bash<span class="w"> </span>scripts/dev.sh<span class="w"> </span>blog-deploy
+</code></pre></div>
+<p>That builds the posts under <code>docs/blog/</code> into a static site and pushes the
+generated HTML to a separate public repository that GitHub Pages serves. Edit a
+post, run the command, and the change is live a minute later.</p>
+<p>A post is kept off the public site by exactly one thing: <code>hold_from_publish: true</code>
+in its frontmatter. The blog build drops those files, removes them from the
+public navigation, and de-links references to them; removing that one line
+publishes the post on the next deploy. Everything else in this folder is public.</p>
+<p>The full runbook -- first-time GitHub Pages setup, the DNS record, held posts --
+lives in the project docs at
+<code>docs/overview/BLOG_PUBLISHING.md</code>.</p>
 <h2 id="posts-educational-tracks">Posts (educational tracks)<a class="headerlink" href="#posts-educational-tracks" title="Permanent link">&para;</a></h2>
 <p>Start with <a href="ai-fluency-trail-guide/">The AI fluency trail guide</a>. It is the overview map for the whole catalog: the personal eight-stage journey from "AI as a better Google" to an autonomous build pipeline, with links into the deeper posts below.</p>
-<p>The catalog is organized as a <strong>learning path</strong>, not a publishing queue. One overview post leads sixty track drafts grouped into six named tracks, ordered so a newcomer absorbs the mindset first, sees it applied to the product and the engineering, and reaches the compounding-case capstone last. Read top-to-bottom for the full course, or jump to the track that matches what you came for.</p>
+<p>The catalog is organized as a <strong>learning path</strong>, not a publishing queue. One overview post leads sixty track posts grouped into six named tracks, ordered so a newcomer absorbs the mindset first, sees it applied to the product and the engineering, and reaches the compounding-case capstone last. Read top-to-bottom for the full course, or jump to the track that matches what you came for.</p>
 <p>The track order is the recommended reading order:</p>
 <ul>
 <li><strong>Track A -- The mindset.</strong> How this project thinks: privacy-by-design, AI-as-personality, honest boundaries around AI-built code, and the builder's-eye onboarding stance everything else leans on.</li>
@@ -2480,7 +2486,7 @@
 <li><strong>Track E -- The orchestrator evolves.</strong> The orchestration internals: lifecycle, review guardrails, detection, and failure recovery.</li>
 <li><strong>Track F -- Forward-looking.</strong> The capstone thesis that argues the compounding case.</li>
 </ul>
-<p>Every track draft in this folder is slotted into one of these six tracks in reading order. The overview post sits above the tracks as the recommended first read. Posts are referenced by title and relative link rather than by a frozen number, because the catalog grows.</p>
+<p>Every track post in this folder is slotted into one of these six tracks in reading order. The overview post sits above the tracks as the recommended first read. Posts are referenced by title and relative link rather than by a frozen number, because the catalog grows.</p>
 <h3 id="track-a-the-mindset">Track A -- The mindset<a class="headerlink" href="#track-a-the-mindset" title="Permanent link">&para;</a></h3>
 <p>Start here. These posts establish the worldview every later track assumes: profiles are devices, not people (the load-bearing privacy rule the whole catalog hangs on); AI opponents are personalities, not optimizers; and a backend developer can drive an AI-built frontend only by staying honest about what he has and has not read. Read <a href="device-profiles-not-accounts/">Device profiles, not user accounts</a> first -- the per-game posts in Track B cross-link it as the source of the "kid-safe by design, not by settings" rule.</p>
 <p>After the privacy rule, <a href="why-build-it-this-way/">Why build it this way: the marginal cost of a game</a> makes the economic case the rest of the machinery serves -- the bet that drives a new game's cost from a phase of work down to a designer-in-the-loop afternoon. The track then turns from worldview to working habits: <a href="read-before-you-write/">Read before you write</a> is the pattern behind the patterns (look before you generate), <a href="dont-fold-it-in/">Don't fold it in</a> teaches the single discipline of deferring a second problem into its own ticket, and <a href="first-runnable-line/">Your first runnable line</a> drops from mindset to the keyboard -- the literal sequence to clone the repo, run it, file a ticket, and watch it merge.</p>
@@ -2496,37 +2502,37 @@
 <tr>
 <td><a href="device-profiles-not-accounts/">Device profiles, not user accounts</a></td>
 <td>Privacy-conscious parents, ethical-tech devs</td>
-<td>Hashnode -&gt; cross-post LinkedIn</td>
+<td>blog.chunkydragon.com -&gt; cross-post LinkedIn</td>
 </tr>
 <tr>
 <td><a href="why-build-it-this-way/">Why build it this way: the marginal cost of a game</a></td>
 <td>Builders weighing AI-assisted development</td>
-<td>Hashnode -&gt; cross-post dev.to</td>
+<td>blog.chunkydragon.com -&gt; cross-post dev.to</td>
 </tr>
 <tr>
 <td><a href="ai-personalities-not-optimizers/">AI personalities, not optimizers</a></td>
 <td>Board game families</td>
-<td>Hashnode -&gt; cross-post Substack</td>
+<td>blog.chunkydragon.com -&gt; cross-post Substack</td>
 </tr>
 <tr>
 <td><a href="python-dev-learning-react/">Shipping a React client I have not read</a></td>
 <td>Backend devs, indie hackers</td>
-<td>Hashnode</td>
+<td>blog.chunkydragon.com</td>
 </tr>
 <tr>
 <td><a href="read-before-you-write/">Read before you write</a></td>
 <td>Developers learning to build with AI</td>
-<td>Hashnode -&gt; cross-post dev.to</td>
+<td>blog.chunkydragon.com -&gt; cross-post dev.to</td>
 </tr>
 <tr>
 <td><a href="dont-fold-it-in/">Don't fold it in: file the second problem</a></td>
 <td>Developers learning to build with AI</td>
-<td>Hashnode -&gt; cross-post dev.to</td>
+<td>blog.chunkydragon.com -&gt; cross-post dev.to</td>
 </tr>
 <tr>
 <td><a href="first-runnable-line/">Your first runnable line</a></td>
 <td>Backend devs, indie hackers</td>
-<td>Hashnode -&gt; cross-post dev.to</td>
+<td>blog.chunkydragon.com -&gt; cross-post dev.to</td>
 </tr>
 </tbody>
 </table>
@@ -2545,57 +2551,57 @@
 <tr>
 <td><a href="four-role-websocket-protocol/">Four-role WebSocket protocol</a></td>
 <td>Backend / systems devs</td>
-<td>Hashnode -&gt; cross-post dev.to</td>
+<td>blog.chunkydragon.com -&gt; cross-post dev.to</td>
 </tr>
 <tr>
 <td><a href="design-for-the-flakiest-client/">Design for the flakiest client in the room</a></td>
 <td>Architecture / systems devs</td>
-<td>Hashnode -&gt; cross-post dev.to</td>
+<td>blog.chunkydragon.com -&gt; cross-post dev.to</td>
 </tr>
 <tr>
 <td><a href="one-engine-two-information-modes/">One engine, two information modes</a></td>
 <td>Backend / systems devs</td>
-<td>Hashnode -&gt; cross-post dev.to</td>
+<td>blog.chunkydragon.com -&gt; cross-post dev.to</td>
 </tr>
 <tr>
 <td><a href="memory-match-for-pre-readers/">Memory Match for a 5-year-old who can't read yet</a></td>
 <td>Parents of young kids, early-childhood educators</td>
-<td>Hashnode -&gt; cross-post Substack / LinkedIn</td>
+<td>blog.chunkydragon.com -&gt; cross-post Substack / LinkedIn</td>
 </tr>
 <tr>
 <td><a href="bluff-without-chat/">A game built on lying, with no chat panel</a></td>
 <td>Card-game players, social-deduction folks</td>
-<td>Hashnode -&gt; cross-post dev.to</td>
+<td>blog.chunkydragon.com -&gt; cross-post dev.to</td>
 </tr>
 <tr>
 <td><a href="werewolf-server-as-moderator/">Werewolf without a moderator (and without a chat panel)</a></td>
 <td>Social-deduction players, board game families</td>
-<td>Hashnode -&gt; cross-post Substack</td>
+<td>blog.chunkydragon.com -&gt; cross-post Substack</td>
 </tr>
 <tr>
 <td><a href="a-fair-die-is-a-product-decision/">A fair die is a product decision</a></td>
 <td>Developers learning to build with AI</td>
-<td>Hashnode -&gt; cross-post dev.to</td>
+<td>blog.chunkydragon.com -&gt; cross-post dev.to</td>
 </tr>
 <tr>
 <td>Battleland: the first game that trains its own opponent</td>
 <td>Game-AI curious developers</td>
-<td>Hashnode -&gt; cross-post dev.to</td>
+<td>blog.chunkydragon.com -&gt; cross-post dev.to</td>
 </tr>
 <tr>
 <td><a href="the-equity-panel-is-the-ai/">The equity panel is the AI</a></td>
 <td>Developers, AI-product builders</td>
-<td>Hashnode -&gt; cross-post dev.to</td>
+<td>blog.chunkydragon.com -&gt; cross-post dev.to</td>
 </tr>
 <tr>
 <td><a href="byok-advisor-framework/">Bring your own key</a></td>
 <td>Developers, privacy/cost-curious</td>
-<td>Hashnode -&gt; cross-post dev.to</td>
+<td>blog.chunkydragon.com -&gt; cross-post dev.to</td>
 </tr>
 <tr>
 <td><a href="when-the-algorithm-depends-on-the-game/">When the algorithm depends on the game</a></td>
 <td>Developers, game-AI curious</td>
-<td>Hashnode -&gt; cross-post dev.to</td>
+<td>blog.chunkydragon.com -&gt; cross-post dev.to</td>
 </tr>
 </tbody>
 </table>
@@ -2613,87 +2619,87 @@
 <tr>
 <td><a href="ai-first-code-annotations/">Code comments written for the robot, not the human</a></td>
 <td>Developers, AI tooling</td>
-<td>Hashnode -&gt; cross-post dev.to</td>
+<td>blog.chunkydragon.com -&gt; cross-post dev.to</td>
 </tr>
 <tr>
 <td><a href="ai-first-testing-and-logging/">The test that knows what it is</a></td>
 <td>Developers, AI tooling</td>
-<td>Hashnode -&gt; cross-post dev.to</td>
+<td>blog.chunkydragon.com -&gt; cross-post dev.to</td>
 </tr>
 <tr>
 <td><a href="when-layout-taste-becomes-a-test/">When layout taste becomes a test</a></td>
 <td>Developers, AI tooling, UI builders</td>
-<td>Hashnode -&gt; cross-post dev.to</td>
+<td>blog.chunkydragon.com -&gt; cross-post dev.to</td>
 </tr>
 <tr>
 <td><a href="annotations-vs-the-literature/">What the literature got to first (and the parts we made mandatory)</a></td>
 <td>Developers, AI tooling</td>
-<td>Hashnode -&gt; cross-post dev.to</td>
+<td>blog.chunkydragon.com -&gt; cross-post dev.to</td>
 </tr>
 <tr>
 <td><a href="let-the-library-carry-the-proof/">Let the library carry the proof</a></td>
 <td>Developers, AI tooling</td>
-<td>Hashnode -&gt; cross-post dev.to</td>
+<td>blog.chunkydragon.com -&gt; cross-post dev.to</td>
 </tr>
 <tr>
 <td><a href="the-refactor-the-annotations-made-safe/">The refactor the annotations made safe</a></td>
 <td>Developers, AI tooling</td>
-<td>Hashnode -&gt; cross-post dev.to</td>
+<td>blog.chunkydragon.com -&gt; cross-post dev.to</td>
 </tr>
 <tr>
 <td><a href="derive-dont-stamp/">Derive It, Don't Stamp It</a></td>
 <td>Developers, AI tooling</td>
-<td>Hashnode -&gt; cross-post dev.to</td>
+<td>blog.chunkydragon.com -&gt; cross-post dev.to</td>
 </tr>
 <tr>
 <td><a href="trimming-the-duplication-an-ai-cannot-see/">Trimming the duplication an AI cannot see</a></td>
 <td>Developers, AI tooling</td>
-<td>Hashnode -&gt; cross-post dev.to</td>
+<td>blog.chunkydragon.com -&gt; cross-post dev.to</td>
 </tr>
 <tr>
 <td><a href="log-interplay-and-swimlanes/">The logs already knew the order</a></td>
 <td>Developers, AI tooling</td>
-<td>Hashnode -&gt; cross-post dev.to</td>
+<td>blog.chunkydragon.com -&gt; cross-post dev.to</td>
 </tr>
 <tr>
 <td><a href="store-the-moves-not-the-board/">Store the moves, not the board</a></td>
 <td>Developers, AI tooling</td>
-<td>Hashnode -&gt; cross-post dev.to</td>
+<td>blog.chunkydragon.com -&gt; cross-post dev.to</td>
 </tr>
 <tr>
 <td><a href="code-risk-trends-over-time/">Watching code risk trend over time, with no metrics datastore</a></td>
 <td>Developers, AI tooling</td>
-<td>Hashnode -&gt; cross-post dev.to</td>
+<td>blog.chunkydragon.com -&gt; cross-post dev.to</td>
 </tr>
 <tr>
 <td>The project that remembers itself</td>
 <td>Developers, AI tooling</td>
-<td>Hashnode -&gt; cross-post dev.to</td>
+<td>blog.chunkydragon.com -&gt; cross-post dev.to</td>
 </tr>
 <tr>
 <td>Find every surface related to X</td>
 <td>Developers, AI tooling</td>
-<td>Hashnode -&gt; cross-post dev.to</td>
+<td>blog.chunkydragon.com -&gt; cross-post dev.to</td>
 </tr>
 <tr>
 <td>The run record that grades itself</td>
 <td>Developers, AI tooling</td>
-<td>Hashnode -&gt; cross-post dev.to</td>
+<td>blog.chunkydragon.com -&gt; cross-post dev.to</td>
 </tr>
 <tr>
 <td>What an AI researcher wants from a dev loop</td>
 <td>Developers, AI tooling</td>
-<td>Hashnode -&gt; cross-post dev.to</td>
+<td>blog.chunkydragon.com -&gt; cross-post dev.to</td>
 </tr>
 <tr>
 <td>Building an audit trail for AI-assisted development</td>
 <td>Developers, AI tooling</td>
-<td>Hashnode -&gt; cross-post dev.to</td>
+<td>blog.chunkydragon.com -&gt; cross-post dev.to</td>
 </tr>
 <tr>
 <td>Why this project is a strong AI training substrate</td>
 <td>Developers, AI tooling</td>
-<td>Hashnode -&gt; cross-post dev.to</td>
+<td>blog.chunkydragon.com -&gt; cross-post dev.to</td>
 </tr>
 </tbody>
 </table>
@@ -2711,32 +2717,32 @@
 <tr>
 <td><a href="from-idea-to-buildable-repo/">From an idea in a chat window to a repo the robot can build</a></td>
 <td>Developers, indie hackers, solo builders</td>
-<td>Hashnode -&gt; cross-post dev.to</td>
+<td>blog.chunkydragon.com -&gt; cross-post dev.to</td>
 </tr>
 <tr>
 <td><a href="ui-specs-without-design-tools/">Describe the screen, don't draw it (the UI-spec prompt playbook)</a></td>
 <td>Non-designer builders, backend devs, solo founders</td>
-<td>Hashnode -&gt; cross-post dev.to</td>
+<td>blog.chunkydragon.com -&gt; cross-post dev.to</td>
 </tr>
 <tr>
 <td><a href="throwaway-html-mockups/">Make it real before you build it (throwaway HTML mockups)</a></td>
 <td>Non-designer builders, backend devs, solo founders</td>
-<td>Hashnode -&gt; cross-post dev.to</td>
+<td>blog.chunkydragon.com -&gt; cross-post dev.to</td>
 </tr>
 <tr>
 <td><a href="orchestrated-build-loop/">Tickets in, a game I can play out (the orchestrated build-and-feedback loop)</a></td>
 <td>Solo founders, backend/systems devs, non-frontend builders</td>
-<td>Hashnode -&gt; cross-post dev.to</td>
+<td>blog.chunkydragon.com -&gt; cross-post dev.to</td>
 </tr>
 <tr>
 <td><a href="the-orchestrator-that-drafts-its-own-backlog/">The orchestrator that drafts its own backlog</a></td>
 <td>Developers, AI tooling</td>
-<td>Hashnode -&gt; cross-post dev.to</td>
+<td>blog.chunkydragon.com -&gt; cross-post dev.to</td>
 </tr>
 <tr>
 <td><a href="from-surprise-to-rule-to-skill/">From surprise to rule to skill</a></td>
 <td>Developers, AI tooling</td>
-<td>Hashnode -&gt; cross-post dev.to</td>
+<td>blog.chunkydragon.com -&gt; cross-post dev.to</td>
 </tr>
 </tbody>
 </table>
@@ -2754,62 +2760,62 @@
 <tr>
 <td><a href="orchestration-lifecycle/">The orchestration lifecycle: from phase to ticket to retro</a></td>
 <td>Developers, AI tooling, orchestration engineers</td>
-<td>Hashnode -&gt; cross-post dev.to</td>
+<td>blog.chunkydragon.com -&gt; cross-post dev.to</td>
 </tr>
 <tr>
 <td><a href="orchestration-review-guardrails/">Review surfaces and the AI-first guardrails</a></td>
 <td>Developers, AI tooling, orchestration engineers</td>
-<td>Hashnode -&gt; cross-post dev.to</td>
+<td>blog.chunkydragon.com -&gt; cross-post dev.to</td>
 </tr>
 <tr>
 <td><a href="risk-routed-review/">Risk-routed review: spending human attention where it earns its keep</a></td>
 <td>Developers, AI tooling, orchestration engineers</td>
-<td>Hashnode -&gt; cross-post dev.to</td>
+<td>blog.chunkydragon.com -&gt; cross-post dev.to</td>
 </tr>
 <tr>
 <td><a href="spiral-detection-watchdog/">Spiral-detection watchdog</a></td>
 <td>Developers, AI tooling</td>
-<td>Hashnode -&gt; cross-post dev.to</td>
+<td>blog.chunkydragon.com -&gt; cross-post dev.to</td>
 </tr>
 <tr>
 <td><a href="mechanical-vs-llm-failure-recovery/">When a stage fails: what is mechanical and what is the LLM?</a></td>
 <td>Developers, AI tooling, orchestration engineers</td>
-<td>Hashnode -&gt; cross-post dev.to</td>
+<td>blog.chunkydragon.com -&gt; cross-post dev.to</td>
 </tr>
 <tr>
 <td><a href="risk-routed-merge-resolution/">Risk-routed merge resolution: let git handle the boring conflicts</a></td>
 <td>Developers, AI tooling, orchestration engineers</td>
-<td>Hashnode -&gt; cross-post dev.to</td>
+<td>blog.chunkydragon.com -&gt; cross-post dev.to</td>
 </tr>
 <tr>
 <td><a href="how-a-ticket-picks-its-brain/">How a ticket picks its brain</a></td>
 <td>Developers, AI tooling, multi-provider</td>
-<td>Hashnode -&gt; cross-post dev.to</td>
+<td>blog.chunkydragon.com -&gt; cross-post dev.to</td>
 </tr>
 <tr>
 <td><a href="anatomy-of-a-ticket/">Anatomy of a ticket: one contract, one run record, every field</a></td>
 <td>Developers, AI tooling, orchestration engineers</td>
-<td>Hashnode -&gt; cross-post dev.to</td>
+<td>blog.chunkydragon.com -&gt; cross-post dev.to</td>
 </tr>
 <tr>
 <td><a href="meet-tempo/">Meet Tempo: when the orchestrator becomes a Go binary</a></td>
 <td>Developers, orchestration / AI tooling</td>
-<td>Hashnode -&gt; cross-post dev.to</td>
+<td>blog.chunkydragon.com -&gt; cross-post dev.to</td>
 </tr>
 <tr>
 <td><a href="two-rewrites-one-strategy/">Two rewrites, one strategy</a></td>
 <td>Developers, AI tooling</td>
-<td>Hashnode -&gt; cross-post dev.to</td>
+<td>blog.chunkydragon.com -&gt; cross-post dev.to</td>
 </tr>
 <tr>
 <td><a href="parity-first/">Parity-first: replacing the system that builds your software</a></td>
 <td>Developers, orchestration engineers</td>
-<td>Hashnode -&gt; cross-post dev.to</td>
+<td>blog.chunkydragon.com -&gt; cross-post dev.to</td>
 </tr>
 <tr>
 <td><a href="orchestrator-as-installable-product/">The orchestrator leaves home: from welded-in workflow to installable binary</a></td>
 <td>Developers, solo builders</td>
-<td>Hashnode -&gt; cross-post dev.to</td>
+<td>blog.chunkydragon.com -&gt; cross-post dev.to</td>
 </tr>
 </tbody>
 </table>
@@ -2827,50 +2833,62 @@
 <tr>
 <td><a href="cfr-for-6max-holdem/">CFR for 6-max Hold'em: the poker AI this catalog hasn't built yet</a></td>
 <td>Developers, game-AI curious</td>
-<td>Hashnode -&gt; cross-post dev.to</td>
+<td>blog.chunkydragon.com -&gt; cross-post dev.to</td>
 </tr>
 <tr>
 <td><a href="rulebook-pdf-to-gameengine/">How cheap can a new game get? The rulebook-PDF-to-engine experiment</a></td>
 <td>Backend devs, solo builders</td>
-<td>Hashnode -&gt; cross-post dev.to</td>
+<td>blog.chunkydragon.com -&gt; cross-post dev.to</td>
 </tr>
 <tr>
 <td><a href="numeric-risk-dashboards/">What a numeric risk dashboard would have to be</a></td>
 <td>Developers, AI tooling</td>
-<td>Hashnode -&gt; cross-post dev.to</td>
+<td>blog.chunkydragon.com -&gt; cross-post dev.to</td>
 </tr>
 <tr>
 <td><a href="action-log-analytics-and-fairness/">The action log is an analytics engine waiting to happen</a></td>
 <td>Developers, AI tooling, analytics</td>
-<td>Hashnode -&gt; cross-post dev.to</td>
+<td>blog.chunkydragon.com -&gt; cross-post dev.to</td>
 </tr>
 <tr>
 <td><a href="testing-an-orchestrator-with-fakes/">How do you test an orchestrator whose job is to call an LLM?</a></td>
 <td>Developers, orchestration engineers</td>
-<td>Hashnode -&gt; cross-post dev.to</td>
+<td>blog.chunkydragon.com -&gt; cross-post dev.to</td>
 </tr>
 <tr>
 <td><a href="sharing-tempo-upstream/">Sharing the orchestrator upstream: template vs. the project that grew it</a></td>
 <td>Developers, orchestration / AI tooling</td>
-<td>Hashnode -&gt; cross-post dev.to</td>
+<td>blog.chunkydragon.com -&gt; cross-post dev.to</td>
 </tr>
 <tr>
 <td><a href="cross-game-compounding-flywheel/">The cross-game compounding flywheel</a></td>
 <td>Developers, AI tooling, builders</td>
-<td>Hashnode -&gt; cross-post dev.to</td>
+<td>blog.chunkydragon.com -&gt; cross-post dev.to</td>
 </tr>
 </tbody>
 </table>
 <h2 id="cadence-cross-posting-and-launch-order">Cadence, cross-posting, and launch order<a class="headerlink" href="#cadence-cross-posting-and-launch-order" title="Permanent link">&para;</a></h2>
-<p>Cadence target: one post every 10-14 days. Hashnode is the platform of record for every post; the <strong>Platform of record</strong> column above records where each draft cross-posts after it lands (dev.to for the developer-facing posts, Substack and LinkedIn for the family- and parent-facing ones).</p>
+<p>Cadence target: one post every 10-14 days. <code>blog.chunkydragon.com</code> is the platform of record for every post -- that is where it is published and where a canonical URL should point; the <strong>Platform of record</strong> column above records where each post cross-posts after it lands (dev.to for the developer-facing posts, Substack and LinkedIn for the family- and parent-facing ones).</p>
 <p>Launch order is not the same as track order. Lead the launch with <a href="device-profiles-not-accounts/">Device profiles, not user accounts</a>: it establishes the rule every later post leans on -- no person-shaped profile fields, no chat panel, no friend list, "kid-safe by design, not by settings" -- and the per-game cluster cross-links it as the source, so shipping it first means those posts can publish without dangling forward-references. Its contrarian "no chat panel, ever" framing and enumerated list of deliberately-uncollected fields are also the most Hacker-News-shaped writing in the queue, and the LinkedIn cross-post seeds B2B / classroom-pilot conversations early.</p>
-<p><a href="spiral-detection-watchdog/">Spiral-detection watchdog</a> was originally slated to lead but moved back a few slots once a prior-art scan at the bottom of that draft turned up ~10 public sources covering the same heuristics. It still earns an early slot for tech credibility and dev.to reach, but it cannot carry the launch on a "defensive publishing" framing the draft itself undermines.</p>
-<h2 id="conventions-for-drafts-in-this-folder">Conventions for drafts in this folder<a class="headerlink" href="#conventions-for-drafts-in-this-folder" title="Permanent link">&para;</a></h2>
+<p><a href="spiral-detection-watchdog/">Spiral-detection watchdog</a> was originally slated to lead but moved back a few slots once a prior-art scan at the bottom of that post turned up ~10 public sources covering the same heuristics. It still earns an early slot for tech credibility and dev.to reach, but it cannot carry the launch on a "defensive publishing" framing the post itself undermines.</p>
+<h2 id="conventions-for-posts-in-this-folder">Conventions for posts in this folder<a class="headerlink" href="#conventions-for-posts-in-this-folder" title="Permanent link">&para;</a></h2>
 <ul>
 <li>One file per post. Slug matches the title.</li>
-<li>Top of each draft: a short STATUS admonition (audience, platform, what the editor needs to fill in).</li>
+<li>Frontmatter carries the doc tags. A post that is not ready for the public site
+  carries <code>hold_from_publish: true</code> there; nothing else keeps it off
+  <code>blog.chunkydragon.com</code>.</li>
 <li>Code examples and stat numbers reference real files in this repo -- don't invent. If a number isn't grounded, leave a `` marker.</li>
 <li>First-person lived experience must be real, not invented. Do not fabricate timelines, sensory or emotional detail, "what surprised me" or "when it clicked" narrative, or any other experiential claim that did not happen. Every first-person claim must be grounded in either verifiable repo artifacts (metrics, commits, files, run records) or the author's actual stated experience; when a post needs narrative color the author cannot ground, omit it or use a non-experiential voice. The grounding-audit tickets flag existing violations against this standard.</li>
+<li>Draft and refresh work follows this writing and freshness standard so every
+  post has one concrete review target before publication:</li>
+<li>Plain, concrete prose. Cut flowery language, marketing framing, and
+     hand-wavy abstraction.</li>
+<li>Concrete examples. Ground examples in real, current repo artifacts. Prefer
+     Tempo or orchestrator examples; use a game example only when no
+     orchestrator example fits.</li>
+<li>Fresh facts. Every factual claim -- behavior, counts, file paths, table
+     names, and event names -- must match current project state. Verify against
+     the code before publishing.</li>
 <li>Don't link to internal repo paths from the published version -- convert them to public GitHub URLs at publish time.</li>
 </ul>
 

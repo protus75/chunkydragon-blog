@@ -252,7 +252,7 @@
   <span class="md-ellipsis">
     
   
-    Blog drafts
+    Blog
   
 
     
@@ -599,10 +599,10 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#the-on-ramp-the-conceptual-post-leaves-blank" class="md-nav__link">
+  <a href="#step-1-make-the-checkout-runnable" class="md-nav__link">
     <span class="md-ellipsis">
       
-        The on-ramp the conceptual post leaves blank
+        Step 1: make the checkout runnable
       
     </span>
   </a>
@@ -610,10 +610,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#the-first-runnable-line-in-order" class="md-nav__link">
+  <a href="#step-2-start-the-app-through-the-wrapper" class="md-nav__link">
     <span class="md-ellipsis">
       
-        The first runnable line, in order
+        Step 2: start the app through the wrapper
       
     </span>
   </a>
@@ -621,10 +621,54 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#two-wrappers-one-launcher" class="md-nav__link">
+  <a href="#step-3-use-the-product-the-way-it-is-built" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Two wrappers, one launcher
+        Step 3: use the product the way it is built
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#step-4-write-one-ticket-not-a-wish" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 4: write one ticket, not a wish
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#step-5-hand-the-ticket-to-the-orchestrator" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 5: hand the ticket to the orchestrator
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#two-wrappers-two-jobs" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Two wrappers, two jobs
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#what-this-unlocks" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        What this unlocks
       
     </span>
   </a>
@@ -2382,43 +2426,108 @@
 
 
 <h1 id="your-first-runnable-line-clone-it-run-it-play-it-file-a-ticket-watch-it-merge">Your first runnable line: clone it, run it, play it, file a ticket, watch it merge<a class="headerlink" href="#your-first-runnable-line-clone-it-run-it-play-it-file-a-ticket-watch-it-merge" title="Permanent link">&para;</a></h1>
-<p>The conceptual posts can take you right up to the keyboard and then leave you there. <a href="../from-idea-to-buildable-repo/"><em>From an idea in a chat window to a repo the robot can build</em></a> is the clearest example: it walks the whole on-ramp -- plan in chat, capture the decisions as docs, move them into a git repo, and <em>drop in a workflow orchestrator so the AI builds from tickets instead of from vibes</em> -- and it is deliberately honest that the last step has real setup cost. But read it closely and you will notice it never shows you a single command. It stops at the shape of the on-ramp. It tells you to add an orchestrator; it does not tell you what to run once you have one.</p>
-<p>This post is the missing line. It is the hands-on companion to that conceptual one: the literal sequence I actually type to go from a fresh clone of this project -- a multi-device board game platform -- to a change I noticed while playing, written as a ticket, built by the orchestrator, and merged. No invented steps. Every command below resolves to a real verb in this repo at the time of writing, and I will tell you exactly which file owns it.</p>
-<p>There are five moves, in order, and then the honest edge.</p>
-<h2 id="the-on-ramp-the-conceptual-post-leaves-blank">The on-ramp the conceptual post leaves blank<a class="headerlink" href="#the-on-ramp-the-conceptual-post-leaves-blank" title="Permanent link">&para;</a></h2>
-<p>It is worth being precise about the gap, because it is a real one and naming it is the whole reason this post exists.</p>
-<p>A reader can finish the mindset posts -- the on-ramp, the read-before-you-write habits, the "tickets are how you talk to the builder" loop -- and come away genuinely convinced <em>and</em> completely unable to start. They know the AI should build from a ticket. They do not know how to make a ticket run. They know the orchestrator gates every change. They have never watched it gate one. The conceptual layer hands you a mental model; it does not hand you a terminal.</p>
-<p>So here is the terminal. Clone the repo, then walk these five moves once, in order. After you have done it once, the mental model from the other posts snaps into place, because you have seen the thing the model was describing.</p>
-<h2 id="the-first-runnable-line-in-order">The first runnable line, in order<a class="headerlink" href="#the-first-runnable-line-in-order" title="Permanent link">&para;</a></h2>
-<p><strong>One: set up.</strong> From the repo root, the first command hydrates everything -- the Python virtualenv and dependencies for the backend, and the client's dependencies for the React frontend -- in a single repeatable step:</p>
-<p>The concrete command lives in the private project wrapper for this workflow.</p>
-<p>This is idempotent. Run it on a fresh clone, run it again after a dependency changes; it is the canonical "make this checkout buildable" entry point. You do not hunt around for a <code>requirements.txt</code> here and an <code>npm install</code> there. One command, both halves of the stack.</p>
-<p><strong>Two: run the app.</strong> With dependencies in place, bring up the backend and the client together:</p>
-<p>The concrete command lives in the private project wrapper for this workflow.</p>
-<p>That starts the FastAPI backend on port 8001 and the Vite client on port 3001, and it records the process IDs under <code>.runtime/</code> so the stack can be cleanly stopped later. (It also writes the server and client output to <code>.runtime/backend.log</code> and <code>.runtime/client.log</code>, which is where you look when something misbehaves.) When you are done, the matching teardown is the project dev wrapper, and the project dev wrapper is just the two in sequence.</p>
-<p><strong>Three: play it on a real device.</strong> This is the move that distinguishes this project from a localhost demo, and it is the one most people skip. Do not just poke at the client in a browser tab on your laptop. This is a <em>multi-device</em> platform -- a TV shows the shared table and a room code, phones join as players by scanning a QR, and the views are role-filtered so a player's private hand never leaks to the shared screen. The point of the product only becomes legible when you hold it the way a player will. Open the table view on an actual TV (or a second monitor standing in for one), scan the join QR with an actual phone on the same LAN, and play a round. You are not evaluating the code. You are evaluating the product -- whether the join flow makes sense, whether the turn feels right, whether each screen shows what it should and hides what it must.</p>
-<p>You will notice something. You always do. The join code is below the fold on your phone. The recap screen flashes before it redirects. The back button does something surprising. Hold onto that -- it is the input to the next move.</p>
-<p><strong>Four: file a backlog ticket.</strong> Here is the move newcomers misread. You <em>do</em> open a chat for the thing you noticed -- on your own clone of main, the authoring copy where you plan and hand-edit, not a throwaway. What you do not do is ask it to "go fix the lobby." You ask it to draft a <em>ticket</em>: a markdown file under the backlog that says what to change, what it is allowed to touch, what "done" means, and how to verify it. The chat is the authoring surface; what comes out of it is a ticket file, not an edit to the code. And a ticket has more shape than a freeform note -- authoring follows real contracts under the workflow docs (start with the ticket-authoring contract): required pre-reading, YAML frontmatter, a declared edit scope (<code>## Touches</code>), a dependency graph (<code>## Depends on</code>), acceptance criteria with verification commands, and extra rigor when the ticket is a bug fix. You do not memorize any of that; the chat session reads the contracts and drafts to the template. That structure is not bureaucracy -- it is the act of deciding what you actually mean before a single line of code is written, which is the part only you can do. "The join code should render above the GAME settings on a phone viewport" is a ticket. "Make the lobby better" is a wish, and the orchestrator cannot build from a wish.</p>
-<p><strong>Five: run the ticket and watch it merge.</strong> Now you hand the ticket to the orchestrator. This is a <em>different</em> dispatcher from the one you used to run the app (more on why in a moment), and it takes the ticket's name:</p>
-<p>The concrete command lives in the private project wrapper for this workflow.</p>
-<p>From your seat this is almost anticlimactic, and that is the point. The dispatcher spawns a throwaway clone, an AI agent implements the ticket on a branch, a battery of review gates runs against the result, and -- if it clears the bar -- it ships and merges. You did not copy code out of a chat or paste an error back in. You can watch in-flight and recent runs with the orchestrator dispatcher, and the same verbs are surfaced as <code>/dev-*</code> slash commands (<code>/dev-ticket</code>, <code>/dev-status</code>) if you drive the orchestrator from inside an editor agent rather than the shell. When it lands, the ticket leaves a sibling <code>.run.md</code> run record next to it on disk -- the surprises, the dead ends, the judgment calls the agent made -- so six weeks later the answer to "why was this built this way" is a file, not a chat you closed.</p>
-<p>That is the first runnable line, end to end: <code>setup</code> -&gt; <code>dev-up</code> -&gt; play on a real device -&gt; write a ticket under the backlog -&gt; the orchestrator dispatcher -&gt; merged. Once you have run it once, <a href="../orchestrated-build-loop/"><em>the orchestrated build-and-feedback loop</em></a> -- tickets in, reviewed code out, the real app under your thumb, feedback back into the backlog -- stops being an abstraction and becomes the rhythm you are already standing inside.</p>
-<h2 id="two-wrappers-one-launcher">Two wrappers, one launcher<a class="headerlink" href="#two-wrappers-one-launcher" title="Permanent link">&para;</a></h2>
-<p>There is one thing in that sequence that trips up everyone the first time, and it is worth slowing down on, because reaching for the wrong tool here produces confusing failures.</p>
-<p>You used the project dev wrapper to run the app and the orchestrator dispatcher to run the ticket. Those are two <em>separate files with two separate jobs</em>, and they are not interchangeable:</p>
+<p>The earlier on-ramp posts explain the shape of this project: write the intent down, let an AI worker build from a ticket, and keep the result reviewable. That is useful, but it still leaves a practical question unanswered.</p>
+<p>What do you type first?</p>
+<p>For this repo, the first pass is not abstract. It is a short sequence:</p>
+<div class="language-text highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>bash scripts/dev.sh setup
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>bash scripts/dev.sh dev-up
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>play the app on the devices it targets
+<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>write one backlog ticket
+<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>bash workflow/scripts/dev.sh ticket &lt;ticket-stem&gt;
+</code></pre></div>
+<p>That sequence matters because it turns the build loop from a claim into something you have seen run. You have a local app, a real product problem, a scoped ticket, a worker clone, review gates, and a run record. After that, posts like <a href="../orchestrated-build-loop/"><em>Tickets in, a game I can play out</em></a> are describing a loop you have touched, not a workflow diagram.</p>
+<h2 id="step-1-make-the-checkout-runnable">Step 1: make the checkout runnable<a class="headerlink" href="#step-1-make-the-checkout-runnable" title="Permanent link">&para;</a></h2>
+<p>From the repo root:</p>
+<div class="language-bash highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>bash<span class="w"> </span>scripts/dev.sh<span class="w"> </span>setup
+</code></pre></div>
+<p>This command lives in <code>scripts/dev.sh</code>, the project-side wrapper. Its <code>setup</code> verb creates <code>./venv</code> when needed, installs the Python requirements, hydrates <code>client/node_modules</code>, and wires the repo's git hooks. It is idempotent: on a checkout that is already prepared, it skips the backend dependency install and keeps going.</p>
+<p>The point of starting here is repeatability. You do not assemble the backend and frontend by hand from separate guesses. The repo owns one setup entry point, and the same wrapper is what ticket agents are told to run when their environment is missing dependencies.</p>
+<h2 id="step-2-start-the-app-through-the-wrapper">Step 2: start the app through the wrapper<a class="headerlink" href="#step-2-start-the-app-through-the-wrapper" title="Permanent link">&para;</a></h2>
+<p>Then start the local stack:</p>
+<div class="language-bash highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>bash<span class="w"> </span>scripts/dev.sh<span class="w"> </span>dev-up
+</code></pre></div>
+<p><code>dev-up</code> starts the FastAPI backend and the Vite client. In the authoring/chat clone it uses backend port <code>8001</code> and client port <code>3001</code>; in worker clones the wrapper derives per-clone ports so parallel ticket runs do not fight over the same listeners. The selected ports are written to <code>.runtime/dev-ports.env</code>. The backend and client process IDs are written to <code>.runtime/backend.pid</code> and <code>.runtime/client.pid</code>, and logs go to <code>.runtime/backend.log</code> and <code>.runtime/client.log</code>.</p>
+<p>Stop it with:</p>
+<div class="language-bash highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>bash<span class="w"> </span>scripts/dev.sh<span class="w"> </span>dev-down
+</code></pre></div>
+<p>Restart it with:</p>
+<div class="language-bash highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>bash<span class="w"> </span>scripts/dev.sh<span class="w"> </span>dev-restart
+</code></pre></div>
+<p>Those commands are not decoration. They are the runtime bookkeeping. If you start the backend with a raw <code>uvicorn</code> command or the client with a raw <code>npm run dev</code>, <code>dev-down</code> cannot reliably clean up what you started. The repo rule is simple: local app lifecycle goes through <code>dev-up</code>, <code>dev-down</code>, and <code>dev-restart</code>.</p>
+<h2 id="step-3-use-the-product-the-way-it-is-built">Step 3: use the product the way it is built<a class="headerlink" href="#step-3-use-the-product-the-way-it-is-built" title="Permanent link">&para;</a></h2>
+<p>This project is not a single-browser demo. It is a multi-device board game platform. A shared <code>TABLE</code> screen shows public state. Phones join as <code>PLAYER</code> controllers. A <code>REFEREE</code> can hold full-state authority. <code>OBSERVER</code> and <code>REVIEW</code> views have their own access rules. The server sends role-filtered views so private player information does not leak to the table.</p>
+<p>So the first useful smoke test is not "click around one desktop tab." Open the table surface on a TV or second display, join from a phone on the same LAN, and play a short round. That is where the real product problems show up: a control is too low on a phone viewport, a table label is unreadable from across the room, a private detail is visible in the wrong role, or a join flow makes sense on desktop but not in a hand.</p>
+<p>This step is also why the loop stays grounded. The ticket should come from the running product, not from a vague desire to improve the code.</p>
+<h2 id="step-4-write-one-ticket-not-a-wish">Step 4: write one ticket, not a wish<a class="headerlink" href="#step-4-write-one-ticket-not-a-wish" title="Permanent link">&para;</a></h2>
+<p>When you notice the problem, do not ask a chat agent to "fix the lobby" or "make the UI better." Ask it to draft a ticket file under <code>tickets/backlog/</code>.</p>
+<p>A useful ticket says:</p>
 <ul>
-<li><strong>the project dev wrapper</strong> is the project dev wrapper. It owns the verbs you use to work on the code: <code>setup</code>, <code>dev-up</code>, <code>dev-down</code>, <code>dev-restart</code>, <code>test</code>, <code>lint</code>, <code>docs-build</code>. If you are building or running the software, you are here.</li>
-<li><strong>the orchestrator dispatcher</strong> is the orchestrator dispatcher. It owns the ticket lifecycle: <code>ticket</code>, <code>phase</code>, <code>review</code>, <code>ship</code>, <code>status</code>. If you are driving the build loop, you are here.</li>
+<li>what behavior should change</li>
+<li>what files or surfaces it is allowed to touch</li>
+<li>what it depends on</li>
+<li>what counts as done</li>
+<li>which commands verify it</li>
 </ul>
-<p>Do not cross-call them. the orchestrator dispatcher is not a thing (the orchestrator has no project-dev verbs), and the project dev wrapper is not a thing (the project wrapper does not orchestrate). When in doubt: <em>running or testing the app</em> is the left-hand file; <em>moving a ticket through its lifecycle</em> is the right-hand file.</p>
-<p>The launcher half of this rule is load-bearing enough that the project treats it as hard law: <strong>the local app is started only through <code>dev-up</code> / <code>dev-down</code> / <code>dev-restart</code>, never with a raw <code>uvicorn server.main:app</code> or a bare <code>npm run dev</code>.</strong> The reason is concrete, not stylistic. <code>dev-up</code> records its process IDs under <code>.runtime/</code> so <code>dev-down</code> can find and stop exactly those processes. A server you start by hand is invisible to that bookkeeping -- it survives a <code>dev-down</code>, keeps holding the port, and keeps serving stale state across what you <em>think</em> was a clean restart. The single most baffling "I fixed it but the browser still shows the old behavior" session you can have on this project is a hand-started server that <code>dev-down</code> never knew to kill. Use the wrapper and that entire class of ghost never appears.</p>
+<p>That shape is enforced by the authoring contracts under <code>workflow/docs/authoring/</code>. The important fields are visible in every backlog ticket: YAML frontmatter, <code>## Depends on</code>, <code>## Touches</code>, scope, acceptance criteria, and verification commands. For bug tickets, the rules are stricter: the ticket needs a concrete repro path and the eventual run needs evidence that the bug was exercised against the real app.</p>
+<p>A ticket-shaped request is specific:</p>
+<div class="language-text highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>On a phone PLAYER surface, keep the room join code visible above the settings section at the default portrait viewport. Touch only the shell join screen and its layout-fit coverage. Verify with the multi-device fit spec.
+</code></pre></div>
+<p>A wish is not specific:</p>
+<div class="language-text highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>Make joining better.
+</code></pre></div>
+<p>The orchestrator can build from the first one. It can only guess at the second.</p>
+<h2 id="step-5-hand-the-ticket-to-the-orchestrator">Step 5: hand the ticket to the orchestrator<a class="headerlink" href="#step-5-hand-the-ticket-to-the-orchestrator" title="Permanent link">&para;</a></h2>
+<p>After the ticket exists, run it with the workflow dispatcher:</p>
+<div class="language-bash highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a>bash<span class="w"> </span>workflow/scripts/dev.sh<span class="w"> </span>ticket<span class="w"> </span>&lt;ticket-stem&gt;
+</code></pre></div>
+<p>For a ticket file named <code>tickets/backlog/join-code-above-settings.md</code>, the stem is <code>join-code-above-settings</code>:</p>
+<div class="language-bash highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a>bash<span class="w"> </span>workflow/scripts/dev.sh<span class="w"> </span>ticket<span class="w"> </span>join-code-above-settings
+</code></pre></div>
+<p>That command is not the same wrapper that starts the app. <code>workflow/scripts/dev.sh</code> owns the ticket lifecycle. Its <code>ticket</code> verb resolves the ticket, runs launch preflight, and hands the work to the orchestrator as a single-ticket run. The worker runs in a disposable ticket clone, implements the ticket, writes the required sibling run record, and sends the result through review and ship stages. If the gates pass, the orchestrator handles the merge lifecycle. If they do not, the run record and state files explain what happened.</p>
+<p>You can inspect the queue and recent state through the same workflow dispatcher:</p>
+<div class="language-bash highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a>bash<span class="w"> </span>workflow/scripts/dev.sh<span class="w"> </span>status
+<a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a>bash<span class="w"> </span>workflow/scripts/dev.sh<span class="w"> </span>backlog-list
+</code></pre></div>
+<p>The useful artifact after a run is not just code. It is the pair: the ticket that said what was supposed to happen and the <code>.run.md</code> file that records what actually happened.</p>
+<h2 id="two-wrappers-two-jobs">Two wrappers, two jobs<a class="headerlink" href="#two-wrappers-two-jobs" title="Permanent link">&para;</a></h2>
+<p>The repo has two wrappers because it has two different kinds of work.</p>
+<table>
+<thead>
+<tr>
+<th>File</th>
+<th>Job</th>
+<th>Examples</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>scripts/dev.sh</code></td>
+<td>Project development: run, test, lint, build docs, build the blog.</td>
+<td><code>setup</code>, <code>dev-up</code>, <code>dev-down</code>, <code>dev-restart</code>, <code>test</code>, <code>lint</code>, <code>docs-build-strict</code>, <code>blog-build</code></td>
+</tr>
+<tr>
+<td><code>workflow/scripts/dev.sh</code></td>
+<td>Orchestrator lifecycle: move tickets and phases through the workflow.</td>
+<td><code>ticket</code>, <code>phase</code>, <code>review</code>, <code>ship</code>, <code>status</code>, <code>backlog-list</code>, <code>history</code></td>
+</tr>
+</tbody>
+</table>
+<p>Use the project wrapper when you are working on the app. Use the workflow wrapper when you are moving work through the ticket system. The split is practical: project commands need the app's Python, Node, docs, and lint environment; workflow commands also maintain run state, ticket state, logs, launch attempts, and merge bookkeeping.</p>
+<p>This is also the naming problem Tempo is meant to solve long term. Tempo is the in-progress Go port of the orchestrator. Its CLI already has orchestration-shaped commands such as <code>tempo run &lt;ticket-stem&gt;</code>, <code>tempo group-run &lt;name&gt;</code>, and <code>tempo launch-preflight</code>, and the port keeps generic lint gates and authoring machinery under <code>tempo/</code>. But in this repo today, real ticket execution still goes through <code>bash workflow/scripts/dev.sh ticket &lt;ticket-stem&gt;</code>. The honest statement is: Tempo is the productized direction; the workflow dispatcher is the current operational path.</p>
+<h2 id="what-this-unlocks">What this unlocks<a class="headerlink" href="#what-this-unlocks" title="Permanent link">&para;</a></h2>
+<p>The first pass through the loop gives you three useful capabilities.</p>
+<p>First, you can reproduce the product locally from one checkout. That matters because multi-device bugs are usually product bugs before they are code bugs.</p>
+<p>Second, you can turn an observation into a schedulable contract. That matters because the AI worker does not need a mood or a preference; it needs a bounded ticket with a verification command.</p>
+<p>Third, you can read the result after the fact. The run record preserves dead ends, judgment calls, and verification results, so the reason for a change is not trapped in a chat transcript.</p>
+<p>Those are the same capabilities Tempo is trying to package for other repositories: setup discipline, ticket-shaped work, lifecycle state, review gates, and durable records. Running this sequence once is the small version of that future.</p>
 <h2 id="the-honest-edge">The honest edge<a class="headerlink" href="#the-honest-edge" title="Permanent link">&para;</a></h2>
-<p>Everything above is the happy path, and I would be selling you something if I stopped there.</p>
-<p><strong>The five moves describe a clean run. Real runs are messier.</strong> When you hand a ticket to the orchestrator, the most common outcome is <em>not</em> an instant merge. The review preflight -- lint, the test suite, and a battery of project-specific rules -- gates every change, and it fails tickets routinely: a lint rule tripped, a test broken, a rule about role-filtered views that the implementation did not honor. That is the gate doing its job. A ticket can come back needing a re-run, or it can <em>escalate</em> -- stop and ask for a human decision -- when the agent hits something the ticket did not anticipate. None of that is failure; it is the system being governance with a human in the loop rather than push-button autonomy. If your first ticket clears every gate on the first try, enjoy it, but do not calibrate on it.</p>
-<p><strong>The orchestrator builds exactly what the ticket says.</strong> That is wonderful when the ticket is right and a problem when it is not. If you diagnose the recap flash as a redirect-timing bug when it is really a render-order bug, you will get back a clean, gated, well-recorded implementation of the wrong fix. The pipeline guarantees the code matches the ticket. It cannot guarantee the ticket matches reality -- and the only way you catch a wrong-premise ticket is by going back to move three and <em>playing the result</em>.</p>
-<p><strong>You still have to be able to judge the output.</strong> This project's owner is a Python and C++ developer who cannot honestly claim to write or source-review the React client -- the boundary named in <a href="../python-dev-learning-react/"><em>Shipping a React client I have not read</em></a>. The loop does not remove the need to understand what came back; it makes the output <em>reviewable</em>, which is not the same thing. It removes the typing. It does not remove the thinking.</p>
-<p>None of these are reasons not to work this way. They are the shape of the deal. The first runnable line buys you a governed build loop that someone who cannot hand-write the frontend can still drive -- and you pay for it by staying the person who plays the result, decides what is wrong, and writes the ticket that says so.</p>
-<p>So: clone it. <code>setup</code>. <code>dev-up</code>. Play it on a real phone. Notice one thing. Write the ticket. Run it. Watch it merge. That is the first runnable line, and once you have typed it once, every conceptual post about working this way is describing a room you are already standing in.</p>
+<p>The sequence above is the clean path, not a promise that every ticket merges on the first try.</p>
+<p>Review gates fail. A ticket can miss a dependency, trip a layout rule, break a lint, or hit a test failure. That is not the orchestrator being broken; that is the governance doing work. The point of the system is not that the AI always gets it right. The point is that failures are caught in a place where they leave evidence.</p>
+<p>The ticket can also be wrong. If you describe a phone layout problem as a WebSocket problem, the worker may return a clean implementation of the wrong idea. The pipeline can check that code matches the ticket. It cannot prove the ticket matched the product. That is why the loop starts and ends with playing the real app.</p>
+<p>So the first runnable line is not just <code>setup</code>. It is the whole first pass:</p>
+<div class="language-text highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a>setup -&gt; dev-up -&gt; real-device play -&gt; ticket -&gt; orchestrator run -&gt; review result
+</code></pre></div>
+<p>Once you have done that once, the workflow stops being a concept. It becomes a habit: run the app, observe one concrete problem, write the smallest honest ticket, let the orchestrator build it, and judge the result in the product again.</p>
 <hr />
 <p><em>Or: subscribe for the rest of the mindset track.</em></p>
 

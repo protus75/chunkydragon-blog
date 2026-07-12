@@ -252,7 +252,7 @@
   <span class="md-ellipsis">
     
   
-    Blog drafts
+    Blog
   
 
     
@@ -1598,82 +1598,10 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#the-ladder" class="md-nav__link">
+  <a href="#1-start-with-the-run-record" class="md-nav__link">
     <span class="md-ellipsis">
       
-        The ladder
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="The ladder">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#rung-1-the-surprise-note" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Rung 1: the surprise note
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#rung-2-the-follow-up-ticket" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Rung 2: the follow-up ticket
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#rung-3-the-retro-that-finds-the-pattern" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Rung 3: the retro that finds the pattern
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#rung-4-the-hard-rule-and-the-lint-that-makes-it-bite" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Rung 4: the hard rule and the lint that makes it bite
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#rung-5-the-durable-skill" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Rung 5: the durable skill
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#why-the-history-doc-is-the-spine" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Why the history doc is the spine
+        1. Start with the run record
       
     </span>
   </a>
@@ -1681,10 +1609,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#the-meta-lesson-incident-derived-machine-enforced-law" class="md-nav__link">
+  <a href="#2-turn-recurring-gaps-into-tickets" class="md-nav__link">
     <span class="md-ellipsis">
       
-        The meta-lesson: incident-derived, machine-enforced law
+        2. Turn recurring gaps into tickets
       
     </span>
   </a>
@@ -1692,10 +1620,54 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#the-honest-edges" class="md-nav__link">
+  <a href="#3-use-retros-to-find-the-pattern" class="md-nav__link">
     <span class="md-ellipsis">
       
-        The honest edges
+        3. Use retros to find the pattern
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-promote-stable-lessons-into-rules-and-lints" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. Promote stable lessons into rules and lints
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-use-skills-for-task-local-recall" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. Use skills for task-local recall
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#what-this-buys" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        What this buys
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#the-limits" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The limits
       
     </span>
   </a>
@@ -2457,55 +2429,153 @@
 
 
 <h1 id="from-surprise-to-rule-to-skill-how-an-agent-contract-teaches-itself">From surprise to rule to skill: how an agent contract teaches itself<a class="headerlink" href="#from-surprise-to-rule-to-skill-how-an-agent-contract-teaches-itself" title="Permanent link">&para;</a></h1>
-<p>If you open this project for the first time, the thing that hits you is the governance. <code>CLAUDE.md</code> is thousands of words of imperative HARD RULEs. There is a wall of lints that run on every pull request. There is an entire document, the overview docs, whose only job is to explain why the rules exist. A reasonable first reaction is "who sat down and designed all of this up front?"</p>
-<p>Nobody did. That is the interesting part.</p>
-<p>None of the contract was designed in advance. Each rule is a fossil. It marks the exact spot where an autonomous agent tripped over something, the failure got caught in a written record, and somebody decided the lesson was worth promoting so it could never recur silently. The contract is thick because the system is built to convert pain into enforcement -- and the conversion happens on a ladder, where each rung makes the lesson harder to forget than the last.</p>
-<p>This post walks that ladder, rung by rung, grounded entirely in this repo's real machinery. If you are trying to build a self-correcting discipline into your own AI workflow, the ladder is the transferable part. The specific lints are not; the escalation pattern is.</p>
-<h2 id="the-ladder">The ladder<a class="headerlink" href="#the-ladder" title="Permanent link">&para;</a></h2>
-<p>Here is the whole shape before we climb it. A lesson starts as a one-off note an agent leaves behind. If it matters, it climbs:</p>
-<ol>
-<li>A <strong>surprise note</strong> in a run record -- local, easy to miss.</li>
-<li>A <strong>follow-up ticket</strong> that names the gap as real work.</li>
-<li>A <strong>retro</strong> that spots the same shape across several run records.</li>
-<li>A <strong>CLAUDE.md hard rule plus an enforcing lint</strong> -- global, and mechanical.</li>
-<li>A <strong>durable skill</strong> the provider loads on its own whenever the relevant task recurs -- ambient.</li>
-</ol>
-<p>A note is local. A rule is global. A lint is mechanical. A skill is ambient. Each rung trades a little authoring effort for a lot less reliance on the agent choosing to remember. That trade is the entire idea.</p>
-<h3 id="rung-1-the-surprise-note">Rung 1: the surprise note<a class="headerlink" href="#rung-1-the-surprise-note" title="Permanent link">&para;</a></h3>
-<p>Every ticket in this project leaves behind a run record -- a <code>*.run.md</code> sibling next to the ticket file, its format pinned in the run-record contract. The run record captures what the diff cannot: the things the ticket did not anticipate. Two of its sections are where lessons are born. <code>## Surprises / judgment calls</code> is for spec gaps and decisions the agent had to make where the ticket was silent. <code>## Dead ends</code> is a negative-result log -- what failed first, and why.</p>
-<p>These are cheap and honest, and that is exactly the problem with them. They are local. A surprise noted in one ticket's run record is invisible to the next agent working a different ticket, who will cheerfully rediscover the same wall.</p>
-<p>The memory-to-skills migration is a clean example of a surprise that mattered. Its run record (the ticket archive) has a <code>## Surprises / judgment calls</code> bullet noting that writing under the local agent configuration was blocked by Claude Code's hard-coded write rail even though the contract claimed the directory was exempt -- so the agent routed file creation through Python I/O instead. That is a real, specific, reusable lesson. On rung 1 it is also a needle in a haystack of run records.</p>
-<h3 id="rung-2-the-follow-up-ticket">Rung 2: the follow-up ticket<a class="headerlink" href="#rung-2-the-follow-up-ticket" title="Permanent link">&para;</a></h3>
-<p>The first promotion is turning a note into work. When an agent notices a gap that is out of scope for the ticket it is on, the rule is not "fix it inline" -- it is "stop, note it, and file a follow-up ticket." A surprise that becomes a ticket has a name, a slug, and a place in the backlog. It is no longer trapped inside one run record; it is a thing the orchestrator can schedule.</p>
-<p>This project takes the follow-up so seriously that there is a hard rule about wiring it up. CLAUDE.md's "A fix ticket MUST wire its dependency into every existing ticket it unblocks" exists because filing the fix is only half the job: if the fix is not encoded into the <code>## Depends on</code> of the tickets it unblocks, the identical failure just repeats on the next batch. The memory-to-skills ticket itself is a follow-up of this kind -- it was born when an audit noticed that feedback files only loaded if an agent thought to read <code>MEMORY.md</code> first, and it deliberately carried a forward-looking note about the review-surface ticket that should come after it.</p>
-<p>A ticket is more durable than a note. But it is still one lesson, treated as one task. The leap to a <em>general</em> rule needs something that reads across many tickets at once.</p>
-<h3 id="rung-3-the-retro-that-finds-the-pattern">Rung 3: the retro that finds the pattern<a class="headerlink" href="#rung-3-the-retro-that-finds-the-pattern" title="Permanent link">&para;</a></h3>
-<p>That something is the retrospective. After a phase or a feedback cluster finishes, a retro runs last (templates: the workflow docs and its phase sibling). Its job is not to write code. Its job is to read every sibling run record -- every <code>## Surprises / judgment calls</code>, every <code>## Dead ends</code> -- find the cross-ticket patterns, and decide what to do with each one.</p>
-<p>The feedback retro is structured around four questions, and the third is the load-bearing one for this post: <em>candidates for new load-bearing agent rules</em>. For each candidate the retro must either promote it -- by editing the agent-rule files in that same PR -- or reject it with a one-sentence rationale. Every loose end from the cluster's run records gets an explicit disposition: <code>resolved-in-cycle</code>, <code>seed-forward</code>, <code>yagni-closed</code>, or <code>re-scoped</code>. Nothing is allowed to silently drop.</p>
-<p>This is the rung where "this annoyed one agent once" becomes "this is a pattern several agents hit." The retro is the pump that lifts a lesson out of the run records. It is also the single point of failure for the whole ladder, which is a thread we will pick back up at the end. The <code>/dev-retro</code> command is what runs it.</p>
-<h3 id="rung-4-the-hard-rule-and-the-lint-that-makes-it-bite">Rung 4: the hard rule and the lint that makes it bite<a class="headerlink" href="#rung-4-the-hard-rule-and-the-lint-that-makes-it-bite" title="Permanent link">&para;</a></h3>
-<p>When the retro promotes a lesson, it usually lands in two places at once, and the pairing is the point.</p>
-<p>First, imperative rule text in <code>CLAUDE.md</code> -- a HARD RULE the agent reads as instruction. Second, a lint registered in <code>review.always_checks</code> in the review configuration, which fails the pull request at review time if the rule is violated. The rule is what an honest agent follows. The lint is what catches a forgetful one. Prose alone trusts the agent to remember; prose plus a gate does not have to.</p>
-<p>The bug-fix gates are the clearest worked examples. The rule "On bug-fix tickets, the code commit must land before any test commit" is enforced by <code>lint-bug-commit-order</code>. The rule "Bug-fix tickets require a live-repro evidence artifact" is enforced by <code>lint-bug-repro-evidence</code>. The rule that gameplay randomness must route through <code>RandomnessService</code> is enforced by <code>lint-no-direct-random</code>, which scans the gameplay trees and fails on a raw <code>import random</code>. In each case the imperative text and the mechanical check ship together, because either one alone is leaky: a rule with no lint is a suggestion, and a lint with no rule is a mystery when it fires.</p>
-<p>You can watch a rule get born this way. The catalog once renamed its public, no-auth role from <code>SPECTATOR</code> to <code>OBSERVER</code>, and the rename left roughly 160 stale references scattered across the docs even after the first code PR merged. the overview docs records that mess as the origin story of the CLAUDE.md rule "Canonical doc edits propagate through every related doc in the same turn." A surprise -- a rename that did not finish -- became a standing rule that now binds every future concept change. That is rung 3 handing off to rung 4 in one motion.</p>
-<h3 id="rung-5-the-durable-skill">Rung 5: the durable skill<a class="headerlink" href="#rung-5-the-durable-skill" title="Permanent link">&para;</a></h3>
-<p>The top rung is the one that fires without anyone deciding to consult it.</p>
-<p>For a long time, hard-won tooling lessons in this repo lived as feedback memory files under the local agent configuration. They had the same weakness as a surprise note, one level up: they only loaded if an agent first read <code>MEMORY.md</code> and followed the breadcrumb. The fix was the memory-to-skills migration (the ticket archive), which converted each feedback file into a provider-loaded skill at the local agent configuration. A skill auto-loads whenever the harness matches the current task against the skill's description -- the rule fires even when the agent would never have thought to go looking for it. Same content, ambient recall.</p>
-<p>The skill <code>retro-seed-verification</code> is a single lesson that climbed the entire ladder. It started as a retro finding: a cluster audit discovered that transcribing a stale carry-forward seed into the next cluster's plan produced "ghost tickets" -- work to fix bugs that other commits had already fixed. That finding became a feedback memory file. The migration then graduated it into the local agent configuration, which now loads on its own whenever an agent is about to transcribe a retrospective seed and tells it to re-verify the claim against current code first. A surprise about ghost work is now an ambient reflex.</p>
-<h2 id="why-the-history-doc-is-the-spine">Why the history doc is the spine<a class="headerlink" href="#why-the-history-doc-is-the-spine" title="Permanent link">&para;</a></h2>
-<p>The ladder only works because the <em>why</em> is preserved somewhere durable, and that is the explicit job of the overview docs. It states its own contract up front: the rule files are authoritative for <em>what</em> an agent must do; the history doc is authoritative for <em>why</em> a rule exists and what must not be lost when the rule text gets shortened. It is an incident index -- the PR clusters, the stale-vocabulary sweeps, the evidence gaps, the workflow-drift incidents that made each terse rule load-bearing.</p>
-<p>This matters more than it looks. A rule with no preserved rationale is the thing a future maintainer deletes because it seems fussy, and then rediscovers the original failure the hard way. The history doc is what lets the contract be <em>audited</em> instead of merely obeyed: an agent rewriting or retiring a rule reads the incident behind it first. The ladder produces rules; the history doc keeps them legible.</p>
-<h2 id="the-meta-lesson-incident-derived-machine-enforced-law">The meta-lesson: incident-derived, machine-enforced law<a class="headerlink" href="#the-meta-lesson-incident-derived-machine-enforced-law" title="Permanent link">&para;</a></h2>
-<p>Step back and the pattern is one idea repeated at every rung. You do not keep an autonomous agent honest by trusting it to remember. You keep it honest by encoding each hard-won lesson where it cannot be skipped.</p>
-<p>There are exactly three such places, and the top three rungs map onto them. Imperative rule text the agent reads as instruction. A lint in <code>review.always_checks</code> that fails the pull request whether or not the agent read the rule. A skill the provider loads on a keyword match whether or not the agent went looking. Each is harder to bypass than the last: you can forget to read a long rules file, but you cannot merge past a failing lint, and you cannot fail to notice a skill that has already loaded itself into your context.</p>
-<p>That is why the contract grows. It is not bureaucratic accretion. Every rule is incident-derived -- it traces back to a real failure in a real run record -- and machine-enforced -- it bites at review time or load time, not on the honor system. The system is built to convert pain into enforcement, and the ladder is the conversion mechanism.</p>
-<h2 id="the-honest-edges">The honest edges<a class="headerlink" href="#the-honest-edges" title="Permanent link">&para;</a></h2>
-<p>I would be selling you something if I stopped at "and the ladder climbs itself." It does not, and it is not free.</p>
-<p><strong>Every rung costs something to author and to maintain.</strong> A rule is words in a file that is already very long, and every rule added dilutes the signal of the others -- which is exactly why the retro is required to <em>reject</em> candidate rules with a rationale rather than promote every annoyance. A lint is code that has to be kept in lockstep with the rule it guards: this repo has a whole hard rule, "Process-contract changes must land atomically," precisely because changing one enforced check means updating the config entry, the runner, the help text, and a guard test in the same PR, or the lint silently drifts from the rule. A lint that drifts is worse than no lint, because it enforces a shape the rule no longer means.</p>
-<p><strong>Skills go stale too.</strong> A skill describes the world as it was when the lesson landed. The irony is sharp here: <code>retro-seed-verification</code> exists <em>because</em> stale carry-forward produces ghost work -- and a skill is itself a piece of carried-forward guidance that can rot if the thing it describes moves. The top rung buys you ambient recall at the price of ambient staleness.</p>
-<p><strong>And the whole ratchet stalls the instant retro discipline lapses.</strong> Rungs 1 and 2 happen as a side effect of normal work -- agents leave run records, agents file follow-ups. But the lift from a scattered pile of notes to a general rule depends <em>entirely</em> on someone running the retro, reading the run records, and choosing to promote. Skip it and the surprises keep accumulating in individual <code>*.run.md</code> files, unread, and the contract stops learning. The thick CLAUDE.md is not evidence that the system runs itself; it is evidence that someone kept turning the crank. This is the same dependency the <a href="../cross-game-compounding-flywheel/">compounding-flywheel capstone</a> describes for catalog quality, and the <a href="../spiral-detection-watchdog/">spiral-detection watchdog</a> is a concrete guardrail that came up this very ladder -- a retro-driven mechanism that catches the residual cases the rules do not. It is governance, not magic.</p>
-<p>That is the honest version of the answer to "who designed all this?" Nobody designed it, and nobody can stop maintaining it. The contract is a record of every place the system has learned, and it keeps learning for exactly as long as someone keeps reading the run records and deciding which surprises deserve to become law.</p>
-<hr />
+<p>The agent contract in this repo is not a separate policy document that someone
+finished before the project started. It is built from incidents.</p>
+<p>A ticket hits a gap. The run record names it. If the gap can recur, the project
+turns it into work. If the same shape shows up across several runs, a retro
+promotes it into a standing rule, a lint, or a skill. That is the loop this post
+is about.</p>
+<p>Here is the short version:</p>
+<div class="language-text highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>run-record note -&gt; backlog ticket -&gt; retro finding -&gt; rule plus lint -&gt; skill
+</code></pre></div>
+<p>The important part is not the exact set of rules in this repo. The useful part is
+the promotion path. A local surprise becomes harder to forget each time it moves
+up the ladder.</p>
+<h2 id="1-start-with-the-run-record">1. Start with the run record<a class="headerlink" href="#1-start-with-the-run-record" title="Permanent link">&para;</a></h2>
+<p>Every ticket run is supposed to leave a sibling run record beside the ticket,
+for example:</p>
+<div class="language-text highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>tickets/backlog/example-ticket.md
+<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>tickets/backlog/example-ticket.run.md
+</code></pre></div>
+<p>The format lives in <code>workflow/docs/authoring/RUN_RECORD.md</code>. The useful fields
+for learning are plain:</p>
+<ul>
+<li><code>## Surprises / judgment calls</code> records a decision the ticket did not spell
+  out.</li>
+<li><code>## Dead ends</code> records what failed first and why.</li>
+<li><code>## Prevention opportunities</code> records the class-level prevention the agent
+  considered.</li>
+<li><code>## Project agent-rule changes</code> records whether the run changed the provider
+  rule surface.</li>
+<li><code>## Feedback artifact changes</code> records whether the run changed a skill, memory
+  file, or control-plane artifact.</li>
+</ul>
+<p>That last pair matters. The run record is not only "what changed." It also asks
+whether the lesson should move somewhere more durable.</p>
+<p>A concrete example from the current rules is "Never hunt the filesystem for
+executables." The rule says an autonomous run may use the activated venv or a
+bare command on <code>PATH</code>; if the environment is missing, the run must execute
+<code>bash scripts/dev.sh setup</code> instead of searching <code>/usr/local</code>, <code>/opt</code>, or a user
+profile for another binary. The history doc records why: a nearby executable can
+carry different dependencies and make verification stop matching the repo's
+intended environment.</p>
+<p>That is exactly the kind of lesson a run record should preserve first: specific,
+observable, and reusable.</p>
+<h2 id="2-turn-recurring-gaps-into-tickets">2. Turn recurring gaps into tickets<a class="headerlink" href="#2-turn-recurring-gaps-into-tickets" title="Permanent link">&para;</a></h2>
+<p>A run-record note is easy to lose. A backlog ticket is not.</p>
+<p>This repo has a hard rule for that transition: when an agent identifies work
+that deserves its own ticket, it must author that ticket in the same turn. It
+cannot end with "we should file a follow-up later." The follow-up gets a real
+file under <code>tickets/backlog/</code>, scoped by <code>## Touches</code>, and wired with
+<code>## Depends on</code>.</p>
+<p>There is a stricter version for fix tickets. If a tooling or workflow defect
+blocks existing tickets, the fix ticket must be added to the <code>## Depends on</code> of
+every ticket it unblocks. Prose such as "run this after the fix" is not enough,
+because the scheduler reads dependencies, not intent.</p>
+<p>This is the first promotion. The lesson moves from a paragraph inside one run
+record to schedulable work the orchestrator can see.</p>
+<h2 id="3-use-retros-to-find-the-pattern">3. Use retros to find the pattern<a class="headerlink" href="#3-use-retros-to-find-the-pattern" title="Permanent link">&para;</a></h2>
+<p>One ticket can identify one gap. A retro can see whether the gap is a pattern.</p>
+<p>The feedback retro template in <code>workflow/docs/authoring/FEEDBACK_RETRO.md</code> tells
+the retro agent to read sibling run records, review deferred and escalated
+items, and answer four questions. One of those questions is explicitly about
+"Candidates for new load-bearing agent rules." The template also requires every
+deferred or escalated item to be dispositioned instead of silently dropped.</p>
+<p>That is the pump in the system. A run record says "this surprised me." A retro
+asks "did this surprise happen often enough, or cost enough, that the project
+should change?"</p>
+<p>The <code>retro-seed-verification</code> skill is a good small example. Its rule is simple:
+before a retro carries a bug seed forward into the next cluster, re-check the
+current code or rerun the cited test. The skill exists because a past retro
+carried stale claims forward and created ghost work. The current skill names the
+failure directly and tells the next retro author how to avoid it.</p>
+<h2 id="4-promote-stable-lessons-into-rules-and-lints">4. Promote stable lessons into rules and lints<a class="headerlink" href="#4-promote-stable-lessons-into-rules-and-lints" title="Permanent link">&para;</a></h2>
+<p>Some lessons need prose. Some need a gate. The durable cases usually need both.</p>
+<p><code>CLAUDE.md</code> and <code>AGENTS.md</code> are the provider-facing rule files. They tell agents
+what to do. <code>workflow/project.config.json</code> lists review checks such as
+<code>lint-run-records</code>, <code>lint-devblog-mirror</code>, <code>lint-bug-commit-order</code>,
+<code>lint-bug-repro-evidence</code>, and <code>lint-no-direct-random</code>. Those checks make parts
+of the contract mechanical.</p>
+<p>The split is deliberate:</p>
+<ul>
+<li>The rule explains the behavior and the reason.</li>
+<li>The lint catches the violation when an agent forgets or misunderstands.</li>
+<li><code>docs/overview/AGENT_RULES_HISTORY.md</code> preserves the incident that made the
+  rule worth keeping.</li>
+</ul>
+<p>The randomness rule is a straightforward example. The rule says gameplay code
+must not import Python's <code>random</code> directly; randomness is resolved through the
+server-side randomness service or AI helper. The gate <code>lint-no-direct-random</code>
+scans the relevant Python trees for direct random usage. The history doc explains
+why the rule exists and what the lint can and cannot catch.</p>
+<p>The doc-propagation rule is another example. The history doc records the
+<code>SPECTATOR</code> to <code>OBSERVER</code> rename leaving about 160 stale current references
+after the first code change. The standing rule now says a canonical doc edit that
+renames a concept must search and update related current docs in the same turn.
+That rule came from a concrete miss, not a style preference.</p>
+<p>Tempo keeps the same pattern visible in the Go port. The project config in
+<code>tempo/assets/bootstrap/project.config.json</code> carries the bootstrap review-check
+contract, and <code>tempo/lint_gates.go</code> registers vendored lint-gate modules such as
+<code>lint-devblog-mirror</code>, <code>lint-run-records</code>, and the bug-ticket gates. The Python
+workflow and the Go port are not allowed to drift silently where a matching
+surface exists.</p>
+<h2 id="5-use-skills-for-task-local-recall">5. Use skills for task-local recall<a class="headerlink" href="#5-use-skills-for-task-local-recall" title="Permanent link">&para;</a></h2>
+<p>A lint fires late. A rule file can be long. A skill is for guidance that should
+arrive when the task starts.</p>
+<p>Skills in this repo live under <code>.claude/skills/&lt;slug&gt;/SKILL.md</code>. Each one has a
+frontmatter <code>name:</code> and <code>description:</code>. The review rule for skills says the
+description must name the task keywords, file pattern, command shape, framework,
+or operating system that should trigger the skill. In other words, a skill is not
+just another note. It is written to be loaded at the moment a matching task is
+being done.</p>
+<p>That makes skills useful for workflow quirks:</p>
+<ul>
+<li><code>boardgameui-dev-workflow</code> reminds agents to use <code>bash scripts/dev.sh</code> for
+  project checks and <code>bash workflow/scripts/dev.sh</code> for workflow commands.</li>
+<li><code>retro-seed-verification</code> reminds retro authors to re-check stale carry-forward
+  seeds.</li>
+<li><code>tickle-vscode-scm</code> captures the local SCM-panel refresh step after commits.</li>
+</ul>
+<p>These are not universal architecture laws. They are specific operating lessons.
+Putting them in skills keeps them close to the task that needs them.</p>
+<h2 id="what-this-buys">What this buys<a class="headerlink" href="#what-this-buys" title="Permanent link">&para;</a></h2>
+<p>The ladder gives each lesson the smallest durable home that fits it.</p>
+<p>A one-off observation stays in a run record. Work that should happen becomes a
+ticket. A repeated pattern becomes a retro finding. A global behavior becomes an
+agent rule and, when possible, a lint. A task-local habit becomes a skill.</p>
+<p>That shape is practical. It avoids two bad outcomes:</p>
+<ul>
+<li>Important lessons trapped in old run records.</li>
+<li>Every annoyance promoted into a permanent global rule.</li>
+</ul>
+<p>The retro is the filter. The lint is the enforcement. The skill is the local
+reminder.</p>
+<h2 id="the-limits">The limits<a class="headerlink" href="#the-limits" title="Permanent link">&para;</a></h2>
+<p>This does not make the system automatic.</p>
+<p>Run records still have to be written. Tickets still have to be scoped. Retros
+still have to read the evidence and reject weak candidates. Lints still have to
+be kept in sync with the rule they enforce. Skills still have to be updated when
+the workflow changes.</p>
+<p>The current blog refresh ticket is a small example of the same discipline. The
+previous version of this post used broad claims about the contract "teaching
+itself." The refresh ticket points back to the writing standard in the blog
+index: plain prose, concrete examples, and fresh facts verified against the repo.
+So the fix is not just "make this post sound better." The fix is to ground each
+claim in the current rule files, templates, review checks, Tempo surfaces, and
+skill files.</p>
+<p>That is the honest version of the loop. The project learns only when a specific
+surprise is written down, promoted deliberately, and kept current after it
+becomes part of the contract.</p>
 
 
 

@@ -252,7 +252,7 @@
   <span class="md-ellipsis">
     
   
-    Blog drafts
+    Blog
   
 
     
@@ -1570,10 +1570,10 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#a-linter-here-is-not-always-a-yesno-gate" class="md-nav__link">
+  <a href="#soft-checks-are-advisory-not-toothless" class="md-nav__link">
     <span class="md-ellipsis">
       
-        A linter here is not always a yes/no gate
+        Soft checks are advisory, not toothless
       
     </span>
   </a>
@@ -1581,10 +1581,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#three-tripwires-registered-as-soft-checks" class="md-nav__link">
+  <a href="#example-blast-radius-drift" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Three tripwires, registered as soft checks
+        Example: blast-radius drift
       
     </span>
   </a>
@@ -1592,10 +1592,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#the-move-draft-do-not-fix" class="md-nav__link">
+  <a href="#example-dedup-and-library-replacement" class="md-nav__link">
     <span class="md-ellipsis">
       
-        The move: draft, do not fix
+        Example: dedup and library replacement
       
     </span>
   </a>
@@ -1603,10 +1603,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#what-the-worked-tickets-look-like" class="md-nav__link">
+  <a href="#the-ticket-emitter-owns-the-boring-parts" class="md-nav__link">
     <span class="md-ellipsis">
       
-        What the worked tickets look like
+        The ticket emitter owns the boring parts
       
     </span>
   </a>
@@ -1614,10 +1614,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#why-draft-then-fix-is-the-right-shape" class="md-nav__link">
+  <a href="#watchdogs-file-repairs-not-cleanup-suggestions" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Why draft-then-fix is the right shape
+        Watchdogs file repairs, not cleanup suggestions
       
     </span>
   </a>
@@ -1625,10 +1625,21 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#the-honest-edge" class="md-nav__link">
+  <a href="#what-this-buys" class="md-nav__link">
     <span class="md-ellipsis">
       
-        The honest edge
+        What this buys
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#the-boundary" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The boundary
       
     </span>
   </a>
@@ -2418,58 +2429,175 @@
 
 
 <h1 id="the-orchestrator-that-drafts-its-own-backlog">The orchestrator that drafts its own backlog<a class="headerlink" href="#the-orchestrator-that-drafts-its-own-backlog" title="Permanent link">&para;</a></h1>
-<p>If you are new to building this way, you probably picture a linter as one thing: a check that either passes or fails a pull request. Green, your code merges. Red, you go fix it. That model is correct for most of the checks in this repo -- and it is exactly wrong for a second, quieter class of check that does something stranger.</p>
-<p>When one of these checks notices that the codebase has <em>drifted</em> -- a file has bloated into a god file, a near-copy of an existing helper has crept in, a hand-rolled tally could be a standard-library <code>Counter</code> -- it does not fix the code. It also does not fail the pull request that introduced the drift. It writes a brand-new ticket, drops it into the backlog, and lets the merge proceed. The orchestrator grows its own to-do list.</p>
-<p>This post is about that move: <strong>the drift tripwires and the periodic code-health passes draft a remediation ticket instead of repairing the drift in the run that spotted it.</strong> It is a small idea with a surprisingly large payoff, and -- because I would rather you trust the rest of this thread -- one honest catch I will not bury.</p>
-<h2 id="a-linter-here-is-not-always-a-yesno-gate">A linter here is not always a yes/no gate<a class="headerlink" href="#a-linter-here-is-not-always-a-yesno-gate" title="Permanent link">&para;</a></h2>
-<p>The companion post <a href="../orchestration-review-guardrails/">Review surfaces and the AI-first guardrails</a> lays out the review stage in full, but here is the one distinction you need for this post. The project's review preflight is an ordered list of named check verbs in the review configuration, sorted into buckets. Two of them matter here:</p>
+<p>Most checks in this repo are gates. If <code>lint</code>, <code>test</code>, <code>lint-ascii</code>, or one of
+the bug-fix gates fails, the ticket does not merge. That is the normal contract:
+red means stop and fix the branch.</p>
+<p>The repo also has checks whose job is not to stop the branch. They record a
+separate problem as a ticket.</p>
+<p>That distinction matters. A pull request can introduce or expose code-health
+drift that is real but not urgent enough to block the original change. It can
+also reveal that a monitoring producer has gone silent. In both cases the
+project wants a durable artifact, not a line in a log that nobody reads later.
+The orchestrator handles that by filing backlog tickets.</p>
+<p>There are two current shapes:</p>
 <ul>
-<li><code>review.always_checks</code> -- the unconditional wall. Every ticket, every time. <code>lint</code>, <code>test</code>, the ASCII check, the bug-fix gates. Any one of them going red blocks the merge. This is the pass/fail linter you already have a mental model for.</li>
-<li><code>review.soft_checks</code> -- checks that <em>report drift but do not block the merge on their own.</em></li>
+<li>Drift soft-checks file <code>state: draft</code> remediation tickets. These are
+  suggestion-class refactors. They do not run until someone promotes them.</li>
+<li>Watchdogs file <code>state: confirmed</code> repair tickets when advisory machinery is
+  unhealthy. These are not product work, but they are scheduled work because a
+  broken signal should not rot silently.</li>
 </ul>
-<p>That second bucket is the interesting one. A soft check is allowed to notice something is wrong and let the code ship anyway. If it cannot fail the build, what does it do with what it noticed? It drafts a ticket.</p>
-<h2 id="three-tripwires-registered-as-soft-checks">Three tripwires, registered as soft checks<a class="headerlink" href="#three-tripwires-registered-as-soft-checks" title="Permanent link">&para;</a></h2>
-<p>Open the review configuration and find the <code>review.soft_checks</code> line. Three of its entries are the drift tripwires this post is about:</p>
+<p>The useful idea is not "the system fixes itself." It does not. The useful idea
+is narrower: when the system observes a problem outside the current ticket's
+scope, it writes down the next unit of work in the same backlog format as every
+human-authored ticket.</p>
+<h2 id="soft-checks-are-advisory-not-toothless">Soft checks are advisory, not toothless<a class="headerlink" href="#soft-checks-are-advisory-not-toothless" title="Permanent link">&para;</a></h2>
+<p>The review configuration in <code>workflow/project.config.json</code> splits review checks
+into buckets. <code>review.always_checks</code> is the hard wall. <code>review.soft_checks</code> is
+the advisory bucket.</p>
+<p>The soft-check bucket currently includes several freshness and drift checks,
+including these three code-health tripwires:</p>
 <ul>
-<li><code>lint-blast-radius-drift</code> -- watches for structural drift: a module that grew into a god file, a hub that too many other files now import, a constant set scattered across a module. Backed by the project scripts; the whole-repo version is the finder verb the project dev wrapper.</li>
-<li><code>lint-dedup-drift</code> -- watches for a changed file that adds a clone or orphans a symbol across the warn band of the duplication threshold table. Backed by the project scripts; the finder is the project dev wrapper.</li>
-<li><code>lint-library-replacement-drift</code> -- watches for hand-rolled backend Python that a trusted library could carry instead. Backed by the project scripts; the finder is the project dev wrapper.</li>
+<li><code>lint-blast-radius-drift</code></li>
+<li><code>lint-dedup-drift</code></li>
+<li><code>lint-library-replacement-drift</code></li>
 </ul>
-<p>All three are real entries in the <code>review.soft_checks</code> string today. None of them can fail a merge. And all three, when they fire, do the same thing: they write a <code>state: draft</code> ticket into the backlog describing exactly the drift they saw, and they leave the code alone.</p>
-<h2 id="the-move-draft-do-not-fix">The move: draft, do not fix<a class="headerlink" href="#the-move-draft-do-not-fix" title="Permanent link">&para;</a></h2>
-<p>Here is a real example. When <code>lint-blast-radius-drift</code> decided that an integration test file had crossed the size band, it did not refactor the file. It dropped this ticket into the backlog -- the backlog -- and the ticket's own front matter tells you everything about the design:</p>
-<p>state: draft
-source: lint-blast-radius-drift 2026-06-26
-priority: P3
-group: blast-radius-review
-tags: [refactor]
-bug_heuristic: false</p>
-<p>The body says it plainly: "Keeping the ticket as a draft makes the signal durable without launching autonomous refactor work until a human confirms it." That is the whole philosophy in one sentence. The tripwire's job is to <em>capture</em> the drift the moment it lands, as a self-contained, auditable artifact -- not to act on it.</p>
-<p>Two things make this work and keep it from becoming noise:</p>
+<p>The review stage runs those commands through the normal preflight runner, but a
+non-zero soft-check result is recorded as an advisory warning rather than a
+merge failure. The soft-check watchdog reads those records and files a confirmed
+repair ticket only after a configured streak of unhealthy runs.</p>
+<p>The drift tripwires themselves have a more specific behavior. When they see a
+new candidate in touched code, they draft a remediation ticket and let the
+original ticket continue.</p>
+<h2 id="example-blast-radius-drift">Example: blast-radius drift<a class="headerlink" href="#example-blast-radius-drift" title="Permanent link">&para;</a></h2>
+<p><code>scripts/lint_blast_radius_drift.py</code> looks only at changed source files. For
+each changed file that is also in the blast-radius candidate roots, it asks
+<code>scripts/blast_radius_candidates.py</code> for candidates and filters that list back
+to the touched file.</p>
+<p>When a candidate survives, the script builds a stable slug from the path and
+smell. It checks <code>tickets/backlog/</code> and <code>tickets/archive/</code> for that exact
+stable ticket name. If one already exists, it skips. If not, it emits a ticket
+like:</p>
+<div class="language-yaml highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="nt">state</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">draft</span>
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="nt">source</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">lint-blast-radius-drift &lt;date&gt;</span>
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="nt">priority</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">P3</span>
+<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="nt">group</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">blast-radius-review</span>
+<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="nt">tags</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="nv">refactor</span><span class="p p-Indicator">]</span>
+<a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a><span class="nt">bug_heuristic</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
+<a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a><span class="nt">authoring_engine</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">generator</span>
+<a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a><span class="nt">authoring_mode</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">single</span>
+</code></pre></div>
+<p>The generated body names the path, the measured signal, the smell, and the
+suggested decomposition. For wide refactors such as "God file," "God class,"
+or "High fan-in hub," the ticket also widens <code>## Touches</code> to include bounded
+importers when the script can enumerate them. If it cannot enumerate them
+safely, it falls back to a broader touch surface such as <code>tests/**</code> or the
+source package.</p>
+<p>That <code>## Touches</code> detail is not decoration. It tells the scheduler which future
+tickets must serialize with the refactor. The soft-check is not just leaving a
+note. It is writing a schedulable artifact with enough shape to keep later work
+from colliding.</p>
+<h2 id="example-dedup-and-library-replacement">Example: dedup and library replacement<a class="headerlink" href="#example-dedup-and-library-replacement" title="Permanent link">&para;</a></h2>
+<p>The dedup and library-replacement checks follow the same draft-ticket pattern,
+but they are more conservative about what they file.</p>
+<p><code>scripts/lint_dedup_drift.py</code> scans touched Python and JS/JSX roots for clone,
+dead-code, and orphan-file candidates. It only auto-drafts when the candidate's
+codemap maturity is <code>stable</code>. Experimental, active, unknown, and unannotated
+code is skipped for ticket emission. That avoids turning ahead-of-time work into
+an automatic deletion request just because a static scanner cannot see its
+future caller yet.</p>
+<p>The generated dedup ticket points the implementer back to
+<code>bash scripts/dev.sh dedup-candidates</code> and the duplication review protocol:
+write a golden or characterization test first, prove both copies behave the
+same, then collapse to one source of truth with no compatibility shim.</p>
+<p><code>scripts/lint_library_replacement_drift.py</code> uses the same maturity rule for
+backend Python that may be replaceable by a trusted library. The generated
+ticket names the hand-rolled smell, the suggested library, and the candidate
+path. Its notes tell the future agent to run
+<code>bash scripts/dev.sh library-replacement-candidates</code>, write a golden test on
+real server-shaped fixtures, and treat the change as a refactor unless the
+golden proves the old code wrong.</p>
+<p>Those details are why the check drafts instead of fixing inline. Replacing a
+manual tally with <code>collections.Counter</code>, deleting an orphan symbol, or splitting
+a god file can be correct, but it is not a safe side quest inside an unrelated
+ticket. The safe unit of work is a separate ticket with its own tests.</p>
+<h2 id="the-ticket-emitter-owns-the-boring-parts">The ticket emitter owns the boring parts<a class="headerlink" href="#the-ticket-emitter-owns-the-boring-parts" title="Permanent link">&para;</a></h2>
+<p>The Python emitters do not hand-roll backlog writes. The drift checks and the
+producer-health watchdog route ticket creation through
+<code>workflow/scripts/lib_ticket_emit.py</code>.</p>
+<p>That helper owns the repeated mechanics:</p>
 <ul>
-<li>The drift is captured <strong>decoupled from the pull request that caused it.</strong> The merge that introduced the god file does not have to also fix the god file. The fix becomes its own narrow ticket, scheduled whenever a human wants it, reviewed on its own merits.</li>
-<li>The tripwire <strong>checks the existing backlog and the archive before it drafts.</strong> It will not re-file a candidate that already has a ticket, so the same review running ten times does not manufacture ten copies of the same to-do.</li>
+<li>validate ASCII-only content</li>
+<li>require the core ticket shape</li>
+<li>avoid re-emitting a stem that already exists in the backlog or archive</li>
+<li>write under the configured backlog directory</li>
+<li>run <code>lint-tickets</code> on the emitted file</li>
+<li>commit the emitted ticket when the emitter is running in a branch context</li>
 </ul>
-<p>The drift soft checks are the always-on, per-review half. The other half is the <strong>periodic code-health passes</strong>, documented in the review-rule docs. That doc is the registry: it pairs each drift surface (blast-radius, library-replacement, dedup) with its review spec, its finder verb, and a one-line description of what the pass triages. On a phase cadence, the workflow runs the whole-repo finder for each registered surface, triages the ranked ledger against the surface spec, and -- the recurring move again -- "seed[s] narrow remediation tickets for human promotion." Same instinct as the soft check, run at whole-repo scale: find the drift, write a ticket, hand it back.</p>
-<h2 id="what-the-worked-tickets-look-like">What the worked tickets look like<a class="headerlink" href="#what-the-worked-tickets-look-like" title="Permanent link">&para;</a></h2>
-<p>You can read the accumulated backlog as a fossil record of drift the system noticed and filed against itself. Three naming families, all real on the current tree:</p>
-<ul>
-<li><strong><code>blast-radius-drift-*</code></strong> -- one ticket per structural candidate that crossed a band, e.g. <code>blast-radius-drift-tests-integration-test-server-ai-integration-py-god-file-78be59f6ac</code> in the backlog, and dozens of archived siblings such as <code>blast-radius-drift-src-server-room-py-god-file-3a8c640ad9</code> and <code>blast-radius-drift-src-engine-base-py-high-fan-in-hub-7c1d81cb32</code>. The slug encodes the file path and the smell, so the ticket is self-documenting before you open it.</li>
-<li><strong><code>dedup-*</code></strong> -- one ticket per duplication or dead-code candidate. <code>dedup-werewolf-dawn-payload-fixtures</code> is a current confirmed one; the archive holds <code>dedup-unified-home-start-request</code>, <code>dedup-room-bluff-post-action-tail</code>, and the triage seed <code>dedup-first-remediation-pass</code>. The duplication side of this machine gets its own deep dive in <a href="../trimming-the-duplication-an-ai-cannot-see/">Trimming the duplication an AI cannot see</a>, which walks the finder, the soft check, and the human-gated remediation pass end to end.</li>
-<li><strong><code>library-replace-*</code></strong> -- one ticket per hand-rolled snippet a library could replace, e.g. <code>library-replace-holdem-equity-outcome-counter</code> in the backlog and <code>library-replace-protocol-join-pydantic-model</code> in the archive.</li>
-</ul>
-<p>Every one of these started life as a <code>state: draft</code> stub the system wrote about itself, sourced either from a drift soft check (<code>source: lint-&lt;surface&gt;-drift &lt;date&gt;</code>) or a periodic pass (<code>source: Phase N &lt;surface&gt; pass &lt;date&gt;</code>).</p>
-<h2 id="why-draft-then-fix-is-the-right-shape">Why draft-then-fix is the right shape<a class="headerlink" href="#why-draft-then-fix-is-the-right-shape" title="Permanent link">&para;</a></h2>
-<p>The drafting half is deliberately the <em>easy</em> half. The hard half -- actually doing the refactor -- is gated behind a protocol, because a careless cleanup can do real damage. the review-rule docs is the spec for what the dedup pass triages, and its remediation protocol is the model for why drafting and fixing are separated.</p>
-<p>For a de-duplication: write a golden or characterization test on real server-shaped fixtures <em>first</em>, prove it passes on both copies, then collapse the clones to a single source of truth with no compatibility shim, then run the golden test again -- equal output is the proof the change preserved behavior. For a deletion: prove the target unreachable against the dynamic-dispatch allowlist, then use the full suite as the equivalence oracle. That is a careful, behavior-preserving, golden-test-first procedure -- exactly the kind of work you do not want an agent improvising inside an unrelated pull request at 2am. Drafting the ticket lets the system <em>notice</em> drift cheaply and instantly, while reserving the expensive, risky fix for a focused run a human chose to schedule.</p>
-<p>The result is a system that accumulates its own backlog of small, golden-test-first refactors: auditable (each is a committed artifact with a <code>source:</code> line), schedulable (each is an independent ticket), and decoupled from the change that triggered it.</p>
-<h2 id="the-honest-edge">The honest edge<a class="headerlink" href="#the-honest-edge" title="Permanent link">&para;</a></h2>
-<p>A self-drafted backlog is not free autonomy, and selling it as such would undercut everything else in this thread.</p>
-<p>Someone still has to triage and prioritize those tickets. Look again at that front matter: <code>state: draft</code>. A drafted ticket does not run. Before any of these become autonomous refactor work, a human has to promote it to <code>state: confirmed</code> -- which is a human deciding <em>this drift is worth paying down now.</em> The orchestrator is very good at filling a to-do list and has no opinion at all about which items on it matter. The mechanism shifts <strong>when</strong> drift is captured (immediately, mechanically, as an artifact) -- not <strong>who</strong> decides it is worth fixing (still a person).</p>
-<p>And a tripwire that fires too eagerly does not save work; it manufactures it. A backlog full of low-value draft tickets is its own kind of mess -- noise a human now has to read past to find the drift that actually matters. The project tunes against this in places: <code>lint-dedup-drift</code>, for instance, only acts on candidates whose codemap <code>maturity:</code> is <code>stable</code>, deliberately exempting experimental and in-progress code, because ahead-of-time work that nothing imports yet looks exactly like dead code to a static scan. That tuning is a constant maintenance cost, and getting it wrong in the eager direction turns a helpful instrument into a spam generator.</p>
-<p>So the honest framing is the same one the rest of this thread keeps landing on: this is an <em>instrumented</em> development system, not a self-driving one. The drift tripwires and periodic passes are a genuinely useful instrument -- they give the project a memory for drift that no single context window has, and they write that memory down the instant it forms. But the backlog they grow is a queue of suggestions, not a queue of decisions. The orchestrator drafts its own to-do list. It still needs you to decide what is actually worth doing.</p>
-<hr />
-<p><em>Or: subscribe for more posts on building autonomous AI development infrastructure.</em></p>
+<p>That last point is important for review. A soft-check result is useful only if
+the generated ticket lands as part of the branch history. Otherwise the signal
+dies in the worker clone.</p>
+<p>Tempo has equivalent review-stage behavior for its Go-side watchdog tickets:
+format the ticket, leave it under <code>tickets/backlog/</code>, then queue and push the
+watchdog ticket from the review stage. The implementation details differ, but
+the artifact contract is the same: the output is a real backlog ticket, not an
+ephemeral warning.</p>
+<h2 id="watchdogs-file-repairs-not-cleanup-suggestions">Watchdogs file repairs, not cleanup suggestions<a class="headerlink" href="#watchdogs-file-repairs-not-cleanup-suggestions" title="Permanent link">&para;</a></h2>
+<p>The producer-health watchdog is the clearest example of the second shape. It is
+configured by <code>workflow/producer_health_manifest.json</code>. Each producer declares
+a kind, table or artifact, predicate, sample window, and any plausibility
+bounds. Examples include run-record token fields, history-index tables, sidecar
+artifacts, and JSON artifacts.</p>
+<p><code>workflow/scripts/producer_health_watchdog.py</code> evaluates those predicates
+against <code>.state/history.duckdb</code> or the configured artifact. If there are not
+enough samples, it skips. If a producer is unhealthy and no open matching ticket
+exists, it files:</p>
+<div class="language-yaml highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="nt">state</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">confirmed</span>
+<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="nt">source</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;Auto-filed</span><span class="nv"> </span><span class="s">by</span><span class="nv"> </span><span class="s">producer-health</span><span class="nv"> </span><span class="s">watchdog</span><span class="nv"> </span><span class="s">for</span><span class="nv"> </span><span class="s">&lt;producer&gt;&quot;</span>
+<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="nt">priority</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">P1</span>
+<a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="nt">group</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">producer-health</span>
+<a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a><span class="nt">doc_mode</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">atomic</span>
+<a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a><span class="nt">bug_heuristic</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
+</code></pre></div>
+<p>That ticket includes the producer id, predicate, sample count, observed count,
+observed rate, required rate, plausibility bounds, and dedup key. Its acceptance
+criteria explicitly say the fix must not make producer health a blocking
+<code>always_checks</code> or <code>soft_checks</code> gate.</p>
+<p>That is the project rule in code form: metrics and sidecars never block a
+merge, but a broken producer must self-report as scheduled repair work.</p>
+<p>The soft-check watchdog uses the same principle for advisory checks. Soft
+checks can fail without blocking a ticket. If the same check stays unhealthy
+for the configured threshold, Tempo writes a confirmed P0
+<code>soft-check-watchdog-*</code> ticket. That ticket's goal is to restore the advisory
+check or remove it through the normal process-contract path.</p>
+<h2 id="what-this-buys">What this buys<a class="headerlink" href="#what-this-buys" title="Permanent link">&para;</a></h2>
+<p>This setup gives the project a memory for problems that are real but not part
+of the current ticket.</p>
+<p>The drift checks catch code-health candidates near the change that exposed
+them, but they do not turn every warning into immediate work. Draft tickets keep
+cleanup suggestions visible and deduplicated until they are promoted.</p>
+<p>The watchdogs do the opposite for broken instrumentation. They avoid blocking
+product work, then file confirmed repair tickets when the signal itself is
+unhealthy. That keeps advisory checks and metrics from becoming theater.</p>
+<p>Both paths use the same backlog shape as human-authored work: frontmatter,
+dependencies, touch surfaces, context, and acceptance criteria. That is the
+part that scales. The orchestrator does not need a separate place for "things
+the system noticed." It writes the same kind of ticket it already knows how to
+schedule, review, ship, and archive.</p>
+<h2 id="the-boundary">The boundary<a class="headerlink" href="#the-boundary" title="Permanent link">&para;</a></h2>
+<p>This is still not autonomy in the strong sense.</p>
+<p>Draft drift tickets are suggestions. They preserve evidence, but they are not a
+decision to spend engineering time. A person or a later policy still has to
+promote them.</p>
+<p>Confirmed watchdog tickets are decisions to repair the control plane, but they
+are narrow decisions. They say "this signal is broken enough to fix," not "the
+system has improved itself."</p>
+<p>The honest claim is smaller and more useful: the orchestrator can turn certain
+observations into backlog artifacts without waiting for a human to notice the
+log. That makes drift and broken advisory machinery harder to lose. It does not
+make the system wise about which product work matters.</p>
+<p>The orchestrator drafts part of its own backlog. The backlog is still a set of
+claims to review, not a substitute for judgment.</p>
 
 
 

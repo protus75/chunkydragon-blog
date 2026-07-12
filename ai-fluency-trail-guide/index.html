@@ -252,7 +252,7 @@
   <span class="md-ellipsis">
     
   
-    Blog drafts
+    Blog
   
 
     
@@ -332,10 +332,10 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#stage-1-the-oracle" class="md-nav__link">
+  <a href="#stage-1-ask" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Stage 1 -- The Oracle
+        Stage 1 -- Ask
       
     </span>
   </a>
@@ -343,10 +343,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#stage-2-the-prompter" class="md-nav__link">
+  <a href="#stage-2-control-context" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Stage 2 -- The Prompter
+        Stage 2 -- Control Context
       
     </span>
   </a>
@@ -354,10 +354,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#stage-3-the-customizer" class="md-nav__link">
+  <a href="#stage-3-write-down-the-rules" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Stage 3 -- The Customizer
+        Stage 3 -- Write Down The Rules
       
     </span>
   </a>
@@ -365,10 +365,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#stage-4-the-agent-wrangler" class="md-nav__link">
+  <a href="#stage-4-turn-work-into-contracts" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Stage 4 -- The Agent Wrangler
+        Stage 4 -- Turn Work Into Contracts
       
     </span>
   </a>
@@ -376,10 +376,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#stage-5-the-pipeline-engineer" class="md-nav__link">
+  <a href="#stage-5-put-gates-between-agents" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Stage 5 -- The Pipeline Engineer
+        Stage 5 -- Put Gates Between Agents
       
     </span>
   </a>
@@ -387,10 +387,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#stage-6-the-system-builder" class="md-nav__link">
+  <a href="#stage-6-separate-implementation-from-review" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Stage 6 -- The System Builder
+        Stage 6 -- Separate Implementation From Review
       
     </span>
   </a>
@@ -398,10 +398,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#stage-7-the-bottleneck-and-the-flip" class="md-nav__link">
+  <a href="#stage-7-make-the-process-machine-legible" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Stage 7 -- The Bottleneck, and the Flip
+        Stage 7 -- Make The Process Machine-Legible
       
     </span>
   </a>
@@ -409,10 +409,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#stage-8-the-ai-native-architect-closing-the-loop" class="md-nav__link">
+  <a href="#stage-8-extract-the-orchestrator" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Stage 8 -- The AI-Native Architect (closing the loop)
+        Stage 8 -- Extract The Orchestrator
       
     </span>
   </a>
@@ -420,21 +420,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#above-the-treeline-the-breadcrumbs-left-for-me" class="md-nav__link">
+  <a href="#how-to-use-the-map" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Above the treeline: the breadcrumbs left for me
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#how-to-read-the-map" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        How to read the map
+        How To Use The Map
       
     </span>
   </a>
@@ -2453,149 +2442,146 @@
 
 
 <h1 id="the-ai-fluency-trail-guide">The AI fluency trail guide<a class="headerlink" href="#the-ai-fluency-trail-guide" title="Permanent link">&para;</a></h1>
-<p>Two and a half months. That is the gap between the first commit in this project -- a board-game app scaffold -- and the day I wrote this. In that window, working solo with no prior web-UI experience, I merged roughly <strong>1,300 pull requests</strong> to <code>main</code> (the latest is #1340). Each one was authored, checked against a wall of automated gates in a separate context, and reviewed before it merged -- by a pipeline of AI agents I built as I went.</p>
-<p>I want to be honest about that number, because a raw count is easy to inflate. The repo has around 2,900 commits, but roughly 870 of them are pure ticket bookkeeping -- creating, editing, and archiving the markdown files the system runs on. That is paperwork, not work, and I am not counting it. The real throughput is the reviewed PRs.</p>
-<p>And the PRs tell a story a single total hides. Here is the merge rate, week by week:</p>
-<table>
-<thead>
-<tr>
-<th>Week of</th>
-<th>Merged PRs</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Apr 20</td>
-<td>42</td>
-</tr>
-<tr>
-<td>Apr 27</td>
-<td>69</td>
-</tr>
-<tr>
-<td>May 4</td>
-<td>67</td>
-</tr>
-<tr>
-<td>May 11</td>
-<td>36</td>
-</tr>
-<tr>
-<td>May 18</td>
-<td>31</td>
-</tr>
-<tr>
-<td>May 25</td>
-<td>54</td>
-</tr>
-<tr>
-<td>Jun 1</td>
-<td>68</td>
-</tr>
-<tr>
-<td>Jun 8</td>
-<td>74</td>
-</tr>
-<tr>
-<td><strong>Jun 15</strong></td>
-<td><strong>231</strong></td>
-</tr>
-<tr>
-<td><strong>Jun 22</strong></td>
-<td><strong>506</strong></td>
-</tr>
-<tr>
-<td>Jun 29 (partial, 3 days)</td>
-<td>121</td>
-</tr>
-</tbody>
-</table>
-<p>For the first eight weeks the rate sits between 30 and 75 PRs a week -- the pace of a human in every loop, reading every change. Then, in mid-June, it jumps almost 8x and peaks above 500 in a single week. Nothing about me got 8x faster in mid-June. What changed is <em>where I was standing in the loop</em>. That inflection is the whole story of this post, and it happens at a specific, nameable stage.</p>
-<p>The climb from "better Google" to "a machine that builds machines" is not a leap. It is a trail, walked one surprised discovery at a time, in an order that turns out to be nearly universal -- I keep meeting other builders stuck at the exact camps I got stuck at. So this is a trail guide: eight stages, each folding in a cluster of "aha" moments, each grounded in a real artifact from this project, and each ending with the question that gets you unstuck when you have been camped too long.</p>
-<p>One caveat: the early stages predate the project's artifacts, so I illustrate those from the journey itself. By Stage 5 the project stops being an example and becomes the exhibit.</p>
-<h2 id="stage-1-the-oracle">Stage 1 -- The Oracle<a class="headerlink" href="#stage-1-the-oracle" title="Permanent link">&para;</a></h2>
-<p><strong>AI as a better Google.</strong></p>
-<p>You stop typing keywords into a search box and start asking a model in full sentences. Then one day you stop <em>asking</em> and start <em>instructing</em> -- you tell it what you want, with context and a goal, and it does the thing. That is your first real prompt, and it changes the relationship: the model is no longer a reference book, it is a worker.</p>
-<p><strong>The plateau:</strong> you treat it as a lookup box, one shot at a time, and you get quietly burned by a confidently wrong answer, so you trust it less instead of asking it better.</p>
-<p><strong>Your next breadcrumb:</strong> <em>What if I told it what I want, not just what I am searching for?</em></p>
-<h2 id="stage-2-the-prompter">Stage 2 -- The Prompter<a class="headerlink" href="#stage-2-the-prompter" title="Permanent link">&para;</a></h2>
-<p><strong>You produce real work, and learn the hard lesson about context.</strong></p>
-<p>You vibe something into existence -- a script, a page, a whole small project -- faster than you could have written it, even if it is messy and hard to reuse. Then you hit the wall every beginner hits: hallucinations. And you find the counterintuitive fix. The problem was not the model's intelligence; it was that you were talking to it in one endless thread, like a coworker with memory, until the context rotted. The fix is <em>many small, fresh chats</em> -- one clean context per task, thrown away when done.</p>
-<p>This is the single most important lesson on the entire trail: <strong>context is a resource you spend, not a history you accumulate.</strong></p>
-<p><strong>In the project:</strong> this beginner habit grew up into architecture. The whole orchestrator is built to hand each AI agent a small, purpose-built context and nothing else -- tickets are deliberately sized to fit one context window, and a wide job that would blow past that budget is split into a batch. If you want the same honesty boundary told from the keyboard rather than the architecture, <a href="../python-dev-learning-react/">Shipping a React client I have not read</a> is the account of driving an AI-built frontend through tickets, gates, and review without pretending to have learned the code.</p>
-<p><strong>The plateau:</strong> you hand-craft every prompt from scratch, every time.</p>
-<p><strong>Your next breadcrumb:</strong> <em>Why am I still typing these by hand -- can the AI write the next prompt?</em></p>
-<h2 id="stage-3-the-customizer">Stage 3 -- The Customizer<a class="headerlink" href="#stage-3-the-customizer" title="Permanent link">&para;</a></h2>
-<p><strong>You stop hand-crafting and start building tools around the model.</strong></p>
-<p>Four discoveries arrive close together, and they are all the same move -- stop repeating yourself. You ask the AI to help write your next prompt. You save a good prompt as a <em>slash command</em> so you never rewrite it. You learn you can hand the tool a <em>memory file</em> -- a <code>CLAUDE.md</code> -- full of standing rules it reads on every task. And you start asking the AI to refactor not just your code, but your prompts and your rules.</p>
-<p>Underneath that habit is a discovery that reframes what the rulebook is <em>for.</em> You start writing rules to stop repeating yourself; you keep writing them because the model gets distracted. It does not hold a to-do list the way a person does. Raise three loose ends in one reply, watch someone pick up the first, and the other two are not deprioritized -- they are gone, because nothing was ever holding them. Notice a second problem worth fixing while you are deep in the first, and by the next turn that noticing has evaporated too. The reflex is to tell it to remember harder, which never works: remembering is not something you can ask for, it is something you have to build. So you write the rule that makes remembering the machine's job instead of yours -- track every open thread and keep raising it until it is explicitly settled, write down every follow-up the moment you notice it instead of promising it for later, and when a whole class of these lapses shows up, kill the class with one rule instead of swatting each instance. The rulebook stops being a list of your preferences and becomes a set of guardrails bolted onto the model's own failure modes.</p>
-<p><strong>In the project:</strong> this stage is visible as raw scale. The repo has 32 slash commands and a memory file grown to 40 hard rules across ~1,600 lines -- with a <em>sibling</em> file, <code>AGENT_RULES_HISTORY.md</code> (another ~1,600 lines), that records the incident behind every single rule and why it exists.  That second file is the tell: someone who learned to refactor their <em>rules</em> like code, complete with a changelog of what each rule defends against. A whole cluster of those rules exists to fight the distraction directly: one demands you "author every ticket you identify in the same turn -- never suggest-and-defer," so a noticed follow-up becomes a file on disk instead of a promise, and another makes you "propose the class-level prevention, not just the instance fix," so you stop patching lapses one at a time. A third -- an open-threads follow-through rule that forces the agent to re-surface every parked question until it is explicitly resolved -- is drafted and waiting in the backlog, not yet merged.  <a href="../from-surprise-to-rule-to-skill/">From surprise to rule to skill</a> walks exactly this graduation -- a one-off surprise becoming a durable rule and then a reusable skill -- and <a href="../dont-fold-it-in/">Don't fold it in</a> is that same instinct distilled to a single habit: defer the second problem into its own ticket instead of smuggling it into this one.</p>
-<p><strong>The plateau:</strong> you have a drawer full of commands and a growing rulebook, but every task is still you, one prompt at a time, holding the steps together by hand.</p>
-<p><strong>Your next breadcrumb:</strong> <em>Which sequence of prompts do I always run in the same order -- that sequence wants to be one thing.</em></p>
-<h2 id="stage-4-the-agent-wrangler">Stage 4 -- The Agent Wrangler<a class="headerlink" href="#stage-4-the-agent-wrangler" title="Permanent link">&para;</a></h2>
-<p><strong>You stop running steps and start running agents.</strong></p>
-<p>You build something that takes several steps on its own. You learn the models come in <em>tiers</em> -- a big expensive one for hard reasoning, a small fast one for grunt work -- and you deploy them deliberately. And you learn to lift a prompt out of one chat and carry it to another as a portable spec, usually with a little front-matter header describing what it needs and produces.</p>
-<p><strong>In the project:</strong> tiering is now a field on every unit of work. Each ticket carries front-matter hints -- <code>agent_tier</code>, <code>agent_effort</code>, <code>agent_context</code>, even <code>agent_engine</code> -- that let the orchestrator route each job to the right-sized model. The portable-prompt-with-front-matter instinct became the ticket format itself.</p>
-<p><strong>The plateau, and it is the big one:</strong> your multi-step agent works, until it does not. When it fails, you have no idea why. It made a different choice than last time on the same input. You cannot reproduce it, you cannot debug it, and you have started re-running it and praying.</p>
-<p><strong>Your next breadcrumb:</strong> <em>Which of these steps actually needs judgment -- and which am I handing to the LLM only because it is there?</em></p>
-<h2 id="stage-5-the-pipeline-engineer">Stage 5 -- The Pipeline Engineer<a class="headerlink" href="#stage-5-the-pipeline-engineer" title="Permanent link">&para;</a></h2>
-<p><strong>You stop hoping and start engineering.</strong></p>
-<p>This is the longest, richest stage -- where using AI becomes engineering with AI. The core revelation: a reliable pipeline is mostly boring, deterministic glue, with the LLM reserved for the few genuinely soft decisions. Everything else follows from that:</p>
+<p>AI fluency is not prompt polish. It is the habit of moving work out of one
+long, fragile chat and into artifacts a machine can read, check, resume, and
+audit.</p>
+<p>This project is a board-game app, but the useful lesson is the build loop around
+it. The current repository has more than 1,800 ticket run records on disk. The
+local history index reports 1,801 accepted runs (<code>merged</code> or
+<code>shipped-with-escalation</code>) and 1,832 run records total. I am using those counts,
+not the old pull-request table from an earlier draft, because the local PR cache
+is empty in this clone and I cannot re-verify those PR numbers here.</p>
+<p>The trail below is the path from "I asked a chatbot" to "the project has a
+ticket engine, review gates, history queries, and an in-progress Go port named
+Tempo." It is not a maturity badge. Each stage names a concrete capability, the
+failure mode that appears next, and the project artifact that replaced a manual
+habit.</p>
+<h2 id="stage-1-ask">Stage 1 -- Ask<a class="headerlink" href="#stage-1-ask" title="Permanent link">&para;</a></h2>
+<p>At first, AI is a better search box. You ask it questions in normal language
+instead of trying search keywords. That is useful, but it is still passive: the
+model answers and you decide what to do.</p>
+<p>The first shift is to give it a job. Instead of "What is the syntax for X?", you
+say "Given this file and this goal, change X without touching Y." That sounds
+small, but it changes the interface from lookup to delegation.</p>
+<p>The failure mode is obvious: the model gives a confident answer that is wrong.
+The fix is not blind trust. The fix is better task framing and evidence.</p>
+<h2 id="stage-2-control-context">Stage 2 -- Control Context<a class="headerlink" href="#stage-2-control-context" title="Permanent link">&para;</a></h2>
+<p>The next lesson is that context is a budget, not a diary.</p>
+<p>Long chats feel convenient because they remember everything. They also collect
+stale assumptions, half-resolved decisions, and old code. Eventually the model
+starts optimizing against yesterday's conversation instead of today's task.</p>
+<p>This project's answer is the ticket. A ticket is a small context packet: goal,
+scope, files to read, acceptance criteria, verification commands, and the
+machine-readable <code>## Touches</code> surface. The ticket that produced this post even
+had a <code>## Context</code> section listing the files to read before editing. That is the
+pattern: do not hope the agent finds the right context; put the context boundary
+in the work item.</p>
+<p>The plateau is hand-writing every task from scratch. You can delegate a single
+task, but you are still the scheduler, reviewer, and memory.</p>
+<h2 id="stage-3-write-down-the-rules">Stage 3 -- Write Down The Rules<a class="headerlink" href="#stage-3-write-down-the-rules" title="Permanent link">&para;</a></h2>
+<p>Once an AI can act, the next problem is repeat mistakes.</p>
+<p>This repo has standing agent rules in <code>CLAUDE.md</code> and <code>AGENTS.md</code>. They are not
+style preferences. They are scars from failures that were expensive enough to
+prevent. "Never hunt the filesystem for executables" exists because using a
+random system binary makes verification meaningless. "Author every ticket you
+identify in the same turn" exists because noticed follow-ups disappear if they
+stay in prose. "Propose the class-level prevention" exists because fixing one
+instance and leaving the class open just schedules the next failure.</p>
+<p>The important move is not having many rules. The important move is treating a
+rule as a durable patch to the process. If a failure recurs, the question is not
+"how do I remind the agent harder?" It is "where should this become impossible
+or at least mechanically visible?"</p>
+<p>The plateau is a rulebook that still depends on a person to run the sequence.</p>
+<h2 id="stage-4-turn-work-into-contracts">Stage 4 -- Turn Work Into Contracts<a class="headerlink" href="#stage-4-turn-work-into-contracts" title="Permanent link">&para;</a></h2>
+<p>The project stops being one prompt at a time when work becomes schedulable.</p>
+<p>A backlog ticket carries <code>state</code>, <code>priority</code>, <code>agent_tier</code>, <code>agent_effort</code>,
+<code>agent_context</code>, <code>authoring_mode</code>, predictions, dependencies, and verification
+commands. <code>## Depends on</code> lets the orchestrator order work. <code>## Touches</code> lets it
+avoid obvious collisions. The ticket is not just instructions for a model; it is
+input to a scheduler.</p>
+<p>That is the difference between a prompt and a contract. A prompt asks an agent
+to try. A contract gives the system enough structure to launch, route, check,
+and later diagnose the attempt.</p>
+<p>The plateau is that multi-step work still fails opaquely. If a run stalls or
+ships bad work, you need to know which part failed: task spec, environment,
+implementation, review, merge, or cleanup.</p>
+<h2 id="stage-5-put-gates-between-agents">Stage 5 -- Put Gates Between Agents<a class="headerlink" href="#stage-5-put-gates-between-agents" title="Permanent link">&para;</a></h2>
+<p>This is where "AI-assisted" turns into engineering.</p>
+<p>The current review configuration lists hard checks such as <code>lint-ascii</code>,
+<code>lint-devblog-mirror</code>, <code>lint-doc-tags</code>, <code>lint-run-records</code>,
+<code>lint-test-marks</code>, <code>lint-no-direct-random</code>, <code>lint-coverage</code>, <code>test</code>,
+<code>tempo-check</code>, and <code>docs-build-strict</code>. It also has diff-scoped checks,
+client-only checks, and soft checks that self-report drift without blocking an
+unrelated merge.</p>
+<p>The point is not that every gate is clever. Most gates are boring, and that is
+why they work. Closed vocabularies catch invented tags. ASCII lint catches
+characters that break shell and parser paths. The devblog mirror lint catches a
+missing same-slug technical summary. Run-record lint catches malformed audit
+artifacts. None of those jobs needs a model.</p>
+<p>Use the model where judgment matters. Use deterministic code where correctness
+is mechanical. Keep those two jobs separate.</p>
+<p>The plateau is a pipeline that works only when you personally drive it.</p>
+<h2 id="stage-6-separate-implementation-from-review">Stage 6 -- Separate Implementation From Review<a class="headerlink" href="#stage-6-separate-implementation-from-review" title="Permanent link">&para;</a></h2>
+<p>An agent that reviews its own work in the same context is easy to fool. It knows
+why it made the change and tends to defend that path.</p>
+<p>The project solves this with stage separation. Implementation runs in a ticket
+clone. Review runs as a separate stage with a different context and
+surface-specific rules: engine, server, client, workflow docs, agent rules, and
+skills each have their own review surface. The review stage checks the diff,
+runs the configured gates, and can send the work back through a follow-up loop.</p>
+<p>The run record is the durable bridge between stages. It records what happened:
+surprises, dead ends, prevention opportunities, verification, and context
+manifest. A clean implementation without a run record is still a failed run in
+this project, because nobody can audit or learn from it later.</p>
+<p>The plateau is that the machine can now produce more work than a person can
+comfortably inspect one item at a time.</p>
+<h2 id="stage-7-make-the-process-machine-legible">Stage 7 -- Make The Process Machine-Legible<a class="headerlink" href="#stage-7-make-the-process-machine-legible" title="Permanent link">&para;</a></h2>
+<p>Once the loop runs continuously, the bottleneck moves from writing code to
+understanding the system.</p>
+<p>The repository now has a DuckDB history index over tickets and run records.
+The workflow exposes <code>history</code>, <code>history-query</code>, <code>history-search</code>, and
+<code>history-semantic</code> commands so an agent can ask "what happened before?" without
+digging through scattered files first. The review config has producer-health
+watchdogs, soft-check watchdogs, time budgets, spiral detection, and
+clone-per-task isolation.</p>
+<p>These are not decorative metrics. They answer operational questions:</p>
 <ul>
-<li><strong>A controlled vocabulary.</strong> Force the AI to pick from a closed list of allowed values and the whole chain gets dramatically more reliable. Free text is where pipelines rot.</li>
-<li><strong>Deterministic gates.</strong> Put mechanical checks between AI stages that reject anything off-spec, so a bad step cannot propagate.</li>
-<li><strong>Separated review.</strong> If the same context both writes the work and reviews it, the review is a rubber stamp -- so the reviewer gets a fresh, narrow context that never sees the author's rationalizations.</li>
+<li>Which confirmed tickets have no run record yet?</li>
+<li>Which runs merged cleanly, shipped with escalation, or stalled?</li>
+<li>Which soft check has gone quiet?</li>
+<li>Which class of failure deserves a standing rule or a repair ticket?</li>
 </ul>
-<p><strong>In the project</strong> this stage is not described, it is executed. The controlled vocabulary is a file: the controlled vocabulary pins a closed ~25-token list of capabilities plus fixed enums for risk, maturity, and failure modes, and a lint rejects any annotation that invents a token.  The gates are real: about two dozen named <code>lint-*</code> checks plus the test suite and a strict docs build must all pass before any AI-written change can merge.  And the separated review is architecture -- implementation runs in one throwaway clone, review runs as a distinct stage against surface-specific rule docs, so the honest critique happens in a context that did not write the code. <a href="../ai-first-testing-and-logging/">The test that knows what it is</a> is the vocabulary idea applied to tests; <a href="../orchestration-review-guardrails/">Review surfaces and the AI-first guardrails</a> is the separated-review stage in detail; and <a href="../mechanical-vs-llm-failure-recovery/">When a stage fails: what is mechanical and what is the LLM?</a> is the determinism-first split as a recovery loop.</p>
-<p><strong>The plateau:</strong> you have a beautiful, reliable pipeline -- and you are running it by hand on toy problems. It is a demo, not a system.</p>
-<p><strong>Your next breadcrumb:</strong> <em>What real, recurring stream of work could I point this at, end to end?</em></p>
-<h2 id="stage-6-the-system-builder">Stage 6 -- The System Builder<a class="headerlink" href="#stage-6-the-system-builder" title="Permanent link">&para;</a></h2>
-<p><strong>You stop running the pipeline and let the pipeline run the work.</strong></p>
-<p>You wrap the pipeline around real, recurring work. Here that became a ticket orchestrator: you write a markdown ticket describing what you want, and the machine picks it up, spins a clean clone, implements it, runs the gates, reviews it in a separate context, and ships the PR. Work that was a day is now a paragraph and a wait.</p>
-<p><strong>In the project:</strong> this is where the weekly curve at the top of this post <em>starts to climb</em>. The orchestrator has run more than 1,200 tickets to date; the acceleration is not a metaphor, it is a merge history you can scroll.  <a href="../orchestration-lifecycle/">The orchestration lifecycle</a> opens the box on phase-to-ticket-to-retro, and <a href="../orchestrated-build-loop/">Tickets in, a game I can play out</a> is what shipping through it feels like day to day.</p>
-<p><strong>The plateau:</strong> the system now produces faster than you can think. You are approving things you barely read, and the "done, awaiting your review" queue keeps growing. You feel busier than ever, and throughput has stopped climbing.</p>
-<p><strong>Your next breadcrumb -- the most important question on the trail:</strong> <em>When the system stalls, who is it always waiting on?</em> The answer is you.</p>
-<h2 id="stage-7-the-bottleneck-and-the-flip">Stage 7 -- The Bottleneck, and the Flip<a class="headerlink" href="#stage-7-the-bottleneck-and-the-flip" title="Permanent link">&para;</a></h2>
-<p><strong>You stop optimizing the machine and start optimizing the process -- for the machine.</strong></p>
-<p>Look back at the weekly table. The eight-week plateau at 30-75 PRs, then the jump past 500. That jump is this stage, and it has two parts.</p>
-<p>First, the realization: <strong>the human is the bottleneck.</strong> The AI is not the scarce resource anymore -- your attention is. So you instrument the system to find where work piles up and route it, spending your limited human judgment only where it changes the outcome.</p>
-<p>Then the heresy: you stop bolting AI onto a workflow <em>designed for humans</em> and start redesigning the workflow <em>for the machine.</em> Most people never ask this question. It is the difference between paving the cow path and drawing a new road, and it is exactly what un-plateaued the merge rate -- once a person no longer had to be present in every loop, the ceiling was the machine's, not mine.</p>
-<p><strong>In the project:</strong> the flip is everywhere once you look. A spiral watchdog watches every running agent for the signatures of a stuck loop and pings a human only when a run that is actually in trouble needs one. The time budgets that decide "is this run stuck?" are calibrated on <em>observed agent wall-clock, not human hours</em> -- a rule in the memory file literally warns that older human-anchored estimates were inflated ~10-20x. That correction <em>is</em> the flip: the process re-baselined around the machine's clock. <a href="../risk-routed-review/">Risk-routed review</a> is the "spend human attention where it earns its keep" idea in full, and <a href="../spiral-detection-watchdog/">Spiral-detection watchdog</a> is the watchdog itself.</p>
-<p><strong>The plateau:</strong> everything is instrumented, routed, machine-legible -- and it dawns on you that all this exhaust is the most valuable dataset you own.</p>
-<p><strong>Your next breadcrumb:</strong> <em>I have been instrumenting to observe the system -- what if I instrument to teach one?</em></p>
-<h2 id="stage-8-the-ai-native-architect-closing-the-loop">Stage 8 -- The AI-Native Architect (closing the loop)<a class="headerlink" href="#stage-8-the-ai-native-architect-closing-the-loop" title="Permanent link">&para;</a></h2>
-<p><strong>The machine starts building the machine.</strong></p>
-<p>You now design artifacts <em>for the AI first</em> -- structured so a machine can parse and find them, not just so a person can skim. You obsess over findability, because an agent that cannot locate the right context cannot do the job. Then the last turn: the structured record you built to <em>debug</em> the system is exactly the record you would use to <em>train</em> one, and the loop closes.</p>
-<p><strong>In the project:</strong> the findability layer is the codemap system -- code carries inline annotation blocks (capability, risk, maturity, reachability) so an agent can mechanically answer "what does this touch and what breaks if I change it" -- backed by a ~24 MB queryable index of every ticket, run record, and commit, so project history is a database query instead of an archaeology dig.  The ~1,300 run records are not development throughput; they are the <em>memory</em>: each is a structured, controlled-vocabulary account of how a job actually went -- what surprised the agent, what dead-ended, estimate versus actual -- which is exactly what you would train the next orchestrator on. The project that remembers itself covers the queryable memory; The run record that grades itself shows that corpus becoming predicted-vs-actual training feedback; and Why this project is a strong AI training substrate is the synthesis. The loop-closing move is already visible: a from-scratch Go re-implementation of the whole orchestrator, told in <a href="../two-rewrites-one-strategy/">Two rewrites, one strategy</a> and <a href="../orchestrator-as-installable-product/">The orchestrator leaves home</a>. The system is being rebuilt, with the system's help, into something faster and portable.</p>
-<p><strong>The honest bit:</strong> I will not pretend this stage is mastered. This is the frontier, standing at the edge looking up. Which is the right place for the <em>personal</em> half of this guide to end -- here is as far as I have climbed. But the map above this line is not entirely blank. Other climbers and the wider field have been up there, and they left blazes. So before the summary, let me do the thing this whole post has done for you, in reverse: leave the breadcrumbs for me.</p>
-<h2 id="above-the-treeline-the-breadcrumbs-left-for-me">Above the treeline: the breadcrumbs left for me<a class="headerlink" href="#above-the-treeline-the-breadcrumbs-left-for-me" title="Permanent link">&para;</a></h2>
-<p>There is a symmetry in how I gathered these. This whole post is breadcrumbs I left for people behind me on the trail. This section is the reverse -- breadcrumbs left for <em>me</em>, by the climbers ahead and by the wider field. Fittingly, I did not write it from memory: I asked an AI to scout the trail above my treeline and report back. An AI leaving a human breadcrumbs to climb by is, itself, the Stage 8 loop closing one more time.</p>
-<p>Each one keeps the shape of the others: the discovery, why it is probably your next step from where you are standing, and the smallest first action. Sources for the field claims are collected at the end of the section.</p>
-<p><strong>Measure quality, not just rule-breaks.</strong> Your two-dozen-odd gates answer "did this break a rule?" They do not answer "is this any good, and is the pipeline getting better or worse over time?" The field's name for the missing layer is eval-driven development: write the eval cases first (input, expected trajectory, success criteria), grade with an LLM-as-judge calibrated against your own past review decisions, and gate merges on the <em>score</em>, not just pass/fail. You already own the hardest ingredient -- a golden set drawn from real failures -- because you have thousands of run records. <em>First action:</em> turn twenty of your ugliest past failures into scored eval cases and run them on every prompt change.</p>
-<p><strong>Your gates are already a reward signal.</strong> You named "train models to do the process" as the summit and then treated it as far away. It is closer than you think, because you are sitting on the exact ingredients: your deterministic gates are <em>verifiable rewards</em>, and your run records are <em>trajectories</em>. The field calls training on this RLVR -- reinforcement learning with verifiable rewards -- and its current state of the art is a hybrid of rule-based checks for hard constraints and an LLM for soft ones, which is word-for-word your Stage 5 philosophy. <em>First action:</em> export your passing trajectories as fine-tuning data and pick one repetitive, well-gated stage -- ticket triage, say -- to distill into a small, fast, cheap model.</p>
-<p><strong>Standardize the seams you hand-built.</strong> Your findability layer -- the codemap and the queryable history index -- is bespoke. While you were building it, the field converged on a standard for exactly this job: the Model Context Protocol (MCP), a common way to expose tools and context to any model or agent. It went from nonexistent to ubiquitous in under two years and is now stewarded by the Linux Foundation. <em>First action:</em> wrap <code>history-query</code> and the codemap as MCP servers, so any agent -- not just yours, not just one vendor's -- can read your project's memory.</p>
-<p><strong>Use more of the orchestration shapes.</strong> Your pipeline is a chain plus a separated review. The published pattern catalog names three more you probably underuse: evaluator-optimizer (a generate -&gt; critique -&gt; revise loop inside a single stage), orchestrator-worker (a lead agent that decomposes a task whose sub-steps it cannot predict in advance), and parallelization / best-of-N (sample several attempts, judge them, keep the best). <em>First action:</em> add a best-of-N-with-a-judge step to your highest-value ticket type and measure whether three cheap attempts plus a judge beats one expensive attempt.</p>
-<p><strong>Enforce the vocabulary at the moment of generation.</strong> At Stage 5 you close your vocabulary with a lint that <em>rejects</em> off-list tokens after the model emits them. The stronger version stops the model from emitting them at all: constrained decoding and schema-enforced structured outputs make the closed vocabulary a property of generation, not a post-hoc check. <em>First action:</em> move one closed-vocabulary field from "the lint rejects it later" to "the decoder can only produce legal values."</p>
-<p><strong>Context engineering is a real discipline now -- and it has a warning for you.</strong> You discovered "context is spent, not accumulated" by instinct at Stage 2. The field turned it into a named practice -- context engineering -- with real tooling for compaction and sub-agent isolation, and a counterintuitive headline finding: past a point, <em>more</em> context makes agents <em>worse</em>. There is also a caution aimed straight at your ~1,600-line rulebook: research on "governance decay" shows that when a long context gets compacted, safety and governance rules are silently among the first things dropped. <em>First action:</em> measure which of your 40 rules actually survive into each agent's working context, and stop assuming a rule in the file is a rule in the room.</p>
-<p><strong>Harden the pipeline itself.</strong> Your single best instinct -- "the server is authoritative, clients are untrusted" -- is exactly the instinct this step needs, pointed at a new target: your own agents. Prompt injection is now widely treated as a structural, possibly unpatchable flaw, and your pipeline feeds agents untrusted input (rulebook PDFs, web pages, ticket text) while handing them real tools. The defense is the one you already believe in: least-privilege tool scoping, and treating every retrieved document and tool output as <em>data, never instructions</em>. <em>First action:</em> pick one autonomous path, threat-model it as if its input were hostile, and scope that path's tool permissions to the minimum it needs.</p>
-<p>None of these are summit flags. They are just the next blazes up the trail -- the ones I could not see from where I am standing, that other people already have.</p>
-<p><strong>Sources for this section</strong></p>
+<p>The plateau is that all of this is still tied to this repository's shell
+workflow.</p>
+<h2 id="stage-8-extract-the-orchestrator">Stage 8 -- Extract The Orchestrator<a class="headerlink" href="#stage-8-extract-the-orchestrator" title="Permanent link">&para;</a></h2>
+<p>Tempo is the current loop closing back on itself: the orchestrator is being
+rebuilt as a Go command.</p>
+<p>It is not done, and the repo says so. <code>tempo/README.md</code> describes the scaffold,
+the pinned Go toolchain, the tempo-owned Python runtime, the codemap command,
+the parity harness, bootstrap assets, and the live ticket engine adapter. The
+CLI surface in <code>tempo/main.go</code> now includes orchestration verbs such as
+<code>ticket</code>, <code>review</code>, <code>ship</code>, <code>group-run</code>, <code>history-query</code>, <code>backlog-list</code>,
+<code>watchdog</code>, and <code>parity</code>. The parity report is careful about its own limits: it
+checks committed surfaces and lists lifecycle gaps instead of pretending the
+port has replaced the shell dispatcher.</p>
+<p>That honesty is the stage. The system is not merely using AI to build games. It
+is using the records from AI-built work to build a clearer, more portable system
+for doing the next work.</p>
+<h2 id="how-to-use-the-map">How To Use The Map<a class="headerlink" href="#how-to-use-the-map" title="Permanent link">&para;</a></h2>
+<p>Do not read the stages as a ladder of status. Read them as a sequence of failure
+modes.</p>
+<p>If your chats rot, control context. If rules get forgotten, make them standing
+contracts. If work collides, make dependencies and touched surfaces explicit. If
+agents make unreviewable changes, separate implementation from review. If the
+same mistake recurs, add a gate, rule, template change, or watchdog. If history
+is hard to answer, index the artifacts instead of trusting memory.</p>
+<p>Two ideas carry most of the weight:</p>
 <ul>
-<li>Orchestration patterns (evaluator-optimizer, orchestrator-worker, parallelization): <a href="https://www.anthropic.com/research/building-effective-agents">Anthropic, "Building Effective Agents"</a>.</li>
-<li>Context engineering: <a href="https://www.anthropic.com/engineering/effective-context-engineering-for-ai-agents">Anthropic, "Effective context engineering for AI agents"</a>. The governance-decay warning: <a href="https://arxiv.org/pdf/2606.22528">arXiv, "Governance Decay: How Context Compaction Silently Erases Safety Constraints in Long-Horizon LLM Agents"</a>.</li>
-<li>RLVR (reinforcement learning with verifiable rewards): <a href="https://www.emergentmind.com/topics/reinforcement-learning-with-verifiable-rewards-rlvr">EmergentMind, "Reinforcement Learning with Verifiable Rewards"</a>; <a href="https://www.promptfoo.dev/blog/rlvr-explained/">Promptfoo, "RLVR Explained"</a>.</li>
-<li>Eval-driven development and LLM-as-judge: <a href="https://deepeval.com/guides/guides-llm-as-a-judge">DeepEval, "LLM-as-a-Judge in 2026"</a>; <a href="https://www.digitalapplied.com/blog/ai-agent-evaluation-pipeline-2026-testing-methodology">Digital Applied, "Building an AI Agent Evaluation Pipeline: 2026 Methodology"</a>.</li>
-<li>Model Context Protocol (MCP): <a href="https://www.anthropic.com/news/model-context-protocol">Anthropic, "Introducing the Model Context Protocol"</a>; <a href="https://en.wikipedia.org/wiki/Model_Context_Protocol">Model Context Protocol on Wikipedia</a>.</li>
-<li>Agent security and prompt injection: <a href="https://workos.com/blog/prompt-injection-attacks">WorkOS, "Prompt injection attacks and how to defend against them"</a>; <a href="https://www.truefoundry.com/blog/claude-code-prompt-injection">TrueFoundry, "Prompt Injection and AI Agent Security Risks: A Claude Code Guide"</a>.</li>
+<li>Context is spent, not accumulated.</li>
+<li>Deterministic checks should own deterministic facts.</li>
 </ul>
-<h2 id="how-to-read-the-map">How to read the map<a class="headerlink" href="#how-to-read-the-map" title="Permanent link">&para;</a></h2>
-<ul>
-<li><strong>You are probably one stage lower than you think.</strong> Owning a stage's tools is not living in it. Having a <code>CLAUDE.md</code> does not make you a Customizer if it never changes how you work; building one agent does not make you a Pipeline Engineer if you cannot debug it.</li>
-<li><strong>The plateaus are the whole point.</strong> Nobody gets stuck because the next step is hard -- they get stuck because the current stage is comfortable and works, and nothing forces the move. Every breadcrumb above is the same shape: a question that makes the plateau visible, and the smallest action that ends it.</li>
-<li><strong>Two ideas do most of the work.</strong> <em>Context is spent, not accumulated</em> (Stage 2), and <em>make it deterministic wherever you can, reserve the model for the soft decisions</em> (Stage 5). Internalize those two and the rest is elaboration.</li>
-<li><strong>Climb for the problem, not the altitude.</strong> Every stage solves a specific pain. If you do not have the pain yet, you do not need the stage yet. This whole system exists because a board-game side project hit each wall in turn, not because a higher number is better.</li>
-</ul>
-<p>The receipts are real, and they are the weekly curve at the top: a merge rate that sat flat while a human was in every loop, then jumped almost 8x the week the human stepped out of it. All of it started with someone deciding to ask a chatbot a question instead of Google. Watch for the breadcrumbs.</p>
+<p>Everything else in this project is an application of those two ideas: tickets,
+run records, review stages, soft checks, history queries, and now Tempo.</p>
 
 
 

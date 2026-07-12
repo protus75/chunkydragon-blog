@@ -252,7 +252,7 @@
   <span class="md-ellipsis">
     
   
-    Blog drafts
+    Blog
   
 
     
@@ -1458,10 +1458,10 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#beat-one-plan-in-chat-but-capture-it-as-docs-not-as-scrollback" class="md-nav__link">
+  <a href="#start-in-chat-then-write-the-decisions-down" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Beat one: plan in chat, but capture it as docs, not as scrollback
+        Start in chat, then write the decisions down
       
     </span>
   </a>
@@ -1469,10 +1469,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#beat-two-the-repo-is-the-contract" class="md-nav__link">
+  <a href="#make-the-repo-the-contract" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Beat two: the repo is the contract
+        Make the repo the contract
       
     </span>
   </a>
@@ -1480,10 +1480,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#beat-three-the-orchestrator-is-what-turns-an-advisor-into-a-builder" class="md-nav__link">
+  <a href="#turn-requests-into-tickets" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Beat three: the orchestrator is what turns an advisor into a builder
+        Turn requests into tickets
       
     </span>
   </a>
@@ -1491,10 +1491,32 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#the-honest-edges" class="md-nav__link">
+  <a href="#let-a-deterministic-orchestrator-drive-the-loop" class="md-nav__link">
     <span class="md-ellipsis">
       
-        The honest edges
+        Let a deterministic orchestrator drive the loop
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#where-tempo-fits" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Where Tempo fits
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#what-this-setup-does-not-give-you" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        What this setup does not give you
       
     </span>
   </a>
@@ -2382,52 +2404,187 @@
 
 
 <h1 id="from-an-idea-in-a-chat-window-to-a-repo-the-robot-can-build">From an idea in a chat window to a repo the robot can build<a class="headerlink" href="#from-an-idea-in-a-chat-window-to-a-repo-the-robot-can-build" title="Permanent link">&para;</a></h1>
-<p>Most "I built X with AI" posts skip the part that actually matters. They show you the finished thing, or they show you a single clever prompt, and the implied story is: <em>open a chat, describe the app, get code.</em> That is not how a real project gets built, and if you try it that way you get a pile of plausible-looking code with no memory, no audit trail, and no way to tell the AI what to do next without re-explaining the whole project every time.</p>
-<p>This is the first of three posts about how I actually do it, grounded in how <em>this</em> project -- a multi-device board game platform -- went from a blank chat window to AI writing code I can test. This post is the on-ramp: how a person with a brand new idea plans it entirely in a chat, moves it into a git repository, and drops in a workflow orchestrator so AI builds it from tickets instead of from vibes. The two companion posts go deeper: <a href="../ui-specs-without-design-tools/"><em>The UI-spec prompt playbook</em></a> covers how I write the prompts that turn a screen description into a frozen, buildable spec, and <a href="../orchestrated-build-loop/"><em>The orchestrated build-and-feedback loop</em></a> covers what happens once tickets are flowing and the AI is shipping code on its own. This one is about getting to that starting line.</p>
-<p>There are three beats, and then an honest accounting of what this on-ramp does <em>not</em> give you for free.</p>
-<h2 id="beat-one-plan-in-chat-but-capture-it-as-docs-not-as-scrollback">Beat one: plan in chat, but capture it as docs, not as scrollback<a class="headerlink" href="#beat-one-plan-in-chat-but-capture-it-as-docs-not-as-scrollback" title="Permanent link">&para;</a></h2>
-<p>The first instinct everyone has is right: start by talking to the AI. A chat window is genuinely the best place to think out loud about a new idea. You describe the thing, the AI pushes back, you discover what you actually mean, you throw away the first three versions of the architecture. That part works.</p>
-<p>The mistake is leaving it there.</p>
-<p>A chat transcript is the worst possible home for the decisions you just made. It is unsearchable in practice, it scrolls away, and -- the killer -- the <em>next</em> AI session has no access to it. Every new conversation starts from zero. You will find yourself re-explaining "no, the server is authoritative, the clients are untrusted" for the fortieth time, because the only place that decision lived was a chat you closed last week.</p>
-<p>So the rule is: <strong>ideation happens in chat, but it lands as durable, versioned files.</strong> For this project the conversation distilled into a small set of documents that each own one kind of decision:</p>
+<p>A chat window is a good place to start a project. It is a bad place to keep a
+project.</p>
+<p>The difference matters. In chat, you can describe the product, argue with the
+assistant, throw away weak designs, and find the shape of the thing. But if the
+result stays in scrollback, the next agent cannot reliably use it. The project
+has no source of truth, no audit trail, and no stable way to turn "build the
+next piece" into work that can be reviewed.</p>
+<p>This project solved that problem in three steps:</p>
+<ol>
+<li>Use chat for exploration, then land the decisions as versioned docs.</li>
+<li>Put the docs, tickets, and code in a git repo so every change has a trail.</li>
+<li>Run work through an orchestrator so agents build from tickets, not from a
+   vague prompt.</li>
+</ol>
+<p>That is the on-ramp. It is not magic, and it is not specific to board games. The
+current repo happens to be a multi-device board-game platform, but the useful
+pattern is the process around it: durable context first, then ticket-shaped
+work, then a governed run loop.</p>
+<h2 id="start-in-chat-then-write-the-decisions-down">Start in chat, then write the decisions down<a class="headerlink" href="#start-in-chat-then-write-the-decisions-down" title="Permanent link">&para;</a></h2>
+<p>The first pass can be conversational. For this project, the early questions were
+basic product and architecture questions: What does a phone do? What does the TV
+show? Where does private information live? What can a client be trusted to send?
+What is a game engine responsible for?</p>
+<p>Those answers cannot live only in chat. In this repo they landed in ordinary
+files:</p>
 <ul>
-<li>the overview docs -- the architectural north star. What the thing <em>is</em>, the load-bearing rules (server-authoritative, role-filtered views, pure-Python engine), the data model, the trust boundaries. This is the file the AI reads first on any new task.</li>
-<li>the overview docs -- the phase-by-phase build plan. What ships in what order, and why the order is what it is. Build order is strict; the roadmap is where that strictness is written down.</li>
-<li>the overview docs -- the parking lot. Every "ooh, what if" that is real but not now. Crucially it also has an explicit <em>Rejected</em> section, so killed ideas stay killed instead of getting re-raised every third conversation.</li>
-<li>the overview docs -- the business and positioning thinking, kept separate from the architecture so the brief stays a brief.</li>
+<li><code>docs/overview/PROJECT_BRIEF.md</code> is the architecture brief. It is where the
+  project-level invariants belong: server authority, role-filtered views,
+  device profiles instead of person accounts, and the broad shape of the app.</li>
+<li><code>docs/overview/ROADMAP.md</code> is the phase plan. It says what gets built in what
+  order.</li>
+<li><code>docs/overview/IDEAS.md</code> is the parking lot. It keeps real-but-not-now ideas
+  separate from committed work.</li>
+<li><code>docs/overview/STRATEGY.md</code> is business and positioning thinking, kept away
+  from implementation contracts.</li>
 </ul>
-<p>The split matters more than the exact filenames. The point is that when a future AI session asks "what are we building and why," the answer is a file it can read, not a memory it does not have. The chat is where you <em>think</em>; the docs are where you <em>remember</em>. If a decision only exists in scrollback, it does not exist.</p>
-<p>A good way to do this beat: have the AI draft these docs <em>from</em> the conversation, then you edit them down. The AI is good at turning a rambling design discussion into a structured brief. You are the one who knows which parts are load-bearing.</p>
-<h2 id="beat-two-the-repo-is-the-contract">Beat two: the repo is the contract<a class="headerlink" href="#beat-two-the-repo-is-the-contract" title="Permanent link">&para;</a></h2>
-<p>The moment your idea becomes buildable is the moment it becomes a git repository.</p>
-<p>This sounds obvious -- of course code goes in a repo -- but the reason is more specific than "version control is good." A repo is the first place where the AI can <em>do</em> all three of the things a builder needs to do: read context, write code, and leave a trail of what it changed. A chat can read and write, but it cannot leave a durable, inspectable trail. <code>git init</code> is the step that gives the AI an audit log it cannot wriggle out of.</p>
-<p>Two layout decisions earn their keep early.</p>
-<p><strong>Docs-first, partitioned by area.</strong> The <code>docs/</code> tree is split so that different kinds of work touch different files: the overview docs for cross-cutting narrative (the brief, the roadmap), the server docs for backend guides, the client docs for frontend guides. This is not tidiness for its own sake. When two AI tasks run against the same repo, the orchestrator can tell whether they collide by looking at which paths they touch. Partitioned docs let independent work stay independent. A flat <code>docs/</code> folder forces everything to serialize.</p>
-<p><strong>Two clone roots, on purpose.</strong> This one is non-obvious and it bit me before I named it. There is a <em>chat/authoring clone</em> -- where I hand-edit docs and plan in a chat session -- and there are <em>ticket clones</em> -- the throwaway working copies the orchestrator spawns to do one task and then discards. They are deliberately separate roots. Mixing them means a ticket run reaches into the clone where you are hand-editing files, and the resulting confusion is exactly the kind of bug that is miserable to track down. If you take one structural idea from this post, take this: the place where a human plans and the place where the robot works should not be the same directory.</p>
-<p>The repo is also where you write down the rules the AI must follow. Which brings us to the third beat, because a repo full of good docs still does not make the AI a <em>builder</em>. It makes it a very well-informed advisor.</p>
-<h2 id="beat-three-the-orchestrator-is-what-turns-an-advisor-into-a-builder">Beat three: the orchestrator is what turns an advisor into a builder<a class="headerlink" href="#beat-three-the-orchestrator-is-what-turns-an-advisor-into-a-builder" title="Permanent link">&para;</a></h2>
-<p>Here is the gap nobody warns you about. You can have a beautiful brief, a clean repo, and an AI that gives genuinely excellent advice -- and still be doing all the actual building yourself, copy-pasting code out of a chat and pasting errors back in. The AI is advising. It is not building.</p>
-<p>What closes that gap is a workflow orchestrator: a small system that turns "AI, write this code" into a governed pipeline. For this project that is the workflow subsystem subsystem, driven by a single dispatcher, the orchestrator dispatcher. The first-run setup is written down in the bootstrap docs, and it is worth understanding what it actually wires up, because the shape generalizes even if you never touch this particular scaffold.</p>
-<p>The pieces:</p>
+<p>The exact filenames matter less than the split of responsibility. A future agent
+needs to know which file owns architecture, which file owns schedule, and which
+file is only a parking lot. If every decision is smeared across one long note,
+the agent has to guess which parts are current.</p>
+<p>The repo config makes this explicit. <code>workflow/project.config.json</code> has
+<code>paths.project_brief</code> and <code>paths.roadmap</code> keys so the workflow knows where the
+project brief and roadmap live. The orchestrator does not have to infer the
+project's memory from a folder name; the path is part of the configuration.</p>
+<p>This is the first useful conversion: chat becomes project state. The assistant
+can help draft it, but the important part is that the result is a file the next
+run can read.</p>
+<h2 id="make-the-repo-the-contract">Make the repo the contract<a class="headerlink" href="#make-the-repo-the-contract" title="Permanent link">&para;</a></h2>
+<p>Once the decisions are files, the repo becomes more than a place to store code.
+It becomes the contract an agent works against.</p>
+<p>Two layout choices matter early.</p>
+<p>First, docs are partitioned by purpose. Project policy and architecture live
+under <code>docs/overview/</code>. Server guidance lives under <code>docs/server/</code>. Client
+guidance lives under <code>docs/client/</code>. Game-specific design lives under
+<code>docs/games/&lt;slug&gt;/</code>. Workflow machinery owns <code>workflow/docs/</code>.</p>
+<p>That partitioning is practical. Tickets declare their edit surface in a
+<code>## Touches</code> section. The batch planner and the cross-cut buckets in
+<code>workflow/project.config.json</code> use those paths to avoid running colliding work
+at the same time. A doc layout is not just tidiness when autonomous agents are
+editing it; it is scheduler input.</p>
+<p>Second, the project separates the human planning checkout from the worker
+checkouts. The project rules name the two roots:</p>
 <ul>
-<li><strong>Tickets are the unit of work.</strong> Instead of asking the AI to "go fix the lobby screen," you write a ticket file under the backlog. A ticket says what to do, what it touches, what "done" means, and how to verify it. It is a contract the AI agrees to before it writes a line.</li>
-<li><strong>A dispatcher runs the lifecycle.</strong> the orchestrator dispatcher is the one entry point for the verbs that matter: spawn a clone for a ticket, run it, run the review preflight, ship it. The human does not run raw git inside a ticket clone; the dispatcher does, because it also has to update the run records and state the orchestrator depends on.</li>
-<li><strong>Review preflight gates every change.</strong> Before anything merges, a battery of checks runs -- lint, tests, project-specific rules. The AI cannot ship code that fails the gate. This is the difference between "the AI wrote something" and "the AI shipped something that passes the bar."</li>
-<li><strong>Run records leave the trail.</strong> Every ticket produces a sibling <code>.run.md</code> file recording what actually happened: the surprises, the dead ends, the judgment calls. Six weeks later, when you wonder why a thing was built the way it was, the answer is on disk.</li>
+<li><code>~/source/boardgameui/</code> is the authoring clone, where chat-driven planning and
+  ticket authoring happen.</li>
+<li><code>~/source/bgui/</code> is the ticket-clone root. Worker clones are created under it
+  as <code>ticket-&lt;ticket-name&gt;</code> directories.</li>
 </ul>
-<p>The single most important rule the orchestrator enforces is cultural, not technical. It is the one in this project's <code>CLAUDE.md</code> that says: <strong>always propose a ticket -- never hand-edit main from chat.</strong> When you ask for a change, the default response is not to edit the file. It is to draft a ticket. That sounds bureaucratic until you have watched the alternative -- a dozen undocumented chat-driven edits to <code>main</code> that nobody can reconstruct -- and realized the ticket <em>is</em> the thing that makes the AI's work debuggable later. The ticket, the review, the run record: those artifacts are the whole point. Ad-hoc edits skip all of them, and you only notice what you lost when something breaks and there is no trail.</p>
-<p>That is the on-ramp. Plan in chat, capture as docs. Move to a repo, where the docs become a contract and the AI gets an audit trail. Add the orchestrator, where tickets and gates and run records turn the AI from an advisor into a builder that ships under rules.</p>
-<h2 id="the-honest-edges">The honest edges<a class="headerlink" href="#the-honest-edges" title="Permanent link">&para;</a></h2>
-<p>This is the part the genre usually skips, so I will not.</p>
-<p><strong>The orchestrator is opinionated, and it has real setup cost.</strong> <code>BOOTSTRAP.md</code> is not a thirty-second <code>npm install</code>. You are standing up a config file, review surfaces, agent rules, and a dispatcher, and you have to understand the clone-per-task model before any of it makes sense. For a weekend project that you will throw away, this is too much machinery. The on-ramp pays off when the project is going to live long enough that <em>re-explaining context</em> becomes the dominant cost -- which, for anything real, happens faster than you expect. But it is a real up-front tax, and pretending otherwise would be dishonest.</p>
-<p><strong>Planning docs go stale if you do not maintain them.</strong> A <code>PROJECT_BRIEF.md</code> that no longer matches the code is worse than no brief, because the AI will believe it. The whole system rests on the docs staying true, and keeping them true is ongoing work that nothing fully automates. This project leans on hard rules that force doc updates to ride along with the code changes that invalidate them -- but that is a guardrail against drift, not a cure for it.</p>
-<p><strong>You still have to be able to review what the AI produces.</strong> This project's owner is a Python and C++ developer with essentially no web-frontend experience, driving an AI-built React client without pretending to have learned or source-reviewed it -- the boundary named in the companion post <a href="../python-dev-learning-react/"><em>Shipping a React client I have not read</em></a>. The orchestrator does not remove the need to understand the output; it makes the output <em>reviewable</em>, which is not the same thing. If you cannot tell whether the product behavior is right, a pipeline that ships it faster is not obviously a win. The on-ramp makes you a faster builder. It does not make you a builder you were not.</p>
-<p>None of these are reasons not to do it. They are the shape of the trade. You are buying durable context, an audit trail, and a governed build loop, and you are paying for it in setup cost, doc maintenance, and the requirement that you stay able to judge the work.</p>
-<hr />
-<p>That is the starting line. Once tickets are flowing through the orchestrator, the interesting questions move up a level: how do you write a prompt that turns a vague screen idea into a spec precise enough to build from (the subject of <a href="../ui-specs-without-design-tools/"><em>The UI-spec prompt playbook</em></a>), and what does the day-to-day build-and-feedback loop actually feel like once the AI is shipping on its own (the subject of <a href="../orchestrated-build-loop/"><em>The orchestrated build-and-feedback loop</em></a>)? Those two posts are the rest of this builder's-eye series. There is also a separate, more machine-facing pair on the orchestration internals -- the phase-to-ticket-to-retro lifecycle, and the review surfaces and AI-first guardrails -- for readers who want to see how the pipeline is built rather than how to use it; the build-loop post links into that pair. And the whole cluster has a capstone, <a href="../cross-game-compounding-flywheel/"><em>The cross-game compounding flywheel</em></a>, on why each new game built this way is cheaper than the last, and how a lesson learned building one game ratchets the quality of all the others.</p>
-<p>But none of that matters until the on-ramp is built. Plan it in chat. Land it as docs. Put it in a repo. Add the orchestrator. Then the robot can build.</p>
-<hr />
-<p><em>Or: subscribe for the next two posts in this series.</em></p>
+<p>That split exists because mixing the two is a real failure mode. If a ticket run
+uses the same checkout where a person is editing plans, the agent can collide
+with half-finished human work. In this repo, <code>workflow/project.config.json</code>
+keeps <code>paths.work_dir</code> and <code>paths.clone_base_dir</code> pointed at <code>~/source/bgui</code> so
+worker clones stay outside the authoring checkout.</p>
+<p>The repo also carries the rules. <code>CLAUDE.md</code> and <code>AGENTS.md</code> tell agents what
+they may and may not do. One rule is especially relevant to the on-ramp: in a
+normal chat, the default response to a requested repo change is to draft a
+ticket, not to hand-edit main. That rule sounds heavy until you need to answer a
+simple question later: what was asked, what changed, what passed, and what did
+the agent learn?</p>
+<p>Without the repo contract, those answers are buried in chat. With it, they are
+files.</p>
+<h2 id="turn-requests-into-tickets">Turn requests into tickets<a class="headerlink" href="#turn-requests-into-tickets" title="Permanent link">&para;</a></h2>
+<p>The ticket is the unit of work. It is not a clever prompt. It is a small contract
+on disk.</p>
+<p>A backlog ticket lives under <code>tickets/backlog/</code>. It carries frontmatter such as
+<code>state: confirmed</code>, <code>priority:</code>, <code>group:</code>, and agent hints. Its body names the
+goal, the reason, the context files to read first, the scope, the files it may
+touch, the acceptance criteria, and the verification commands.</p>
+<p>The useful parts are concrete:</p>
+<ul>
+<li><code>## Context</code> tells the implementing agent which files to read before writing.</li>
+<li><code>## Depends on</code> makes scheduling explicit. If a ticket consumes another
+  ticket's output, it names that predecessor.</li>
+<li><code>## Touches</code> lists the path surface the work is allowed to edit.</li>
+<li><code>## Acceptance criteria</code> says what must be true when the work is done.</li>
+<li><code>## Verification commands</code> gives the exact commands the agent must run.</li>
+</ul>
+<p>That shape changes the conversation. Instead of "AI, go improve the article,"
+the repo can say: read these files, change these two paths, preserve valid
+frontmatter, update the DevBlog mirror, and run these three lints. The agent has
+a bounded job, and review has a bounded artifact.</p>
+<p>Run records are the other half of the contract. A ticket run writes a sibling
+file next to the ticket, for example:</p>
+<div class="language-text highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>tickets/backlog/blog-refresh-from-idea-to-buildable-repo.md
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>tickets/backlog/blog-refresh-from-idea-to-buildable-repo.run.md
+</code></pre></div>
+<p>The run record says what happened: surprises, dead ends, prevention
+opportunities, verification, and outcome. That matters because the diff cannot
+tell you why the agent chose one path over another. Six weeks later, the run
+record is usually the fastest way to answer "what did this run learn?"</p>
+<h2 id="let-a-deterministic-orchestrator-drive-the-loop">Let a deterministic orchestrator drive the loop<a class="headerlink" href="#let-a-deterministic-orchestrator-drive-the-loop" title="Permanent link">&para;</a></h2>
+<p>The live workflow in this repo is driven through the workflow dispatcher,
+<code>workflow/scripts/dev.sh</code>, usually reached through project-facing commands and
+the provider command files. The dispatcher owns the lifecycle around an agent:
+select work, spawn a disposable clone, run the implement stage, run review,
+ship, merge, archive, and clean up.</p>
+<p>That distinction is important. The agent writes the change. The orchestrator
+controls the stage boundaries, state files, clone paths, checks, and merge
+flow. The project deliberately keeps that spine deterministic because the spine
+is where silent corruption is expensive.</p>
+<p>A normal ticket run is not "one long chat that does everything." It is a set of
+bounded stages. The implement stage reads the ticket and writes the code plus
+run record. Review runs the configured preflight checks and review surfaces.
+Ship opens the PR. Merge waits for green checks and handles the final merge
+path. State is written under <code>.state/</code> while the run is live, and the durable
+summary lands in the ticket's <code>.run.md</code> sibling.</p>
+<p>The review configuration is not generic advice. In this project,
+<code>workflow/project.config.json</code> lists the always checks, soft checks, and
+client-changed checks. The ticket itself can also name exact verification
+commands such as:</p>
+<div class="language-bash highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>bash<span class="w"> </span>scripts/dev.sh<span class="w"> </span>lint-doc-tags<span class="w"> </span>docs/blog/from-idea-to-buildable-repo.md<span class="w"> </span>docs/devblog/from-idea-to-buildable-repo.md
+<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>bash<span class="w"> </span>scripts/dev.sh<span class="w"> </span>lint-devblog-mirror
+<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>bash<span class="w"> </span>scripts/dev.sh<span class="w"> </span>lint-ascii<span class="w"> </span>docs/blog/from-idea-to-buildable-repo.md<span class="w"> </span>docs/devblog/from-idea-to-buildable-repo.md
+</code></pre></div>
+<p>That is the practical move from "an AI wrote something" to "the project accepted
+the work." The agent does not get to decide that the work is good because the
+prose sounds finished. The repo has checks, and the orchestrator runs them.</p>
+<h2 id="where-tempo-fits">Where Tempo fits<a class="headerlink" href="#where-tempo-fits" title="Permanent link">&para;</a></h2>
+<p>The current workflow grew inside this repo as shell scripts and project-specific
+contracts. Tempo is the Go port and product surface being built beside it.</p>
+<p>That status needs to be stated carefully. Tempo is real code: <code>tempo/main.go</code>
+defines commands such as <code>bootstrap</code>, <code>codemap</code>, <code>backlog-list</code>, <code>status</code>,
+<code>ticket</code>, <code>run</code>, <code>review</code>, <code>ship</code>, <code>group-run</code>, and <code>parity</code>. It also embeds
+starter assets under <code>tempo/assets/bootstrap/</code> and exposes <code>tempo bootstrap</code> to
+write starter workflow docs, config, and codemap defaults into another project.</p>
+<p>Tempo also carries the same boundary discipline as the shell workflow. Its
+codemap and analysis engines are Python, but they run through a tempo-owned
+runtime. Its live ticket adapter is opt-in: by default, <code>tempo ticket</code> uses a
+deterministic static runner so tests do not depend on paid model calls. When a
+real engine is selected with <code>--engine</code>, the adapter requires the engine to end
+with a machine-readable <code>TEMPO_RESULT</code> line containing fields such as
+<code>terminal_state</code>, <code>outcome</code>, and <code>cause</code>.</p>
+<p>The parity story is equally explicit. <code>tempo parity</code> compares ported surfaces
+against committed golden output and lists known gaps. The current parity code
+covers read surfaces and deterministic lifecycle-decision surfaces with fake
+agent, git, and GitHub layers. It does not claim that live bash ticket/review/
+ship execution, real agent output quality, GitHub merge behavior, or
+notification delivery are fully covered by parity.</p>
+<p>That makes Tempo a good example for this article. The on-ramp is no longer only
+a set of hand-built files in one repo; it is being packaged into a command that
+can bootstrap another project. But this repo still says where the line is:
+current project execution continues through the workflow dispatcher, and Tempo's
+coverage grows by named surfaces instead of by pretending the port is finished.</p>
+<h2 id="what-this-setup-does-not-give-you">What this setup does not give you<a class="headerlink" href="#what-this-setup-does-not-give-you" title="Permanent link">&para;</a></h2>
+<p>It does not remove setup cost. You need project rules, a brief, a roadmap,
+runtime config, ticket templates, review checks, and clone conventions. For a
+throwaway weekend script, that is too much machinery.</p>
+<p>It does not keep docs fresh by itself. The repo has rules and checks that make
+drift visible, but a stale brief is still dangerous because agents will treat it
+as context. Durable context has to be maintained.</p>
+<p>It does not remove the need to judge the result. The orchestrator can make work
+reviewable. It cannot make the product decision for you. If you cannot tell
+whether the behavior is right, shipping it faster is not automatically progress.</p>
+<p>It also does not mean every project needs this exact scaffold. The transferable
+part is smaller: keep decisions in versioned files, make work ticket-shaped,
+separate planning and worker clones, run checks through a deterministic
+orchestrator, and write down what happened.</p>
+<p>That is enough to change what the AI is doing. It is no longer only answering in
+a chat window. It is reading the repo, executing a ticket, leaving a diff, and
+recording the run. That is the point where an idea becomes something the robot
+can build.</p>
 
 
 
