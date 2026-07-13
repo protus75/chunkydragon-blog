@@ -961,6 +961,8 @@
       
         
       
+        
+      
     
     
     
@@ -1051,6 +1053,34 @@
     
   
     The test that knows what it is
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../docs-as-first-class-as-code/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Docs are first-class, just like the code and the tests
   
 
     
@@ -2410,7 +2440,11 @@
 <p>This is the fifth post in a thread, and the other four built a machine. <a href="../ai-first-code-annotations/">Code comments written for the robot, not the human</a> introduced the <code>codemap:</code> annotations and the risk-vs-complexity score. <a href="../ai-first-testing-and-logging/">The test that knows what it is</a> introduced the test taxonomy and its <code>evidence:</code> and <code>kind:</code> marks. <a href="../let-the-library-carry-the-proof/">Let the library carry the proof</a> used both to delete hand-rolled code and the tests that pinned it. <a href="../the-refactor-the-annotations-made-safe/">The refactor the annotations made safe</a> pointed the same instruments at a 3,300-line god file and decomposed it without breaking anything. This post is about the drift those posts were circling: the duplication and dead code that an AI accelerates precisely <em>because</em> it cannot see the whole repo -- and the tooling that lives outside any single context window to find it, flag it the moment it lands, and trim it under a human gate.</p>
 <p>The fix is not "tell the agent to be careful." You cannot instruction-tune away a missing input. The fix is to give the project a vantage point the per-ticket agent does not have.</p>
 <h2 id="the-blind-spot-is-a-property-of-the-context-window-not-the-model">The blind spot is a property of the context window, not the model<a class="headerlink" href="#the-blind-spot-is-a-property-of-the-context-window-not-the-model" title="Permanent link">&para;</a></h2>
-<p>The duplication-and-dead-code review spec (the review-rule docs) names this directly, in a section titled "Why AI accelerates this drift." An agent working a ticket sees that ticket's <code>## Touches</code> files plus what it greps. It does not hold a model of every helper that already exists. "When the needed helper already exists three modules away, the agent has no cheap signal that it should reuse it, so it can write a fresh near-copy that passes review in isolation."</p>
+<p>The code-health review mechanism
+names this directly, in a section titled "Why AI accelerates this drift." An
+agent working a ticket sees that ticket's <code>## Touches</code> files plus what it greps.
+It does not hold a whole-repo model of every helper that already exists, so a
+fresh near-copy can pass review in isolation.</p>
 <p>Read that twice, because the second clause is the trap. The copy <em>passes review in isolation</em>. Every local signal says the code is fine: it is correct, it is tested, the diff is small. The defect is only visible from a vantage point no single ticket occupies -- the whole repo at once. A human senior engineer accumulates that vantage point slowly, over months of working in the codebase, as a mental index of "haven't I seen this before?" The agent starts every ticket with that index empty.</p>
 <p>That is why the spec splits the control into two parts that both live outside the ticket: a periodic whole-repo scan, and an always-on review-time tripwire. A per-ticket agent structurally cannot see every clone or orphan, so one tool gives the project the broad scan and the other catches new drift between full passes. Neither asks the agent to remember anything. They re-derive the whole-repo picture from scratch, mechanically, every time.</p>
 <h2 id="duplication-is-hidden-blast-radius">Duplication is hidden blast radius<a class="headerlink" href="#duplication-is-hidden-blast-radius" title="Permanent link">&para;</a></h2>
@@ -2515,7 +2549,7 @@
 <h2 id="the-honest-edges">The honest edges<a class="headerlink" href="#the-honest-edges" title="Permanent link">&para;</a></h2>
 <p>I want to be as honest about the limits here as the earlier posts were about theirs, because overstating this would undermine the whole reason it belongs in this thread.</p>
 <p><strong>Not all duplication should be removed.</strong> Some is coincidental -- two functions that look alike today but answer to different owners and will diverge tomorrow. Some is intentional decoupling. The seven generated fixture repeats the first pass discarded are duplication by design: hand-editing generated output to satisfy a clone detector would be the actual mistake. The finder surfaces candidates; it does not issue verdicts.</p>
-<p><strong>Dead-code detection is confidence-graded, not exact.</strong> A static reachability scan cannot see dynamic dispatch, so the spec carries a dynamic-dispatch allowlist: FastAPI route handlers, engine and personality registries, name-keyed dispatch maps, pytest fixtures, <code>__main__</code> entrypoints, codemap-marked public API, string/reflection-loaded names, and React lazy imports all lower a finding's confidence or suppress it. A "dead" symbol reached only through a registry or a <code>getattr</code> is a runtime break waiting to happen, which is why deletion requires a manual string/config search and a human gate on top of the scan. The finder reports confidence bands, not a delete button.</p>
+<p><strong>Dead-code detection is confidence-graded, not exact.</strong> A static reachability scan cannot see dynamic dispatch, so the generic mechanism carries a dynamic-dispatch allowlist: framework-loaded handlers, registries, name-keyed dispatch maps, test-discovered fixtures, entrypoints, codemap-marked public API, string/reflection-loaded names, and frontend lazy imports all lower a finding's confidence or suppress it. A "dead" symbol reached only through a registry or a <code>getattr</code> is a runtime break waiting to happen, which is why deletion requires a manual string/config search and a human gate on top of the scan. The finder reports confidence bands, not a delete button.</p>
 <p><strong>The human gate reverses calls -- and that is the gate working.</strong> This is the fourth scoreboard row above. The orphan module the relevant AI module (the <code>HonestEddie</code> / <code>LiarLarry</code> / <code>ParanoidPat</code> rule personalities) genuinely had zero inbound production imports, so the deletion ticket merged it as 11 dead symbols and one orphan file removed. Then a human restored it. The file is back on current <code>main</code>, still un-imported by any production module -- kept deliberately as future-use rule personalities rather than wrongly-detected live code. The static analysis was <em>correct</em> that nothing reaches it; the human decision was that "nothing reaches it yet" is not the same as "delete it." That is precisely why the protocol gates deletion behind a person instead of auto-confirming a high-confidence finding: the finder measures reachability, which is a fact, but "should this be removed" is a judgment the finder cannot make. A reversed deletion is not the system failing. It is the system declining to let an approximate ranking drive an irreversible call.</p>
 <p><strong>Remediation is incremental and human-gated.</strong> The division of labor is deliberate: tooling ranks, the triage pass authors narrow tickets, a human promotes the ones worth doing, and each promoted ticket does one small fix. Auto-confirming would let an approximate ranking drive autonomous refactors of load-bearing code, which is exactly the failure the golden-test-first protocol exists to prevent. The point is not to make the codebase look smaller in one stroke. It is to make whole-repo cleanup repeatable enough that the clone count, the dead-symbol count, and the hidden blast radius actually trend down over time.</p>
 <p>The annotations told the finder which clone was worth collapsing and which dead symbol was load-bearing. The golden test proved the one collapse it made was behavior-preserving. The soft-check keeps the next near-copy from landing unnoticed. None of it asks the agent to see what it structurally cannot. It gives the project the whole-repo vantage point instead, and points it at the drift the context window will keep producing.</p>

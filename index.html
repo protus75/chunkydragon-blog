@@ -1120,6 +1120,8 @@
       
         
       
+        
+      
     
     
     
@@ -1210,6 +1212,34 @@
     
   
     The test that knows what it is
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="docs-as-first-class-as-code/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Docs are first-class, just like the code and the tests
   
 
     
@@ -2476,12 +2506,12 @@ lives in the project docs at
 <code>docs/overview/BLOG_PUBLISHING.md</code>.</p>
 <h2 id="posts-educational-tracks">Posts (educational tracks)<a class="headerlink" href="#posts-educational-tracks" title="Permanent link">&para;</a></h2>
 <p>Start with <a href="ai-fluency-trail-guide/">The AI fluency trail guide</a>. It is the overview map for the whole catalog: the personal eight-stage journey from "AI as a better Google" to an autonomous build pipeline, with links into the deeper posts below.</p>
-<p>The catalog is organized as a <strong>learning path</strong>, not a publishing queue. One overview post leads sixty track posts grouped into six named tracks, ordered so a newcomer absorbs the mindset first, sees it applied to the product and the engineering, and reaches the compounding-case capstone last. Read top-to-bottom for the full course, or jump to the track that matches what you came for.</p>
+<p>The catalog is organized as a <strong>learning path</strong>, not a publishing queue. One overview post leads sixty-one track posts grouped into six named tracks, ordered so a newcomer absorbs the mindset first, sees it applied to the product and the engineering, and reaches the compounding-case capstone last. Read top-to-bottom for the full course, or jump to the track that matches what you came for.</p>
 <p>The track order is the recommended reading order:</p>
 <ul>
 <li><strong>Track A -- The mindset.</strong> How this project thinks: privacy-by-design, AI-as-personality, honest boundaries around AI-built code, and the builder's-eye onboarding stance everything else leans on.</li>
 <li><strong>Track B -- Designing the product.</strong> The role/device architecture and the games built on it -- what gets built and why.</li>
-<li><strong>Track C -- AI-first engineering.</strong> The codemap annotation/test/log control plane and the metadata-as-infrastructure thread.</li>
+<li><strong>Track C -- AI-first engineering.</strong> The codemap annotation/test/doc/log control plane and the metadata-as-infrastructure thread.</li>
 <li><strong>Track D -- Building with AI.</strong> The builder's on-ramp: idea -&gt; repo -&gt; UI spec -&gt; mockups -&gt; build loop.</li>
 <li><strong>Track E -- The orchestrator evolves.</strong> The orchestration internals: lifecycle, review guardrails, detection, and failure recovery.</li>
 <li><strong>Track F -- Forward-looking.</strong> The capstone thesis that argues the compounding case.</li>
@@ -2606,7 +2636,7 @@ lives in the project docs at
 </tbody>
 </table>
 <h3 id="track-c-ai-first-engineering">Track C -- AI-first engineering<a class="headerlink" href="#track-c-ai-first-engineering" title="Permanent link">&para;</a></h3>
-<p>This is the inside-baseball track: the control plane that makes the codebase legible to an AI agent. It starts with the two foundations -- <a href="ai-first-code-annotations/">Code comments written for the robot, not the human</a> (the <code>codemap:</code> annotation and risk system) and <a href="ai-first-testing-and-logging/">The test that knows what it is</a> (the test taxonomy and log-aligned UIState dump) -- then shows how the same pattern reaches UI design in <a href="when-layout-taste-becomes-a-test/">When layout taste becomes a test</a>: a recurring landscape-layout judgment becomes a written lens and an opt-in geometry guard. From there the track situates the control plane against the published literature, walks the "shrink the codebase safely" payoffs (library swap, decomposition, dedup), extends each foundation into observability and history, and closes on project memory: ordinary artifacts become agent infrastructure once they are typed, local, and mechanically searchable. It sits after the product track because it is the most inside-baseball thread in the catalog and reads best once the games have made the project concrete. Inside the observability-and-history stretch, <a href="store-the-moves-not-the-board/">Store the moves, not the board</a> makes the case that the action log -- recorded moves replayed to reconstruct state, not per-move snapshots -- is the durable record the logging and project-memory posts both lean on. Find every surface related to X extends The project that remembers itself from ticket and run-record prose to the code-doc capability graph: one closed capability vocabulary carried in both <code>codemap:</code> blocks and doc frontmatter, generated capability-hub pages that join tagged docs to annotated code units, and semantic retrieval that now ranks doc and code metadata alongside the project's own history. The run record that grades itself then follows the same memory corpus in a different direction, showing how the ticket and run-record pair became predicted-vs-actual training feedback. A three-post AI audit trail series then closes the track: What an AI researcher wants from a dev loop translates SFT, preference learning, and RLVR into what each actually wants from a real dev loop; Building an audit trail for AI-assisted development is the builder's-eye account of capturing the trajectory triple -- context, decision, outcome -- in a store deliberately kept outside git; and Why this project is a strong AI training substrate synthesizes the whole control plane into the case that this repo can measure whether an agent understood the project before it acted, then names the game-authoring flywheel that could turn verified game builds into better future authoring attempts.</p>
+<p>This is the inside-baseball track: the control plane that makes the codebase legible to an AI agent. It starts with the three first-class annotation surfaces -- <a href="ai-first-code-annotations/">Code comments written for the robot, not the human</a> (the <code>codemap:</code> annotation and risk system), <a href="ai-first-testing-and-logging/">The test that knows what it is</a> (the test taxonomy and log-aligned UIState dump), and <a href="docs-as-first-class-as-code/">Docs are first-class, just like the code and the tests</a> (the doc frontmatter, shared vocabulary, graph/index, and review-routing bridge) -- then shows how the same pattern reaches UI design in <a href="when-layout-taste-becomes-a-test/">When layout taste becomes a test</a>: a recurring landscape-layout judgment becomes a written lens and an opt-in geometry guard. From there the track situates the control plane against the published literature, walks the "shrink the codebase safely" payoffs (library swap, decomposition, dedup), extends each foundation into observability and history, and closes on project memory: ordinary artifacts become agent infrastructure once they are typed, local, and mechanically searchable. It sits after the product track because it is the most inside-baseball thread in the catalog and reads best once the games have made the project concrete. Inside the observability-and-history stretch, <a href="store-the-moves-not-the-board/">Store the moves, not the board</a> makes the case that the action log -- recorded moves replayed to reconstruct state, not per-move snapshots -- is the durable record the logging and project-memory posts both lean on. Find every surface related to X extends The project that remembers itself from ticket and run-record prose to the code-doc capability graph: one closed capability vocabulary carried in both <code>codemap:</code> blocks and doc frontmatter, generated capability-hub pages that join tagged docs to annotated code units, and semantic retrieval that now ranks doc and code metadata alongside the project's own history. The run record that grades itself then follows the same memory corpus in a different direction, showing how the ticket and run-record pair became predicted-vs-actual training feedback. A three-post AI audit trail series then closes the track: What an AI researcher wants from a dev loop translates SFT, preference learning, and RLVR into what each actually wants from a real dev loop; Building an audit trail for AI-assisted development is the builder's-eye account of capturing the trajectory triple -- context, decision, outcome -- in a store deliberately kept outside git; and Why this project is a strong AI training substrate synthesizes the whole control plane into the case that this repo can measure whether an agent understood the project before it acted, then names the game-authoring flywheel that could turn verified game builds into better future authoring attempts.</p>
 <table>
 <thead>
 <tr>
@@ -2623,6 +2653,11 @@ lives in the project docs at
 </tr>
 <tr>
 <td><a href="ai-first-testing-and-logging/">The test that knows what it is</a></td>
+<td>Developers, AI tooling</td>
+<td>blog.chunkydragon.com -&gt; cross-post dev.to</td>
+</tr>
+<tr>
+<td><a href="docs-as-first-class-as-code/">Docs are first-class, just like the code and the tests</a></td>
 <td>Developers, AI tooling</td>
 <td>blog.chunkydragon.com -&gt; cross-post dev.to</td>
 </tr>

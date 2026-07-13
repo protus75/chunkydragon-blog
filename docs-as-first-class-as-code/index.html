@@ -10,13 +10,13 @@
       
       
       
-        <link rel="canonical" href="https://blog.chunkydragon.com/when-layout-taste-becomes-a-test/">
+        <link rel="canonical" href="https://blog.chunkydragon.com/docs-as-first-class-as-code/">
       
       
-        <link rel="prev" href="../docs-as-first-class-as-code/">
+        <link rel="prev" href="../ai-first-testing-and-logging/">
       
       
-        <link rel="next" href="../annotations-vs-the-literature/">
+        <link rel="next" href="../when-layout-taste-becomes-a-test/">
       
       
         
@@ -27,7 +27,7 @@
     
     
       
-        <title>When layout taste becomes a test - Chunky Dragon Blog</title>
+        <title>Docs are first-class, just like the code and the tests - Chunky Dragon Blog</title>
       
     
     
@@ -78,7 +78,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#when-layout-taste-becomes-a-test" class="md-skip">
+        <a href="#docs-are-first-class-just-like-the-code-and-the-tests" class="md-skip">
           Skip to content
         </a>
       
@@ -114,7 +114,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              When layout taste becomes a test
+              Docs are first-class, just like the code and the tests
             
           </span>
         </div>
@@ -1070,34 +1070,6 @@
                 
   
   
-  
-  
-    <li class="md-nav__item">
-      <a href="../docs-as-first-class-as-code/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Docs are first-class, just like the code and the tests
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
     
   
   
@@ -1117,7 +1089,7 @@
   <span class="md-ellipsis">
     
   
-    When layout taste becomes a test
+    Docs are first-class, just like the code and the tests
   
 
     
@@ -1135,7 +1107,7 @@
   <span class="md-ellipsis">
     
   
-    When layout taste becomes a test
+    Docs are first-class, just like the code and the tests
   
 
     
@@ -1161,10 +1133,10 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#the-recurring-landscape-bug" class="md-nav__link">
+  <a href="#one-vocabulary-across-three-surfaces" class="md-nav__link">
     <span class="md-ellipsis">
       
-        The recurring landscape bug
+        One vocabulary across three surfaces
       
     </span>
   </a>
@@ -1172,10 +1144,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#six-lenses-not-one-taste-argument" class="md-nav__link">
+  <a href="#the-code-only-parts-stay-code-only" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Six lenses, not one taste argument
+        The code-only parts stay code-only
       
     </span>
   </a>
@@ -1183,10 +1155,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#from-lens-to-guard" class="md-nav__link">
+  <a href="#the-path-is-the-identity" class="md-nav__link">
     <span class="md-ellipsis">
       
-        From lens to guard
+        The path is the identity
       
     </span>
   </a>
@@ -1194,10 +1166,21 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#why-prose-was-not-enough" class="md-nav__link">
+  <a href="#first-class-docs-change-review-behavior" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Why prose was not enough
+        First-class docs change review behavior
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#the-shape-of-the-machine" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The shape of the machine
       
     </span>
   </a>
@@ -1208,6 +1191,34 @@
   
 </nav>
       
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../when-layout-taste-becomes-a-test/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    When layout taste becomes a test
+  
+
+    
+  </span>
+  
+  
+
+      </a>
     </li>
   
 
@@ -2404,14 +2415,14 @@
       
       
       
-        <span class="md-tag">capability:layout-stability</span>
+        <span class="md-tag">capability:docs</span>
       
     
       
       
       
       
-        <span class="md-tag">capability:render</span>
+        <span class="md-tag">capability:lint</span>
       
     
       
@@ -2425,123 +2436,182 @@
 
 
 
-<h1 id="when-layout-taste-becomes-a-test">When layout taste becomes a test<a class="headerlink" href="#when-layout-taste-becomes-a-test" title="Permanent link">&para;</a></h1>
-<p>The failure mode looked harmless at first: a screen technically fit.</p>
-<p>No horizontal scrollbar. No clipped root. No controls pushed outside the
-viewport. The Playwright fit guard was green, so the layout passed the kind of
-check a CI system can run without having a design opinion.</p>
-<p>But on a landscape screen, the Battleland army chooser still felt wrong. The
-creature palette, roster, titan and angel options, legion-marker strip, empty
-selection placeholder, and Confirm action were all stacked as full-width bands.
-The palette clipped under later strips. Short controls stretched across the
-entire window. Setup tasks that belonged together read as separate rows because
-each row owned the same width and emphasis.</p>
-<p>The screen had avoided overflow, but it had not used the viewport.</p>
-<p>That gap is what the new
-UI design methodology exists to close. It
-does not try to turn all of "good UI" into a linter. It gives agents, ticket
-authors, and reviewers a shared set of lenses for judging whether a game screen
-uses its available space, keeps the primary object obvious, groups related
-controls, and remains stable across real game states. Then it takes one lens
-that can be measured objectively and turns it into a CI guard.</p>
-<p>That last part matters. Prose can name a standard. A harness keeps it from
-slowly becoming optional.</p>
-<h2 id="the-recurring-landscape-bug">The recurring landscape bug<a class="headerlink" href="#the-recurring-landscape-bug" title="Permanent link">&para;</a></h2>
-<p>Board-game UI makes landscape especially tempting to waste. A phone in portrait
-often wants a stack. A TV, tablet, or phone in landscape usually wants regions:
-board plus hand, palette plus setup rail, table plus action panel, lobby list
-plus join controls.</p>
-<p>The lazy version is to keep the portrait DOM and let every section stretch
-edge to edge. It fits because the browser is good at making boxes wider. It
-still fails as a product surface because width becomes dead space, unrelated
-controls look equally important, and the real work of the screen can be pushed
-below secondary configuration.</p>
-<p>Battleland made the problem concrete. The target redesign turns the army
-chooser from one full-width column into two functional regions:</p>
+<h1 id="docs-are-first-class-just-like-the-code-and-the-tests">Docs are first-class, just like the code and the tests<a class="headerlink" href="#docs-are-first-class-just-like-the-code-and-the-tests" title="Permanent link">&para;</a></h1>
+<p>The annotation system looked like a two-legged stool for too long.</p>
+<p>One post explained source annotations: <code>codemap:</code> blocks, provenance tiers, a
+closed vocabulary, and a hash that proves a judgment still belongs to the code
+it describes. Another post explained the test side: closed marks, <code>covers:</code>
+capabilities, replay evidence, and log-aligned UI state. Those two posts are
+real foundations -- <a href="../ai-first-code-annotations/">Code comments written for the robot, not the human</a>
+and <a href="../ai-first-testing-and-logging/">The test that knows what it is</a> -- but
+they leave the third surface too implicit.</p>
+<p>The third surface is documentation.</p>
+<p>In this repo, docs are not supporting prose that trails behind the "real"
+system. They are annotated, vocabulary-linted, graph-indexed, and review-routed
+alongside source and tests. A canonical doc is a first-class node in the same
+machine. It does not use the same exact mechanism as a Python or JavaScript
+unit, because prose is not code, but it speaks the same capability language and
+joins the same graph.</p>
+<p>That distinction matters. First-class does not mean identical. It means the
+surface has peer status in the system that agents use to decide what to read,
+what else might be affected, and how much review a change deserves.</p>
+<h2 id="one-vocabulary-across-three-surfaces">One vocabulary across three surfaces<a class="headerlink" href="#one-vocabulary-across-three-surfaces" title="Permanent link">&para;</a></h2>
+<p>The shared contract is <code>codemap/vocabulary.json</code>.</p>
+<p>Source files use the capability tokens in inline <code>codemap:</code> blocks. A block can
+say a unit participates in <code>docs</code>, <code>lint</code>, <code>view-filter</code>, <code>hidden-info</code>, or any
+other legal capability from that closed list. The token is not a loose label.
+<code>lint-annotations</code> validates the annotation shape and its hash currency.</p>
+<p>Tests reuse the same capability vocabulary through their <code>covers:</code> marks. A
+test does not merely say "this is a server test" or "this is a UI test"; it can
+say which capability it protects, using the same token a source unit uses to
+describe what it does. That is the bridge the testing post calls out: source
+and tests share one subsystem language instead of two drifting naming schemes.</p>
+<p>Docs now use that same vocabulary in YAML frontmatter:</p>
+<div class="language-yaml highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="nn">---</span>
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="nt">capability</span><span class="p">:</span>
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">docs</span>
+<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">lint</span>
+<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="nt">doc-kind</span><span class="p">:</span>
+<a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a><span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">blog</span>
+<a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a><span class="nn">---</span>
+</code></pre></div>
+<p><code>capability:</code> is the shared namespace. It answers "what is this document about?"
+and it draws only from <code>codemap/vocabulary.json</code>.</p>
+<p><code>doc-kind:</code> is deliberately separate. It is a docs-only namespace for how the
+document should be used: <code>adr</code>, <code>blog</code>, <code>devblog</code>, <code>mockup</code>, <code>reference</code>,
+<code>runbook</code>, <code>spec</code>, or <code>tutorial</code>. A runbook about WebSocket auth and a blog post
+about WebSocket auth can share <code>capability: ws</code> or <code>capability: auth</code> while
+remaining different kinds of documents.</p>
+<p>The linter boundary matches the source and test boundaries. <code>lint-doc-tags</code>
+checks doc <code>capability:</code> and <code>doc-kind:</code> values against closed vocabularies, the
+same way <code>lint-annotations</code> checks source annotations and <code>lint-test-marks</code>
+checks tests. An invented token that sounds perfect -- <code>retrieval</code>, <code>ai-docs</code>,
+<code>annotation-story</code> -- is rejected because nothing else in the graph can join to
+it. The cost of a closed vocabulary is occasional awkwardness. The payoff is
+that the words are comparable.</p>
+<h2 id="the-code-only-parts-stay-code-only">The code-only parts stay code-only<a class="headerlink" href="#the-code-only-parts-stay-code-only" title="Permanent link">&para;</a></h2>
+<p>The tempting mistake would be to copy the whole <code>codemap:</code> mechanism into docs.
+That would make the system look symmetrical and less honest.</p>
+<p>The source annotation block has three provenance tiers:</p>
 <ul>
-<li>a left creature palette that owns the body height and scrolls internally</li>
-<li>a right Army setup rail containing roster, titan and angel choices,
-  legion markers, and Confirm</li>
+<li><code>auto:</code> for tool-owned facts the annotator can regenerate.</li>
+<li><code>ai:</code> for agent-authored semantic judgment.</li>
+<li><code>human:</code> for explicit intent or policy.</li>
 </ul>
-<p>The header can remain thin full-width chrome. The interactive setup task should
-not span the viewport just because the viewport is available.</p>
-<p>That before/after is more than a CSS cleanup. It is the difference between a
-layout that merely does not overflow and a layout that understands what the
-player is doing.</p>
-<h2 id="six-lenses-not-one-taste-argument">Six lenses, not one taste argument<a class="headerlink" href="#six-lenses-not-one-taste-argument" title="Permanent link">&para;</a></h2>
-<p>The methodology breaks the judgment into six lenses.</p>
-<p><strong>Visual hierarchy / information weight:</strong> name the primary object first. On a
-stage screen, that is usually the board, hand, pending action, palette, or
-current choice. Status chrome and destructive controls should not compete with
-it for width, contrast, or emphasis.</p>
-<p><strong>Spatial efficiency:</strong> spend landscape width on useful regions. Short setup
-controls should be capped, grouped, or moved into a rail instead of stretched
-into full-width bands.</p>
-<p><strong>Touch ergonomics / Fitts's law:</strong> frequent and consequential controls need
-comfortable targets and enough separation to hit reliably. The boldest control
-must not be the destructive one.</p>
-<p><strong>Gestalt grouping:</strong> related controls should read as one task. A player should
-not have to scan four full-width rows to understand one setup decision.</p>
-<p><strong>Progressive disclosure:</strong> show the common path first. Optional configuration
-and empty placeholders should not reserve major structural space until they
-matter.</p>
-<p><strong>Layout stability:</strong> role and viewport define the layout; game state changes
-content inside reserved regions. Errors, empty states, and item-count growth
-should not move the core board, hand, palette, or primary action.</p>
-<p>These lenses are deliberately practical. They do not ask a reviewer to say
-"make it nicer." They ask a reviewer to name which part of the layout is
-carrying the screen, which controls belong together, and which viewport class is
-being underserved.</p>
-<h2 id="from-lens-to-guard">From lens to guard<a class="headerlink" href="#from-lens-to-guard" title="Permanent link">&para;</a></h2>
-<p>The enforcement stack now has three layers.</p>
-<p>First, the methodology doc is the contract. A ticket can cite it before
-implementation starts, and a reviewer can point to a specific lens instead of
-arguing from preference. That is already an improvement over taste, but prose
-alone is weak. It depends on every future agent remembering the same lesson.</p>
-<p>Second, the landscape-column guard turns one objective piece of the spatial
-efficiency lens into geometry. The <code>layout-fit-landscape-column-guard</code> work
-adds an opt-in <code>assertLandscapeColumnLayout</code> assertion on top of the existing
-fit checks. <code>assertScreenFits</code> can already catch overflow, clipping, collapsed
-controls, and overlapping controls. The new guard can catch the specific shape
-that kept recurring: interactive landscape screens whose major regions are
-still stacked as full-width bands.</p>
-<p>That distinction is important. A rectangle-fit check can say "nothing is
-broken." A column-layout check can say "this landscape screen is not actually
-using columns." It is not trying to judge color, copy, or product intent. It is
-mechanizing the part of the review that can be reduced to measured region
-relationships.</p>
-<p>Third, the review rule makes the methodology mandatory review vocabulary. The
-guard catches objective drift. The reviewer still handles the human part:
-whether the palette is visually dominant enough, whether the setup rail groups
-the right controls, whether optional content is disclosed at the right time, and
-whether a phone-player orientation policy is intentional rather than accidental.</p>
-<p>This is the AI-first-engineering pattern the project keeps circling back to:</p>
-<ol>
-<li>Notice a repeated judgment failure.</li>
-<li>Write the judgment down as a small, shared contract.</li>
-<li>Mechanize the part that has objective geometry.</li>
-<li>Leave the remaining product judgment visible for review.</li>
-</ol>
-<p>The guard is not valuable because it replaces design review. It is valuable
-because it stops the same low-level miss from consuming design review over and
-over.</p>
-<h2 id="why-prose-was-not-enough">Why prose was not enough<a class="headerlink" href="#why-prose-was-not-enough" title="Permanent link">&para;</a></h2>
-<p>Autonomous agents are good at satisfying the literal gate they can see. If the
-only gate says "no overflow," a full-width landscape stack is an attractive
-solution: simple DOM, simple CSS, green test.</p>
-<p>Humans notice the waste. Agents need the waste named.</p>
-<p>The methodology names it. The landscape-column guard makes one recurring
-version of it fail in CI. Together they move "use the landscape viewport
-intentionally" from review taste toward project infrastructure.</p>
-<p>That is the useful boundary. Not every design decision belongs in a harness,
-and the methodology does not pretend otherwise. But when the same objective
-layout failure repeats across screens, leaving it as prose is just choosing to
-rediscover it later.</p>
-<p>The Battleland army chooser made the failure visible. The design methodology
-made it discussable. The landscape guard makes it harder to regress.</p>
-<p>That is the shape of an AI-first UI rule: a human names the lens, the codebase
-keeps the measurable part honest, and future agents have less room to confuse
-"fits" with "designed."</p>
+<p>Those tiers describe who may refresh facts about a source unit. They are useful
+because code has structural facts a tool can derive and judgment fields an agent
+must review when the unit changes. Docs do not get those tiers in frontmatter.
+A documentation page can be reviewed, tagged, linked, and indexed without
+pretending every paragraph has the same provenance shape as a function.</p>
+<p>The <code>hash:</code> currency stamp is even more clearly code-only. In source, the hash
+covers the annotated unit after the <code>codemap:</code> block is stripped. If the code
+changes and the judgment is not refreshed, the stale hash is machine-detectable.
+That is a real guarantee.</p>
+<p>A hash over prose would not give the same guarantee. It would prove that the
+text changed, but it would not prove whether the <code>capability:</code> tag still tells
+the truth, whether the page's advice is obsolete, or whether another doc now
+needs to move with it. The doc graph spec states that boundary directly:
+docs are indexed by canonical source path and content, not by inline codemap
+hashes.</p>
+<p>So docs get their own mechanism: closed frontmatter tags, canonical-path graph
+identity, link and reference edges, and derived review routing. They do not get
+a borrowed code hash that looks rigorous and answers the wrong question.</p>
+<h2 id="the-path-is-the-identity">The path is the identity<a class="headerlink" href="#the-path-is-the-identity" title="Permanent link">&para;</a></h2>
+<p>Every source, test, and doc node in the graph is keyed by its git-tracked repo
+path.</p>
+<p>That sounds mundane, and it is load-bearing. The path is the thing a ticket puts
+under <code>## Touches</code>. It is the thing a reviewer opens. It is the thing <code>git diff</code>
+reports. It is also the key that lets docs sit beside code and tests in one
+index without a translation layer.</p>
+<p>Canonical docs come from <code>docs/**</code> and <code>workflow/docs/**</code>. Generated staging
+trees such as <code>site-src/</code> and built output such as <code>site/</code> are not source nodes.
+That exclusion prevents one document from having two identities: the real
+tracked file and the rewritten build artifact. If a graph hit says
+<code>workflow/docs/DOC_CODE_GRAPH.md</code>, an agent can open exactly that file, put that
+path in a ticket, and review the diff against that path.</p>
+<p>The same principle extends into retrieval. The doc graph spec treats docs as
+metadata-bearing nodes: path, first heading, <code>capability</code>, and <code>doc-kind</code>. Code
+nodes carry their codemap metadata. Tests carry marks that can be joined through
+the same capability vocabulary. The graph can then answer a question grep cannot
+answer reliably: "load the surfaces that share this capability before editing."</p>
+<p>The deeper retrieval mechanism is the subject of
+Find every surface related to X. That post is
+held from public publish right now because it is a mechanism post, but it is the
+right follow-on inside the repo: it explains the doc/code graph, capability
+hubs, metadata-card embeddings, and graph expansion layer. This post is the
+conceptual point that mechanism serves: docs are one of the citizens, not an
+appendix.</p>
+<h2 id="first-class-docs-change-review-behavior">First-class docs change review behavior<a class="headerlink" href="#first-class-docs-change-review-behavior" title="Permanent link">&para;</a></h2>
+<p>Once docs are real graph nodes, documentation edits stop being invisible to the
+same machinery that routes source edits.</p>
+<p>Some docs are small local explanations. Some docs are policy, protocol,
+workflow, or architecture surfaces that many other files consume. The project
+does not ask authors to hand-stamp a <code>criticality:</code> field on each doc. It derives
+importance from the graph: canonical paths, frontmatter capabilities, doc links,
+inline path mentions, and incoming reach.</p>
+<p>That is why the doc-side mechanism matters to review. A change to a
+high-blast-radius doc should not travel through the system like a typo in an
+unlinked note. The shipped rule surface already reflects this stance:
+<code>lint-ticket-doc-tier-floor</code> derives a minimum review tier from doc blast radius.
+The precise score is a derived signal, not a prose promise.</p>
+<p>The behavioral rules say the same thing in human language:</p>
+<ul>
+<li>Canonical doc edits that introduce, rename, remove, or redefine a named
+  concept must propagate through related docs in the same turn.</li>
+<li>Doc frontmatter tags are a closed vocabulary.</li>
+<li>Glossary entries move with new or changed project vocabulary.</li>
+<li><code>workflow/docs/</code> is the canonical orchestrator-doc source; <code>site-src/</code> is only
+  a staging tree.</li>
+</ul>
+<p>Those are not style preferences. They are the obligations that make docs a
+first-class surface. A source edit can require a test mark change. A test edit
+can require a vocabulary check. A doc edit can require related docs, glossary
+terms, nav, and review routing to move with it. The point is not that every
+surface has the same fields. The point is that every surface participates in the
+same typed system.</p>
+<h2 id="the-shape-of-the-machine">The shape of the machine<a class="headerlink" href="#the-shape-of-the-machine" title="Permanent link">&para;</a></h2>
+<p>The pattern is now three-sided:</p>
+<table>
+<thead>
+<tr>
+<th>Surface</th>
+<th>Local metadata</th>
+<th>Shared join</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Source</td>
+<td><code>codemap:</code> blocks with provenance, risk, maturity, affinity, and <code>hash:</code></td>
+<td>capability tokens from <code>codemap/vocabulary.json</code></td>
+</tr>
+<tr>
+<td>Tests</td>
+<td>taxonomy marks such as <code>touches:</code>, <code>covers:</code>, <code>kind:</code>, and <code>evidence:</code></td>
+<td><code>covers:&lt;area&gt;:&lt;capability&gt;</code> uses the same capability tokens</td>
+</tr>
+<tr>
+<td>Docs</td>
+<td>YAML <code>capability:</code> and <code>doc-kind:</code> frontmatter</td>
+<td><code>capability:</code> uses the same capability tokens</td>
+</tr>
+</tbody>
+</table>
+<p>That table is the idea I do not want buried inside a retrieval post. Source,
+tests, and docs all carry typed local metadata. They all reject ad hoc labels.
+They all give an agent something better than "read everything and guess." And
+they all feed a project memory layer where tickets, run records, code metadata,
+test marks, and docs can be queried as local artifacts.</p>
+<p>Docs are not special because prose is sacred. They are special because prose is
+where the rules live. If a rule is only prose, an agent can miss it. If the prose
+is tagged, indexed, linked by canonical path, and routed by derived blast
+radius, the rule becomes part of the same control plane as the code that must
+obey it and the tests that must protect it.</p>
+<p>That is the first-class claim: not "documentation matters" in the generic sense,
+but "documentation is a typed, linted, graph-addressable peer in the system that
+autonomous agents use to change the repo."</p>
+<hr />
+<p><em>Or: subscribe to the newsletter for more posts on building this stuff.</em></p>
 
 
 

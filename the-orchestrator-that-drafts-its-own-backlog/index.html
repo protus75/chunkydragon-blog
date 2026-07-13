@@ -959,6 +959,8 @@
       
         
       
+        
+      
     
     
     
@@ -1049,6 +1051,34 @@
     
   
     The test that knows what it is
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../docs-as-first-class-as-code/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Docs are first-class, just like the code and the tests
   
 
     
@@ -2507,7 +2537,8 @@ code is skipped for ticket emission. That avoids turning ahead-of-time work into
 an automatic deletion request just because a static scanner cannot see its
 future caller yet.</p>
 <p>The generated dedup ticket points the implementer back to
-<code>bash scripts/dev.sh dedup-candidates</code> and the duplication review protocol:
+<code>bash scripts/dev.sh dedup-candidates</code> and the
+code-health review protocol:
 write a golden or characterization test first, prove both copies behave the
 same, then collapse to one source of truth with no compatibility shim.</p>
 <p><code>scripts/lint_library_replacement_drift.py</code> uses the same maturity rule for

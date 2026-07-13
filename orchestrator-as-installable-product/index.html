@@ -959,6 +959,8 @@
       
         
       
+        
+      
     
     
     
@@ -1049,6 +1051,34 @@
     
   
     The test that knows what it is
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../docs-as-first-class-as-code/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Docs are first-class, just like the code and the tests
   
 
     
@@ -2396,7 +2426,7 @@
 <p>Per the Tempo design memo, pointing <code>bootstrap</code> at a fresh project writes three kinds of starting material into it:</p>
 <ul>
 <li><strong>A workflow config.</strong> It writes the review configuration, the same kind of config file that tells the orchestrator which checks to run and where things live -- the file this very repo uses to drive review preflight.</li>
-<li><strong>Codemap defaults.</strong> It drops a tempo-owned vocabulary, weights, and config under the codemap subsystem, plus an annotation-convention doc at <code>docs/CODE_ANNOTATION.md</code>. These are not invented per project; they come from the defaults <code>tempo</code> carries embedded under the Tempo implementation and the Tempo implementation, and the loader checks that the bootstrapped copy is internally consistent before anything depends on it.</li>
+<li><strong>Codemap defaults.</strong> It drops a tempo-owned vocabulary, weights, and config under the codemap subsystem, plus an annotation-convention doc at <code>workflow/docs/CODE_ANNOTATION.md</code>. These are not invented per project; they come from the defaults <code>tempo</code> carries embedded under the Tempo implementation and the Tempo implementation, and the loader checks that the bootstrapped copy is internally consistent before anything depends on it.</li>
 <li><strong>The vendored contracts.</strong> It writes the workflow's own documentation under the workflow docs -- the ticket-authoring contract, the run-record format, the batch-authoring guide, the data-shape reference. The embedded copies live under the workflow docs, so a bootstrapped project carries its own copy of the rules and does not have to reach back into this repository to know how a ticket is shaped or how a run record is written.</li>
 </ul>
 <p>Read that list against the on-ramp post and the symmetry is the point. <a href="../from-idea-to-buildable-repo/"><em>From an idea in a chat window to a repo the robot can build</em></a> walked you, by hand, through standing up exactly these surfaces -- a config, the docs the AI reads, the ticket-and-run-record discipline. <code>bootstrap</code> is that on-ramp compressed into one command. The orchestrator stops being a one-off baked into a board-game repo and becomes a generic starting point you can lay over a project that has nothing to do with board games at all.</p>
