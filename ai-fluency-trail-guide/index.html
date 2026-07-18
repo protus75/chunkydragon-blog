@@ -409,10 +409,21 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#stage-8-extract-the-orchestrator" class="md-nav__link">
+  <a href="#stage-8-the-ai-native-architect-closing-the-loop" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Stage 8 -- Extract The Orchestrator
+        Stage 8 -- The AI-Native Architect (closing the loop)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#above-the-treeline-the-breadcrumbs-left-for-me" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Above the treeline: the breadcrumbs left for me
       
     </span>
   </a>
@@ -2583,20 +2594,139 @@ clone-per-task isolation.</p>
 </ul>
 <p>The plateau is that all of this is still tied to this repository's shell
 workflow.</p>
-<h2 id="stage-8-extract-the-orchestrator">Stage 8 -- Extract The Orchestrator<a class="headerlink" href="#stage-8-extract-the-orchestrator" title="Permanent link">&para;</a></h2>
-<p>Tempo is the current loop closing back on itself: the orchestrator is being
-rebuilt as a Go command.</p>
-<p>It is not done, and the repo says so. <code>tempo/README.md</code> describes the scaffold,
-the pinned Go toolchain, the tempo-owned Python runtime, the codemap command,
-the parity harness, bootstrap assets, and the live ticket engine adapter. The
-CLI surface in <code>tempo/main.go</code> now includes orchestration verbs such as
-<code>ticket</code>, <code>review</code>, <code>ship</code>, <code>group-run</code>, <code>history-query</code>, <code>backlog-list</code>,
-<code>watchdog</code>, and <code>parity</code>. The parity report is careful about its own limits: it
-checks committed surfaces and lists lifecycle gaps instead of pretending the
-port has replaced the shell dispatcher.</p>
-<p>That honesty is the stage. The system is not merely using AI to build games. It
-is using the records from AI-built work to build a clearer, more portable system
-for doing the next work.</p>
+<h2 id="stage-8-the-ai-native-architect-closing-the-loop">Stage 8 -- The AI-Native Architect (closing the loop)<a class="headerlink" href="#stage-8-the-ai-native-architect-closing-the-loop" title="Permanent link">&para;</a></h2>
+<p>The machine starts building the machine.</p>
+<p>By now the artifacts are designed for the AI first -- structured so a machine
+can parse and locate them, not only so a person can skim. Findability is the
+constraint that matters: an agent that cannot locate the right context cannot do
+the job. Stage 7 indexed the history so the loop could ask "what happened
+before?"; this stage pushes the same instinct into the code. The codemap system
+stamps inline annotation blocks -- capability, risk, maturity, reachability --
+onto units of code so an agent can mechanically answer "what does this touch,
+and what breaks if I change it?" That is the closed-vocabulary discipline from
+Stage 5, aimed at the source tree instead of the tickets.</p>
+<p>Then the last turn: the structured record built to <em>debug</em> the system is exactly
+the record you would use to <em>train</em> one, and the loop closes. The 1,832 run
+records are not just development throughput; they are the <em>memory</em>. Each is a
+controlled-vocabulary account of how a job actually went -- what surprised the
+agent, what dead-ended, predicted versus actual -- which is precisely what you
+would train the next orchestrator on. <a href="queryable-project-memory.md">The project that remembers
+itself</a> covers that queryable memory; <a href="audit-trail-training-feedback.md">The run
+record that grades itself</a> shows the corpus
+becoming predicted-versus-actual training feedback; and <a href="project-as-ai-training-substrate.md">Why this project is a
+strong AI training substrate</a> is the
+synthesis.</p>
+<p>The loop-closing move is already visible: a from-scratch Go re-implementation of
+the whole orchestrator, Tempo, told in <a href="../two-rewrites-one-strategy/">Two rewrites, one
+strategy</a> and <a href="../orchestrator-as-installable-product/">The orchestrator leaves
+home</a>. The system is being rebuilt, with
+the system's own help, into something faster and portable.</p>
+<p>I will not pretend this stage is mastered. This is the frontier, standing at the
+edge looking up -- here is as far as I have climbed. But the map above this line
+is not entirely blank. Other climbers and the wider field have been up there, and
+they left blazes. So before the closing summary, let me do the thing this whole
+post has done for you, in reverse: leave the breadcrumbs for me.</p>
+<h2 id="above-the-treeline-the-breadcrumbs-left-for-me">Above the treeline: the breadcrumbs left for me<a class="headerlink" href="#above-the-treeline-the-breadcrumbs-left-for-me" title="Permanent link">&para;</a></h2>
+<p>There is a symmetry in how I gathered these. This whole post is breadcrumbs I
+left for people behind me on the trail. This section is the reverse --
+breadcrumbs left for <em>me</em>, by the climbers ahead and by the wider field.
+Fittingly, I did not write it from memory: I asked an AI to scout the trail above
+my treeline and report back. An AI leaving a human breadcrumbs to climb by is,
+itself, the Stage 8 loop closing one more time.</p>
+<p>Each one keeps the shape of the others: the discovery, why it is probably your
+next step from where you are standing, and the smallest first action. Sources for
+the field claims are collected at the end of the section.</p>
+<p><strong>Measure quality, not just rule-breaks.</strong> Your two-dozen-odd gates answer "did
+this break a rule?" They do not answer "is this any good, and is the pipeline
+getting better or worse over time?" The field's name for the missing layer is
+eval-driven development: write the eval cases first (input, expected trajectory,
+success criteria), grade with an LLM-as-judge calibrated against your own past
+review decisions, and gate merges on the <em>score</em>, not just pass/fail. You already
+own the hardest ingredient -- a golden set drawn from real failures -- because
+you have thousands of run records. <em>First action:</em> turn twenty of your ugliest
+past failures into scored eval cases and run them on every prompt change.</p>
+<p><strong>Your gates are already a reward signal.</strong> You named "train models to do the
+process" as the summit and then treated it as far away. It is closer than you
+think, because you are sitting on the exact ingredients: your deterministic gates
+are <em>verifiable rewards</em>, and your run records are <em>trajectories</em>. The field
+calls training on this RLVR -- reinforcement learning with verifiable rewards --
+and its current state of the art is a hybrid of rule-based checks for hard
+constraints and an LLM for soft ones, which is word-for-word your Stage 5
+philosophy. <em>First action:</em> export your passing trajectories as fine-tuning data
+and pick one repetitive, well-gated stage -- ticket triage, say -- to distill
+into a small, fast, cheap model.</p>
+<p><strong>Standardize the seams you hand-built.</strong> Your findability layer -- the codemap
+and the queryable history index -- is bespoke. While you were building it, the
+field converged on a standard for exactly this job: the Model Context Protocol
+(MCP), a common way to expose tools and context to any model or agent. It went
+from nonexistent to ubiquitous in under two years and is now stewarded by the
+Linux Foundation. <em>First action:</em> wrap <code>history-query</code> and the codemap as MCP
+servers, so any agent -- not just yours, not just one vendor's -- can read your
+project's memory.</p>
+<p><strong>Use more of the orchestration shapes.</strong> Your pipeline is a chain plus a
+separated review. The published pattern catalog names three more you probably
+underuse: evaluator-optimizer (a generate -&gt; critique -&gt; revise loop inside a
+single stage), orchestrator-worker (a lead agent that decomposes a task whose
+sub-steps it cannot predict in advance), and parallelization / best-of-N (sample
+several attempts, judge them, keep the best). <em>First action:</em> add a
+best-of-N-with-a-judge step to your highest-value ticket type and measure whether
+three cheap attempts plus a judge beats one expensive attempt.</p>
+<p><strong>Enforce the vocabulary at the moment of generation.</strong> At Stage 5 you close your
+vocabulary with a lint that <em>rejects</em> off-list tokens after the model emits them.
+The stronger version stops the model from emitting them at all: constrained
+decoding and schema-enforced structured outputs make the closed vocabulary a
+property of generation, not a post-hoc check. <em>First action:</em> move one
+closed-vocabulary field from "the lint rejects it later" to "the decoder can only
+produce legal values."</p>
+<p><strong>Context engineering is a real discipline now -- and it has a warning for you.</strong>
+You discovered "context is spent, not accumulated" by instinct at Stage 2. The
+field turned it into a named practice -- context engineering -- with real tooling
+for compaction and sub-agent isolation, and a counterintuitive headline finding:
+past a point, <em>more</em> context makes agents <em>worse</em>. There is also a caution aimed
+straight at your standing rulebook: research on "governance decay" shows that
+when a long context gets compacted, safety and governance rules are silently
+among the first things dropped. <em>First action:</em> measure which of your rules
+actually survive into each agent's working context, and stop assuming a rule in
+the file is a rule in the room.</p>
+<p><strong>Harden the pipeline itself.</strong> Your single best instinct -- "the server is
+authoritative, clients are untrusted" -- is exactly the instinct this step needs,
+pointed at a new target: your own agents. Prompt injection is now widely treated
+as a structural, possibly unpatchable flaw, and your pipeline feeds agents
+untrusted input (rulebook PDFs, web pages, ticket text) while handing them real
+tools. The defense is the one you already believe in: least-privilege tool
+scoping, and treating every retrieved document and tool output as <em>data, never
+instructions</em>. <em>First action:</em> pick one autonomous path, threat-model it as if
+its input were hostile, and scope that path's tool permissions to the minimum it
+needs.</p>
+<p>None of these are summit flags. They are just the next blazes up the trail -- the
+ones I could not see from where I am standing, that other people already have.</p>
+<p><strong>Sources for this section</strong></p>
+<ul>
+<li>Orchestration patterns (evaluator-optimizer, orchestrator-worker,
+  parallelization): <a href="https://www.anthropic.com/research/building-effective-agents">Anthropic, "Building Effective
+  Agents"</a>.</li>
+<li>Context engineering: <a href="https://www.anthropic.com/engineering/effective-context-engineering-for-ai-agents">Anthropic, "Effective context engineering for AI
+  agents"</a>.
+  The governance-decay warning: <a href="https://arxiv.org/pdf/2606.22528">arXiv, "Governance Decay: How Context Compaction
+  Silently Erases Safety Constraints in Long-Horizon LLM
+  Agents"</a>.</li>
+<li>RLVR (reinforcement learning with verifiable rewards): <a href="https://www.emergentmind.com/topics/reinforcement-learning-with-verifiable-rewards-rlvr">EmergentMind,
+  "Reinforcement Learning with Verifiable
+  Rewards"</a>;
+  <a href="https://www.promptfoo.dev/blog/rlvr-explained/">Promptfoo, "RLVR Explained"</a>.</li>
+<li>Eval-driven development and LLM-as-judge: <a href="https://deepeval.com/guides/guides-llm-as-a-judge">DeepEval, "LLM-as-a-Judge in
+  2026"</a>; <a href="https://www.digitalapplied.com/blog/ai-agent-evaluation-pipeline-2026-testing-methodology">Digital Applied,
+  "Building an AI Agent Evaluation Pipeline: 2026
+  Methodology"</a>.</li>
+<li>Model Context Protocol (MCP): <a href="https://www.anthropic.com/news/model-context-protocol">Anthropic, "Introducing the Model Context
+  Protocol"</a>; <a href="https://en.wikipedia.org/wiki/Model_Context_Protocol">Model
+  Context Protocol on
+  Wikipedia</a>.</li>
+<li>Agent security and prompt injection: <a href="https://workos.com/blog/prompt-injection-attacks">WorkOS, "Prompt injection attacks and how
+  to defend against them"</a>;
+  <a href="https://www.truefoundry.com/blog/claude-code-prompt-injection">TrueFoundry, "Prompt Injection and AI Agent Security Risks: A Claude Code
+  Guide"</a>.</li>
+</ul>
 <h2 id="how-to-use-the-map">How To Use The Map<a class="headerlink" href="#how-to-use-the-map" title="Permanent link">&para;</a></h2>
 <p>Do not read the stages as a ladder of status. Read them as a sequence of failure
 modes.</p>

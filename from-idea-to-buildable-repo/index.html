@@ -2581,11 +2581,14 @@ starter assets under <code>tempo/assets/bootstrap/</code> and exposes <code>temp
 write starter workflow docs, config, and codemap defaults into another project.</p>
 <p>Tempo also carries the same boundary discipline as the shell workflow. Its
 codemap and analysis engines are Python, but they run through a tempo-owned
-runtime. Its live ticket adapter is opt-in: by default, <code>tempo ticket</code> uses a
-deterministic static runner so tests do not depend on paid model calls. When a
-real engine is selected with <code>--engine</code>, the adapter requires the engine to end
-with a machine-readable <code>TEMPO_RESULT</code> line containing fields such as
-<code>terminal_state</code>, <code>outcome</code>, and <code>cause</code>.</p>
+runtime. Its live ticket adapter is opt-in: a live <code>tempo ticket</code> (or
+<code>tempo run</code>) invoked without <code>--engine</code> fails fast with a named error rather than
+silently running a static runner that would fabricate a completed-no-changes
+result. The deterministic static runner is reserved for the Go test suite and
+the gate2-probe parity harness, where it is wired in explicitly so those tests do
+not depend on paid model calls. When a real engine is selected with <code>--engine</code>,
+the adapter requires the engine to end with a machine-readable <code>TEMPO_RESULT</code>
+line containing fields such as <code>terminal_state</code>, <code>outcome</code>, and <code>cause</code>.</p>
 <p>The parity story is equally explicit. <code>tempo parity</code> compares ported surfaces
 against committed golden output and lists known gaps. The current parity code
 covers read surfaces and deterministic lifecycle-decision surfaces with fake
