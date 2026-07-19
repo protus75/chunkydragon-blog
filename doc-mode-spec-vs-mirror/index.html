@@ -10,13 +10,13 @@
       
       
       
-        <link rel="canonical" href="https://blog.chunkydragon.com/log-interplay-and-swimlanes/">
+        <link rel="canonical" href="https://blog.chunkydragon.com/doc-mode-spec-vs-mirror/">
       
       
-        <link rel="prev" href="../trimming-the-duplication-an-ai-cannot-see/">
+        <link rel="prev" href="../anatomy-of-a-ticket/">
       
       
-        <link rel="next" href="../store-the-moves-not-the-board/">
+        <link rel="next" href="../meet-tempo/">
       
       
         
@@ -27,7 +27,7 @@
     
     
       
-        <title>The logs already knew the order - Chunky Dragon Blog</title>
+        <title>Spec vs. mirror: choosing doc-first, code-first, or atomic - Chunky Dragon Blog</title>
       
     
     
@@ -78,7 +78,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#the-logs-already-knew-the-order" class="md-skip">
+        <a href="#spec-vs-mirror-choosing-doc-first-code-first-or-atomic" class="md-skip">
           Skip to content
         </a>
       
@@ -114,7 +114,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              The logs already knew the order
+              Spec vs. mirror: choosing doc-first, code-first, or atomic
             
           </span>
         </div>
@@ -962,10 +962,8 @@
       
   
   
-    
   
   
-  
     
     
       
@@ -1004,11 +1002,11 @@
     
       
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" checked>
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
         
           
           <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="">
@@ -1029,7 +1027,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="true">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_5">
             <span class="md-nav__icon md-icon"></span>
             
@@ -1296,37 +1294,10 @@
                 
   
   
-    
   
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    The logs already knew the order
-  
-
-    
-  </span>
-  
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../log-interplay-and-swimlanes/" class="md-nav__link">
         
   
   
@@ -1342,92 +1313,6 @@
   
 
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#why-wall-clock-sorting-is-a-trap" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Why wall-clock sorting is a trap
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#the-spine-seq-as-a-total-order-causation_id-as-the-join" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        The spine: seq as a total order, causation_id as the join
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#placing-the-events-that-have-no-seq" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Placing the events that have no seq
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#the-picture-falls-out-swim-lanes-and-a-round-trip-dag" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        The picture falls out: swim lanes and a round-trip DAG
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#the-payoff-dropped-messages-detect-themselves" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        The payoff: dropped messages detect themselves
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#where-this-stops-honestly" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Where this stops, honestly
-      
-    </span>
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -1803,8 +1688,10 @@
       
   
   
+    
   
   
+  
     
     
       
@@ -1845,11 +1732,11 @@
     
       
     
-    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7" checked>
         
           
           <label class="md-nav__link" for="__nav_7" id="__nav_7_label" tabindex="">
@@ -1870,7 +1757,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_7">
             <span class="md-nav__icon md-icon"></span>
             
@@ -2109,10 +1996,37 @@
                 
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="../doc-mode-spec-vs-mirror/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Spec vs. mirror: choosing doc-first, code-first, or atomic
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         
   
   
@@ -2128,6 +2042,70 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#the-three-modes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The three modes
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#two-opposite-ways-docs-rot" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Two opposite ways docs rot
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#automation-changes-the-category" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Automation changes the category
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#what-the-recorded-intent-can-unlock" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        What the recorded intent can unlock
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -2546,6 +2524,20 @@
       
       
       
+        <span class="md-tag">capability:docs</span>
+      
+    
+      
+      
+      
+      
+        <span class="md-tag">capability:lint</span>
+      
+    
+      
+      
+      
+      
         <span class="md-tag">doc-kind:blog</span>
       
     
@@ -2553,100 +2545,147 @@
 
 
 
-<h1 id="the-logs-already-knew-the-order">The logs already knew the order<a class="headerlink" href="#the-logs-already-knew-the-order" title="Permanent link">&para;</a></h1>
-<p>The companion post, <a href="../ai-first-testing-and-logging/">The test that knows what it is</a>, made one promise it did not cash: it introduced the <code>causation_id</code> -- a correlation id threaded through every hop of a single action -- and said it was what lets an agent "stitch one logical action across the TABLE, PLAYER, and REFEREE logs into a single ordered story." But it stopped at one device. This post is about what that spine is <em>for</em> once the logs leave the device.</p>
-<p>Here is the move. Phones, tablets, and TV browsers fail in places where you cannot attach a debugger -- a TV in someone's living room drops a WebSocket frame, and the bug is now three rooms away from any dev console. So the client keeps a bounded, redacted ring buffer of its own events and uploads it to the server after an error or on page close. Now the server holds the device's timeline next to its own. The naive next step -- merge the two and sort by <code>timestamp</code> -- is wrong, and wrong in a way that produces <em>causally impossible</em> orderings. The whole design is the alternative: don't sort by the clock, sort by the causal spine the logs were already carrying. Do that, and per-device swim-lane views and automatic dropped-message detection fall out nearly for free. That is the claim; the rest of this post is why it holds.</p>
-<h2 id="why-wall-clock-sorting-is-a-trap">Why wall-clock sorting is a trap<a class="headerlink" href="#why-wall-clock-sorting-is-a-trap" title="Permanent link">&para;</a></h2>
-<p>Two devices, two clocks, and nobody synchronized them. A phone's clock and a TV's clock can disagree by hundreds of milliseconds to several seconds -- NTP drift, a paused background tab, a cheap TV SoC that never had the right time to begin with. None of that is exotic; it is the default state of a room full of consumer devices.</p>
-<p>So consider an action: a PLAYER taps a card. The phone sends the move, the server applies it and broadcasts the new state, the TV receives it and renders. Causally, the send <em>must</em> precede the receive -- the TV cannot receive a message that was never sent. But if the phone's clock runs 800 ms ahead of the TV's, the receive event's <code>timestamp</code> can be numerically <em>smaller</em> than the send event's. Sort the merged log by <code>timestamp</code> and you get a timeline where the TV receives before the phone sends. That is not a rounding artifact you can squint past; it is a story that inverts cause and effect, and an agent (or a human) reading it to debug a dropped frame will chase a ghost.</p>
-<p>The fix is to stop trusting the clocks for cross-device ordering and trust the server instead.</p>
-<h2 id="the-spine-seq-as-a-total-order-causation_id-as-the-join">The spine: <code>seq</code> as a total order, <code>causation_id</code> as the join<a class="headerlink" href="#the-spine-seq-as-a-total-order-causation_id-as-the-join" title="Permanent link">&para;</a></h2>
-<p>The server is authoritative -- CLAUDE.md's architecture rules say so, and the log design leans on it. Every action the server applies gets a monotonic <code>seq</code>. That <code>seq</code> is an <strong>authoritative total order</strong>: it does not matter what any device's clock thinks, because the server stamped these events itself, in the order it actually processed them. Sorting cross-device events by server <code>seq</code> is sorting by the one clock everyone shares.</p>
-<p>Within that order, the fan-out of a single action is held together by the <code>causation_id</code>. The server derives it (documented in the server docs) as:</p>
-<p>client-msg-<client_msg_seq>:server-seq-<seq></p>
-<p>with the client segment set to <code>client-msg-none</code> when there is no inbound client sequence (an AI move, a server-initiated transition). The same id is logged on the client's <code>client.ws_message_sent</code>, the server's <code>action.apply</code>, the server's <code>room.broadcast_state</code>, the outbound <code>state_update</code> payload, and every device's <code>client.ws_message_received</code> / <code>client.room_state_delivered</code>. One action, one id, every hop.</p>
-<p>That gives you two keys that do all the work:</p>
+<h1 id="spec-vs-mirror-choosing-doc-first-code-first-or-atomic">Spec vs. mirror: choosing doc-first, code-first, or atomic<a class="headerlink" href="#spec-vs-mirror-choosing-doc-first-code-first-or-atomic" title="Permanent link">&para;</a></h1>
+<div class="admonition note">
+<p class="admonition-title">Draft status</p>
+<p>This post is part of the Track E orchestrator series and is not yet published.</p>
+</div>
+<p>A documentation change is never just "the docs."</p>
+<p>In this project, every ticket that changes both docs and code has to answer a
+more specific question: <strong>is the doc a spec, or is it a mirror?</strong></p>
+<p>A spec is prescriptive. It is the contract the implementation must satisfy.
+The code is correct only if it follows the doc.</p>
+<p>A mirror is descriptive. It records the behavior that already exists, or the
+shape the implementation found after it was built. The doc is correct only if it
+matches the code.</p>
+<p>That sounds like a small writing distinction. In an automated build loop, it is
+not small. It decides commit order, review expectations, and whether a later
+agent can treat the prose as an input dependency or only as a receipt.</p>
+<p>That is why tickets can carry a <code>doc_mode:</code> field.</p>
+<h2 id="the-three-modes">The three modes<a class="headerlink" href="#the-three-modes" title="Permanent link">&para;</a></h2>
+<p>The authoring contract names three possible shapes:</p>
 <table>
 <thead>
 <tr>
-<th>Key</th>
-<th>Role</th>
-<th>What it answers</th>
+<th>Mode</th>
+<th>Role of the doc</th>
+<th>Commit shape</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>server <code>seq</code></td>
-<td>total order across all actions</td>
-<td>"which action came first?"</td>
+<td><code>spec-first</code></td>
+<td>The doc is a prescriptive contract.</td>
+<td>Write the doc first, then make code satisfy it.</td>
 </tr>
 <tr>
-<td><code>causation_id</code></td>
-<td>join key within one action's fan-out</td>
-<td>"which send, applies, broadcasts, and receives belong together?"</td>
+<td><code>code-first</code></td>
+<td>The doc is a descriptive mirror of as-built behavior.</td>
+<td>Build the code first, then update docs in the same PR.</td>
+</tr>
+<tr>
+<td><code>atomic</code></td>
+<td>The doc and code are already coupled.</td>
+<td>Land both sides together.</td>
 </tr>
 </tbody>
 </table>
-<p>This is distributed tracing in miniature: <code>causation_id</code> is the trace/span id, <code>client_session_id</code> (the per-device session) is the lane. The system did not bolt tracing on after the fact -- the <a href="../ai-first-testing-and-logging/">companion post's</a> closed log vocabulary already threaded these fields through the round trip so the multi-device timeline specs could assert against them. Cross-device interleaving is the same fields read a second way.</p>
-<h2 id="placing-the-events-that-have-no-seq">Placing the events that have no <code>seq</code><a class="headerlink" href="#placing-the-events-that-have-no-seq" title="Permanent link">&para;</a></h2>
-<p>Not every event is part of a round trip. A route change, a wake-lock acquire, a local render -- these are purely client-local. They carry no server <code>seq</code> and no <code>causation_id</code>, because the server never saw them. You cannot join them to the spine. So where do they go on the timeline?</p>
-<p>This is the one place the device clock has to come back into the picture -- but not as a source of truth, as a <em>measured offset</em>. The viewer estimates each device's clock offset from the round trips it already participated in. For a send/receive pair around a known server event, Cristian's algorithm gives the offset as roughly:</p>
-<p>offset = server_time - (device_send_time + device_receive_time) / 2</p>
-<p>with the error bounded by <code>RTT / 2</code> (the round trip's half-width -- the message could have crossed the wire at either end of that interval). Each round trip the device did is one sample of its offset; average them and you have a per-device correction. Apply it to a local-only event's raw timestamp and you can drop that route change <em>between</em> the two server actions it actually happened between, even when the device clock is seconds off. The local events get placed on the server-time axis without ever being trusted to order across devices.</p>
-<p>So the rule is layered: causal events are ordered by <code>seq</code> and grouped by <code>causation_id</code> (no clock involved at all), and local-only events are interpolated onto that same axis via an offset that was <em>measured from the causal events</em>, not assumed. The clock is an input to a correction, never the ordering authority.</p>
-<h2 id="the-picture-falls-out-swim-lanes-and-a-round-trip-dag">The picture falls out: swim lanes and a round-trip DAG<a class="headerlink" href="#the-picture-falls-out-swim-lanes-and-a-round-trip-dag" title="Permanent link">&para;</a></h2>
-<p>Once events are grouped by <code>causation_id</code> and totally ordered by <code>seq</code>, the visualization is almost a transcription of the data shape rather than a new design.</p>
+<p>Use <code>doc_mode: spec-first</code> when the doc is the interface another ticket will
+consume, or when the change is large or risky enough that the prose must become
+the acceptance contract before implementation starts. Game design docs feeding
+an engine, screen specs feeding UI work, and protocol contracts fit here.</p>
+<p>Use <code>doc_mode: code-first</code> when the right shape is not known until the code is
+built. Exploratory implementation notes and docs that explain internal structure
+after it exists belong here.</p>
+<p>Use <code>doc_mode: atomic</code> when separating the two sides would make the primary
+branch misleading. Some surfaces are not "doc first" or "code first"; they are a
+paired edit. A rule edit and the enforcement surface it describes can be that
+kind of coupled change. So can an annotation update that must remain true of the
+source unit it annotates.</p>
+<p>The field is optional. A documentation-only ticket, or a code-only ticket, has
+no meaningful doc/code ordering requirement and should omit it.</p>
+<h2 id="two-opposite-ways-docs-rot">Two opposite ways docs rot<a class="headerlink" href="#two-opposite-ways-docs-rot" title="Permanent link">&para;</a></h2>
+<p>The modes exist because the two single-ordering choices fail in opposite
+directions.</p>
+<p>Spec-first can rot forward. The project can gain beautiful documents for code
+that never ships, or for code that ships differently. That is speculative doc
+rot: the prose is ahead of reality and teaches agents the wrong contract.</p>
+<p>Code-first can rot backward. The implementation changes, the mirror does not
+catch up, and future readers inherit a stale description of behavior that no
+longer exists.</p>
+<p>Atomic closes the window when the two sides are already known to be coupled. It
+does not claim one side is conceptually first. It says the repository should not
+observe either side alone.</p>
+<p>This is the distinction the <a href="../anatomy-of-a-ticket/">anatomy of a ticket</a> post
+keeps circling from another angle: the ticket is a machine-readable contract,
+not a suggestion written near the work. <code>doc_mode:</code> is one more field where that
+contract stops being prose and starts controlling how the run is judged.</p>
+<h2 id="automation-changes-the-category">Automation changes the category<a class="headerlink" href="#automation-changes-the-category" title="Permanent link">&para;</a></h2>
+<p>On a human team, "write the spec first" is usually etiquette. A senior reviewer
+might notice that a branch implemented code before its design doc, but most
+teams do not police that order mechanically. By the time the PR is open, the
+branch often just looks like a pile of final files.</p>
+<p>Here, <code>doc_mode:</code> is machine-readable frontmatter, and one case already has a
+merge-time check.</p>
+<p><code>lint-doc-mode-order</code> runs only for ticket branches whose resolved ticket sets
+<code>doc_mode: spec-first</code>. It walks the branch commits from the primary branch to
+<code>HEAD</code>. If the first code-touching commit comes before the first doc-touching
+commit, the lint fails. A single commit that touches both docs and code is
+allowed.</p>
+<p>The details matter:</p>
 <ul>
-<li><strong>Lanes.</strong> One lane per <code>client_session_id</code>, plus a server lane. Each device's events live in its own horizontal track.</li>
-<li><strong>Nodes.</strong> A causation group -- everything sharing one <code>causation_id</code> -- is a node, positioned by its server <code>seq</code>.</li>
-<li><strong>Edges.</strong> The fan-out of one action: PLAYER <code>client.ws_message_sent</code> -&gt; server <code>action.apply</code> -&gt; server <code>room.broadcast_state</code> -&gt; each device's <code>client.ws_message_received</code>. That send-apply-broadcast-receive chain <em>is</em> the round-trip DAG.</li>
+<li>Doc paths are <code>docs/**</code>, <code>workflow/docs/**</code>, <code>AGENTS.md</code>, and <code>CLAUDE.md</code>.</li>
+<li>Code paths are everything else, except ticket and run-record markdown under
+  <code>tickets/backlog/**</code> or <code>tickets/phase-*/**</code>.</li>
+<li>The check skips non-ticket branches, tickets without <code>doc_mode:</code>, <code>code-first</code>
+  tickets, <code>atomic</code> tickets, unrecognized values, and clones where the primary
+  branch ref cannot be resolved.</li>
 </ul>
-<p>You do not have to invent a layout, because the keys already encode it: <code>seq</code> is the x-axis, <code>client_session_id</code> is the lane assignment, <code>causation_id</code> is which nodes connect. This is what the companion post meant by the data shape making the picture nearly free -- the same property that made the test taxonomy mechanically queryable makes the timeline mechanically drawable.</p>
-<p>Drawn out, with one action's fan-out expanded, the shape looks like this:</p>
-<div class="language-text highlight"><pre><span></span><code>  lane \ server seq -&gt;    41                  42
-  ------------------------------------------------------------
-  server                  apply, broadcast    apply, broadcast
-  phone (sA)              sent, received      received
-  tv    (sB)              MISSING receive     received
-                          ( dropped frame )
-  ------------------------------------------------------------
-  seq 41  cid = client-msg-7:server-seq-41     (a PLAYER tap)
-  seq 42  cid = client-msg-none:server-seq-42  (an AI / server move)
-
-  one action&#39;s round trip (the seq-41 group) is a small DAG:
-
-  phone (sA) : client.ws_message_sent
-                     |
-                     v
-  server     : action.apply            (server stamps seq 41)
-                     |
-                     v
-  server     : room.broadcast_state
-                     |
-            +--------+--------+          one broadcast,
-            |                 |          fanned out down
-            v                 v          every live lane
-  phone (sA) :            tv (sB) :
-  ws_message_received     MISSING ws_message_received  -&gt; dropped frame
-</code></pre></div>
-<p>Lanes are <code>client_session_id</code>s plus a server lane; the x-axis is server
-<code>seq</code>; each causation group is one node placed at its <code>seq</code>; and the lane
-that should hold a receive but does not is the hole the next section is
-about.</p>
-<p>The viewer that does this is real and read-only:</p>
-<p>the private project wrapper renders the device-log interleave view</p>
-<p>It reads the uploaded device JSONL logs from <code>.runtime/client-logs/</code> and the backend events from <code>.runtime/backend.log</code>, groups by <code>causation_id</code>, orders by <code>seq</code>, and writes the swim-lane/DAG artifact to stdout (or <code>--output &lt;path&gt;</code>). It never rewrites its source logs -- the logs are inputs, the view is a derived artifact. The implementation lives in the project scripts.</p>
-<h2 id="the-payoff-dropped-messages-detect-themselves">The payoff: dropped messages detect themselves<a class="headerlink" href="#the-payoff-dropped-messages-detect-themselves" title="Permanent link">&para;</a></h2>
-<p>Here is where the causal grouping stops being a nicer way to read logs and becomes a bug detector.</p>
-<p>A causation group is a fan-out: one action, broadcast to every connected device. So the group has an <em>expected</em> shape -- every device lane that should have received this broadcast has a <code>client.ws_message_received</code> in the group. Now flip it around: a causation group where a known device lane is <strong>missing its receive</strong> is a dropped WebSocket message, made visible without a human reading a single log line. The TV that silently dropped the frame shows up as a hole in the fan-out, at a specific <code>seq</code>, on a specific lane.</p>
-<p>That is exactly the failure class this project cares about most. TV browsers (Tizen, webOS, Android TV) drop WebSocket connections frequently -- it is called out in CLAUDE.md as a first-class quirk. The old way to find a dropped broadcast was to notice the TV looked wrong, then squint at two logs whose clocks disagreed. The causal interleave turns it into a structural check: a complete fan-out has a receive on every live lane; an incomplete one names the lane and the action where the message vanished. The detection is asserted by a test with a deliberately dropped receive (<code>tests/unit/test_device_log_interleave.py</code>), and the ingest side of the pipeline -- the upload endpoint and its redaction boundary -- is pinned by <code>tests/integration/test_client_log_ingest.py</code>.</p>
-<p>The detector is only as honest as the upload, which is why the upload path is deliberately defensive rather than authenticated. TABLE and OBSERVER clients carry no strong credentials, so <code>POST /api/diagnostics/client-log</code> (uploaded by the private source tree) caps body size and event count, requires safe path segments, and re-runs the secret-redaction checks before a single event lands. A timeline you cannot trust to be free of leaked tokens is not a debugging aid; the <a href="../ai-first-testing-and-logging/">companion post's</a> point that "a log that leaks the private hand it was supposed to protect is the bug" applies just as hard when the log is being shipped off-device.</p>
-<h2 id="where-this-stops-honestly">Where this stops, honestly<a class="headerlink" href="#where-this-stops-honestly" title="Permanent link">&para;</a></h2>
-<p>What exists today is a static artifact for one captured session: run the verb, read the swim lanes, find the hole. That is genuinely useful and it is shipped -- and so is the storage tier underneath it.</p>
-<p>The uploaded logs land as newline-delimited JSON under <code>.runtime/client-logs/&lt;room_id&gt;/&lt;client_session_id&gt;.jsonl</code> -- append-friendly and portable, the right shape for small streaming uploads from many devices. When a session closes -- on <code>game.session_summary</code> at terminal state, or when its room is deleted -- the server compacts that now-immutable JSONL into a partitioned Parquet file under <code>.runtime/client-log-archive/room_id=&lt;room_id&gt;/</code>, and removes the source JSONL only after DuckDB reads the Parquet back and verifies the row count. A DuckDB view then UNIONs <code>read_json_auto</code> over the live JSONL with <code>read_parquet</code> over the archived Parquet and orders the union by <code>seq</code>, so a query never has to care which tier a row currently lives in. The split is deliberate: Parquet is the columnar analytical format but it is write-once in the way this project uses it, and appending every small upload straight to it would create a small-files problem -- so compaction waits for the session to be immutable. That two-tier store is shipped (the relevant server module). What is deliberately <em>not</em> built yet is the layer above it: richer browser or DuckDB dashboards and automated dropped-message summaries inside review artifacts. Those are future capabilities, not shipped ones, and this post is a draft describing a pipeline whose storage tiers have landed, not a finished observability stack.</p>
-<p>What is load-bearing, and true today, is the design decision underneath all of it: the logs already carried the causal order, so the cross-device timeline never had to trust a clock. Sort by <code>seq</code>, join by <code>causation_id</code>, and the dropped frame on the TV three rooms away detects itself.</p>
+<p>So the shipped enforcement today is precise and deliberately limited. Only
+<code>spec-first</code> has an order gate, because that is the mode where commit order is
+mechanically checkable: the contract must appear before the first code that
+claims to implement it.</p>
+<p>That makes spec-first docs different from normal prose. A later ticket can
+depend on the document as build input. If the doc is wrong, missing, or out of
+order, that is not merely a documentation smell. It is a broken dependency in
+the same graph the orchestrator uses to schedule work.</p>
+<p>This is also why the mechanism belongs next to the docs-as-code story in
+<a href="../docs-as-first-class-as-code/">Docs are first-class, just like the code and the tests</a>.
+Doc frontmatter already gives documentation a typed role in the repo's graph.
+<code>doc_mode:</code> gives a ticket one typed claim about how that doc relates to the code
+it is changing.</p>
+<h2 id="what-the-recorded-intent-can-unlock">What the recorded intent can unlock<a class="headerlink" href="#what-the-recorded-intent-can-unlock" title="Permanent link">&para;</a></h2>
+<p>The important word is <strong>can</strong>.</p>
+<p>Today, only <code>spec-first</code> has a specific gate. <code>code-first</code> and <code>atomic</code> are still
+valuable because they record intent in a stable place. That intent is latent
+tooling surface, not shipped behavior.</p>
+<p>Once tickets reliably say which role a doc plays, several downstream checks
+become possible:</p>
+<ul>
+<li><strong>Scheduling.</strong> Spec-first doc tickets can run before consumers because their
+  output is a contract other agents can build from.</li>
+<li><strong>Drift detection.</strong> Code-first tickets can be scanned later for mirrors that
+  failed to follow the implementation they describe.</li>
+<li><strong>Review routing.</strong> A spec-first doc deserves different attention from a
+  code-first mirror. One is an input contract; the other is an accuracy check
+  against shipped behavior.</li>
+<li><strong>Training signal.</strong> Predicted doc role can be compared with what happened in
+  the run record: did the contract hold, did the mirror lag, did atomic work
+  actually land as one coupled change?</li>
+</ul>
+<p>Those are not all implemented today. The point of the field is that they become
+implementable without rereading every ticket as English. The distinction is
+already captured where the scheduler, lints, review tools, and future agents can
+find it.</p>
+<p>That is the larger lesson: automation turns "we should probably write the doc
+first" into a dependency contract. The value is not that the repository loves
+paperwork. The value is that an autonomous agent can tell whether a document is
+the thing it must obey, the thing it must update after building, or the thing it
+must keep coupled to code in the same edit.</p>
+<p>Spec, mirror, or atomic is not a matter of taste. It is how the build loop knows
+what kind of truth the document is supposed to carry.</p>
 <hr />
-<p><em>Or: subscribe to the newsletter for more posts on building this stuff.</em></p>
+<p><em>Or: subscribe for more posts on building autonomous AI development infrastructure.</em></p>
 
 
 
