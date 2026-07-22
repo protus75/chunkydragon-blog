@@ -3065,6 +3065,11 @@ lives in the project docs at
      names, and event names -- must match current project state. Verify against
      the code before publishing.</li>
 <li>Don't link to internal repo paths from the published version -- convert them to public GitHub URLs at publish time.</li>
+<li>Cross-links between product Blog posts should be reciprocal when both posts
+  depend on each other as part of the learning path. Run
+  <code>bash scripts/dev.sh lint-blog-cross-reference</code> to get an advisory report of
+  one-way post links. The review deliberately permits overview/capstone links
+  that map the catalog without requiring every child post to link back.</li>
 </ul>
 
 
