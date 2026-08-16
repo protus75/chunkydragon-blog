@@ -23,7 +23,7 @@
       
       
       <link rel="icon" href="../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
     
     
       
@@ -31,7 +31,7 @@
       
     
     
-      <link rel="stylesheet" href="../assets/stylesheets/main.484c7ddc.min.css">
+      <link rel="stylesheet" href="../assets/stylesheets/main.ec1eaa64.min.css">
       
         
         <link rel="stylesheet" href="../assets/stylesheets/palette.ab4e12ef.min.css">
@@ -594,8 +594,6 @@
       
         
       
-        
-      
     
     
     
@@ -826,34 +824,6 @@
     
   
     A fair die is a product decision
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../one-glyph-one-meaning/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    One glyph, one meaning
   
 
     
@@ -1512,10 +1482,6 @@
       
         
       
-        
-      
-        
-      
     
     
     
@@ -1731,62 +1697,6 @@
 
               
             
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../a-rule-an-agent-cant-argue-with/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    A rule an agent can't argue with
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../the-overcorrection-pendulum/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    The overcorrection pendulum: every agent rule I wrote to fix the last one
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
           </ul>
         </nav>
       
@@ -1802,6 +1712,8 @@
   
     
     
+      
+        
       
         
       
@@ -2023,6 +1935,62 @@
   
   
     <li class="md-nav__item">
+      <a href="../the-llm-sandwich/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    The LLM sandwich: one model decision between two deterministic layers
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../a-rule-an-llm-cant-argue-with/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    A rule an LLM can't argue with
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../risk-routed-merge-resolution/" class="md-nav__link">
         
   
@@ -2087,34 +2055,6 @@
     
   
     Anatomy of a ticket: one contract, one run record, every field
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../doc-mode-spec-vs-mirror/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Spec vs. mirror: choosing doc-first, code-first, or atomic
   
 
     
@@ -2560,7 +2500,7 @@
 <p>This is the fifth post in a thread, and the other four built a machine. <a href="../ai-first-code-annotations/">Code comments written for the robot, not the human</a> introduced the <code>codemap:</code> annotations and the risk-vs-complexity score. <a href="../ai-first-testing-and-logging/">The test that knows what it is</a> introduced the test taxonomy and its <code>evidence:</code> and <code>kind:</code> marks. <a href="../let-the-library-carry-the-proof/">Let the library carry the proof</a> used both to delete hand-rolled code and the tests that pinned it. <a href="../the-refactor-the-annotations-made-safe/">The refactor the annotations made safe</a> pointed the same instruments at a 3,300-line god file and decomposed it without breaking anything. This post is about the drift those posts were circling: the duplication and dead code that an AI accelerates precisely <em>because</em> it cannot see the whole repo -- and the tooling that lives outside any single context window to find it, flag it the moment it lands, and trim it under a human gate.</p>
 <p>The fix is not "tell the agent to be careful." You cannot instruction-tune away a missing input. The fix is to give the project a vantage point the per-ticket agent does not have.</p>
 <h2 id="the-blind-spot-is-a-property-of-the-context-window-not-the-model">The blind spot is a property of the context window, not the model<a class="headerlink" href="#the-blind-spot-is-a-property-of-the-context-window-not-the-model" title="Permanent link">&para;</a></h2>
-<p>The code-health review mechanism
+<p>The <a href="../../workflow/docs/CODE_HEALTH_REVIEW.md">code-health review mechanism</a>
 names this directly, in a section titled "Why AI accelerates this drift." An
 agent working a ticket sees that ticket's <code>## Touches</code> files plus what it greps.
 It does not hold a whole-repo model of every helper that already exists, so a
@@ -2669,7 +2609,7 @@ fresh near-copy can pass review in isolation.</p>
 <h2 id="the-honest-edges">The honest edges<a class="headerlink" href="#the-honest-edges" title="Permanent link">&para;</a></h2>
 <p>I want to be as honest about the limits here as the earlier posts were about theirs, because overstating this would undermine the whole reason it belongs in this thread.</p>
 <p><strong>Not all duplication should be removed.</strong> Some is coincidental -- two functions that look alike today but answer to different owners and will diverge tomorrow. Some is intentional decoupling. The seven generated fixture repeats the first pass discarded are duplication by design: hand-editing generated output to satisfy a clone detector would be the actual mistake. The finder surfaces candidates; it does not issue verdicts.</p>
-<p><strong>Dead-code detection is confidence-graded, not exact.</strong> A static reachability scan cannot see dynamic dispatch, so the generic mechanism carries a dynamic-dispatch allowlist: framework-loaded handlers, registries, name-keyed dispatch maps, test-discovered fixtures, entrypoints, codemap-marked public API, string/reflection-loaded names, and frontend lazy imports all lower a finding's confidence or suppress it. A "dead" symbol reached only through a registry or a <code>getattr</code> is a runtime break waiting to happen, which is why deletion requires a manual string/config search and a human gate on top of the scan. The finder reports confidence bands, not a delete button.</p>
+<p><strong>Dead-code detection is confidence-graded, not exact.</strong> A static reachability scan cannot see dynamic dispatch, so the <a href="../../workflow/docs/CODE_HEALTH_REVIEW.md#the-dynamic-dispatch-allowlist">generic mechanism</a> carries a dynamic-dispatch allowlist: framework-loaded handlers, registries, name-keyed dispatch maps, test-discovered fixtures, entrypoints, codemap-marked public API, string/reflection-loaded names, and frontend lazy imports all lower a finding's confidence or suppress it. A "dead" symbol reached only through a registry or a <code>getattr</code> is a runtime break waiting to happen, which is why deletion requires a manual string/config search and a human gate on top of the scan. The finder reports confidence bands, not a delete button.</p>
 <p><strong>The human gate reverses calls -- and that is the gate working.</strong> This is the fourth scoreboard row above. The orphan module the relevant AI module (the <code>HonestEddie</code> / <code>LiarLarry</code> / <code>ParanoidPat</code> rule personalities) genuinely had zero inbound production imports, so the deletion ticket merged it as 11 dead symbols and one orphan file removed. Then a human restored it. The file is back on current <code>main</code>, still un-imported by any production module -- kept deliberately as future-use rule personalities rather than wrongly-detected live code. The static analysis was <em>correct</em> that nothing reaches it; the human decision was that "nothing reaches it yet" is not the same as "delete it." That is precisely why the protocol gates deletion behind a person instead of auto-confirming a high-confidence finding: the finder measures reachability, which is a fact, but "should this be removed" is a judgment the finder cannot make. A reversed deletion is not the system failing. It is the system declining to let an approximate ranking drive an irreversible call.</p>
 <p><strong>Remediation is incremental and human-gated.</strong> The division of labor is deliberate: tooling ranks, the triage pass authors narrow tickets, a human promotes the ones worth doing, and each promoted ticket does one small fix. Auto-confirming would let an approximate ranking drive autonomous refactors of load-bearing code, which is exactly the failure the golden-test-first protocol exists to prevent. The point is not to make the codebase look smaller in one stroke. It is to make whole-repo cleanup repeatable enough that the clone count, the dead-symbol count, and the hidden blast radius actually trend down over time.</p>
 <p>The annotations told the finder which clone was worth collapsing and which dead symbol was load-bearing. The golden test proved the one collapse it made was behavior-preserving. The soft-check keeps the next near-copy from landing unnoticed. None of it asks the agent to see what it structurally cannot. It gives the project the whole-repo vantage point instead, and points it at the drift the context window will keep producing.</p>
@@ -2743,7 +2683,7 @@ fresh near-copy can pass review in isolation.</p>
       <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": ["navigation.instant", "navigation.instant.prefetch", "navigation.instant.progress", "navigation.sections", "navigation.indexes", "navigation.prune", "navigation.tracking", "navigation.top", "toc.integrate", "search.suggest", "search.highlight", "search.share", "content.code.copy", "toc.follow"], "search": "../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
     
     
-      <script src="../assets/javascripts/bundle.79ae519e.min.js"></script>
+      <script src="../assets/javascripts/bundle.d7400e89.min.js"></script>
       
     
   </body>

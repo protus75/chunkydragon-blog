@@ -16,14 +16,14 @@
         <link rel="prev" href="../how-a-ticket-picks-its-brain/">
       
       
-        <link rel="next" href="../doc-mode-spec-vs-mirror/">
+        <link rel="next" href="../meet-tempo/">
       
       
         
       
       
       <link rel="icon" href="../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
     
     
       
@@ -31,7 +31,7 @@
       
     
     
-      <link rel="stylesheet" href="../assets/stylesheets/main.484c7ddc.min.css">
+      <link rel="stylesheet" href="../assets/stylesheets/main.ec1eaa64.min.css">
       
         
         <link rel="stylesheet" href="../assets/stylesheets/palette.ab4e12ef.min.css">
@@ -594,8 +594,6 @@
       
         
       
-        
-      
     
     
     
@@ -826,34 +824,6 @@
     
   
     A fair die is a product decision
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../one-glyph-one-meaning/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    One glyph, one meaning
   
 
     
@@ -1402,10 +1372,6 @@
       
         
       
-        
-      
-        
-      
     
     
     
@@ -1621,62 +1587,6 @@
 
               
             
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../a-rule-an-agent-cant-argue-with/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    A rule an agent can't argue with
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../the-overcorrection-pendulum/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    The overcorrection pendulum: every agent rule I wrote to fix the last one
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
           </ul>
         </nav>
       
@@ -1694,6 +1604,8 @@
   
     
     
+      
+        
       
         
       
@@ -1915,6 +1827,62 @@
   
   
     <li class="md-nav__item">
+      <a href="../the-llm-sandwich/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    The LLM sandwich: one model decision between two deterministic layers
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../a-rule-an-llm-cant-argue-with/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    A rule an LLM can't argue with
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../risk-routed-merge-resolution/" class="md-nav__link">
         
   
@@ -2045,34 +2013,6 @@
   
 </nav>
       
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../doc-mode-spec-vs-mirror/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Spec vs. mirror: choosing doc-first, code-first, or atomic
-  
-
-    
-  </span>
-  
-  
-
-      </a>
     </li>
   
 
@@ -2539,7 +2479,7 @@ bug_heuristic: false</p>
 <p><strong><code>## Depends on</code></strong> is the execution graph, not narrative order. The anchor says <code>- none</code>, which is reserved for true foundations that can run against the primary branch with nothing merged ahead of them. A consumer ticket instead names the concrete predecessor stems whose output it needs. The orchestrator reads only this section to decide ordering; writing "do this after X" in prose does nothing.</p>
 <p><strong><code>## Goal</code> and <code>## Why</code></strong> are the judgment fuel. The goal states one observable outcome you can check after merge -- for this ticket, that you can run the umbrella <code>lint-fix</code> verb from a dirty tree and have the mechanical lints correct themselves in one pass. The "why" grounds the design choices so the agent can reason when the spec is silent. They are not there so the agent has nice prose to read; they are there so it can make the right call at the fork the ticket did not anticipate.</p>
 <p><strong><code>## Scope -- in</code> and <code>## Scope -- out</code></strong> are the most load-bearing sections for autonomous work, because scope creep is the number-one way an agent goes wrong. Scope-in is the change. Scope-out fences off the tempting adjacent cleanups -- and the anchor's scope-out is unusually strong: it enumerates the exact lint verbs that must keep refusing <code>--fix</code> because they require judgment rather than a mechanical substitution. That list doubles as an acceptance surface. "What this must not touch" is as important as what it must.</p>
-<p><strong><code>## Touches</code></strong> is a machine-readable list of the repo-root-relative path prefixes the ticket is allowed to edit. It is not documentation. The scheduler reads it and refuses to run two tickets with overlapping <code>## Touches</code> in the same parallel wave, so it is both scope-at-a-glance for a reviewer and collision-avoidance for the planner. It is distinct from <code>## Context</code>, which lists the read-first files: a path can be in both (read it, then edit it), but a read-only reference belongs in Context, not Touches. The same contract shape is what lets a later field such as <a href="../doc-mode-spec-vs-mirror/"><code>doc_mode:</code></a> say whether a documentation change is the spec an agent must obey, a mirror it must update, or an atomic edit it must keep coupled to code.</p>
+<p><strong><code>## Touches</code></strong> is a machine-readable list of the repo-root-relative path prefixes the ticket is allowed to edit. It is not documentation. The scheduler reads it and refuses to run two tickets with overlapping <code>## Touches</code> in the same parallel wave, so it is both scope-at-a-glance for a reviewer and collision-avoidance for the planner. It is distinct from <code>## Context</code>, which lists the read-first files: a path can be in both (read it, then edit it), but a read-only reference belongs in Context, not Touches.</p>
 <p><strong><code>## Acceptance criteria</code></strong> is a literal tick-through. Every item is measurable -- "exits 0 when...", "is unchanged" -- never "improved" or "better." An agent and a human can both tell whether each box is checked.</p>
 <p><strong><code>## Verification commands</code></strong> is where autonomy actually lives. It holds the exact command strings the agent runs to check its own work instead of asking a human. The anchor's block mixes targeted unit tests, an end-to-end smoke, negative checks that the refuse-autofix verbs bail correctly, and a full-suite regression. A ticket without this section is a ticket that has to phone home.</p>
 <p><strong><code>## Definition of rejected</code></strong> tells the agent when to <em>stop</em> -- when to throw the branch away rather than churn down a dead end. Each bullet is a shape-of-wrong-fix, mirroring the scope-out prohibitions as hard failure conditions.</p>
@@ -2638,7 +2578,7 @@ wall_time_estimate: ~65 min</p>
       <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": ["navigation.instant", "navigation.instant.prefetch", "navigation.instant.progress", "navigation.sections", "navigation.indexes", "navigation.prune", "navigation.tracking", "navigation.top", "toc.integrate", "search.suggest", "search.highlight", "search.share", "content.code.copy", "toc.follow"], "search": "../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
     
     
-      <script src="../assets/javascripts/bundle.79ae519e.min.js"></script>
+      <script src="../assets/javascripts/bundle.d7400e89.min.js"></script>
       
     
   </body>

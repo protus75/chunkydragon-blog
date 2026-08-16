@@ -23,7 +23,7 @@
       
       
       <link rel="icon" href="../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
     
     
       
@@ -31,7 +31,7 @@
       
     
     
-      <link rel="stylesheet" href="../assets/stylesheets/main.484c7ddc.min.css">
+      <link rel="stylesheet" href="../assets/stylesheets/main.ec1eaa64.min.css">
       
         
         <link rel="stylesheet" href="../assets/stylesheets/palette.ab4e12ef.min.css">
@@ -687,8 +687,6 @@
       
         
       
-        
-      
     
     
     
@@ -919,34 +917,6 @@
     
   
     A fair die is a product decision
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../one-glyph-one-meaning/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    One glyph, one meaning
   
 
     
@@ -1495,10 +1465,6 @@
       
         
       
-        
-      
-        
-      
     
     
     
@@ -1714,62 +1680,6 @@
 
               
             
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../a-rule-an-agent-cant-argue-with/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    A rule an agent can't argue with
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../the-overcorrection-pendulum/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    The overcorrection pendulum: every agent rule I wrote to fix the last one
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
           </ul>
         </nav>
       
@@ -1785,6 +1695,8 @@
   
     
     
+      
+        
       
         
       
@@ -2006,6 +1918,62 @@
   
   
     <li class="md-nav__item">
+      <a href="../the-llm-sandwich/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    The LLM sandwich: one model decision between two deterministic layers
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../a-rule-an-llm-cant-argue-with/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    A rule an LLM can't argue with
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../risk-routed-merge-resolution/" class="md-nav__link">
         
   
@@ -2070,34 +2038,6 @@
     
   
     Anatomy of a ticket: one contract, one run record, every field
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../doc-mode-spec-vs-mirror/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Spec vs. mirror: choosing doc-first, code-first, or atomic
   
 
     
@@ -2545,7 +2485,7 @@
 <p>That phrase -- <em>exports the problem</em> -- is the point. A second problem you neither fix nor record does not disappear. It becomes a tax on every future run that wanders into the same code, each one rediscovering it, each one deciding from scratch whether to fold it in or look away. Filing it once converts that recurring tax into a single line item the system can schedule and a human can prioritize. The rules are not there to slow the agent down. They are there to stop one run from quietly making every later run worse.</p>
 <h2 id="the-backlog-is-the-working-memory-the-context-window-is-not">The backlog is the working memory the context window is not<a class="headerlink" href="#the-backlog-is-the-working-memory-the-context-window-is-not" title="Permanent link">&para;</a></h2>
 <p>A habit of deferral only works if "deferred" means something concrete. In this project it does: a problem you choose not to fold in becomes a markdown ticket under the backlog, and that ticket is a first-class, durable object the rest of the machine knows how to handle. The orchestrator under the orchestration control plane schedules from the backlog; the <code>## Depends on</code> graph in each ticket says what has to land first; verbs like <code>/dev-backlog-list</code> and the <code>/dev-status</code> family let a human see what is queued. The deferred problem is not lost in a chat transcript or a <code>## Dead ends</code> note nobody reads. It is in the tree, in <code>git diff</code>, queryable.</p>
-<p>That last word matters more than it looks. Every run in this project leaves a sibling run record next to its ticket -- a <code>*.run.md</code> file that captures what the code cannot: the surprises, the judgment calls, the dead ends, and exactly the kind of "I noticed X but it was out of scope" observation this post is about. And because tickets and run records are plain files committed with the code, the whole trail is searchable. the orchestrator dispatcher runs SQL over an index built from those tickets, run records, and git history, so the next agent wondering "have we seen this before?" runs a query instead of guessing. The companion post The project that remembers itself is the full field report on that index; the short version is that the backlog plus the run records plus the history index are the orchestrator's working memory across time. They are the durable substrate the per-run context window is not.</p>
+<p>That last word matters more than it looks. Every run in this project leaves a sibling run record next to its ticket -- a <code>*.run.md</code> file that captures what the code cannot: the surprises, the judgment calls, the dead ends, and exactly the kind of "I noticed X but it was out of scope" observation this post is about. And because tickets and run records are plain files committed with the code, the whole trail is searchable. the orchestrator dispatcher runs SQL over an index built from those tickets, run records, and git history, so the next agent wondering "have we seen this before?" runs a query instead of guessing. The companion post <a href="queryable-project-memory.md">The project that remembers itself</a> is the full field report on that index; the short version is that the backlog plus the run records plus the history index are the orchestrator's working memory across time. They are the durable substrate the per-run context window is not.</p>
 <p>Once you see it that way, the reason deferral <em>compounds</em> instead of just delaying becomes obvious. The flywheel post, <a href="../cross-game-compounding-flywheel/">The cross-game compounding flywheel</a>, argues that quality in this catalog accrues because lessons learned in one place get folded back into everything else through a governed loop -- not because anything gets crammed into an already-loaded window. Deferred work is the same shape. The second problem gets fixed later, in a run that opens with a fresh context loaded for that problem and a run record that already explains what was seen and why it was left alone. That is strictly more information than the original run had while it was busy doing something else. Folding the fix in would have spent context to do the work <em>worse</em>, right now; filing it spends almost no context to do the work <em>better</em>, soon.</p>
 <h2 id="the-honest-edge-deferral-is-governance-not-a-magic-inbox">The honest edge: deferral is governance, not a magic inbox<a class="headerlink" href="#the-honest-edge-deferral-is-governance-not-a-magic-inbox" title="Permanent link">&para;</a></h2>
 <p>I would be selling you something if I stopped at "just file everything and the system takes care of it." It does not, and the costs are real enough to name.</p>
@@ -2618,7 +2558,7 @@
       <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": ["navigation.instant", "navigation.instant.prefetch", "navigation.instant.progress", "navigation.sections", "navigation.indexes", "navigation.prune", "navigation.tracking", "navigation.top", "toc.integrate", "search.suggest", "search.highlight", "search.share", "content.code.copy", "toc.follow"], "search": "../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
     
     
-      <script src="../assets/javascripts/bundle.79ae519e.min.js"></script>
+      <script src="../assets/javascripts/bundle.d7400e89.min.js"></script>
       
     
   </body>

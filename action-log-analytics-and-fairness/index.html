@@ -23,7 +23,7 @@
       
       
       <link rel="icon" href="../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
     
     
       
@@ -31,7 +31,7 @@
       
     
     
-      <link rel="stylesheet" href="../assets/stylesheets/main.484c7ddc.min.css">
+      <link rel="stylesheet" href="../assets/stylesheets/main.ec1eaa64.min.css">
       
         
         <link rel="stylesheet" href="../assets/stylesheets/palette.ab4e12ef.min.css">
@@ -594,8 +594,6 @@
       
         
       
-        
-      
     
     
     
@@ -826,34 +824,6 @@
     
   
     A fair die is a product decision
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../one-glyph-one-meaning/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    One glyph, one meaning
   
 
     
@@ -1402,10 +1372,6 @@
       
         
       
-        
-      
-        
-      
     
     
     
@@ -1621,62 +1587,6 @@
 
               
             
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../a-rule-an-agent-cant-argue-with/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    A rule an agent can't argue with
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../the-overcorrection-pendulum/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    The overcorrection pendulum: every agent rule I wrote to fix the last one
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
           </ul>
         </nav>
       
@@ -1692,6 +1602,8 @@
   
     
     
+      
+        
       
         
       
@@ -1913,6 +1825,62 @@
   
   
     <li class="md-nav__item">
+      <a href="../the-llm-sandwich/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    The LLM sandwich: one model decision between two deterministic layers
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../a-rule-an-llm-cant-argue-with/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    A rule an LLM can't argue with
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../risk-routed-merge-resolution/" class="md-nav__link">
         
   
@@ -1977,34 +1945,6 @@
     
   
     Anatomy of a ticket: one contract, one run record, every field
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../doc-mode-spec-vs-mirror/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Spec vs. mirror: choosing doc-first, code-first, or atomic
   
 
     
@@ -2582,7 +2522,7 @@
 <li><strong>Move-quality distributions.</strong> The <code>assessments</code> table already stores a <code>quality</code> column drawn from a closed five-value set. <code>SELECT quality, COUNT(*) FROM assessments GROUP BY quality</code> returns the distribution across the BRILLIANT / GOOD / INACCURACY / MISTAKE / BLUNDER buckets in one scan. More on where those buckets come from in the next section.</li>
 <li><strong>Opening-frequency tables.</strong> Filter the action log to the first move of each game and group by the move played. Because the log is ordered by <code>seq</code>, "what is the most common opening, and how does it differ by personality?" is a <code>WHERE seq = 1 ... GROUP BY</code> away.</li>
 </ul>
-<p>This is not a hypothetical that the project has never tried. It already runs SQL over its own durable history in a different domain: the workflow history index documented in the history-index docs builds a disposable DuckDB database from tickets, run records, git history, and orchestrator state, then answers questions like "which tickets touched this module and later reported drift?" with a query. The queryable project memory post is the field report on that index. The lesson transfers directly: if SQL-over-DuckDB is the right tool for the project's <em>process</em> history, it is the right tool for the project's <em>gameplay</em> history, because both are analytical workloads over an append-only log.</p>
+<p>This is not a hypothetical that the project has never tried. It already runs SQL over its own durable history in a different domain: the workflow history index documented in the history-index docs builds a disposable DuckDB database from tickets, run records, git history, and orchestrator state, then answers questions like "which tickets touched this module and later reported drift?" with a query. The <a href="queryable-project-memory.md">queryable project memory</a> post is the field report on that index. The lesson transfers directly: if SQL-over-DuckDB is the right tool for the project's <em>process</em> history, it is the right tool for the project's <em>gameplay</em> history, because both are analytical workloads over an append-only log.</p>
 <h2 id="the-five-bucket-grade-is-already-a-column">The five-bucket grade is already a column<a class="headerlink" href="#the-five-bucket-grade-is-already-a-column" title="Permanent link">&para;</a></h2>
 <p>The second primitive is the move-assessment pipeline, and the useful surprise is that its output is already a database column waiting to be aggregated.</p>
 <p>the relevant AI module defines a <code>Quality</code> enum with exactly five members -- BRILLIANT, GOOD, INACCURACY, MISTAKE, BLUNDER -- and a <code>QUALITY_THRESHOLDS</code> table that maps a move's evaluation delta to one of those buckets. The <code>assess</code> function runs a Monte Carlo Tree Search from the position before the move, compares the move actually played against the move the search would have recommended, and records the result as a <code>MoveAssessment</code> carrying <code>quality</code>, <code>eval_delta</code>, <code>best_action</code>, and an optional demonstration line. If you have read <a href="../ai-personalities-not-optimizers/">AI opponents that play like people, not optimizers</a>, this is the same five-quality grading that post describes from the player's side; this post is about what happens to those grades after the game ends.</p>
@@ -2677,7 +2617,7 @@
       <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": ["navigation.instant", "navigation.instant.prefetch", "navigation.instant.progress", "navigation.sections", "navigation.indexes", "navigation.prune", "navigation.tracking", "navigation.top", "toc.integrate", "search.suggest", "search.highlight", "search.share", "content.code.copy", "toc.follow"], "search": "../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
     
     
-      <script src="../assets/javascripts/bundle.79ae519e.min.js"></script>
+      <script src="../assets/javascripts/bundle.d7400e89.min.js"></script>
       
     
   </body>

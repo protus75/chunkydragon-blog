@@ -10,28 +10,28 @@
       
       
       
-        <link rel="canonical" href="https://blog.chunkydragon.com/a-rule-an-agent-cant-argue-with/">
+        <link rel="canonical" href="https://blog.chunkydragon.com/the-llm-sandwich/">
       
       
-        <link rel="prev" href="../from-surprise-to-rule-to-skill/">
+        <link rel="prev" href="../mechanical-vs-llm-failure-recovery/">
       
       
-        <link rel="next" href="../the-overcorrection-pendulum/">
+        <link rel="next" href="../a-rule-an-llm-cant-argue-with/">
       
       
         
       
       
       <link rel="icon" href="../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
     
     
       
-        <title>A rule an agent can't argue with - Chunky Dragon Blog</title>
+        <title>The LLM sandwich: one model decision between two deterministic layers - Chunky Dragon Blog</title>
       
     
     
-      <link rel="stylesheet" href="../assets/stylesheets/main.484c7ddc.min.css">
+      <link rel="stylesheet" href="../assets/stylesheets/main.ec1eaa64.min.css">
       
         
         <link rel="stylesheet" href="../assets/stylesheets/palette.ab4e12ef.min.css">
@@ -78,7 +78,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#a-rule-an-agent-cant-argue-with" class="md-skip">
+        <a href="#the-llm-sandwich-one-model-decision-between-two-deterministic-layers" class="md-skip">
           Skip to content
         </a>
       
@@ -114,7 +114,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              A rule an agent can't argue with
+              The LLM sandwich: one model decision between two deterministic layers
             
           </span>
         </div>
@@ -594,8 +594,6 @@
       
         
       
-        
-      
     
     
     
@@ -826,34 +824,6 @@
     
   
     A fair die is a product decision
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../one-glyph-one-meaning/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    One glyph, one meaning
   
 
     
@@ -1385,16 +1355,10 @@
       
   
   
-    
   
   
-  
     
     
-      
-        
-      
-        
       
         
       
@@ -1419,11 +1383,11 @@
     
       
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" checked>
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
         
           
           <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="">
@@ -1444,7 +1408,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="true">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_6">
             <span class="md-nav__icon md-icon"></span>
             
@@ -1623,164 +1587,6 @@
 
               
             
-              
-                
-  
-  
-    
-  
-  
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    A rule an agent can't argue with
-  
-
-    
-  </span>
-  
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    A rule an agent can't argue with
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#deny-lists-fail-open-allowlists-fail-closed" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Deny lists fail open; allowlists fail closed
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#the-enforcement-ladder" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        The enforcement ladder
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#the-paved-road-a-ban-is-only-half-a-rule" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        The paved road: a ban is only half a rule
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#every-gate-keeps-one-narrow-auditable-valve" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Every gate keeps one narrow, auditable valve
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#prose-teaches-intent-machines-hold-the-line" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Prose teaches intent; machines hold the line
-      
-    </span>
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../the-overcorrection-pendulum/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    The overcorrection pendulum: every agent rule I wrote to fix the last one
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
           </ul>
         </nav>
       
@@ -1792,8 +1598,10 @@
       
   
   
+    
   
   
+  
     
     
       
@@ -1823,6 +1631,8 @@
       
         
       
+        
+      
     
     
     
@@ -1834,11 +1644,11 @@
     
       
     
-    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7" checked>
         
           
           <label class="md-nav__link" for="__nav_7" id="__nav_7_label" tabindex="">
@@ -1859,7 +1669,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_7">
             <span class="md-nav__icon md-icon"></span>
             
@@ -2014,6 +1824,203 @@
                 
   
   
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    The LLM sandwich: one model decision between two deterministic layers
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    The LLM sandwich: one model decision between two deterministic layers
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#why-put-the-model-in-the-middle-and-nothing-else" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Why put the model in the middle and nothing else
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#a-worked-example-recovering-from-a-failed-build-stage" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        A worked example: recovering from a failed build stage
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="A worked example: recovering from a failed build stage">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#layer-1-deterministic-pre-processing" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Layer 1: deterministic pre-processing
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#layer-2-the-single-model-call" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Layer 2: the single model call
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#layer-3-deterministic-post-processing" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Layer 3: deterministic post-processing
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#the-same-picture-as-pseudocode" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The same picture as pseudocode
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#contrast-the-loop-you-are-tempted-to-build-instead" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Contrast: the loop you are tempted to build instead
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#how-to-apply-it" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        How to apply it
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../a-rule-an-llm-cant-argue-with/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    A rule an LLM can't argue with
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
   
   
     <li class="md-nav__item">
@@ -2081,34 +2088,6 @@
     
   
     Anatomy of a ticket: one contract, one run record, every field
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../doc-mode-spec-vs-mirror/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Spec vs. mirror: choosing doc-first, code-first, or atomic
   
 
     
@@ -2542,20 +2521,6 @@
       
       
       
-        <span class="md-tag">capability:hooks</span>
-      
-    
-      
-      
-      
-      
-        <span class="md-tag">capability:lint</span>
-      
-    
-      
-      
-      
-      
         <span class="md-tag">doc-kind:blog</span>
       
     
@@ -2563,48 +2528,269 @@
 
 
 
-<h1 id="a-rule-an-agent-cant-argue-with">A rule an agent can't argue with<a class="headerlink" href="#a-rule-an-agent-cant-argue-with" title="Permanent link">&para;</a></h1>
-<p>On 2026-07-17 an agent session in this project read the rule that told it not to move the shared clone's git HEAD, recited that rule correctly, and then moved the shared clone's git HEAD anyway. It ran <code>git switch main</code> and then <code>git cherry-pick</code> to "self-repair" a small mess -- both verbs the rule's list of forbidden operations had never happened to name. Earlier the same day a different session had done the setup: a detached <code>git checkout</code> of a remote ticket branch that quietly stranded a sibling session's commit. Two sessions, one afternoon, both standing on shared state, both technically inside the letter of the rules while walking straight through their intent.</p>
-<p>I know this because the repair is now written into the codebase with receipts. There are four hardening tickets from that day (<code>ban-history-rewrite-git-in-authoring-clone</code>, <code>claude-rule-authoring-commit-branch-sanity</code>, <code>ban-branch-repositioning-git-in-authoring-clone</code>, and <code>hook-enforce-authoring-clone-git-allowlist</code>), and there is a <code>CLAUDE.md</code> rule whose header now reads "The authoring clone is shared by concurrent chats -- never run tree-wide git verbs there." The interesting part is not that the rule got longer. It is that the repair inverted the <em>shape</em> of the rule, and the shape is the whole lesson.</p>
-<p>This post is about that shape. The claim is simple and, I think, transferable to anyone writing rules for a coding agent: <strong>a rule surface for an AI agent has to fail closed.</strong> A list of banned things fails open, and an agent will find the gap -- sometimes while quoting the rule at you.</p>
-<h2 id="deny-lists-fail-open-allowlists-fail-closed">Deny lists fail open; allowlists fail closed<a class="headerlink" href="#deny-lists-fail-open-allowlists-fail-closed" title="Permanent link">&para;</a></h2>
-<p>Start with the failure mode, because it is specific to how these models behave.</p>
-<p>A denylist is a list of forbidden operations. Its implicit promise is "everything not on this list is fine." For a human that promise is usually harmless, because a human shares your intent and treats the list as a sample of a category ("don't rewrite shared history") rather than an exhaustive enumeration. An LLM agent does not reliably do that. It reads the list as a boundary and treats the unlisted region as permitted -- and it is very good at finding an unlisted verb that accomplishes the forbidden thing. <code>git reset --hard</code> is on the list; <code>git switch</code> plus <code>git cherry-pick</code> gets to the same shared-state mutation and was not. The denylist did not forbid it, so the agent inferred it was allowed.</p>
-<p>The deeper problem is that every unlisted verb is an argument waiting to be won. The model can weigh the letter of the rule against its stated intent, decide the letter does not cover this exact case, and proceed -- and because there is always another synonym, another plumbing command, another "just this once" path, the agent only has to win that argument once to move shared state other sessions were standing on. A denylist asks the model to prove a verb is <em>banned</em> before stopping. That burden is almost never met, because the list is finite and the language is not.</p>
-<p>An allowlist flips the burden of proof. It enumerates what is <em>permitted</em> and stops everything else by default. Now the question at every novel verb is "show me this is on the list," and the honest answer for anything clever or unanticipated is "it isn't -- so stop and ask." The rule in <code>CLAUDE.md</code> says this in as many words: the permitted git operations in the authoring clone are enumerated exhaustively, and "anything not on this list -- named or novel, porcelain or plumbing -- you do NOT run; you STOP and ask." Novel cleverness lands in stop-and-ask instead of in a <code>git</code> invocation. The gap that the denylist left open is closed by construction, because there is no "unlisted means allowed" region left to exploit.</p>
-<p>That is the entire move: <strong>make the default answer "no," and make the exceptions the thing you enumerate.</strong></p>
-<h2 id="the-enforcement-ladder">The enforcement ladder<a class="headerlink" href="#the-enforcement-ladder" title="Permanent link">&para;</a></h2>
-<p>Fail-closed-by-default is a design principle, not a single trick, and this project climbed it in rungs. Laid out weakest to strongest, the ladder looks like this, and every rung exists somewhere in this repo:</p>
+<h1 id="the-llm-sandwich-one-model-decision-between-two-deterministic-layers">The LLM sandwich: one model decision between two deterministic layers<a class="headerlink" href="#the-llm-sandwich-one-model-decision-between-two-deterministic-layers" title="Permanent link">&para;</a></h1>
+<p>Most "AI agent" designs put the model in charge of a loop. It inspects a
+situation, decides what to do, does it, looks at the result, and repeats until
+it thinks it is done. That works in demos. It is hard to test, hard to bound,
+and hard to debug, because the part that can be wrong in an interesting way --
+the model -- is touching every step.</p>
+<p>The pattern I keep coming back to instead is the opposite, and I call it the LLM
+sandwich:</p>
 <ol>
-<li><strong>Prose intent.</strong> "Don't mess with shared git state." Teaches a human, teaches an agent on a good day, holds nothing on a bad one. Necessary -- it is the only rung that explains <em>why</em> -- but never sufficient on its own.</li>
-<li><strong>A named denylist.</strong> "Don't run <code>reset --hard</code>, <code>rebase</code>, <code>clean</code>." Better than pure intent because it is concrete, but it fails open on the first synonym, which is exactly the trap that sprung on 2026-07-17.</li>
-<li><strong>A fail-closed allowlist or closed vocabulary.</strong> Enumerate the permitted set; reject everything else. The authoring-clone git rule is the allowlist form. The project's closed <em>vocabularies</em> are the same idea applied to metadata: doc frontmatter may only use a <code>doc-kind</code> from a fixed set (<code>adr</code>, <code>blog</code>, <code>devblog</code>, <code>mockup</code>, <code>reference</code>, <code>runbook</code>, <code>spec</code>, <code>tutorial</code>) and a <code>capability</code> drawn only from the list in <code>codemap/vocabulary.json</code>, enforced by <code>lint-doc-tags</code>; test files may only use marks from the closed token sets <code>lint-test-marks</code> knows. Invent a plausible-sounding token that is not in the set -- <code>research</code>, <code>hidden-info-ai</code> -- and the gate rejects it. "Pick the closest legal token; extending the set is a human decision" is the fail-closed default for vocabulary.</li>
-<li><strong>An allowlist <em>plus</em> a paved road.</strong> A ban with nowhere to go pressures an agent toward a workaround; a ban that ships its sanctioned replacement makes compliance the path of least resistance. (Its own section below.)</li>
-<li><strong>Mechanical enforcement backing the prose.</strong> A <code>PreToolUse</code> hook, <code>scripts/hooks/authoring_clone_git_guard.py</code>, that denies a non-allowlisted git invocation at the tool boundary before it can run. This is the rung the 2026-07-17 tickets actually added, because the prose rung had just been proven insufficient by a model that could recite it.</li>
+<li><strong>Deterministic pre-processing</strong> gathers inputs, checks preconditions, and
+   decides whether the model should even be called.</li>
+<li><strong>Exactly one model call</strong> makes exactly one decision and returns it as
+   structured data -- not actions, not edits, not tool calls.</li>
+<li><strong>Deterministic post-processing</strong> validates that decision, executes it, and
+   verifies the result with a check that does not depend on the model being
+   right.</li>
 </ol>
-<p>The jump from rung 3 to rung 5 is the one that matters. The allowlist in prose tells the agent what is permitted; the hook removes the agent's discretion to decide an unlisted verb is safe. Its own docstring is blunt about why it exists: prose alone did not hold the line, so "the agent no longer decides whether an unlisted verb is safe; unlisted means denied." That is fail-closed with teeth.</p>
-<p>The hook also shows the second discipline fail-closed enforcement needs: it fails closed <em>precisely.</em> It only enforces in the shared authoring clone. In an orchestrator-spawned ticket clone -- which runs its own git contract -- it fails open, so it never blocks legitimate automated commits. And when it cannot even tell which clone it is in but sees a git command, it fails closed and denies. The fallback direction is the tell: when in doubt, stop.</p>
-<h2 id="the-paved-road-a-ban-is-only-half-a-rule">The paved road: a ban is only half a rule<a class="headerlink" href="#the-paved-road-a-ban-is-only-half-a-rule" title="Permanent link">&para;</a></h2>
-<p>Rung 4 deserves its own argument, because it is the one most people skip.</p>
-<p>If you ban a tool and leave the agent nowhere to go, you have not removed the behavior -- you have applied pressure toward a workaround, and a capable model will relieve that pressure creatively. The fix is to ship the alternative <em>inside the rule.</em> The cleanest worked example here is the ban on the classic JSON query CLI, which this project forbids in scripts and ticket verification blocks. The rule -- the <code>no-jq</code> skill -- does not just say no. It hands you three sanctioned paths in the same breath: <code>bash scripts/dev.sh json-query</code> for the common shell case, inline Python for anything ad hoc, and DuckDB's <code>read_json_auto</code> for multi-record queries. The tool is banned <em>and</em> replaced. Compliance is the low-effort path, not the sacrifice.</p>
-<p>The perl ban has the same shape in miniature. It lives as a denied command in <code>.claude/settings.json</code> and, redundantly, as a <code>PreToolUse</code> hook -- and the deny reason itself carries the paved road: "perl is banned in this project. Use Python instead." The alternative rides along with the prohibition.</p>
-<p>But rung 4's worked examples are also where I get to be honest about the <em>cost</em> of fail-closed scanning, because I paid it twice while writing this very post. The linter that enforces the JSON-CLI ban (<code>scripts/lint_logs.py</code>) started as a keyword scan for those two letters, and a keyword scan cannot tell <em>using</em> a tool from <em>naming</em> one -- so it flagged tickets that only mentioned the tool in prose while describing the policy. That is a false positive, and it is the characteristic tax of fail-closed matching: it stops the bad thing and some innocent bystanders too. The perl hook has no such nuance at all. While researching this post I ran a <code>grep</code> whose only sin was containing the word inside an <code>echo</code> string that described what I was searching for -- and the hook denied the command, because the letters appeared between two spaces. I was not running the tool. I was talking <em>about</em> the ban. The scanner could not tell the difference, and fail-closed means the tie goes to "no."</p>
-<p>The maintainers' answer to that tax is instructive, because it is the escape-valve principle arriving one rung early: the JSON-CLI linter now carves out an exemption for prohibition phrasing -- a line that names the tool near a word like "ban," "never," or "avoid" is read as policy description, not invocation, and passes. A fail-closed scanner that grew a narrow, legible exception so people could write the rules down. Which is the next idea.</p>
-<h2 id="every-gate-keeps-one-narrow-auditable-valve">Every gate keeps one narrow, auditable valve<a class="headerlink" href="#every-gate-keeps-one-narrow-auditable-valve" title="Permanent link">&para;</a></h2>
-<p>Fail closed everywhere, and you will eventually fail closed on something legitimate -- the honest edit the vocabulary did not anticipate, the ticket that genuinely must touch a protected path, the one line that really does need the banned tool. If there is no sanctioned way through, the pressure comes back and the workarounds return. So the counterpart to "fail closed by default" is "every gate keeps exactly one exception path, and that path is narrow, owner-visible, and auditable."</p>
-<p>The project's valves are deliberately in-band and on the record:</p>
+<p>Plain code on the outside, one bounded judgment call in the middle. The model is
+the filling, not the cook. This post defines the pattern and then traces one
+real end-to-end example through all three layers, with the actual inputs and
+outputs.</p>
+<h2 id="why-put-the-model-in-the-middle-and-nothing-else">Why put the model in the middle and nothing else<a class="headerlink" href="#why-put-the-model-in-the-middle-and-nothing-else" title="Permanent link">&para;</a></h2>
+<p>An LLM has one property no other component in your system has: given the same
+input, it can produce a different output, and one of those outputs can be
+subtly wrong in a way no type checker will catch. That is exactly why it is
+valuable -- it can read a messy, half-structured situation and produce a
+judgment -- and exactly why you want its blast radius small.</p>
+<p>So the sandwich draws a hard line. The model is allowed to <em>decide</em>. It is not
+allowed to <em>act</em>. Everything it might want to do -- run a command, edit a file,
+retry a step, give up -- is done by deterministic code on the far side of a
+validated, typed decision. That single rule buys four things:</p>
 <ul>
-<li>A ticket that must edit a write-fenced protected path declares <code>bootstrap_gate_bypass: lint-protected-paths</code> in its frontmatter, so the exception is approved at the one human gate the project has (the draft-to-confirmed promotion) and is visible in the ticket forever.</li>
-<li>A canonical-doc ticket that deliberately runs below the normal effort floor carries a <code># tier-floor: allow &lt;reason&gt;</code> token -- the reason is required, not the bare token.</li>
-<li>A single line that truly needs the otherwise-banned behavior carries an inline marker with a reason: <code># noqa: jq</code>, <code># noqa: direct-random</code>. Per-line, greppable, reviewable.</li>
+<li><strong>Testability.</strong> The two bread layers are pure functions of their inputs. You
+  can feed them fixtures and assert their behavior with no model in the loop.
+  The only non-deterministic step is one call with one typed output.</li>
+<li><strong>Bounded cost and blast radius.</strong> One decision means one model call, capped
+  in code. The model cannot spin a 40-turn loop, cannot touch files you did not
+  hand it, cannot exceed the retry budget, because it never holds the tools.</li>
+<li><strong>Verifiability.</strong> The model's decision is cashed out into a check that passes
+  or fails on its own terms. If the check fails, the decision is discarded. The
+  model proposes; the check disposes.</li>
+<li><strong>Debuggability after the fact.</strong> The one uncertain step is captured as a
+  small structured object you can read later, next to the deterministic inputs
+  that produced it and the deterministic result it led to.</li>
 </ul>
-<p>Every one of these has three properties. It is <em>narrow</em> (one path, one line, one ticket -- not a blanket mode). It is <em>visible</em> (it lives in the frontmatter or the diff where a reviewer sees it). And it is <em>auditable</em> (it names a reason and an owner-facing decision). What none of them is: an environment variable that silently flips a gate off, or an exception the agent invented for itself. Those are the two failure directions. A fail-closed gate with no valve rots into workarounds, because people route around a wall with no door. A valve with no audit rots back into a denylist, because an unlogged, agent-grantable exception is just an unlisted-verb gap wearing a lanyard. The narrow-and-logged valve is the only stable point between them.</p>
-<h2 id="prose-teaches-intent-machines-hold-the-line">Prose teaches intent; machines hold the line<a class="headerlink" href="#prose-teaches-intent-machines-hold-the-line" title="Permanent link">&para;</a></h2>
-<p>Here is the part I cannot round off, because the same afternoon proved it. The rung-1 prose was not wrong, and it was not useless -- it is still the only rung that explains <em>why</em> the authoring clone is fragile, and without that the allowlist is a list of arbitrary prohibitions nobody can maintain. But prose is a teacher, not a guard. The agent that moved shared HEAD had <em>read</em> the prose. It could quote it. It moved the HEAD anyway, because at the moment of decision the letter of a finite list lost to a clever argument, and there was no machine standing between the argument and the <code>git</code> command.</p>
-<p>So you need both, and you need to know which does which. Prose carries intent and cannot be exhaustive. A fail-closed allowlist makes "unlisted" mean "stop" instead of "go." A paved road makes the compliant path the cheap one. A mechanical gate removes the agent's discretion at the exact boundary where discretion failed. And a narrow, audited valve keeps the whole thing from calcifying into workarounds. Each rung covers a gap the rung below it leaves open.</p>
-<p>The one-line version is the thing to carry to your own project: <strong>write rules an agent can't argue with, then don't rely on the argument.</strong> Fail closed, pave the road, back the prose with a machine, and keep one door with a name on it. The model that wrote your rule is fully capable of arguing past it the same afternoon -- so put the line somewhere an argument can't reach.</p>
-<p>(A sibling post, <a href="../from-surprise-to-rule-to-skill/">From surprise to rule to skill</a>, walks the promotion path a single incident travels -- run record to ticket to retro to rule to lint to skill -- from a different angle; this post is about the <em>shape</em> the rule takes once it gets there.)</p>
-<hr />
+<p>None of this requires trusting the model less. It requires putting the model
+only where its strength pays off, and keeping everything a machine can do
+reliably on the machine.</p>
+<h2 id="a-worked-example-recovering-from-a-failed-build-stage">A worked example: recovering from a failed build stage<a class="headerlink" href="#a-worked-example-recovering-from-a-failed-build-stage" title="Permanent link">&para;</a></h2>
+<p>Here is the pattern in a system I actually run: an orchestrator that turns a
+written ticket into reviewed, merged code by running stages -- clone the repo,
+implement the change, run the review checks, open the pull request. Stages fail.
+When one does, a recovery loop decides what to do about it. That loop is a
+sandwich, and it is a good example because the middle is genuinely a judgment
+call while everything around it is not.</p>
+<p>The scenario: an "implement" stage just finished work on a bug-fix ticket, but a
+review check called <code>lint-bug-commit-order</code> failed. That check enforces a rule
+this project cares about -- on a bug-fix ticket, the commit that changes
+production code must land <em>before</em> any commit that only touches tests, so the
+fix is proven to move the bug before a test is written to pin it. The agent
+squashed the code fix and its test into a single commit. The check exits
+non-zero. Now what?</p>
+<h3 id="layer-1-deterministic-pre-processing">Layer 1: deterministic pre-processing<a class="headerlink" href="#layer-1-deterministic-pre-processing" title="Permanent link">&para;</a></h3>
+<p>No model has been consulted yet, and most of the decision is already made.</p>
+<p><strong>Detect the failure.</strong> Each stage runs under a timeout wrapper: it launches the
+stage, starts a sleeper, and if the sleeper wins the race it sends <code>SIGTERM</code>,
+waits, then <code>SIGKILL</code>, and reports exit code <code>124</code> -- so "ran out of time" is
+distinguishable from "exited with an error." Here the stage exited non-zero on
+its own because the lint failed. Either way, a stage failed, and that is a plain
+exit-code check.</p>
+<p><strong>Check the caps before spending anything.</strong> Two limits, read from config, bound
+the whole loop:</p>
+<ul>
+<li><code>max_diag_invocations_per_ticket = 2</code> -- how many times the model may be asked
+  to diagnose, across the entire ticket.</li>
+<li><code>max_retries_per_ticket = 2</code> -- the total budget for retry-like actions.</li>
+</ul>
+<p>The diagnosis cap is checked <em>before</em> the model is called. If it is already
+spent, the run terminates as a failure and the model is never invoked. The
+cheapest exit is the one where you do not ask the model at all.</p>
+<p><strong>Check a precondition that can make the model call pointless.</strong> Diagnosis needs
+the failed stage's working directory (the clone) so it can show the model the
+<code>git diff</code> and the failing check's output. If that directory is gone -- never
+persisted, or already cleaned up -- there is nothing to inspect and nothing safe
+to retry. So the code writes a synthetic "abandon, get a human" verdict and
+returns, again without calling the model. It looks like a diagnosis. It is a
+deterministic safeguard wearing a diagnosis's clothes.</p>
+<p><strong>Assemble the context.</strong> The caps passed and the clone exists, so the code
+gathers a fixed, capped bundle: the run's state JSON, the ticket text, the run
+record if one exists, a bounded tail of the failed stage's log, and a bounded
+<code>git diff</code> from the clone. Bounded matters -- it keeps the prompt size, and thus
+the cost, predictable regardless of how big the failure was.</p>
+<p>Everything above is a sleep, a <code>kill</code>, some integer comparisons, a directory
+existence check, and file reads. It is a few hundred lines of shell and config
+that a human can read and a test can pin. No model has run.</p>
+<h3 id="layer-2-the-single-model-call">Layer 2: the single model call<a class="headerlink" href="#layer-2-the-single-model-call" title="Permanent link">&para;</a></h3>
+<p>Now, and only now, the model is asked exactly one question: <em>given this failure,
+what should happen next?</em> It must answer with a single JSON object and nothing
+else -- prose before or after the object is treated as malformed. The decision
+is drawn from a closed vocabulary of actions:</p>
+<table>
+<thead>
+<tr>
+<th>Action</th>
+<th>What it means</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>retry</code></td>
+<td>Looks transient; re-run the same stage unchanged</td>
+</tr>
+<tr>
+<td><code>escalate-model</code></td>
+<td>Approach is sound but under-powered; re-run with more capacity</td>
+</tr>
+<tr>
+<td><code>switch-engine</code></td>
+<td>A different model/engine is a better fit; re-run there</td>
+</tr>
+<tr>
+<td><code>split</code></td>
+<td>The ticket bundles independent concerns; propose sub-tickets</td>
+</tr>
+<tr>
+<td><code>abandon-human</code></td>
+<td>Broken in a way automation should not keep retrying</td>
+</tr>
+<tr>
+<td><code>mechanical-fix</code></td>
+<td>A known-shape violation with a deterministic repair recipe</td>
+</tr>
+</tbody>
+</table>
+<p>For this failure the model recognizes the shape -- a bug-fix ticket with the
+code and test squashed into one commit, tripping a commit-order rule -- and
+returns <code>mechanical-fix</code> with a recipe:</p>
+<div class="language-json highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="p">{</span>
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="w">  </span><span class="nt">&quot;action&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;mechanical-fix&quot;</span><span class="p">,</span>
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="w">  </span><span class="nt">&quot;summary&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;bug-fix ticket squashed the code fix and its test into one commit; lint-bug-commit-order needs the non-test commit to land first&quot;</span><span class="p">,</span>
+<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="w">  </span><span class="nt">&quot;repair_plan&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="w">    </span><span class="nt">&quot;verification_check&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;bash scripts/dev.sh lint-bug-commit-order&quot;</span><span class="p">,</span>
+<a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a><span class="w">    </span><span class="nt">&quot;commands&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a><span class="w">      </span><span class="s2">&quot;git -C &lt;clone&gt; reset --soft HEAD~1&quot;</span><span class="p">,</span>
+<a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a><span class="w">      </span><span class="s2">&quot;git -C &lt;clone&gt; restore --staged -- tests/&quot;</span><span class="p">,</span>
+<a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a><span class="w">      </span><span class="s2">&quot;git -C &lt;clone&gt; commit -m &#39;fix: correct the off-by-one in the deal&#39;&quot;</span><span class="p">,</span>
+<a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a><span class="w">      </span><span class="s2">&quot;git -C &lt;clone&gt; add -- tests/&quot;</span><span class="p">,</span>
+<a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a><span class="w">      </span><span class="s2">&quot;git -C &lt;clone&gt; commit -m &#39;test: pin the corrected deal&#39;&quot;</span>
+<a id="__codelineno-0-12" name="__codelineno-0-12" href="#__codelineno-0-12"></a><span class="w">    </span><span class="p">]</span>
+<a id="__codelineno-0-13" name="__codelineno-0-13" href="#__codelineno-0-13"></a><span class="w">  </span><span class="p">}</span>
+<a id="__codelineno-0-14" name="__codelineno-0-14" href="#__codelineno-0-14"></a><span class="p">}</span>
+</code></pre></div>
+<p>That is the entire scope of the model's authority. It read the evidence and
+emitted one action string plus a couple of structured fields. It did not run any
+of those commands. It did not re-run the stage, edit a file, write a sub-ticket,
+or override a cap. The <code>commands</code> list is a <em>proposal</em>, expressed as data.</p>
+<p>Note what the closed vocabulary does: it collapses an open-ended "what should I
+do" into one of six known tokens. Anything the model might say that is not one of
+those tokens is, by construction, not a valid decision -- which is what makes the
+next layer possible.</p>
+<h3 id="layer-3-deterministic-post-processing">Layer 3: deterministic post-processing<a class="headerlink" href="#layer-3-deterministic-post-processing" title="Permanent link">&para;</a></h3>
+<p>The model's JSON is now input to plain code, and it is treated as untrusted
+input.</p>
+<p><strong>Validate.</strong> Parse the object. The action must be one of the known tokens. For
+<code>mechanical-fix</code>, <code>summary</code> must be a non-empty string, <code>verification_check</code> must
+be a non-empty string, and <code>commands</code> must be a non-empty list of non-empty
+strings. Any failure here -- malformed JSON, an unknown action, a missing field,
+even a timeout on the diagnosis call itself -- degrades to the same synthetic
+<code>abandon-human</code> from Layer 1. The model cannot crash the loop by returning
+garbage; garbage routes to "get a human."</p>
+<p><strong>Persist the decision.</strong> The validated recipe is written to
+<code>.state/runs/&lt;run-id&gt;.mechanical_fix.json</code>, so the exact thing that ran is on
+disk for later inspection.</p>
+<p><strong>Execute, then verify with an independent check.</strong> The code runs the recipe's
+commands in the recorded clone, and then -- this is the load-bearing step --
+re-runs the <em>exact</em> check that originally failed:
+<code>bash scripts/dev.sh lint-bug-commit-order</code>. The verifier is not the model's
+opinion that it fixed the problem. It is the same deterministic gate that flagged
+the problem in the first place.</p>
+<ul>
+<li>If the check goes green, the result is committed. The recovery worked.</li>
+<li>If a command fails, times out, or the check stays red, the artifact is
+  preserved and the loop falls back to a normal retry.</li>
+</ul>
+<p>Either way, the mechanical execution plus any fallback together count as one
+attempt against the retry cap. The model got one decision; the machine got the
+whole execution and the final say on whether it worked.</p>
+<h2 id="the-same-picture-as-pseudocode">The same picture as pseudocode<a class="headerlink" href="#the-same-picture-as-pseudocode" title="Permanent link">&para;</a></h2>
+<div class="language-text highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a># ---- bottom bread: deterministic ----
+<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>if stage_exit_code == 0: return SUCCESS
+<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>if diagnosis_invocations &gt;= MAX_DIAG: return TERMINATE      # never call the model
+<a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a>if clone_dir_missing():   verdict = abandon_human()          # never call the model
+<a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a>else:
+<a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a>    context = gather_bounded(state, ticket, run_record, log_tail, diff)
+<a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a>
+<a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a>    # ---- filling: exactly one model call, one typed decision ----
+<a id="__codelineno-1-9" name="__codelineno-1-9" href="#__codelineno-1-9"></a>    verdict = model_decide(context)      # returns one JSON object, no side effects
+<a id="__codelineno-1-10" name="__codelineno-1-10" href="#__codelineno-1-10"></a>
+<a id="__codelineno-1-11" name="__codelineno-1-11" href="#__codelineno-1-11"></a># ---- top bread: deterministic ----
+<a id="__codelineno-1-12" name="__codelineno-1-12" href="#__codelineno-1-12"></a>verdict = validate(verdict) or abandon_human()   # bad output -&gt; safe default
+<a id="__codelineno-1-13" name="__codelineno-1-13" href="#__codelineno-1-13"></a>persist(verdict)
+<a id="__codelineno-1-14" name="__codelineno-1-14" href="#__codelineno-1-14"></a>if verdict.action == &quot;mechanical-fix&quot;:
+<a id="__codelineno-1-15" name="__codelineno-1-15" href="#__codelineno-1-15"></a>    run(verdict.repair_plan.commands)
+<a id="__codelineno-1-16" name="__codelineno-1-16" href="#__codelineno-1-16"></a>    if rerun(verdict.repair_plan.verification_check) == GREEN:
+<a id="__codelineno-1-17" name="__codelineno-1-17" href="#__codelineno-1-17"></a>        commit()
+<a id="__codelineno-1-18" name="__codelineno-1-18" href="#__codelineno-1-18"></a>    else:
+<a id="__codelineno-1-19" name="__codelineno-1-19" href="#__codelineno-1-19"></a>        fall_back_to_retry()
+<a id="__codelineno-1-20" name="__codelineno-1-20" href="#__codelineno-1-20"></a># ... other actions dispatch the same way: a case statement, no model
+</code></pre></div>
+<p>Read top to bottom, the model appears on exactly one line. Everything above it
+is a guard; everything below it is a dispatcher and a verifier.</p>
+<h2 id="contrast-the-loop-you-are-tempted-to-build-instead">Contrast: the loop you are tempted to build instead<a class="headerlink" href="#contrast-the-loop-you-are-tempted-to-build-instead" title="Permanent link">&para;</a></h2>
+<p>The obvious alternative to all of this is shorter to write: give the agent a
+shell tool, hand it the failing check, and say "fix it." Let it look around,
+try things, and re-run the check until it passes.</p>
+<p>It will often work. But compare it against the sandbox above:</p>
+<ul>
+<li><strong>Cost is unbounded.</strong> "Try things until it passes" has no natural stopping
+  point; a confused agent can burn a large, variable number of turns. The
+  sandwich spends one model call per diagnosis, capped at two per ticket.</li>
+<li><strong>Blast radius is unbounded.</strong> An agent holding a shell can edit files you did
+  not mean to expose, or "fix" the check by disabling it. In the sandwich the
+  model never holds the shell; it hands over a typed decision, and the code runs
+  a recipe against a check the model cannot weaken.</li>
+<li><strong>It is not reproducible.</strong> Two runs of the free agent can take different
+  paths to different diffs. The sandwich's bread layers are deterministic, so a
+  given failure plus a given verdict always produces the same execution.</li>
+<li><strong>You cannot tell success from a masked failure.</strong> "The agent says it is
+  fixed" is not evidence. "The same gate that failed now passes" is. The
+  sandwich makes verification a property of the system, not a claim by the
+  model.</li>
+</ul>
+<p>The free-agent loop optimizes for looking capable. The sandwich optimizes for
+being checkable.</p>
+<h2 id="how-to-apply-it">How to apply it<a class="headerlink" href="#how-to-apply-it" title="Permanent link">&para;</a></h2>
+<p>When you are about to let a model drive something, try to fold it into a
+sandwich first:</p>
+<ol>
+<li><strong>Name the single decision in one sentence.</strong> "Given this failure, what
+   should happen next?" If you cannot state it that tightly, the filling is too
+   big -- split it into more than one sandwich.</li>
+<li><strong>Make the output a closed vocabulary or typed schema.</strong> A fixed set of
+   action tokens, or a JSON shape you validate. Not free-form prose, and not
+   tool calls the model gets to execute.</li>
+<li><strong>Put a deterministic verifier after the model.</strong> A check that passes or
+   fails on its own terms -- ideally the same check that detected the problem.
+   If you cannot verify the decision without asking the model again, you do not
+   yet have a sandwich.</li>
+<li><strong>Define the malformed-output path up front.</strong> Any parse or validation
+   failure should degrade to a safe default -- usually "stop and get a human,"
+   never "guess and continue."</li>
+<li><strong>Cap the invocations in code.</strong> One decision, a small fixed number of
+   retries, enforced by the outer layer -- not by a sentence in the prompt
+   asking the model to be careful.</li>
+<li><strong>Keep the bread pure.</strong> Pre- and post-processing should be functions of
+   plain data, so a test can pin them with fixtures and no network.</li>
+</ol>
+<p>If a task cannot be shaped this way -- if it genuinely needs open-ended
+exploration with the model in the loop -- that is worth knowing before you build
+it, and it is a different, more expensive kind of system to operate. Most of the
+places I reached for "an agent" turned out to be a decision I could isolate,
+wrap in deterministic bread, and verify. The model got smaller. The system got
+easier to trust.</p>
 
 
 
@@ -2668,7 +2854,7 @@
       <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": ["navigation.instant", "navigation.instant.prefetch", "navigation.instant.progress", "navigation.sections", "navigation.indexes", "navigation.prune", "navigation.tracking", "navigation.top", "toc.integrate", "search.suggest", "search.highlight", "search.share", "content.code.copy", "toc.follow"], "search": "../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
     
     
-      <script src="../assets/javascripts/bundle.79ae519e.min.js"></script>
+      <script src="../assets/javascripts/bundle.d7400e89.min.js"></script>
       
     
   </body>
