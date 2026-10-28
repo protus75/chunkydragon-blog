@@ -687,6 +687,8 @@
       
         
       
+        
+      
     
     
     
@@ -937,6 +939,34 @@
   
   
     <li class="md-nav__item">
+      <a href="../battleland-first-self-play-pipeline/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Battleland: the first game that trains its own opponent
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../the-equity-panel-is-the-ai/" class="md-nav__link">
         
   
@@ -1029,6 +1059,18 @@
   
     
     
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
       
         
       
@@ -1424,6 +1466,174 @@
     
   
     Watching code risk trend over time, with no metrics datastore
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../queryable-project-memory/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    The project that remembers itself
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../find-every-related-surface/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Find every surface related to X
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../audit-trail-training-feedback/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    The run record that grades itself
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ai-researcher-dev-loop/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    What an AI researcher wants from a dev loop
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../building-ai-audit-trail/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Building an audit trail for AI-assisted development
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../project-as-ai-training-substrate/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Why this project is a strong AI training substrate
   
 
     
@@ -2485,7 +2695,7 @@
 <p>That phrase -- <em>exports the problem</em> -- is the point. A second problem you neither fix nor record does not disappear. It becomes a tax on every future run that wanders into the same code, each one rediscovering it, each one deciding from scratch whether to fold it in or look away. Filing it once converts that recurring tax into a single line item the system can schedule and a human can prioritize. The rules are not there to slow the agent down. They are there to stop one run from quietly making every later run worse.</p>
 <h2 id="the-backlog-is-the-working-memory-the-context-window-is-not">The backlog is the working memory the context window is not<a class="headerlink" href="#the-backlog-is-the-working-memory-the-context-window-is-not" title="Permanent link">&para;</a></h2>
 <p>A habit of deferral only works if "deferred" means something concrete. In this project it does: a problem you choose not to fold in becomes a markdown ticket under the backlog, and that ticket is a first-class, durable object the rest of the machine knows how to handle. The orchestrator under the orchestration control plane schedules from the backlog; the <code>## Depends on</code> graph in each ticket says what has to land first; verbs like <code>/dev-backlog-list</code> and the <code>/dev-status</code> family let a human see what is queued. The deferred problem is not lost in a chat transcript or a <code>## Dead ends</code> note nobody reads. It is in the tree, in <code>git diff</code>, queryable.</p>
-<p>That last word matters more than it looks. Every run in this project leaves a sibling run record next to its ticket -- a <code>*.run.md</code> file that captures what the code cannot: the surprises, the judgment calls, the dead ends, and exactly the kind of "I noticed X but it was out of scope" observation this post is about. And because tickets and run records are plain files committed with the code, the whole trail is searchable. the orchestrator dispatcher runs SQL over an index built from those tickets, run records, and git history, so the next agent wondering "have we seen this before?" runs a query instead of guessing. The companion post <a href="queryable-project-memory.md">The project that remembers itself</a> is the full field report on that index; the short version is that the backlog plus the run records plus the history index are the orchestrator's working memory across time. They are the durable substrate the per-run context window is not.</p>
+<p>That last word matters more than it looks. Every run in this project leaves a sibling run record next to its ticket -- a <code>*.run.md</code> file that captures what the code cannot: the surprises, the judgment calls, the dead ends, and exactly the kind of "I noticed X but it was out of scope" observation this post is about. And because tickets and run records are plain files committed with the code, the whole trail is searchable. the orchestrator dispatcher runs SQL over an index built from those tickets, run records, and git history, so the next agent wondering "have we seen this before?" runs a query instead of guessing. The companion post <a href="../queryable-project-memory/">The project that remembers itself</a> is the full field report on that index; the short version is that the backlog plus the run records plus the history index are the orchestrator's working memory across time. They are the durable substrate the per-run context window is not.</p>
 <p>Once you see it that way, the reason deferral <em>compounds</em> instead of just delaying becomes obvious. The flywheel post, <a href="../cross-game-compounding-flywheel/">The cross-game compounding flywheel</a>, argues that quality in this catalog accrues because lessons learned in one place get folded back into everything else through a governed loop -- not because anything gets crammed into an already-loaded window. Deferred work is the same shape. The second problem gets fixed later, in a run that opens with a fresh context loaded for that problem and a run record that already explains what was seen and why it was left alone. That is strictly more information than the original run had while it was busy doing something else. Folding the fix in would have spent context to do the work <em>worse</em>, right now; filing it spends almost no context to do the work <em>better</em>, soon.</p>
 <h2 id="the-honest-edge-deferral-is-governance-not-a-magic-inbox">The honest edge: deferral is governance, not a magic inbox<a class="headerlink" href="#the-honest-edge-deferral-is-governance-not-a-magic-inbox" title="Permanent link">&para;</a></h2>
 <p>I would be selling you something if I stopped at "just file everything and the system takes care of it." It does not, and the costs are real enough to name.</p>

@@ -594,6 +594,8 @@
       
         
       
+        
+      
     
     
     
@@ -844,6 +846,34 @@
   
   
     <li class="md-nav__item">
+      <a href="../battleland-first-self-play-pipeline/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Battleland: the first game that trains its own opponent
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../the-equity-panel-is-the-ai/" class="md-nav__link">
         
   
@@ -938,6 +968,18 @@
   
     
     
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
       
         
       
@@ -1435,6 +1477,174 @@
     
   
     Watching code risk trend over time, with no metrics datastore
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../queryable-project-memory/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    The project that remembers itself
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../find-every-related-surface/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Find every surface related to X
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../audit-trail-training-feedback/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    The run record that grades itself
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ai-researcher-dev-loop/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    What an AI researcher wants from a dev loop
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../building-ai-audit-trail/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Building an audit trail for AI-assisted development
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../project-as-ai-training-substrate/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Why this project is a strong AI training substrate
   
 
     
@@ -2501,7 +2711,7 @@
 <p>That purity is what turns "replay" from a feature you build into a property you already have. If the only way a position can change is <code>apply_action(state, action) -&gt; state</code>, then the full trajectory of a game is completely determined by its <code>initial_state</code> and the sequence of actions. The board after move 12 is not a thing you stored. It is</p>
 <p>fold(apply_action, actions[:12], initial_state)</p>
 <p>-- the left fold of <code>apply_action</code> over the first twelve actions, starting from the seed. The snapshots were never the source of truth. They were a cache of a computation you can always redo. The recorder principle in <code>PROJECT_BRIEF.md</code> says exactly this: store <code>initial_state</code> plus the ordered action log, and a scrubbing cache of intermediate boards is allowed only as an optimization layered on top, never as the primary record.</p>
-<p>The action log is the durable, reviewable record of what happened -- which makes it a close cousin of the project's other in-repo memory surfaces. The same instinct that keeps game history as a replayable list of actions keeps project history as <a href="queryable-project-memory.md">tickets and run records the next agent can query</a>: the authoritative thing is the small, ordered, append-only record, and everything richer is derived from it.</p>
+<p>The action log is the durable, reviewable record of what happened -- which makes it a close cousin of the project's other in-repo memory surfaces. The same instinct that keeps game history as a replayable list of actions keeps project history as <a href="../queryable-project-memory/">tickets and run records the next agent can query</a>: the authoritative thing is the small, ordered, append-only record, and everything richer is derived from it.</p>
 <h2 id="one-log-many-readers">One log, many readers<a class="headerlink" href="#one-log-many-readers" title="Permanent link">&para;</a></h2>
 <p>Here is the payoff that a pile of snapshots cannot match: the <em>same</em> recorded game serves uses that look nothing alike, because each one is just a different way of folding the same actions. <code>PROJECT_BRIEF.md</code>'s replay section frames a replay request as a pure function, <code>(action_log, role, time_cursor) -&gt; rendered view</code> -- the log is fixed, and the role filter and the time cursor are just parameters you vary. Three of those readers are concrete reasons the project pays the record-actions tax:</p>
 <ul>

@@ -594,6 +594,8 @@
       
         
       
+        
+      
     
     
     
@@ -844,6 +846,34 @@
   
   
     <li class="md-nav__item">
+      <a href="../battleland-first-self-play-pipeline/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Battleland: the first game that trains its own opponent
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../the-equity-panel-is-the-ai/" class="md-nav__link">
         
   
@@ -936,6 +966,18 @@
   
     
     
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
       
         
       
@@ -1331,6 +1373,174 @@
     
   
     Watching code risk trend over time, with no metrics datastore
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../queryable-project-memory/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    The project that remembers itself
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../find-every-related-surface/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Find every surface related to X
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../audit-trail-training-feedback/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    The run record that grades itself
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ai-researcher-dev-loop/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    What an AI researcher wants from a dev loop
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../building-ai-audit-trail/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Building an audit trail for AI-assisted development
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../project-as-ai-training-substrate/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Why this project is a strong AI training substrate
   
 
     
@@ -2522,7 +2732,7 @@
 <li><strong>Move-quality distributions.</strong> The <code>assessments</code> table already stores a <code>quality</code> column drawn from a closed five-value set. <code>SELECT quality, COUNT(*) FROM assessments GROUP BY quality</code> returns the distribution across the BRILLIANT / GOOD / INACCURACY / MISTAKE / BLUNDER buckets in one scan. More on where those buckets come from in the next section.</li>
 <li><strong>Opening-frequency tables.</strong> Filter the action log to the first move of each game and group by the move played. Because the log is ordered by <code>seq</code>, "what is the most common opening, and how does it differ by personality?" is a <code>WHERE seq = 1 ... GROUP BY</code> away.</li>
 </ul>
-<p>This is not a hypothetical that the project has never tried. It already runs SQL over its own durable history in a different domain: the workflow history index documented in the history-index docs builds a disposable DuckDB database from tickets, run records, git history, and orchestrator state, then answers questions like "which tickets touched this module and later reported drift?" with a query. The <a href="queryable-project-memory.md">queryable project memory</a> post is the field report on that index. The lesson transfers directly: if SQL-over-DuckDB is the right tool for the project's <em>process</em> history, it is the right tool for the project's <em>gameplay</em> history, because both are analytical workloads over an append-only log.</p>
+<p>This is not a hypothetical that the project has never tried. It already runs SQL over its own durable history in a different domain: the workflow history index documented in the history-index docs builds a disposable DuckDB database from tickets, run records, git history, and orchestrator state, then answers questions like "which tickets touched this module and later reported drift?" with a query. The <a href="../queryable-project-memory/">queryable project memory</a> post is the field report on that index. The lesson transfers directly: if SQL-over-DuckDB is the right tool for the project's <em>process</em> history, it is the right tool for the project's <em>gameplay</em> history, because both are analytical workloads over an append-only log.</p>
 <h2 id="the-five-bucket-grade-is-already-a-column">The five-bucket grade is already a column<a class="headerlink" href="#the-five-bucket-grade-is-already-a-column" title="Permanent link">&para;</a></h2>
 <p>The second primitive is the move-assessment pipeline, and the useful surprise is that its output is already a database column waiting to be aggregated.</p>
 <p>the relevant AI module defines a <code>Quality</code> enum with exactly five members -- BRILLIANT, GOOD, INACCURACY, MISTAKE, BLUNDER -- and a <code>QUALITY_THRESHOLDS</code> table that maps a move's evaluation delta to one of those buckets. The <code>assess</code> function runs a Monte Carlo Tree Search from the position before the move, compares the move actually played against the move the search would have recommended, and records the result as a <code>MoveAssessment</code> carrying <code>quality</code>, <code>eval_delta</code>, <code>best_action</code>, and an optional demonstration line. If you have read <a href="../ai-personalities-not-optimizers/">AI opponents that play like people, not optimizers</a>, this is the same five-quality grading that post describes from the player's side; this post is about what happens to those grades after the game ends.</p>

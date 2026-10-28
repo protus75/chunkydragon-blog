@@ -596,6 +596,8 @@
       
         
       
+        
+      
     
     
     
@@ -826,6 +828,34 @@
     
   
     A fair die is a product decision
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../battleland-first-self-play-pipeline/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Battleland: the first game that trains its own opponent
   
 
     
@@ -1101,6 +1131,18 @@
   
     
     
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
       
         
       
@@ -1496,6 +1538,174 @@
     
   
     Watching code risk trend over time, with no metrics datastore
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../queryable-project-memory/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    The project that remembers itself
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../find-every-related-surface/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Find every surface related to X
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../audit-trail-training-feedback/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    The run record that grades itself
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ai-researcher-dev-loop/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    What an AI researcher wants from a dev loop
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../building-ai-audit-trail/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Building an audit trail for AI-assisted development
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../project-as-ai-training-substrate/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Why this project is a strong AI training substrate
   
 
     
@@ -2583,8 +2793,8 @@
 <p>It gets nothing of the kind, and this is the beat that proves the whole thesis. <code>DESIGN_RESOURCES.md</code> files Werewolf under <strong>"No search AI -- social deduction games,"</strong> with the warning: "Do not wire a search algorithm to a Werewolf bot; the AI design question is LLM persona and moderation, not search." There is no tree to search in a way that means anything, because the action space is open-ended human conversation and there is no rollout that can simulate a person deciding to believe a lie. You cannot even score "quality of play" the way you can for Bluff or Hold'em.</p>
 <p>So the answer to "which hidden-information algorithm does Werewolf use?" is <em>none</em>. The intelligence in <a href="../werewolf-server-as-moderator/">Werewolf</a> is the server acting as a silent moderator plus an LLM that runs personas and, after the game, reconstructs how the deception actually unfolded. A hidden-information game whose correct algorithm is "not a search algorithm" is the single clearest demonstration that structure picks the tool. If you took the rule "hidden info implies ISMCTS" seriously, Werewolf is where it shatters.</p>
 <h3 id="fully-observable-vanilla-alphazero">Fully observable: vanilla AlphaZero<a class="headerlink" href="#fully-observable-vanilla-alphazero" title="Permanent link">&para;</a></h3>
-<p>For contrast, take the hidden information <em>away</em>. <a href="battleland-first-self-play-pipeline.md">Battleland</a> is a hex-based tactical wargame where the board is shared and visible. Both armies are on the map; resolution is dice on known stats. There is randomness, but there is no hidden opponent hand to reason about -- the position in front of the AI is the whole position.</p>
-<p>When the game is fully observable, you no longer need information sets, and you can use the famous learned-model approach directly: <strong>vanilla AlphaZero</strong> -- a combined policy/value network trained by self-play, with Monte Carlo Tree Search using the network's hunches instead of random rollouts. The real pipeline is under the relevant AI module, and the dedicated post <a href="battleland-first-self-play-pipeline.md">Battleland: the first game that trains its own opponent</a> walks the four moving parts (network, self-play loop, model-guided search, trainer). The point for <em>this</em> post is the contrast: Battleland can use the textbook algorithm precisely because its structure is the simplest of the bunch. Take away the hidden information and the algorithm gets <em>more</em> standard, not less.</p>
+<p>For contrast, take the hidden information <em>away</em>. <a href="../battleland-first-self-play-pipeline/">Battleland</a> is a hex-based tactical wargame where the board is shared and visible. Both armies are on the map; resolution is dice on known stats. There is randomness, but there is no hidden opponent hand to reason about -- the position in front of the AI is the whole position.</p>
+<p>When the game is fully observable, you no longer need information sets, and you can use the famous learned-model approach directly: <strong>vanilla AlphaZero</strong> -- a combined policy/value network trained by self-play, with Monte Carlo Tree Search using the network's hunches instead of random rollouts. The real pipeline is under the relevant AI module, and the dedicated post <a href="../battleland-first-self-play-pipeline/">Battleland: the first game that trains its own opponent</a> walks the four moving parts (network, self-play loop, model-guided search, trainer). The point for <em>this</em> post is the contrast: Battleland can use the textbook algorithm precisely because its structure is the simplest of the bunch. Take away the hidden information and the algorithm gets <em>more</em> standard, not less.</p>
 <h3 id="open-ended-adversarial-helper-behavior-trees-and-heuristics">Open-ended adversarial helper: behavior trees and heuristics<a class="headerlink" href="#open-ended-adversarial-helper-behavior-trees-and-heuristics" title="Permanent link">&para;</a></h3>
 <p>The last shape is the one that breaks search entirely from the other direction. A planned D&amp;D Combat helper has a near-unbounded, creative action space -- a player can try things no enumerator anticipated. <code>DESIGN_RESOURCES.md</code> routes this to <strong>tiered behavior trees</strong> (heuristic, then persona-scripted, then LLM-guided), with MCTS reserved only for narrow sub-problems like grid movement, and the warning: "Do not use pure MCTS for D&amp;D monster AI; rollouts cannot simulate creative player actions." When you cannot simulate forward meaningfully, tree search has nothing to stand on, and you fall back to authored behavior plus a model for the open-ended parts.</p>
 <h2 id="the-map-on-one-page">The map, on one page<a class="headerlink" href="#the-map-on-one-page" title="Permanent link">&para;</a></h2>
@@ -2649,7 +2859,7 @@
 <p>If you are new to building with an AI assistant, here is the part to carry out of the games entirely.</p>
 <p>The mistake "one algorithm for all hidden information" is a special case of a much more common mistake: letting the tool you know best define the problem. An AI assistant does this constantly and convincingly. Ask it for hidden-information game AI and there is a real chance it offers you ISMCTS for everything, because ISMCTS is what its training data associates most strongly with the phrase. It will be articulate about it. It will not be right about Werewolf, and it will be subtly wrong about poker.</p>
 <p>This project's defense is to write the structural distinction down as a rule the assistant has to read -- the "Choosing the right hidden-information AI algorithm" section of <code>DESIGN_RESOURCES.md</code> -- and to anchor every AI ticket on the <em>named game shape</em> before any algorithm is mentioned. The structure goes in the acceptance criteria; the algorithm is downstream of it. That is the small, boring discipline that keeps a confidently-wrong opponent out of the catalog, and it generalizes far past games: name the shape of the problem first, let it select the tool, and treat any tool that arrives before the shape with suspicion.</p>
-<p>The six worked examples are linked above, each in the post that takes its one game seriously: <a href="../bluff-without-chat/">Bluff</a> for ISMCTS, <a href="../the-equity-panel-is-the-ai/">Hold'em</a> for the CFR-vs-reality split, <a href="../werewolf-server-as-moderator/">Werewolf</a> for the no-search case, <a href="battleland-first-self-play-pipeline.md">Battleland</a> for AlphaZero, and <a href="../ai-personalities-not-optimizers/">the personalities post</a> for the layer that sits on top of all of them. Read any one of them and you get a game. Read the column of algorithms across all of them and you get the rule: there is no universal hidden-information AI, and the project is the proof.</p>
+<p>The six worked examples are linked above, each in the post that takes its one game seriously: <a href="../bluff-without-chat/">Bluff</a> for ISMCTS, <a href="../the-equity-panel-is-the-ai/">Hold'em</a> for the CFR-vs-reality split, <a href="../werewolf-server-as-moderator/">Werewolf</a> for the no-search case, <a href="../battleland-first-self-play-pipeline/">Battleland</a> for AlphaZero, and <a href="../ai-personalities-not-optimizers/">the personalities post</a> for the layer that sits on top of all of them. Read any one of them and you get a game. Read the column of algorithms across all of them and you get the rule: there is no universal hidden-information AI, and the project is the proof.</p>
 <hr />
 
 
